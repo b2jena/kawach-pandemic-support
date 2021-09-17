@@ -1,0 +1,29 @@
+.bg-home{
+  background: url("https://wpamelia.com/wp-content/uploads/2019/02/tobias-van-schneider-88137-unsplash.jpg") no-repeat fixed center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.content {
+    height: 6em;
+    overflow: hidden;
+    position: relative;
+    display: block;
+    line-height: 1.5em;
+    background-color: white;
+  }
+  
+  .content::before {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, white 50%);
+    content: '\200C';
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 4.5em;
+    width: 25%;
+    text-align: center;
+  }
+
+  .centered-and-cropped { object-fit: cover }
