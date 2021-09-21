@@ -26,6 +26,8 @@
         <module>eureka-server</module>
         <module>api-gateway</module>
         <module>product-webapp</module>
+        <module>chat-service</module>
+        <module>warroom-service</module>
     </modules>
 
     <dependencies>
