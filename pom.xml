@@ -28,8 +28,9 @@
         <module>product-webapp</module>
 
         <module>chat-service</module>
-        <module>warroom-service</module>
+
         <module>doctor-consultation-service</module>
+        <module>resource-request-service</module>
     </modules>
 
     <dependencies>
