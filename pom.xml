@@ -27,6 +27,7 @@
         <module>api-gateway</module>
         <module>product-webapp</module>
         <module>doctor-consultation-service</module>
+        <module>user-management-service</module>
     </modules>
 
     <dependencies>
