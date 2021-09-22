@@ -32,16 +32,16 @@ public class OTPController {
     @GetMapping("/generateOtp")
     public String generateOTP() throws MessagingException {
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
-        int otp = otpService.generateOTP(username);
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = "godwinkhalko2@gmail.com";
+        int otp = otpService.generateOTP("godwinkhalko2@gmail.com");
         //Generate The Template to send OTP
-        EmailTemplate template = new EmailTemplate("SendOtp.html");
+        EmailTemplate template = new EmailTemplate("src/main/java/com/stackroute/SendOTP.html");
         Map<String,String> replacements = new HashMap<String,String>();
         replacements.put("user", username);
         replacements.put("otpnum", String.valueOf(otp));
         String message = template.getTemplate(replacements);
-        emailService.sendOtpMessage("Logged in Users EmailAddres", "OTP -SpringBoot", message);
+        emailService.sendOtpMessage("godwinkhalko2@gmail.com", "OTP -SpringBoot", message);
 
         return "otppage";
     }

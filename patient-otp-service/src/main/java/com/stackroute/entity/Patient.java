@@ -1,9 +1,12 @@
 package com.stackroute.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+
 //Patient entity
 @Entity
 public class Patient {
+    @Id
     private String email;
 
     //Empty constructor
