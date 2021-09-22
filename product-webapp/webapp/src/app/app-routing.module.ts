@@ -1,7 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './app.component';
+import { SosRequestComponent } from './sos-request/sos-request.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    component: AppComponent
+  }, {
+    path: 'sos',
+    component: SosRequestComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
