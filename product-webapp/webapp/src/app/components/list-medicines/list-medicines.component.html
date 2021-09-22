@@ -1,0 +1,20 @@
+<h2>List Medicines... </h2>
+<div class="col-md-6">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>Name</th>
+                <th>Pharmacy</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let medicine of medicines">
+                <td>{{medicine.city}}</td>
+                <td>{{medicine.medName}}</td>
+                <td>{{medicine.pharmacy}}</td>
+                <td><button class="btn btn-danger" (click)="deleteMedicine(medicine)">Delete Medicine</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
