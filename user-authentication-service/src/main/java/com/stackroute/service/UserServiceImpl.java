@@ -22,8 +22,8 @@ public class UserServiceImpl implements UserService {
     /**
      * To get the property values
      */
-    @Value("${app.service.message1}")
-    private String message1;
+//    @Value("${app.service.message1}")
+//    private String message1;
 
     @Value("${app.service.message2}")
     private String message2;
