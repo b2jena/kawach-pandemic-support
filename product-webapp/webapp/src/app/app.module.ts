@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SosRequestComponent } from './sos-request/sos-request.component';
+import { SosRequestComponent } from './components/sos-request/sos-request.component';
+
 
 @NgModule({
   declarations: [
