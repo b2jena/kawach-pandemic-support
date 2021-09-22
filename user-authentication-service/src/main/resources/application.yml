@@ -1,0 +1,32 @@
+server:
+  port: 9099
+
+jwt:
+  secret: secret
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: root
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+app:
+  seeddata:
+    id1: meghna@email.com
+    id2: john@email.com
+    password1: meghna@123
+    password2: john@123
+    logMessage: Loaded users...
+  jwttoken:
+    message: Login Successful
+  controller:
+    exception:
+      message1: Id and Password Empty
+      message2: Id and Password not found
+      message3: Id and Password invalid
+  service:
+    message1: User Already Exists
+    message2: Invalid Id and Password
