@@ -6,9 +6,13 @@ import com.stackroute.model.Doctor;
 import java.util.List;
 
 public interface DoctorService {
-    public String changeStatus(int id) throws DoctorNotFoundException;
-    public Doctor findById(int id);
-    public List<Doctor> findByStatus(int status) throws DoctorNotFoundException;
+    String changeStatus(int id) throws DoctorNotFoundException;
+
+    Doctor findById(int id);
+
+    List<Doctor> findByStatus(int status) throws DoctorNotFoundException;
+
     Doctor saveDoctor(Doctor doctor);
+
     List<Doctor> getAll();
 }

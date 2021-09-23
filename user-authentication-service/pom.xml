@@ -5,6 +5,8 @@
         <groupId>com.stackroute</groupId>
         <artifactId>kawach</artifactId>
         <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+        <!-- lookup parent from repository -->
     </parent>
     <artifactId>user-authentication-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -36,11 +38,11 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/net.sourceforge.javydreamercsw/MySQL-Driver -->
-        <dependency>
+        <!--<dependency>
             <groupId>net.sourceforge.javydreamercsw</groupId>
             <artifactId>MySQL-Driver</artifactId>
             <version>0.1</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

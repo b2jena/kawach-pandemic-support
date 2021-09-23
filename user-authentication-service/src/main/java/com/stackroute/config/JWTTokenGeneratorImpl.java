@@ -29,14 +29,14 @@ public class JWTTokenGeneratorImpl implements JWTTokenGenerator{
 
     @Override
     public Map<String, String> generateToken(User user) {
-        String jwtToken = "";
+        String jwtToken;
         /*
          * Generate JWT token and store in String jwtToken
          */
         //User user3=new User();
         jwtToken= Jwts.builder().setSubject(user.getId()).setIssuedAt(new Date()).signWith(SignatureAlgorithm.HS256,secret).compact();
 
-        Map<String,String> jwtTokenMap=new HashMap<>();
+        HashMap<String,String> jwtTokenMap=new HashMap<>();
         jwtTokenMap.put("token",jwtToken);
         jwtTokenMap.put("message",message);
         return jwtTokenMap;

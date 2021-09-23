@@ -10,7 +10,9 @@ public class EmailTemplate {
     private String template;
 
     //Creating a map with strings as both key and value.
+/*
     private Map<String, String> replacementParams;
+*/
 
     //method to load E-mail tempalte into the above-defined template.
     public EmailTemplate(String customtemplate) {

@@ -18,6 +18,7 @@ public class DoctorServiceImpl implements DoctorService {
     public DoctorServiceImpl(DoctorRepo doctorRepo) {
         this.doctorRepo = doctorRepo;
     }
+
     @PersistenceContext
     EntityManager em;
 
@@ -25,17 +26,12 @@ public class DoctorServiceImpl implements DoctorService {
     @Override
     public String changeStatus(int id) throws DoctorNotFoundException {
         Doctor doctor = doctorRepo.findById(id);
-        if(doctor == null){
+        if (doctor == null) {
             throw new DoctorNotFoundException("Doctor not found");
-        }
-        else
-        {
-            if(doctor.getStatus() == 0)
-            {
+        } else {
+            if (doctor.getStatus() == 0) {
                 doctor.setStatus(1);
-            }
-            else
-            {
+            } else {
                 doctor.setStatus(0);
             }
             return "Status Changed";
@@ -48,9 +44,9 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public List<Doctor> findByStatus(int status) throws DoctorNotFoundException{
-        List<Doctor> list= doctorRepo.findByStatus(status);
-        if(list == null){
+    public List<Doctor> findByStatus(int status) throws DoctorNotFoundException {
+        List<Doctor> list = doctorRepo.findByStatus(status);
+        if (list == null) {
             throw new DoctorNotFoundException("Not Doctors available");
         }
         return list;
