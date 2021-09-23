@@ -22,9 +22,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,FormsModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [HttpClient,SMedicineService],
+  providers: [HttpClient, SMedicineService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
