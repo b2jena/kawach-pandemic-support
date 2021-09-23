@@ -1,7 +1,8 @@
 package com.stackroute.repository;
 
-import com.stackroute.entity.Patient;
-import org.springframework.data.repository.CrudRepository;
 
-public interface PatientRepo extends CrudRepository<Patient, String> {
+import com.stackroute.entity.Patient;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PatientRepo extends JpaRepository<Patient, String> {
 }

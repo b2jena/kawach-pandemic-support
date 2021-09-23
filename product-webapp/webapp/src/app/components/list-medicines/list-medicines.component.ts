@@ -22,5 +22,6 @@ export class ListMedicinesComponent implements OnInit {
     this.medService.deleteMedicine(medicine)
       .subscribe( data => {
         this.medicines = this.medicines.filter(u => u !== medicine); } );
-      }
+  }
 }
+
