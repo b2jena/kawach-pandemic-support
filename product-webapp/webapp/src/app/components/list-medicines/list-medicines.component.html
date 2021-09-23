@@ -6,6 +6,9 @@
                 <th>City</th>
                 <th>Name</th>
                 <th>Pharmacy</th>
+                <th>Address</th>
+                <th>Contact Person</th>
+                <th>Mobile Number</th>
             </tr>
         </thead>
         <tbody>
@@ -13,6 +16,9 @@
                 <td>{{medicine.city}}</td>
                 <td>{{medicine.medName}}</td>
                 <td>{{medicine.pharmacy}}</td>
+                <td>{{medicine.address}}</td>
+                <td>{{medicine.contactPerson}}</td>
+                <td>{{medicine.mobileNumber}}</td>
                 <td><button class="btn btn-danger" (click)="deleteMedicine(medicine)">Delete Medicine</button></td>
             </tr>
         </tbody>

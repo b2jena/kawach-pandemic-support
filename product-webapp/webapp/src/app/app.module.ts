@@ -10,6 +10,7 @@ import { UpdateMedicineComponent } from './components/update-medicine/update-med
 import {FormsModule} from '@angular/forms';
 import { SMedicineService } from './services/s-medicine.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { PatientOtpComponent } from './patient-otp/patient-otp.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +18,16 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     SosRequestComponent,
     UpdateMedicineComponent,
     ListMedicinesComponent,
-    AddMedicineComponent
+    AddMedicineComponent,
+    PatientOtpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,FormsModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [HttpClient,SMedicineService],
+  providers: [HttpClient, SMedicineService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,27 +1,35 @@
 package com.stackroute.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-//Patient entity
 @Entity
+@Table(name="patient")
 public class Patient {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int patientid;
     private String email;
 
-    //Empty constructor
     public Patient() {
-
     }
-    //Parameterized Constructors
-    public Patient(String email) {
+
+    public Patient(int patientid, String email) {
+        this.patientid = patientid;
         this.email = email;
     }
-    //getter methods
+
+    public int getPatientid() {
+        return patientid;
+    }
+
+    public void setPatientid(int patientid) {
+        this.patientid = patientid;
+    }
+
     public String getEmail() {
         return email;
     }
-    //setter methods
+
     public void setEmail(String email) {
         this.email = email;
     }
