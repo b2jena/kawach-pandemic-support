@@ -10,25 +10,24 @@ import { Medicine, SMedicineService } from 'src/app/services/s-medicine.service'
 export class ListMedicinesComponent implements OnInit {
 
   medicines!: Medicine[];
-  
-  constructor(private medService: SMedicineService,private router: Router) { }
+  constructor(private medService: SMedicineService, private router: Router) { }
 
   ngOnInit() {
     this.medService.getMedicines().subscribe(
-      response =>this.handleSuccessfulResponse(response),
+      response => this.handleSuccessfulResponse(response),
      );
   }
 handleSuccessfulResponse(response: Medicine[] )
 {
-    this.medicines=response;
+    this.medicines = response;
 }
 
   deleteMedicine(medicine: Medicine): void {
     this.medService.deleteMedicine(medicine)
       .subscribe( data => {
-        this.medicines = this.medicines.filter(u => u !== medicine);});
-      
+        this.medicines = this.medicines.filter(u => u !== medicine); } );
+
   }
-  
+
 
 }

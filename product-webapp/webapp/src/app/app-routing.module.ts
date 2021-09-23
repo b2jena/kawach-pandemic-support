@@ -14,13 +14,13 @@ const routes: Routes = [
   }, {
     path: 'sos',
     component: SosRequestComponent
-  },{
+  }, {
     path: 'addmedicine',
     component: AddMedicineComponent
-  },{
+  }, {
     path: 'listmedicine',
     component: ListMedicinesComponent
-  },{
+  }, {
     path: 'updatemedicine',
     component: UpdateMedicineComponent
   }
