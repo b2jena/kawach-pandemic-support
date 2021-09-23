@@ -1,0 +1,21 @@
+<div class="col-md-6">
+    <h2 class="text-center">Add Medicine</h2>
+    <form>
+      <div class="form-group">
+        <label for="name">Medicine Name:</label>
+        <input type="name" [(ngModel)]="user.medName" placeholder="Name" name="name" class="form-control" id="name">
+      </div>
+    
+      <div class="form-group">
+        <label for="pharmacy">Pharmacy:</label>
+        <input [(ngModel)]="user.pharmacy" placeholder="Pharmacy" name="pharmacy" class="form-control" id="pharmacy">
+      </div>
+    
+      <div class="form-group">
+        <label for="id">City</label>
+        <input [(ngModel)]="user.city" placeholder="City Name" name="City Name" class="form-control" id="medicineid">
+      </div>
+    
+      <button class="btn btn-success" (click)="CreateMedicine()">Submit</button>
+    </form>
+    </div>

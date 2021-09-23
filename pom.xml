@@ -25,15 +25,13 @@
         <module>config-server</module>
         <module>eureka-server</module>
         <module>api-gateway</module>
-        <module>product-webapp</module>
-
         <module>chat-service</module>
-
         <module>doctor-consultation-service</module>
         <module>user-management-service</module>
         <module>resource-request-service</module>
         <module>patient-otp-service</module>
         <module>user-authentication-service</module>
+        <module>information-service</module>
     </modules>
 
     <dependencies>
@@ -88,12 +86,6 @@
             <version>8.0.26</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/net.sourceforge.javydreamercsw/MySQL-Driver -->
-        <dependency>
-            <groupId>net.sourceforge.javydreamercsw</groupId>
-            <artifactId>MySQL-Driver</artifactId>
-            <version>0.1</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>

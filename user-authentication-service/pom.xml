@@ -5,6 +5,8 @@
         <groupId>com.stackroute</groupId>
         <artifactId>kawach</artifactId>
         <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+        <!-- lookup parent from repository -->
     </parent>
     <artifactId>user-authentication-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -34,23 +36,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.26</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/net.sourceforge.javydreamercsw/MySQL-Driver -->
-        <dependency>
-            <groupId>net.sourceforge.javydreamercsw</groupId>
-            <artifactId>MySQL-Driver</artifactId>
-            <version>0.1</version>
-        </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-        <!--<dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
-            <scope>provided</scope>
-        </dependency>-->
-
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

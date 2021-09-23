@@ -1,9 +1,6 @@
 package com.stackroute.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * to define an entity
@@ -22,6 +19,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     /**
      * default constructor
@@ -39,6 +38,19 @@ public class User {
         this.password = password;
     }
 
+    public User(String id, String password, Role role) {
+        this.id = id;
+        this.password = password;
+        this.role = role;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public String getId() {
         return id;

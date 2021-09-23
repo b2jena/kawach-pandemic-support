@@ -1,7 +1,6 @@
 package com.stackroute.service;
 
 import com.stackroute.domain.User;
-import com.stackroute.exception.UserAlreadyExistException;
 import com.stackroute.exception.UserNotFoundException;
 
 public interface UserService {

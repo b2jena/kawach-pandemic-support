@@ -1,14 +1,11 @@
 package com.stackroute.service;
 
 import com.stackroute.domain.User;
-import com.stackroute.exception.UserAlreadyExistException;
 import com.stackroute.exception.UserNotFoundException;
 import com.stackroute.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 /*
  * This class is implementing the UserService interface. This class has to be annotated with
@@ -25,8 +22,8 @@ public class UserServiceImpl implements UserService {
     /**
      * To get the property values
      */
-    @Value("${app.service.message1}")
-    private String message1;
+//    @Value("${app.service.message1}")
+//    private String message1;
 
     @Value("${app.service.message2}")
     private String message2;

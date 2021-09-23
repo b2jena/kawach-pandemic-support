@@ -1,18 +1,14 @@
 package com.stackroute.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.stackroute.service.EmailService;
-import com.stackroute.service.EmailTemplate;
 import com.stackroute.service.OTPService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Controller
@@ -48,7 +44,6 @@ public class OTPController {
 
         final String SUCCESS = "Entered Otp is valid";
         final String FAIL = "Entered Otp is NOT valid. Please Retry!";
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = "godwinkhalko2@gmail.com";
         //Validate the Otp
         if(otpnum >= 0){
@@ -58,7 +53,7 @@ public class OTPController {
                 if(otpnum == serverOtp){
                     otpService.clearOTP(username);
                     System.out.println("correct");
-                    return (SUCCESS);
+                    return SUCCESS;
                 }
                 else {
                     System.out.println("incorrect");
