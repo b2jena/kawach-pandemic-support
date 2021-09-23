@@ -8,14 +8,17 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/*Volunteer bean class containing all the registering parameters*/
+
 @Document(collection = "volunteers")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter
+@Getter
+@Setter
 public class Volunteer {
     @Id
     private String emailId;
     private String fullName;
-    private int phoneNo;
+    private int phoneNumber;
     private String password;
 }

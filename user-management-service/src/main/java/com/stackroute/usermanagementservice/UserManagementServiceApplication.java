@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class UserManagementServiceApplication {
+    /*Fetching the data from the application.properties file*/
 
     @Value("${spring.rabbitmq.host}")
     String host;
@@ -25,6 +26,8 @@ public class UserManagementServiceApplication {
         SpringApplication.run(UserManagementServiceApplication.class, args);
     }
 
+    /*Method to establish a connection*/
+
     @Bean
     CachingConnectionFactory connectionFactory() {
         CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory(host);
@@ -33,10 +36,13 @@ public class UserManagementServiceApplication {
         return cachingConnectionFactory;
     }
 
+
     @Bean
     public Jackson2JsonMessageConverter jsonMessageConverter() {
         return new Jackson2JsonMessageConverter();
     }
+
+    /*Method to Convert the data into JSON format*/
 
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
@@ -44,5 +50,4 @@ public class UserManagementServiceApplication {
         rabbitTemplate.setMessageConverter(jsonMessageConverter());
         return rabbitTemplate;
     }
-
 }
