@@ -3,7 +3,7 @@ package com.stackroute.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="cat")
+@Table(name="patient")
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

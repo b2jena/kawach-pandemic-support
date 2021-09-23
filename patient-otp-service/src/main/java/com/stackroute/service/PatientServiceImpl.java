@@ -23,6 +23,6 @@ public class PatientServiceImpl implements PatientServiceI{
 
     @Override
     public List<Patient> getAll() {
-        return patientRepo.getAll();
+        return patientRepo.findAll();
     }
 }

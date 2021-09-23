@@ -49,7 +49,7 @@ public class OTPController {
         Map<String,String> replacements = new HashMap<String,String>();
         replacements.put("user", email);
         replacements.put("otpnum", String.valueOf(otp));
-        emailService.sendOtpMessage("godwinkhalko2@gmail.com", "OTP -SpringBoot", String.valueOf(otp));
+        emailService.sendOtpMessage(email, "OTP -SpringBoot", String.valueOf(otp));
         System.out.println("Mail sent");
         return new ResponseEntity<String>("OTP Sent to " + email, HttpStatus.OK);
     }
