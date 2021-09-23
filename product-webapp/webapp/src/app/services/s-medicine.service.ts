@@ -5,10 +5,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class SMedicineService {
+export class SMedicineService{
   Medicine: Medicine[] = [];
   constructor(private httpService: HttpClient) { }
-
   CreateMedicine(medicine: Medicine): Observable<Medicine> {
     console.log(medicine);
     return this.httpService.post<Medicine>('http://localhost:8080/medicine/create', medicine);
@@ -24,17 +23,19 @@ export class SMedicineService {
     return this.httpService.get<Medicine[]>('http://localhost:8080/medicine/getAll');
   }
 }
-
 export class Medicine{
-
   public city: string;
   public medName: string;
   public pharmacy: string;
-
-  constructor(city: string, medName: string, pharmacy: string) {
+  public address: string;
+  public contactPerson: string;
+  public mobileNumber: string;
+  constructor( city: string, medName: string, pharmacy: string, address: string, contactPerson: string, mobileNumber: string) {
     this.city = city;
     this.medName = medName;
     this.pharmacy = pharmacy;
-
+    this.address = address;
+    this.contactPerson = contactPerson;
+    this.mobileNumber = mobileNumber;
   }
 }
