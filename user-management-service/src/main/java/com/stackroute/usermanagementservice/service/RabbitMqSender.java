@@ -20,7 +20,7 @@ public class RabbitMqSender {
     @Value("${spring.rabbitmq.routingkey}")
     private String routingkey;
 
-    public void send(String details) {
-        rabbitTemplate.convertAndSend(exchange, routingkey, details);
+    public void send(String loginDetails) {
+        rabbitTemplate.convertAndSend(exchange, routingkey, loginDetails);
     }
 }

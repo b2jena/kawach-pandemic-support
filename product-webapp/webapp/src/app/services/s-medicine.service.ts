@@ -10,17 +10,17 @@ export class SMedicineService{
   constructor(private httpService: HttpClient) { }
   CreateMedicine(medicine: Medicine): Observable<Medicine> {
     console.log(medicine);
-    return this.httpService.post<Medicine>('http://localhost:9999/medicine/create', medicine);
+    return this.httpService.post<Medicine>('http://localhost:8080/medicine/create', medicine);
   }
   public deleteMedicine(medicine: Medicine) {
-    return this.httpService.delete<Medicine>('http://localhost:9999/medicine//delete/' + medicine.city);
+    return this.httpService.delete<Medicine>('http://localhost:8080/medicine//delete/' + medicine.city);
   }
   public updateMedicine(medicine: Medicine) {
     console.log(medicine);
-    return this.httpService.put<Medicine>('http://localhost:9999/medicine/update', medicine);
+    return this.httpService.put<Medicine>('http://localhost:8080/medicine/update', medicine);
   }
   getMedicines(){
-    return this.httpService.get<Medicine[]>('http://localhost:9999/medicine/getAll');
+    return this.httpService.get<Medicine[]>('http://localhost:8080/medicine/getAll');
   }
 }
 export class Medicine{
