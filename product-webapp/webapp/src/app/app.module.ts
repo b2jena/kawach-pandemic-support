@@ -11,6 +11,9 @@ import {FormsModule} from '@angular/forms';
 import { SMedicineService } from './services/s-medicine.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { PatientOtpComponent } from './patient-otp/patient-otp.component';
+import { LoginComponent } from './components/login/login.component';
+import { DoctorDashboardComponent } from './components/doctor-dashboard/doctor-dashboard.component';
+import { WarroomDashboardComponent } from './components/warroom-dashboard/warroom-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { PatientOtpComponent } from './patient-otp/patient-otp.component';
     UpdateMedicineComponent,
     ListMedicinesComponent,
     AddMedicineComponent,
-    PatientOtpComponent
+    PatientOtpComponent,
+    LoginComponent,
+    DoctorDashboardComponent,
+    WarroomDashboardComponent
   ],
   imports: [
     BrowserModule,
