@@ -1,10 +1,12 @@
-package com.stackroute.resource.Service;
+package com.stackroute.resource.service;
 
-import com.stackroute.resource.Model.Resources;
-import com.stackroute.resource.Repository.ResourceRepository;
+import com.stackroute.resource.model.Resources;
+import com.stackroute.resource.repository.ResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
+
 @Service
 public class ResourceServiceImpl implements ResourceService{
     private ResourceRepository resourceRepository;

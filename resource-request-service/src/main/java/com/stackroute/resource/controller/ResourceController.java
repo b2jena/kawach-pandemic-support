@@ -1,7 +1,7 @@
 package com.stackroute.resource.controller;
 
-import com.stackroute.resource.Service.ResourceService;
-import com.stackroute.resource.Model.Resources;
+import com.stackroute.resource.model.Resources;
+import com.stackroute.resource.service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 public class ResourceController {
 
     private ResourceService resourceService;

@@ -1,7 +1,8 @@
-package com.stackroute.resource.Service;
-import com.stackroute.resource.Model.Resources;
+package com.stackroute.resource.service;
+import com.stackroute.resource.model.Resources;
 
 import java.util.List;
+
 public interface ResourceService {
     Resources SaveResource(Resources resources);
 
