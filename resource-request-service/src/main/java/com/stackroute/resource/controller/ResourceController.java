@@ -1,6 +1,8 @@
 package com.stackroute.resource.controller;
 
+import com.stackroute.resource.exception.ResourceAlreadyExistsException;
 import com.stackroute.resource.model.Resources;
+import com.stackroute.resource.repository.ResourceRepository;
 import com.stackroute.resource.service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,9 +23,12 @@ public class ResourceController {
     }
 
     @PostMapping("medicine/create")
-    public ResponseEntity<Resources> saveResource(@RequestBody Resources resources){
-        Resources savedResources = resourceService.SaveResource(resources);
-        return new ResponseEntity<Resources>(savedResources,HttpStatus.CREATED);
+    public ResponseEntity<Resources> saveResource(@RequestBody Resources resources) throws ResourceAlreadyExistsException {
+//        if(ResourceRepository.existsById(resources.getId())){
+//            throw new ResourceAlreadyExistsException();
+//        }
+        Resources savedResources = resourceService.saveResource(resources);
+        return new ResponseEntity<>(savedResources,HttpStatus.CREATED);
     }
 
     @GetMapping("medicine/getAll")
@@ -33,7 +38,7 @@ public class ResourceController {
 
     @PutMapping("medicine/update")
     public ResponseEntity<Resources> updateResource(@RequestBody Resources resources){
-        Resources updatedResources = resourceService.UpdateResource(resources);
+        Resources updatedResources = resourceService.updateResource(resources);
         return new ResponseEntity<Resources>
                 (updatedResources,HttpStatus.CREATED);
     }

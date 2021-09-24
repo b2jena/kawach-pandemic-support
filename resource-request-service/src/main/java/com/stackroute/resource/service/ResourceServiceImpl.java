@@ -6,16 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ResourceServiceImpl implements ResourceService{
     private ResourceRepository resourceRepository;
+    SequenceGeneratorService sequenceGeneratorService;
     @Autowired
     public ResourceServiceImpl(ResourceRepository resourceRepository) {
         this.resourceRepository = resourceRepository;
     }
     @Override
-    public Resources SaveResource(Resources resources) {
+    public Resources saveResource(Resources resources) {
+        resources.setId(UUID.randomUUID());
         return resourceRepository.save(resources);
     }
     @Override
@@ -23,7 +26,7 @@ public class ResourceServiceImpl implements ResourceService{
         return (List<Resources>) resourceRepository.findAll();
     }
     @Override
-    public  Resources UpdateResource(Resources resources){
+    public  Resources updateResource(Resources resources){
         return resourceRepository.save(resources);
     }
 }
