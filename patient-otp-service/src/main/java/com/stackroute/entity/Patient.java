@@ -3,7 +3,7 @@ package com.stackroute.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="patient")
+@Table(name="Patient")
 public class Patient {
     @Id
     private String email;

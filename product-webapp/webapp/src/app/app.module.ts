@@ -11,6 +11,7 @@ import {FormsModule} from '@angular/forms';
 import { SMedicineService } from './services/s-medicine.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { PatientOtpComponent } from './components/patient-otp/patient-otp.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PatientOtpComponent } from './components/patient-otp/patient-otp.compon
     UpdateMedicineComponent,
     ListMedicinesComponent,
     AddMedicineComponent,
-    PatientOtpComponent
+    PatientOtpComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

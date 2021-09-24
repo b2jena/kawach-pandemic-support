@@ -17,6 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("api/v1")
+@CrossOrigin("http://localhost:4200")
 public class OTPController {
 
     public PatientServiceI patientServiceI;
@@ -32,7 +33,7 @@ public class OTPController {
     @Autowired
     public EmailService emailService;
 
-    @PostMapping("/patient")
+    @PostMapping(path="/patient")
     public ResponseEntity<Patient> savePatient(@RequestBody  Patient patient)
     {
         Patient patient1=  patientServiceI.saveUser(patient);
@@ -53,7 +54,7 @@ public class OTPController {
         return new ResponseEntity<String>("OTP Sent to " + email, HttpStatus.OK);
     }
 
-    @PostMapping("/validateOtp")
+    @GetMapping("/validateOtp")
     public ResponseEntity<String>  validateOtp(@RequestParam int otpNum){
 
         final String SUCCESS = "Entered Otp is valid";
