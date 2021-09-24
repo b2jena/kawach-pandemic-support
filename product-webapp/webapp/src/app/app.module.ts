@@ -10,7 +10,7 @@ import { UpdateMedicineComponent } from './components/update-medicine/update-med
 import {FormsModule} from '@angular/forms';
 import { SMedicineService } from './services/s-medicine.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { PatientOtpComponent } from './patient-otp/patient-otp.component';
+import { PatientOtpComponent } from './components/patient-otp/patient-otp.component';
 
 @NgModule({
   declarations: [

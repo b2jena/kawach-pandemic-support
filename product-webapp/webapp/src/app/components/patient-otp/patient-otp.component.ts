@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {  PatientOtpServiceService } from 'src/app/services/patient-otp-service.service';
 
 @Component({
   selector: 'app-patient-otp',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientOtpComponent implements OnInit {
 
-  constructor() { }
+  // user: PATIENT = new PATIENT("");
 
-  ngOnInit(): void {
+  constructor(private patientotp: PatientOtpServiceService) { }
+
+  ngOnInit() {
   }
 
 }
