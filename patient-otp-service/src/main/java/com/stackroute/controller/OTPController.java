@@ -54,8 +54,8 @@ public class OTPController {
         return new ResponseEntity<String>("OTP Sent to " + email, HttpStatus.OK);
     }
 
-    @GetMapping("/validateOtp")
-    public ResponseEntity<String>  validateOtp(@RequestParam int otpNum){
+    @GetMapping("/validateOtp/{otpNum}")
+    public ResponseEntity<String>  validateOtp(@PathVariable int otpNum){
 
         final String SUCCESS = "Entered Otp is valid";
         final String FAIL = "Entered Otp is NOT valid. Please Retry!";

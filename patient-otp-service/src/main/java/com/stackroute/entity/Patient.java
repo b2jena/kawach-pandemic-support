@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name="Patient")
 public class Patient {
     @Id
+
     private String email;
 
     public Patient() {
