@@ -1,3 +1,4 @@
+import { AddBedComponent } from './components/add-bed/add-bed.component';
 import { ListEquipmentsComponent } from './components/list-equipments/list-equipments.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -30,6 +31,12 @@ const routes: Routes = [
     component: AddEquipmentComponent
   }, {
     path: 'listequipment',
+    component: ListEquipmentsComponent
+  }, {
+    path: 'addbed',
+    component: AddBedComponent
+  }, {
+    path: 'listbed',
     component: ListEquipmentsComponent
   }
 ];

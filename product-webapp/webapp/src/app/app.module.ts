@@ -1,3 +1,6 @@
+import { ListBedComponent } from './components/list-bed/list-bed.component';
+import { AddBedComponent } from './components/add-bed/add-bed.component';
+import { BedService } from './services/bed.service';
 import { ListEquipmentsComponent } from './components/list-equipments/list-equipments.component';
 import { EquipmentService } from './services/equipment.service';
 import { AddEquipmentComponent } from './components/add-equipment/add-equipment.component';
@@ -26,7 +29,9 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     PatientOtpComponent,
     LandingPageComponent,
     AddEquipmentComponent,
-    ListEquipmentsComponent
+    ListEquipmentsComponent,
+    AddBedComponent,
+    ListBedComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     HttpClientModule,
     FormsModule
   ],
-  providers: [HttpClient, SMedicineService, EquipmentService],
+  providers: [HttpClient, SMedicineService, EquipmentService, BedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
