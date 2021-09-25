@@ -57,33 +57,31 @@ public class OTPController {
     @GetMapping("/validateOtp/{otpNum}")
     public ResponseEntity<String>  validateOtp(@PathVariable int otpNum){
 
-//        final String SUCCESS = "Entered Otp is valid";
-//        final String FAIL = "Entered Otp is NOT valid. Please Retry!";
-//        //Validate the Otp
-//        if(otpNum >= 0){
-//
-//            int serverOtp = otpService.getOtp(email);
-//            if(serverOtp > 0){
-//                if(otpNum == serverOtp){
-//                    otpService.clearOTP(email);
-//                    System.out.println("correct");
-//                    return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
-//                }
-//                else {
-//                    System.out.println("incorrect");
-//                    return new ResponseEntity<String>(FAIL, HttpStatus.NOT_ACCEPTABLE);
-//                }
-//            }else {
-//                System.out.println("incorrect");
-//
-//                return new ResponseEntity<String>(FAIL, HttpStatus.NOT_ACCEPTABLE);
-//            }
-//        }else {
-//            System.out.println("incorrect");
-//            return new ResponseEntity<String>(FAIL, HttpStatus.NOT_ACCEPTABLE);
-//        }
-        System.out.println(otpNum);
-        return new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+        final String SUCCESS = "SUCCESS";
+        final String FAIL = "FAIL";
+        //Validate the Otp
+        if(otpNum >= 0){
+
+            int serverOtp = otpService.getOtp(email);
+            if(serverOtp > 0){
+                if(otpNum == serverOtp){
+                    otpService.clearOTP(email);
+                    System.out.println("correct");
+                    return new ResponseEntity<String>(SUCCESS, HttpStatus.ACCEPTED);
+                }
+                else {
+                    System.out.println("incorrect");
+                    return new ResponseEntity<String>(FAIL, HttpStatus.ACCEPTED);
+                }
+            }else {
+                System.out.println("incorrect");
+
+                return new ResponseEntity<String>(FAIL, HttpStatus.ACCEPTED);
+            }
+        }else {
+            System.out.println("incorrect");
+            return new ResponseEntity<String>(FAIL, HttpStatus.ACCEPTED);
+        }
     }
 
     @GetMapping("/patients")
