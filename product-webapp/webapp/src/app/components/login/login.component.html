@@ -1,0 +1,23 @@
+<h2>Login</h2>  
+
+<div class="col-md-4">
+<form>  
+  
+  <div class="form-group">  
+        <label for="email"> Email ID: </label>  
+        <input [(ngModel)]="userobj.id" name="email" class="form-control" type="text" >   
+  </div>  
+  
+  <div class="row">  
+        <label for="password"> Password: </label>  
+        <input [(ngModel)]="userobj.password" name="password" class="form-control" type="password" >   
+  </div>  
+  
+  <div class="row" style="margin-top: 40px;">  
+    <div class="col-md-offset-1 col-md-4">  
+        <button class="btn btn-md btn-primary btn-style" (click)=login() >Login</button>  
+    </div>  
+  </div>  
+  
+</form>  
+</div>

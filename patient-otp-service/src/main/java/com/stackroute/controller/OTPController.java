@@ -54,11 +54,11 @@ public class OTPController {
         return new ResponseEntity<String>("OTP Sent to " + email, HttpStatus.OK);
     }
 
-    @GetMapping("/validateOtp")
-    public ResponseEntity<String>  validateOtp(@RequestParam int otpNum){
+    @GetMapping("/validateOtp/{otpNum}")
+    public ResponseEntity<String>  validateOtp(@PathVariable int otpNum){
 
-        final String SUCCESS = "Entered Otp is valid";
-        final String FAIL = "Entered Otp is NOT valid. Please Retry!";
+        final String SUCCESS = "SUCCESS";
+        final String FAIL = "FAIL";
         //Validate the Otp
         if(otpNum >= 0){
 
@@ -67,20 +67,20 @@ public class OTPController {
                 if(otpNum == serverOtp){
                     otpService.clearOTP(email);
                     System.out.println("correct");
-                    return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+                    return new ResponseEntity<String>(SUCCESS, HttpStatus.ACCEPTED);
                 }
                 else {
                     System.out.println("incorrect");
-                    return new ResponseEntity<String>(FAIL, HttpStatus.NOT_ACCEPTABLE);
+                    return new ResponseEntity<String>(FAIL, HttpStatus.ACCEPTED);
                 }
             }else {
                 System.out.println("incorrect");
 
-                return new ResponseEntity<String>(FAIL, HttpStatus.NOT_ACCEPTABLE);
+                return new ResponseEntity<String>(FAIL, HttpStatus.ACCEPTED);
             }
         }else {
             System.out.println("incorrect");
-            return new ResponseEntity<String>(FAIL, HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<String>(FAIL, HttpStatus.ACCEPTED);
         }
     }
 
