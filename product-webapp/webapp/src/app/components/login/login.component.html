@@ -1,25 +1,23 @@
 <h2>Login</h2>  
+
+<div class="col-md-4">
+<form>  
   
-<form [formGroup]="form" #LoginInformation (ngSubmit)="Login(LoginInformation)">  
-  
-  <div class="row">  
-    <div class=" col-md-offset-1 col-md-4">  
+  <div class="form-group">  
         <label for="email"> Email ID: </label>  
-        <input formControlName="email" class="form-control" type="text">   
-    </div>  
+        <input [(ngModel)]="userobj.id" name="email" class="form-control" type="text" >   
   </div>  
   
   <div class="row">  
-    <div class=" col-md-offset-1 col-md-4">  
         <label for="password"> Password: </label>  
-        <input formControlName="password" class="form-control" type="password">   
-    </div>  
+        <input [(ngModel)]="userobj.password" name="password" class="form-control" type="password" >   
   </div>  
   
   <div class="row" style="margin-top: 40px;">  
     <div class="col-md-offset-1 col-md-4">  
-        <button class="btn btn-md btn-primary btn-style"  >Login</button>  
+        <button class="btn btn-md btn-primary btn-style" (click)=login() >Login</button>  
     </div>  
   </div>  
   
 </form>  
+</div>

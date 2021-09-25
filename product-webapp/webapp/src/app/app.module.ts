@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { StorageServiceModule } from 'ngx-webstorage-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,10 +11,11 @@ import { UpdateMedicineComponent } from './components/update-medicine/update-med
 import {FormsModule} from '@angular/forms';
 import { SMedicineService } from './services/s-medicine.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { PatientOtpComponent } from './patient-otp/patient-otp.component';
 import { LoginComponent } from './components/login/login.component';
 import { DoctorDashboardComponent } from './components/doctor-dashboard/doctor-dashboard.component';
 import { WarroomDashboardComponent } from './components/warroom-dashboard/warroom-dashboard.component';
+import { PatientOtpComponent } from './components/patient-otp/patient-otp.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { WarroomDashboardComponent } from './components/warroom-dashboard/warroo
     PatientOtpComponent,
     LoginComponent,
     DoctorDashboardComponent,
-    WarroomDashboardComponent
+    WarroomDashboardComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

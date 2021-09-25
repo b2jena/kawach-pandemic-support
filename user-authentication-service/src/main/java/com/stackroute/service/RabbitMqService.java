@@ -2,7 +2,6 @@ package com.stackroute.service;
 
 import com.stackroute.domain.Role;
 import com.stackroute.domain.User;
-import com.stackroute.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Component;
 public class RabbitMqService implements RabbitListenerConfigurer {
 
     private static final Logger logger = LoggerFactory.getLogger(RabbitMqService.class);
-    private UserRepository userRepository;
     private UserService userService;
     private User user2;
 
