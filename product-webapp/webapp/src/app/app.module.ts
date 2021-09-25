@@ -1,3 +1,6 @@
+import { ListEquipmentsComponent } from './components/list-equipments/list-equipments.component';
+import { EquipmentService } from './services/equipment.service';
+import { AddEquipmentComponent } from './components/add-equipment/add-equipment.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -23,6 +26,9 @@ import { LatestInformationComponent } from './components/landing-page/latest-inf
     AddMedicineComponent,
     LandingPageComponent,
     PatientOtpComponent,
+    LandingPageComponent,
+    AddEquipmentComponent,
+    ListEquipmentsComponent,
     LatestInformationComponent
   ],
   imports: [
@@ -31,7 +37,7 @@ import { LatestInformationComponent } from './components/landing-page/latest-inf
     HttpClientModule,
     FormsModule
   ],
-  providers: [HttpClient, SMedicineService],
+  providers: [HttpClient, SMedicineService, EquipmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
