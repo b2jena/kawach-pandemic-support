@@ -1,0 +1,26 @@
+<h2>List Equipments... </h2>
+<div class="col-md-6">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Equipment Name</th>
+                <th>City</th>
+                <th>Hospital</th>
+                <th>Address</th>
+                <th>Contact Person</th>
+                <th>Mobile Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let equipment of equipments">
+                <td>{{equipment.equipmentName}}</td>
+                <td>{{equipment.city}}</td>
+                <td>{{equipment.hospital}}</td>
+                <td>{{equipment.address}}</td>
+                <td>{{equipment.contactPerson}}</td>
+                <td>{{equipment.mobileNumber}}</td>
+                <td><button class="btn btn-danger" (click)="deleteEquipment(equipment)">Delete Equipment</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

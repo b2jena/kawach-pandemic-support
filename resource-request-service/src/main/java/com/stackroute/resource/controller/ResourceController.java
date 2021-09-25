@@ -22,8 +22,8 @@ public class ResourceController {
 
     @PostMapping("medicine/create")
     public ResponseEntity<Resources> saveResource(@RequestBody Resources resources){
-        Resources savedResources = resourceService.SaveResource(resources);
-        return new ResponseEntity<Resources>(savedResources,HttpStatus.CREATED);
+        Resources savedResources = resourceService.saveResource(resources);
+        return new ResponseEntity<>(savedResources,HttpStatus.CREATED);
     }
 
     @GetMapping("medicine/getAll")
@@ -33,7 +33,7 @@ public class ResourceController {
 
     @PutMapping("medicine/update")
     public ResponseEntity<Resources> updateResource(@RequestBody Resources resources){
-        Resources updatedResources = resourceService.UpdateResource(resources);
+        Resources updatedResources = resourceService.updateResource(resources);
         return new ResponseEntity<Resources>
                 (updatedResources,HttpStatus.CREATED);
     }

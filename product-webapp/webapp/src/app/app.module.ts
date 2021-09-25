@@ -1,3 +1,6 @@
+import { ListEquipmentsComponent } from './components/list-equipments/list-equipments.component';
+import { EquipmentService } from './services/equipment.service';
+import { AddEquipmentComponent } from './components/add-equipment/add-equipment.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { StorageServiceModule } from 'ngx-webstorage-service';
@@ -28,7 +31,9 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     LoginComponent,
     DoctorDashboardComponent,
     WarroomDashboardComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    AddEquipmentComponent,
+    ListEquipmentsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     HttpClientModule,
     FormsModule
   ],
-  providers: [HttpClient, SMedicineService],
+  providers: [HttpClient, SMedicineService, EquipmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
