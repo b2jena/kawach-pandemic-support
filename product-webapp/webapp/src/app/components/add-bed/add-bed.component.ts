@@ -15,7 +15,7 @@ export class AddBedComponent implements OnInit {
 
   ngOnInit() {
   }
-    CreateEquipment(): void {
+    CreateBed(): void {
       this.equipmentService.CreateBed(this.user).subscribe( data => { alert('Bed added successfully.'); });
     }
 }
