@@ -12,19 +12,15 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Document(collection = "SOSRequest")
-public class MedicalSosRequest {
+@Document(collection = "beds")
+public class Beds {
     @Transient
     public static final String SEQUENCE_NAME="sequence";
     @Id
     private UUID id;
-    private String patientName;
-    private String gender;
-    private String phoneNo;
-    private String email;
-    private String hospitalised;
+    private String bedType;
     private String city;
-//    private ArrayList<Requirement> requirement;
-    private String requestStatus;
-    private String uploadPrescription;
+    private String address;
+    private String contactPerson;
+    private String mobileNumber;
 }

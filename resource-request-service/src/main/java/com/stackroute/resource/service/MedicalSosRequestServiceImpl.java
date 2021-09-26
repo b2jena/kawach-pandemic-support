@@ -1,7 +1,6 @@
 package com.stackroute.resource.service;
 
 import com.stackroute.resource.model.MedicalSosRequest;
-import com.stackroute.resource.model.Resources;
 import com.stackroute.resource.repository.MedicalSosRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
