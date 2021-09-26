@@ -12,6 +12,8 @@ import { SMedicineService } from './services/s-medicine.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { PatientOtpComponent } from './components/patient-otp/patient-otp.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { LatestInformationComponent } from './components/landing-page/latest-information/latest-information.component';
+import { InformationService } from './services/information.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     ListMedicinesComponent,
     AddMedicineComponent,
     PatientOtpComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    LatestInformationComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     HttpClientModule,
     FormsModule
   ],
-  providers: [HttpClient, SMedicineService],
+  providers: [HttpClient, SMedicineService, InformationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
