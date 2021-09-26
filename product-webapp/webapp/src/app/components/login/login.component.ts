@@ -29,15 +29,19 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void{
-    if(this.userobj.id == ''){
+    if (this.userobj.id === ''){
       window.alert('Email ID cannot be empty');
     }
-    else if(this.userobj.password == ''){
+    else if (this.userobj.password === ''){
       window.alert('Password cannot be empty');
     }
     else{
       this.loginService.generateToken(this.userobj).subscribe( data => { this.obj = data ;
           } );
+      /*
+      if(this.obj[0]!= 'Success'){
+        this.obj[0] = 'Login failed';
+      }*/
       alert(this.obj[0]);
       this.storage.set(this.key, this.obj[1]);
       this.routetoDash(this.obj[2]);
