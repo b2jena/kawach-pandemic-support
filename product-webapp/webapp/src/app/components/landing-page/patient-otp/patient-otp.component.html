@@ -1,0 +1,25 @@
+<h2 class="text-center">Kawach</h2>
+    
+<div class="col-md-6">
+  <form>
+    <div class="form-group">
+      <label for="email">E-Mail:</label>
+      <input [(ngModel)]="user.email"  placeholder="Email" name="email" class="form-control" id="email">
+    </div>
+   <button class="btn btn-success" (click)="CreatePatient()">Submit</button>
+  </form>
+</div>
+
+<div *ngIf="message==='SUCCESS'">
+  <h2>Entered Otp is valid"</h2>
+</div>
+<div *ngIf="message==='FAIL'">
+  <h2>Entered Otp is NOT valid. Please Retry!</h2>
+</div>
+
+<form #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)" >
+  <input type = "text" name = "otp" placeholder = "otp" ngModel>
+  <br/>
+  
+  <input type = "submit" value = "Verfied">
+</form>

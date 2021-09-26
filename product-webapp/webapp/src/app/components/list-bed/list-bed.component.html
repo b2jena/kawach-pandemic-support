@@ -1,0 +1,24 @@
+<h2>List Beds... </h2>
+<div class="col-md-6">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Bed Type</th>
+                <th>City</th>
+                <th>Address</th>
+                <th>Contact Person</th>
+                <th>Mobile Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let bed of beds">
+                <td>{{bed.typeName}}</td>
+                <td>{{bed.city}}</td>
+                <td>{{bed.address}}</td>
+                <td>{{bed.contactPerson}}</td>
+                <td>{{bed.mobileNumber}}</td>
+                <td><button class="btn btn-danger" (click)="deleteBed(bed)">Delete Bed</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

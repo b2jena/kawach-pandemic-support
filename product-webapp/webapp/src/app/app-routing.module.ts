@@ -1,3 +1,5 @@
+import { ListBedComponent } from './components/list-bed/list-bed.component';
+import { AddBedComponent } from './components/add-bed/add-bed.component';
 import { ListEquipmentsComponent } from './components/list-equipments/list-equipments.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -11,6 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SosRequestComponent } from './components/sos-request/sos-request.component';
 import { UpdateMedicineComponent } from './components/update-medicine/update-medicine.component';
 import { WarroomDashboardComponent } from './components/warroom-dashboard/warroom-dashboard.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 const routes: Routes = [
   {
@@ -43,6 +46,15 @@ const routes: Routes = [
   }, {
     path: 'listequipment',
     component: ListEquipmentsComponent
+  }, {
+    path: 'landingpage',
+    component: LandingPageComponent
+  }, {
+    path: 'addbed',
+    component: AddBedComponent
+  }, {
+    path: 'listbed',
+    component: ListBedComponent
   }
 ];
 
