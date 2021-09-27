@@ -20,9 +20,13 @@ import { LoginComponent } from './components/login/login.component';
 import { DoctorDashboardComponent } from './components/doctor-dashboard/doctor-dashboard.component';
 import { WarroomDashboardComponent } from './components/warroom-dashboard/warroom-dashboard.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { PatientOtpComponent } from './components/landing-page/patient-otp/patient-otp.component';
+
 import { LatestInformationComponent } from './components/landing-page/latest-information/latest-information.component';
+import { InformationService } from './services/information.service';
+
+import { PatientOtpComponent } from './components/landing-page/patient-otp/patient-otp.component';
 import { SosService } from './services/sos-service';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +37,8 @@ import { SosService } from './services/sos-service';
     AddMedicineComponent,
     LandingPageComponent,
     PatientOtpComponent,
+    LandingPageComponent,
+    LatestInformationComponent,
     LoginComponent,
     DoctorDashboardComponent,
     WarroomDashboardComponent,
@@ -49,7 +55,9 @@ import { SosService } from './services/sos-service';
     HttpClientModule,
     FormsModule
   ],
+
   providers: [HttpClient, SMedicineService, EquipmentService, BedService, SosService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

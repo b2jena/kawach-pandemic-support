@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class UserManagementServiceApplication {
+public class  UserManagementServiceApplication {
     /*Fetching the data from the application.properties file*/
 
     @Value("${spring.rabbitmq.host}")
