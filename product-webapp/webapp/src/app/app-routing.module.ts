@@ -6,12 +6,11 @@ import { AddMedicineComponent } from './components/add-medicine/add-medicine.com
 import { ListMedicinesComponent } from './components/list-medicines/list-medicines.component';
 import { SosRequestComponent } from './components/sos-request/sos-request.component';
 import { UpdateMedicineComponent } from './components/update-medicine/update-medicine.component';
+import { DoctorRegistrationComponent } from './components/doctor-registration/doctor-registration.component';
+import { VolunteerRegistrationComponent } from './components/volunteer-registration/volunteer-registration.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: AppComponent
-  }, {
     path: 'sos',
     component: SosRequestComponent
   }, {
@@ -23,6 +22,12 @@ const routes: Routes = [
   }, {
     path: 'updatemedicine',
     component: UpdateMedicineComponent
+  }, {
+    path: 'doctorregistration',
+    component: DoctorRegistrationComponent
+  }, {
+    path: 'volunteerregistration',
+    component: VolunteerRegistrationComponent
   }
 ];
 

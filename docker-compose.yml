@@ -30,3 +30,12 @@ services:
     hostname: localhost
     ports:
       - "8099:8099"
+
+  user-management-service:
+    build: user-management-service/
+    container_name: user-management-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8081:8081
