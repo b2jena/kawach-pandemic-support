@@ -59,8 +59,7 @@ import { PatientOtpComponent } from './components/landing-page/patient-otp/patie
     HttpClientModule,
     FormsModule
   ],
-
-  providers: [HttpClient, SMedicineService,UserRegistrationService, EquipmentService, BedService, SosService],
+  providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService],
 
   bootstrap: [AppComponent]
 })
