@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class WarroomDashboardComponent implements OnInit {
 
-  constructor(private router: Router, private role: string) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }

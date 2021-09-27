@@ -22,6 +22,7 @@ import { WarroomDashboardComponent } from './components/warroom-dashboard/warroo
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { PatientOtpComponent } from './components/landing-page/patient-otp/patient-otp.component';
 import { LatestInformationComponent } from './components/landing-page/latest-information/latest-information.component';
+import { SosService } from './services/sos-service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { LatestInformationComponent } from './components/landing-page/latest-inf
     HttpClientModule,
     FormsModule
   ],
-  providers: [HttpClient, SMedicineService, EquipmentService, BedService],
+  providers: [HttpClient, SMedicineService, EquipmentService, BedService, SosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
