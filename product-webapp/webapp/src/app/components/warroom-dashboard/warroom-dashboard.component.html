@@ -1,6 +1,9 @@
+<html>
+    <head></head>
+    <body>
 <div class="buttons">
     <div class="action_btn">
-        <button class="btn btn-md btn-primary btn-style" (click)="routeTo('sos')"> SOS</button>
+        <button class="btn btn-md btn-primary btn-style" routerLink="/sos" > SOS</button>
     </div>
     <div class="action_btn">
         <button class="btn btn-md btn-primary btn-style" (click)="routeTo('Verification')"> Verification</button>
@@ -31,7 +34,9 @@
 </div>
 
 <br>
-<app-add-medicine></app-add-medicine>
+<router-outlet></router-outlet>
 <br>
+</body>
+</html>
 
 
