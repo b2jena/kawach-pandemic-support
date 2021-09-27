@@ -1,0 +1,26 @@
+<p>latest-information works!</p>
+<h2>Latest Information... </h2>
+<div class="col-md-6">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Loc</th>
+                <th>confirmedCasesIndian</th>
+                <th>confirmedCasesForeign</th>
+                <th>discharged</th>
+                <th>deaths</th>
+                <th>totalConfirmed</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let locationStat of locationStats">
+                <td>{{locationStat.loc}}</td>
+                <td>{{locationStat.confirmedCasesIndian}}</td>
+                <td>{{locationStat.confirmedCasesForeign}}</td>
+                <td>{{locationStat.discharged}}</td>
+                <td>{{locationStat.deaths}}</td>
+                <td>{{locationStat.totalConfirmed}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

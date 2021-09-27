@@ -1,3 +1,4 @@
+<div class="container">
 <div class="col-md-6">
     <h2 class="text-center">Add Medicine</h2>
     <form>
@@ -5,15 +6,15 @@
         <label for="name">Medicine Name:</label>
         <input type="name" [(ngModel)]="user.medName" placeholder="Name" name="name" class="form-control" id="name">
       </div>
-    
+
       <div class="form-group">
         <label for="pharmacy">Pharmacy:</label>
         <input [(ngModel)]="user.pharmacy" placeholder="Pharmacy" name="pharmacy" class="form-control" id="pharmacy">
       </div>
-    
+
       <div class="form-group">
-        <label for="id">City</label>
-        <input [(ngModel)]="user.city" placeholder="City Name" name="city" class="form-control" id="medicineid">
+        <label for="medicineId">City</label>
+        <input [(ngModel)]="user.city" placeholder="City Name" name="city" class="form-control" id="medicineId">
       </div>
       <div class="form-group">
         <label for="name">Address:</label>
@@ -27,7 +28,13 @@
         <label for="name">Mobile Number:</label>
         <input type="name" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
       </div>
-    
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Click here only if it's verified
+        </label>
+      </div>
       <button class="btn btn-success" (click)="CreateMedicine()">Submit</button>
     </form>
     </div>
+</div>

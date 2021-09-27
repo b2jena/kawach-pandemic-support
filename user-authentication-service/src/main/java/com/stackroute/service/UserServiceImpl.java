@@ -35,17 +35,17 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
-    /*@Override
-    public User saveUser(User user) throws UserAlreadyExistException {
+    @Override
+    public User saveUser(User user){
 
-        Optional<User> userResult = userRepository.findById(user.getId());
+        /*Optional<User> userResult = userRepository.findById(user.getId());
 
         if (userResult.isPresent()) {
             throw new UserAlreadyExistException(message1);
-        }
+        }*/
 
         return userRepository.save(user);
-    }*/
+    }
 
     @Override
     public User findByIdAndPassword(String id, String password) throws UserNotFoundException {

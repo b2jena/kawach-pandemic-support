@@ -1,0 +1,35 @@
+<div class="container">
+<div class="col-md-6">
+    <h2 class="text-center">Add Bed</h2>
+    <form>
+      <div class="form-group">
+        <label for="typeName">Bed Type:</label>
+        <input type="name" [(ngModel)]="user.typeName" placeholder="Bed Type" name="name" class="form-control" id="typeName">
+      </div>
+
+      <div class="form-group">
+        <label for="city">City</label>
+        <input [(ngModel)]="user.city" placeholder="City Name" name="city" class="form-control" id="city">
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="name" [(ngModel)]="user.address" placeholder="Address" name="address" class="form-control" id="address">
+      </div>
+      <div class="form-group">
+        <label for="address">Contact Person:</label>
+        <input type="name" [(ngModel)]="user.contactPerson" placeholder="Contact Person" name="contactPerson" class="form-control" id="contactPerson">
+      </div>
+      <div class="form-group">
+        <label for="mobileNumber">Mobile Number:</label>
+        <input type="name" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Click here only if it's verified
+        </label>
+      </div>
+      <button class="btn btn-success" (click)="CreateBed()">Submit</button>
+    </form>
+    </div>
+</div>

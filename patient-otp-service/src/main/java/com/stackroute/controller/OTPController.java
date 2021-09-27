@@ -7,7 +7,6 @@ import com.stackroute.service.PatientServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
@@ -16,8 +15,9 @@ import java.util.List;
 import java.util.Map;
 
 
-@Controller
+@RestController
 @RequestMapping("api/v1")
+@CrossOrigin("http://localhost:4200")
 public class OTPController {
 
     public PatientServiceI patientServiceI;
@@ -33,13 +33,13 @@ public class OTPController {
     @Autowired
     public EmailService emailService;
 
-    //    @PostMapping("/patient")
-//    public ResponseEntity<Patient> savePatient(@RequestBody  Patient patient)
-//    {
-//        Patient patient1=  patientServiceI.saveUser(patient);
-//        System.out.println(patient1.getEmail());
-//        return new ResponseEntity<Patient>(patient1, HttpStatus.OK);
-//    }
+    @PostMapping(path="/patient")
+    public ResponseEntity<Patient> savePatient(@RequestBody  Patient patient)
+    {
+        Patient patient1=  patientServiceI.saveUser(patient);
+        System.out.println(patient1.getEmail());
+        return new ResponseEntity<Patient>(patient1, HttpStatus.OK);
+    }
     static String email;
     @PostMapping("/generateOtp")
     public ResponseEntity<String> generateOTP(@RequestBody  Patient patient) throws MessagingException {
@@ -54,33 +54,33 @@ public class OTPController {
         return new ResponseEntity<String>("OTP Sent to " + email, HttpStatus.OK);
     }
 
-    @RequestMapping(value ="/validateOtp", method = RequestMethod.GET)
-    public ResponseEntity<String>  validateOtp(@RequestParam int otpnum){
+    @GetMapping("/validateOtp/{otpNum}")
+    public ResponseEntity<String>  validateOtp(@PathVariable int otpNum){
 
-        final String SUCCESS = "Entered Otp is valid";
-        final String FAIL = "Entered Otp is NOT valid. Please Retry!";
+        final String SUCCESS = "SUCCESS";
+        final String FAIL = "FAIL";
         //Validate the Otp
-        if(otpnum >= 0){
+        if(otpNum >= 0){
 
             int serverOtp = otpService.getOtp(email);
             if(serverOtp > 0){
-                if(otpnum == serverOtp){
+                if(otpNum == serverOtp){
                     otpService.clearOTP(email);
                     System.out.println("correct");
-                    return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+                    return new ResponseEntity<String>(SUCCESS, HttpStatus.ACCEPTED);
                 }
                 else {
                     System.out.println("incorrect");
-                    return new ResponseEntity<String>(FAIL, HttpStatus.NOT_ACCEPTABLE);
+                    return new ResponseEntity<String>(FAIL, HttpStatus.ACCEPTED);
                 }
             }else {
                 System.out.println("incorrect");
 
-                return new ResponseEntity<String>(FAIL, HttpStatus.NOT_ACCEPTABLE);
+                return new ResponseEntity<String>(FAIL, HttpStatus.ACCEPTED);
             }
         }else {
             System.out.println("incorrect");
-            return new ResponseEntity<String>(FAIL, HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<String>(FAIL, HttpStatus.ACCEPTED);
         }
     }
 
