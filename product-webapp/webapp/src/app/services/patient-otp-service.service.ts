@@ -5,26 +5,26 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class PatientOtpServiceService {
-  // patient: PATIENT[] = [];
-  // constructor(private httpService: HttpClient) { }
+export class OtpServiceService {
+  patient: Patient[] = [];
+  constructor(private httpService: HttpClient) { }
 
-  // CreatePatient(patient: PATIENT):Observable<PATIENT> {
-  //   console.log(patient);
-  //     return this.httpService.post<PATIENT>("localhost:8080/api/v1/patient",patient);
-  // }
+  CreatePatient(patient: Patient): Observable<Patient> {
+    console.log(patient);
+    return this.httpService.post<Patient>('http://localhost:9999/api/v1/generateOtp', patient);
+  }
 
-  // VerifyOtp(otp: number):Observable<PATIENT> {
-  //   console.log(otp);
-  //     return this.httpService.post<PATIENT>("localhost:8080/api/v1/validateOtp/param?otpnum=",otp);
-  // }
+  VerifyOtp(otp: string): Observable<string>{
+    console.log(otp);
+    return this.httpService.get('http://localhost:9999/api/v1/validateOtp/' + otp, {responseType: 'text'});
+  }
 }
 
-// export class PATIENT{
-//   public EMAIL:string;
+export class Patient{
+  public email: string;
 
-//   constructor(EMAIL:string)
-//   {
-//     this.EMAIL=EMAIL;
-//   }
-// }
+  constructor(email: string)
+  {
+    this.email = email;
+  }
+}

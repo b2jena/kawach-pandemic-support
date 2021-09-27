@@ -1,0 +1,33 @@
+<div class="col-md-6">
+    <h2 class="text-center">Add Equipment</h2>
+    <form>
+      <div class="form-group">
+        <label for="name">Equipment Name:</label>
+        <input type="name" [(ngModel)]="user.equipmentName" placeholder="Equipment Name" name="name" class="form-control" id="equipmentName">
+      </div>
+    
+      <div class="form-group">
+        <label for="hospital">Hospital:</label>
+        <input [(ngModel)]="user.hospital" placeholder="Hospital" name="hospital" class="form-control" id="hospital">
+      </div>
+    
+      <div class="form-group">
+        <label for="id">City</label>
+        <input [(ngModel)]="user.city" placeholder="City Name" name="city" class="form-control" id="city">
+      </div>
+      <div class="form-group">
+        <label for="name">Address:</label>
+        <input type="name" [(ngModel)]="user.address" placeholder="Address" name="address" class="form-control" id="address">
+      </div>
+      <div class="form-group">
+        <label for="name">Contact Person:</label>
+        <input type="name" [(ngModel)]="user.contactPerson" placeholder="Contact Person" name="contactPerson" class="form-control" id="contactPerson">
+      </div>
+      <div class="form-group">
+        <label for="name">Mobile Number:</label>
+        <input type="name" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
+      </div>
+    
+      <button class="btn btn-success" (click)="CreateEquipment()">Submit</button>
+    </form>
+    </div>

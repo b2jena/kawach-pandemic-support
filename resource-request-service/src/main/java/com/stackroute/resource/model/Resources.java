@@ -3,17 +3,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
-import javax.persistence.GeneratedValue;
+
+import java.util.UUID;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Document(collection = "resources")
 public class Resources {
+    @Transient
+    public static final String SEQUENCE_NAME="sequence";
     @Id
-    @GeneratedValue
-    private int id;
+    private UUID id;
     private String medicineName;
     private String city;
     private String pharmacy;

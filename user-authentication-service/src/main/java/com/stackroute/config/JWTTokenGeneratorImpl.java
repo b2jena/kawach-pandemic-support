@@ -1,7 +1,6 @@
 package com.stackroute.config;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import com.stackroute.domain.User;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,7 +27,7 @@ public class JWTTokenGeneratorImpl implements JWTTokenGenerator{
     private String message;
 
     @Override
-    public Map<String, String> generateToken(User user) {
+    public String generateToken(User user) {
         String jwtToken;
         /*
          * Generate JWT token and store in String jwtToken
@@ -39,7 +38,7 @@ public class JWTTokenGeneratorImpl implements JWTTokenGenerator{
         HashMap<String,String> jwtTokenMap=new HashMap<>();
         jwtTokenMap.put("token",jwtToken);
         jwtTokenMap.put("message",message);
-        return jwtTokenMap;
+        return jwtToken;
     }
 
 }
