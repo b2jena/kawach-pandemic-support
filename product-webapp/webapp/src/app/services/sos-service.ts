@@ -13,7 +13,7 @@ export class SosService {
 
   CreateSosRequest(SosRequest: SOSRequest): Observable <SOSRequest> {
     console.log(SosRequest);
-    return this.httpService.post<SOSRequest>('http://localhost:8080/sos/createSos', SosRequest);
+    return this.httpService.post<SOSRequest>('http://localhost:9900/sos/createSos', SosRequest);
   }
 }
 
