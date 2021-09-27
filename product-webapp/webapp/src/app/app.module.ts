@@ -20,13 +20,13 @@ import { LoginComponent } from './components/login/login.component';
 import { DoctorDashboardComponent } from './components/doctor-dashboard/doctor-dashboard.component';
 import { WarroomDashboardComponent } from './components/warroom-dashboard/warroom-dashboard.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-<<<<<<< HEAD
+
 import { LatestInformationComponent } from './components/landing-page/latest-information/latest-information.component';
 import { InformationService } from './services/information.service';
-=======
+
 import { PatientOtpComponent } from './components/landing-page/patient-otp/patient-otp.component';
-import { LatestInformationComponent } from './components/landing-page/latest-information/latest-information.component';
->>>>>>> a0d4ac3451d66f1b33da4fdfc8085aaa7f9c2f18
+import { SosService } from './services/sos-service';
+
 
 @NgModule({
   declarations: [
@@ -37,10 +37,8 @@ import { LatestInformationComponent } from './components/landing-page/latest-inf
     AddMedicineComponent,
     LandingPageComponent,
     PatientOtpComponent,
-<<<<<<< HEAD
     LandingPageComponent,
-    LatestInformationComponent
-=======
+    LatestInformationComponent,
     LoginComponent,
     DoctorDashboardComponent,
     WarroomDashboardComponent,
@@ -50,7 +48,6 @@ import { LatestInformationComponent } from './components/landing-page/latest-inf
     LatestInformationComponent,
     AddBedComponent,
     ListBedComponent
->>>>>>> a0d4ac3451d66f1b33da4fdfc8085aaa7f9c2f18
   ],
   imports: [
     BrowserModule,
@@ -58,11 +55,9 @@ import { LatestInformationComponent } from './components/landing-page/latest-inf
     HttpClientModule,
     FormsModule
   ],
-<<<<<<< HEAD
-  providers: [HttpClient, SMedicineService, InformationService],
-=======
-  providers: [HttpClient, SMedicineService, EquipmentService, BedService],
->>>>>>> a0d4ac3451d66f1b33da4fdfc8085aaa7f9c2f18
+
+  providers: [HttpClient, SMedicineService, EquipmentService, BedService, SosService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

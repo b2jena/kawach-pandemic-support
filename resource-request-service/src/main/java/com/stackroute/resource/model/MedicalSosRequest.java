@@ -24,7 +24,10 @@ public class MedicalSosRequest {
     private String email;
     private String hospitalised;
     private String city;
+    private String requirementName;
+    private String requirementQuantity;
+    private String unitOfMeasure;
 //    private ArrayList<Requirement> requirement;
     private String requestStatus;
-    private String uploadPrescription;
+//    private String uploadPrescription;
 }
