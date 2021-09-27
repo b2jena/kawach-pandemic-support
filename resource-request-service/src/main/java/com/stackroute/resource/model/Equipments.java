@@ -16,7 +16,7 @@ public class Equipments {
     @Transient
     public static final String SEQUENCE_NAME="sequence";
     @Id
-    private UUID id;
+    private UUID equipmentId;
     private String equipmentName;
     private String city;
     private String hospital;

@@ -18,7 +18,7 @@ public class BedServiceImpl implements BedService{
     }
     @Override
     public Beds saveBed(Beds beds) {
-        beds.setId(UUID.randomUUID());
+        beds.setBedId(UUID.randomUUID());
         return bedRepository.save(beds);
     }
     @Override
