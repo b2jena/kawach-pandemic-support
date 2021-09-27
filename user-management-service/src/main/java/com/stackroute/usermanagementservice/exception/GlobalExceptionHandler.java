@@ -15,11 +15,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = UserAlreadyExistsException.class)
     public ResponseEntity<String> userAlreadyExistsException(UserAlreadyExistsException userAlreadyExistsException) {
-        return new ResponseEntity<String>(message1, HttpStatus.CONFLICT);
+        return new ResponseEntity<String>(message1, HttpStatus.OK);
     }
 
     @ExceptionHandler(value = NullValueException.class)
     public ResponseEntity<String> nullValueException(NullValueException nullValueException) {
-        return new ResponseEntity<String>(message2, HttpStatus.CONFLICT);
+        return new ResponseEntity<String>(message2, HttpStatus.OK);
     }
 }

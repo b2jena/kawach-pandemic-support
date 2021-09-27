@@ -17,7 +17,7 @@ public class EquipmentServiceImpl implements EquipmentService{
     }
     @Override
     public Equipments saveEquipment(Equipments equipments) {
-        equipments.setId(UUID.randomUUID());
+        equipments.setEquipmentId(UUID.randomUUID());
         return equipmentRepository.save(equipments);
     }
     @Override
