@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { OtpServiceService, Patient } from 'src/app/services/patient-otp-service.service';
-import {Router, Routes} from '@angular/router'
+import {Router, Routes} from '@angular/router';
 @Component({
   selector: 'app-patient-otp',
   templateUrl: './patient-otp.component.html',
@@ -10,7 +10,7 @@ import {Router, Routes} from '@angular/router'
 export class PatientOtpComponent implements OnInit {
   user: Patient = new Patient('');
   message = '';
-  constructor(private patientotp: OtpServiceService, private httpClient: HttpClient, private route:Router) {
+  constructor(private patientotp: OtpServiceService, private httpClient: HttpClient, private route: Router) {
   }
   ngOnInit(): void {
   }
@@ -20,9 +20,9 @@ export class PatientOtpComponent implements OnInit {
       }
       onClickSubmit(mess: { otp: string; }): void {
           this.patientotp.VerifyOtp(mess.otp).subscribe(response => this.handleResponse(response));
-          if(this.message == 'SUCCESS')
+          if(this.message === 'SUCCESS')
           {
-              this.route.navigate(['/sos'])
+              this.route.navigate(['/sos']);
           }
      }
      handleResponse(response: string): void
