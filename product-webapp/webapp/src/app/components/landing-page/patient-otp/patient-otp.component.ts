@@ -23,7 +23,6 @@ export class PatientOtpComponent implements OnInit {
           if(this.message == 'SUCCESS')
           {
               this.route.navigate(['/sos'])
-              // alert("OTP valid.")
           }
      }
      handleResponse(response: string): void
