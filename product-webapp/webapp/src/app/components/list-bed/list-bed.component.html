@@ -1,3 +1,4 @@
+<div class="container">
 <h2>List Beds... </h2>
 <div class="col-md-6">
     <table class="table table-striped">
@@ -12,7 +13,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let bed of beds">
-                <td>{{bed.typeName}}</td>
+                <td>{{bed.bedType}}</td>
                 <td>{{bed.city}}</td>
                 <td>{{bed.address}}</td>
                 <td>{{bed.contactPerson}}</td>
@@ -21,4 +22,5 @@
             </tr>
         </tbody>
     </table>
+</div>
 </div>

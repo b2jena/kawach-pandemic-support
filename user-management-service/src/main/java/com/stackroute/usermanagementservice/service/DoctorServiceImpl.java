@@ -22,12 +22,14 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public Doctor saveDoctor(Doctor doctor) throws UserAlreadyExistsException, NullValueException {
-        if (doctorRepository.existsById(doctor.getEmailId())) {
-            throw new UserAlreadyExistsException();
-        } else if (doctor.getEmailId() == null || doctor.getPassword() == null || doctor.getFullName() == null || doctor.getPhoneNumber() == 0 || doctor.getMedicalRegistrationId() == null || doctor.getSpecialization() == null) {
+        if (doctor.getEmailId() == null || doctor.getPassword() == null || doctor.getFullName() == null || doctor.getPhoneNumber() == 0 || doctor.getMedicalRegistrationId() == null || doctor.getSpecialization() == null) {
             throw new NullValueException();
+        } else if (doctor.getEmailId().equals("") || doctor.getPassword().equals("") || doctor.getFullName().equals("") || doctor.getMedicalRegistrationId().equals("") || doctor.getSpecialization().equals("")) {
+            throw new NullValueException();
+        }else if (doctorRepository.existsById(doctor.getEmailId())) {
+            throw new UserAlreadyExistsException();
         }
-        Doctor savedDoctor = doctorRepository.save(doctor);
+            Doctor savedDoctor = doctorRepository.save(doctor);
 
         return savedDoctor;
     }

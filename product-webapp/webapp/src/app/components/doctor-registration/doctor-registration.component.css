@@ -1,0 +1,10 @@
+.data-table, .data-form{
+    width: 20%;
+    padding: 10em;
+}
+
+table,form{
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}

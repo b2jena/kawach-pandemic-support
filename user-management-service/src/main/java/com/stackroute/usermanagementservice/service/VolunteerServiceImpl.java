@@ -22,10 +22,12 @@ public class VolunteerServiceImpl implements VolunteerService {
     /*Method to store the volunteer data into the database*/
     @Override
     public Volunteer saveVolunteer(Volunteer volunteer) throws UserAlreadyExistsException, NullValueException {
-        if (volunteerRepository.existsById(volunteer.getEmailId())) {
-            throw new UserAlreadyExistsException();
-        } else if (volunteer.getEmailId() == null || volunteer.getFullName() == null || volunteer.getPassword() == null || volunteer.getPhoneNumber() == 0) {
+        if (volunteer.getEmailId() == null || volunteer.getFullName() == null || volunteer.getPassword() == null || volunteer.getPhoneNumber() == 0) {
             throw new NullValueException();
+        } else if (volunteer.getEmailId().equals("") || volunteer.getFullName().equals("") || volunteer.getPassword().equals("")) {
+            throw new NullValueException();
+        }else if (volunteerRepository.existsById(volunteer.getEmailId())) {
+            throw new UserAlreadyExistsException();
         }
         return volunteerRepository.save(volunteer);
     }

@@ -8,7 +8,7 @@ import { SOSRequest, SosService } from 'src/app/services/sos-service';
 })
 export class SosRequestComponent implements OnInit {
 
-  user: SOSRequest = new SOSRequest('', '', '', '', '', '');
+  user: SOSRequest = new SOSRequest('', '', '', '', '', '', '', '', '', '');
 
   constructor(private sosService: SosService) { }
 
