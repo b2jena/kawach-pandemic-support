@@ -20,7 +20,7 @@ export class PatientOtpComponent implements OnInit {
       }
       onClickSubmit(mess: { otp: string; }): void {
           this.patientotp.VerifyOtp(mess.otp).subscribe(response => this.handleResponse(response));
-          if(this.message === 'SUCCESS')
+          if (this.message === 'SUCCESS')
           {
               this.route.navigate(['/sos']);
           }
