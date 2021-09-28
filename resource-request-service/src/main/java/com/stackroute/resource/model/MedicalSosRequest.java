@@ -17,7 +17,7 @@ public class MedicalSosRequest {
     @Transient
     public static final String SEQUENCE_NAME="sequence";
     @Id
-    private UUID id;
+    private UUID requestId;  //__
     private String patientName;
     private String gender;
     private String phoneNo;
