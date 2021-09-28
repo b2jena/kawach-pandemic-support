@@ -12,17 +12,14 @@
     </form>
   </div>
 
-  <div *ngIf="message==='SUCCESS'" class="col-md-6 container">
-    <a routerLink="/sos" class="btn btn-info">Verify</a>
-  </div>
-  <div *ngIf="message==='FAIL'">
-    <h2>Entered Otp is NOT valid. Please Retry!</h2>
-  </div>
-
   <form #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)" class="col-md-6 container">
+    <div *ngIf="message==='FAIL'">
+      <h2>Entered Otp is NOT valid. Please Retry!</h2>
+    </div>
+    <label for="otp">OTP:</label><br>
     <input type = "text" name = "otp" placeholder = "otp" ngModel>
     <br/>
 
-    <input type = "submit" value = "Verfied">
+    <input type = "submit" value = "Verify">
   </form>
 </div>
