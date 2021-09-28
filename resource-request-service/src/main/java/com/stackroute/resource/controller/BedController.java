@@ -21,6 +21,7 @@ public class BedController {
 
     @PostMapping("bed/create")
     public ResponseEntity<Beds> saveBed(@RequestBody Beds beds){
+        //System.out.println("bikash"+beds.getBedType());
         Beds savedBeds = bedService.saveBed(beds);
         return new ResponseEntity<>(savedBeds, HttpStatus.CREATED);
     }

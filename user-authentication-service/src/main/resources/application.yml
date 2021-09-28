@@ -5,8 +5,9 @@ jwt:
   secret: secret
 spring:
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test
+    #    driverClassName: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
     username: root
     password: root
   jpa:
@@ -23,10 +24,10 @@ spring:
     routingkey: user.routingKey
 app:
   seeddata:
-    id1: meghna@email.com
-    id2: john@email.com
-    password1: meghna@123
-    password2: john@123
+#    id1: meghna@email.com
+#    id2: john@email.com
+#    password1: meghna@123
+#    password2: john@123
     logMessage: Loaded users...
   jwttoken:
     message: Login Successful

@@ -17,7 +17,7 @@ public class Beds {
     @Transient
     public static final String SEQUENCE_NAME="sequence";
     @Id
-    private UUID id;
+    private UUID bedId;
     private String bedType;
     private String city;
     private String address;

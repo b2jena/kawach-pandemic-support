@@ -57,7 +57,7 @@ const routes: Routes = [
     path: 'listequipment',
     component: ListEquipmentsComponent
   }, {
-    path: 'landingpage',
+    path: '',
     component: LandingPageComponent
   }, {
     path: 'addbed',
