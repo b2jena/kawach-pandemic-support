@@ -1,4 +1,4 @@
-w<h2 class="text-center">Kawach</h2>
+<h2 class="text-center">Kawach</h2>
 
 <div class="col-md-6">
   <form>
@@ -10,16 +10,16 @@ w<h2 class="text-center">Kawach</h2>
   </form>
 </div>
 
-<div *ngIf="message==='SUCCESS'">
+<!-- <div *ngIf="message==='SUCCESS'">
   <a routerLink="/sos" class="btn btn-info">Verify</a>
-</div>
+</div>  -->
 <div *ngIf="message==='FAIL'">
   <h2>Entered Otp is NOT valid. Please Retry!</h2>
 </div>
-
+<label for="otp">OTP:</label>
 <form #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)" >
   <input type = "text" name = "otp" placeholder = "otp" ngModel>
   <br/>
 
   <input type = "submit" value = "Verfied">
-</form>
+</form> 
