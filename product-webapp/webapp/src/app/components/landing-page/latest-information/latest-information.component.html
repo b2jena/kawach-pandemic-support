@@ -1,6 +1,6 @@
 <h2>Latest Information... </h2>
-<div class="col-md-6 container center">
-    <table class="table center table-striped table-hover table-bordered">
+<!-- <div class="col-md-6 container center"> -->
+    <!-- <table class="table center table-striped table-hover table-bordered">
         <thead>
             <tr>
                 <th>Location</th>
@@ -21,5 +21,49 @@
                 <td>{{locationStat.totalConfirmed}}</td>
             </tr>
         </tbody>
+    </table> -->
+<!-- </div> -->
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="locationStat">
+        <ng-container matColumnDef="Location">
+            <th mat-header-cell *matHeaderCellDef>Location</th>
+            <td mat-cell *matCellDef="let locationStat"> {{locationStat.loc}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Confirmed Cases (Indian)">
+            <th mat-header-cell *matHeaderCellDef>Confirmed Cases (Indian)</th>
+            <td mat-cell *matCellDef="let locationStat"> {{locationStat.confirmedCasesIndian}} </td>
+        </ng-container>
+        
+
+        <ng-container matColumnDef="Confirmed Cases (Foreign)">
+            <th mat-header-cell *matHeaderCellDef>Confirmed Cases (Foreign)</th>
+            <td mat-cell *matCellDef="let locationStat"> {{locationStat.confirmedCasesForeign}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Discharged">
+            <th mat-header-cell *matHeaderCellDef>Discharged</th>
+            <td mat-cell *matCellDef="let locationStat"> {{locationStat.discharged}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Deaths">
+            <th mat-header-cell *matHeaderCellDef>Deaths</th>
+            <td mat-cell *matCellDef="let locationStat"> {{locationStat.deaths}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Total Confirmed">
+            <th mat-header-cell *matHeaderCellDef>Total Confirmed</th>
+            <td mat-cell *matCellDef="let locationStat"> {{locationStat.totalConfirmed}} </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-</div>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons 
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+</div> 
