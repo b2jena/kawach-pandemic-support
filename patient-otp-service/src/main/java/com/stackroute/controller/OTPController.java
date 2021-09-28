@@ -1,6 +1,7 @@
 package com.stackroute.controller;
 
 import com.stackroute.entity.Patient;
+import com.stackroute.exception.NoEmailException;
 import com.stackroute.service.EmailService;
 import com.stackroute.service.OTPService;
 import com.stackroute.service.PatientServiceI;
@@ -34,16 +35,26 @@ public class OTPController {
     public EmailService emailService;
 
     @PostMapping(path="/patient")
-    public ResponseEntity<Patient> savePatient(@RequestBody  Patient patient)
-    {
+    public ResponseEntity<Patient> savePatient(@RequestBody  Patient patient) throws NoEmailException {
         Patient patient1=  patientServiceI.saveUser(patient);
-        System.out.println(patient1.getEmail());
-        return new ResponseEntity<Patient>(patient1, HttpStatus.OK);
+        if(patient1.getEmail() == null)
+        {
+            throw new NoEmailException("Please enter email");
+        }
+        else
+        {
+            System.out.println(patient1.getEmail());
+            return new ResponseEntity<Patient>(patient1, HttpStatus.OK);
+        }
     }
     static String email;
     @PostMapping("/generateOtp")
-    public ResponseEntity<String> generateOTP(@RequestBody  Patient patient) throws MessagingException {
+    public ResponseEntity<String> generateOTP(@RequestBody  Patient patient) throws MessagingException, NoEmailException {
         Patient patient1=  patientServiceI.saveUser(patient);
+        if(patient1.getEmail() == null)
+        {
+            throw new NoEmailException("Please enter email");
+        }
         email = patient1.getEmail();
         int otp = otpService.generateOTP(email);
         Map<String,String> replacements = new HashMap<String,String>();
@@ -56,7 +67,6 @@ public class OTPController {
 
     @GetMapping("/validateOtp/{otpNum}")
     public ResponseEntity<String>  validateOtp(@PathVariable int otpNum){
-
         final String SUCCESS = "SUCCESS";
         final String FAIL = "FAIL";
         //Validate the Otp

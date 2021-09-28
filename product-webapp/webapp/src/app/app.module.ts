@@ -28,6 +28,7 @@ import { LatestInformationComponent } from './components/landing-page/latest-inf
 import { InformationService } from './services/information.service';
 import { SosService } from './services/sos-service';
 import { PatientOtpComponent } from './components/landing-page/patient-otp/patient-otp.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { PatientOtpComponent } from './components/landing-page/patient-otp/patie
     ListEquipmentsComponent,
     LatestInformationComponent,
     AddBedComponent,
-    ListBedComponent
+    ListBedComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
