@@ -1,5 +1,6 @@
 package com.stackroute.resource.controller;
 
+import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.Beds;
 import com.stackroute.resource.service.BedService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class BedController {
     }
 
     @PostMapping("bed/create")
-    public ResponseEntity<Beds> saveBed(@RequestBody Beds beds){
+    public ResponseEntity<Beds> saveBed(@RequestBody Beds beds) throws NullValueException {
         //System.out.println("bikash"+beds.getBedType());
         Beds savedBeds = bedService.saveBed(beds);
         return new ResponseEntity<>(savedBeds, HttpStatus.CREATED);

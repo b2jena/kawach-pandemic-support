@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SOSRequest, SosService } from 'src/app/services/sos-service';
+import { Requirment, SOSRequest, SosService } from 'src/app/services/sos-service';
 
 @Component({
   selector: 'app-sos-request',
@@ -8,7 +8,8 @@ import { SOSRequest, SosService } from 'src/app/services/sos-service';
 })
 export class SosRequestComponent implements OnInit {
 
-  user: SOSRequest = new SOSRequest('', '', '', '', '', '', '', '', '', '');
+  user1: Requirment = new Requirment('', '', '');
+  user: SOSRequest = new SOSRequest('', '', [], '', '', '', '', '');
 
   constructor(private sosService: SosService) { }
 
