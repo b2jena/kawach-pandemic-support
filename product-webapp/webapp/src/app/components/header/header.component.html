@@ -1,18 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Kawach</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <button type="button" class="btn btn-outline-primary" routerLink="">Home</button>&nbsp;
           </li>
           <li class="nav-item">
             <button type="button" class="btn btn-outline-primary" routerLink="doctorregistration">Doctor Register</button>&nbsp;
           </li>
-          <li class="nav-item">
+          <li class="nav-item" style="float: right;">
             <button type="button" class="btn btn-outline-primary" routerLink="volunteerregistration">Volunteer Register</button>
           </li>
           <li class="nav-item">
@@ -20,5 +20,27 @@
           </li>
         </ul>
       </div>
+    </div>
+  </nav> -->
+
+  <nav class="navbar navbar-light" style="background-color: burlywood;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Kawach</a>
+      <div *ngIf="router.url === '/'">
+        <input type="button" class="btn btn-primary" value="Login" routerLink="/login">
+      </div>
+      <div class="Container" *ngIf="router.url === '/login'">
+        <input type="button" class="btn btn-primary" value="Doctor Register Here" routerLink="/doctorregistration">
+        <input type="button" class="btn btn-primary" value="Volunteer Register Here" routerLink="/volunteerregistration">
+      </div>
+      <div class="Container" *ngIf="router.url === '/doctorregistration'">
+        <input type="button" class="btn btn-primary" value="Login" routerLink="/login">
+        <input type="button" class="btn btn-primary" value="Volunteer Register Here" routerLink="/volunteerregistration">
+      </div>
+      <div class="Container" *ngIf="router.url === '/volunteerregistration'">
+        <input type="button" class="btn btn-primary" value="Login" routerLink="/login">
+        <input type="button" class="btn btn-primary" value="Doctor Register Here" routerLink="/doctorregistration">
+      </div>
+     
     </div>
   </nav>

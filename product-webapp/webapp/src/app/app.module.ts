@@ -6,14 +6,14 @@ import { EquipmentService } from './services/equipment.service';
 import { AddEquipmentComponent } from './components/add-equipment/add-equipment.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddMedicineComponent } from './components/add-medicine/add-medicine.component';
 import { ListMedicinesComponent } from './components/list-medicines/list-medicines.component';
 import { SosRequestComponent } from './components/sos-request/sos-request.component';
 import { UpdateMedicineComponent } from './components/update-medicine/update-medicine.component';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { SMedicineService } from './services/s-medicine.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DoctorRegistrationComponent } from './components/doctor-registration/doctor-registration.component';
@@ -35,9 +35,14 @@ import { Overlay } from '@angular/cdk/overlay';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule  } from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { FooterComponent } from './components/footer/footer.component';
+import { MatTableModule } from '@angular/material/table';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 
 @NgModule({
@@ -62,9 +67,11 @@ import {MatExpansionModule} from '@angular/material/expansion';
     LatestInformationComponent,
     AddBedComponent,
     ListBedComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -75,7 +82,13 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatInputModule,
     MatButtonModule,
     MatGridListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatInputModule,
+    MatSnackBarModule,
+    FlexLayoutModule,
+    MatCardModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
   MatSnackBar, Overlay],

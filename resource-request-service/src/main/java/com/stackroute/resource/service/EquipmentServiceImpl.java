@@ -1,5 +1,6 @@
 package com.stackroute.resource.service;
 
+import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.Equipments;
 import com.stackroute.resource.repository.EquipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,15 @@ public class EquipmentServiceImpl implements EquipmentService{
         this.equipmentRepository = equipmentRepository;
     }
     @Override
-    public Equipments saveEquipment(Equipments equipments) {
-        equipments.setEquipmentId(UUID.randomUUID());
-        return equipmentRepository.save(equipments);
+    public Equipments saveEquipment(Equipments equipments) throws NullValueException {
+        if (equipments.getEquipmentName() == null || equipments.getHospital() == null || equipments.getAddress() == null || equipments.getCity() == null || equipments.getContactPerson() == null || equipments.getMobileNumber() == null) {
+            throw new NullValueException();
+        } else if (equipments.getEquipmentName().equals("") || equipments.getHospital().equals("") || equipments.getAddress().equals("") || equipments.getCity().equals("") || equipments.getContactPerson().equals("") || equipments.getMobileNumber().equals("")) {
+            throw new NullValueException();
+        } else {
+            equipments.setEquipmentId(UUID.randomUUID());
+            return equipmentRepository.save(equipments);
+        }
     }
     @Override
     public List<Equipments> getAllEquipments() {

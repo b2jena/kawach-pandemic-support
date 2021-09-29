@@ -31,10 +31,6 @@ export class LoginService {
       console.error(
         `Backend returned code ${error.status}, body was: `, error.error);
       // alert(`Error code ${error.status}:` + error.error);
-      this.snackbar.open(`Error code ${error.status}:` + error.error, 'OK', { duration: 4000,
-        horizontalPosition: 'center',
-        verticalPosition: 'top'} );
-      this.showsnackbar(`Error code ${error.status}:` + error.error);
     }
     // Return an observable with a user-facing error message.
     return throwError(

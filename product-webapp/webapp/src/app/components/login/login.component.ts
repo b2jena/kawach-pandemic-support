@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   // obj: HttpResp = new HttpResp('Default', '', '');
   obj!: string[];
   userobj: User = new User('', '');
+  // err: string= this.errorMsg.valueOf;
 
   ngOnInit(): void {
   }
@@ -56,8 +57,7 @@ export class LoginComponent implements OnInit {
       this.loginService.showsnackbar('Password cannot be empty');
     }
     else{
-      this.loginService.generateToken(this.userobj).subscribe( data => { this.obj = data ;
-          } );
+      this.loginService.generateToken(this.userobj).subscribe( data => { this.obj = data ; } );
       /*
       if(this.obj[0]!= 'Success'){
         this.obj[0] = 'Login failed';
