@@ -33,10 +33,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-// import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { FooterComponent } from './components/footer/footer.component';
 import { MatTableModule } from '@angular/material/table';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -62,7 +63,8 @@ import { MatTableModule } from '@angular/material/table';
     LatestInformationComponent,
     AddBedComponent,
     ListBedComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     FormsModule,
@@ -72,12 +74,15 @@ import { MatTableModule } from '@angular/material/table';
     FormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatSnackBarModule,
+    MatFormFieldModule,
     MatInputModule,
     // FlexLayoutModule,
+    MatSnackBarModule,
+    FlexLayoutModule,
     MatFormFieldModule,
     MatCardModule,
     MatTableModule,
+    MatFormFieldModule,
     MatCardModule,
     MatPaginatorModule
   ],
