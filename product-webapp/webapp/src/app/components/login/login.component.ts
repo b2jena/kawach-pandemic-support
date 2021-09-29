@@ -30,10 +30,30 @@ export class LoginComponent implements OnInit {
 
   login(): void{
     if (this.userobj.id === ''){
-      window.alert('Email ID cannot be empty');
+      // window.alert('Email ID cannot be empty');
+      /*x = document.getElementById("snackbar");
+
+      // Add the "show" class to DIV
+      if (x!= null){
+        x.className = "show";
+
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+      }*/
+      this.loginService.showsnackbar('Email ID cannot be empty');
     }
     else if (this.userobj.password === ''){
-      window.alert('Password cannot be empty');
+      // window.alert('Password cannot be empty');
+      /*x = document.getElementById("snackbar");
+
+      // Add the "show" class to DIV
+      if (x!= null){
+        x.className = "show";
+
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+      }*/
+      this.loginService.showsnackbar('Password cannot be empty');
     }
     else{
       this.loginService.generateToken(this.userobj).subscribe( data => { this.obj = data ;
@@ -42,7 +62,17 @@ export class LoginComponent implements OnInit {
       if(this.obj[0]!= 'Success'){
         this.obj[0] = 'Login failed';
       }*/
-      alert(this.obj[0]);
+      // alert(this.obj[0]);
+      /*var x = document.getElementById("snackbar");
+
+      // Add the "show" class to DIV
+      if (x!= null){
+        x.className = "show";
+
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+      }*/
+
       this.storage.set(this.key, this.obj[1]);
       this.routetoDash(this.obj[2]);
     }

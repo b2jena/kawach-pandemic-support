@@ -29,6 +29,15 @@ import { InformationService } from './services/information.service';
 import { SosService } from './services/sos-service';
 import { PatientOtpComponent } from './components/landing-page/patient-otp/patient-otp.component';
 import { HeaderComponent } from './components/header/header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { Overlay } from '@angular/cdk/overlay';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -59,9 +68,17 @@ import { HeaderComponent } from './components/header/header.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatExpansionModule
   ],
-  providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService],
+  providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
+  MatSnackBar, Overlay],
 
   bootstrap: [AppComponent]
 })
