@@ -32,6 +32,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -56,7 +58,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     LatestInformationComponent,
     AddBedComponent,
     ListBedComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     FormsModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatFormFieldModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService],
 
