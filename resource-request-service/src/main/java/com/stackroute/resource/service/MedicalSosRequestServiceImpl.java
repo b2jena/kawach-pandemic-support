@@ -1,9 +1,8 @@
 package com.stackroute.resource.service;
 
+import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.MedicalSosRequest;
-//import com.stackroute.resource.model.Resources;
 import com.stackroute.resource.repository.MedicalSosRequestRepository;
-//import com.stackroute.resource.repository.ResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -31,7 +30,7 @@ public class MedicalSosRequestServiceImpl implements MedicalSosRequestService {
 //    }
 
     @Override
-    public MedicalSosRequest saveSosRequest(MedicalSosRequest medicalSosRequest) {
+    public MedicalSosRequest saveSosRequest(MedicalSosRequest medicalSosRequest) throws NullValueException {
         medicalSosRequest.setRequestId(UUID.randomUUID());
         return medicalSosRequestRepository.save(medicalSosRequest);
     }

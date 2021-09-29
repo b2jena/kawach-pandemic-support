@@ -11,7 +11,7 @@ export class OtpServiceService {
 
   CreatePatient(patient: Patient): Observable<Patient> {
     console.log(patient);
-    return this.httpService.post<Patient>('http://localhost:9999/api/v1/generateOtp', patient);
+    return this.httpService.post<Patient>('http://localhost:9999/api/v1/generateOTP', patient);
   }
 
   VerifyOtp(otp: string): Observable<string>{

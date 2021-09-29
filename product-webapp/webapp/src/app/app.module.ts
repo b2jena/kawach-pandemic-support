@@ -33,10 +33,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FlexLayoutModule } from '@angular/flex-layout';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 
 
@@ -75,7 +74,7 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonModule,
     MatSnackBarModule,
     MatInputModule,
-    FlexLayoutModule,
+    // FlexLayoutModule,
     MatFormFieldModule,
     MatCardModule,
     MatTableModule,

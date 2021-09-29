@@ -1,7 +1,8 @@
 package com.stackroute.resource.controller;
 
-import com.stackroute.resource.model.Resources;
+import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.MedicalSosRequest;
+import com.stackroute.resource.model.Resources;
 import com.stackroute.resource.service.MedicalSosRequestService;
 import com.stackroute.resource.service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class MedicalSosRequestController {
         this.resourceService = resourceService;
     }
     @PostMapping("sos/createSos")
-    public ResponseEntity<MedicalSosRequest> saveSosRequest(@RequestBody MedicalSosRequest medicalSosRequest){
+    public ResponseEntity<MedicalSosRequest> saveSosRequest  (@RequestBody MedicalSosRequest medicalSosRequest) throws NullValueException {
         MedicalSosRequest savedSosRequest = medicalSosRequestService.saveSosRequest(medicalSosRequest);
         return new ResponseEntity<>(savedSosRequest,HttpStatus.CREATED);
     }
