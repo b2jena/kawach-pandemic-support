@@ -25,8 +25,22 @@
 
   <nav class="navbar navbar-light" style="background-color: burlywood;">
     <div class="container-fluid">
-      <a class="navbar-brand">Kawach</a>
-      <input type="button" class="btn btn-primary" value="Login" routerLink="/login">
-  
+      <a class="navbar-brand" href="#">Kawach</a>
+      <div *ngIf="router.url === '/'">
+        <input type="button" class="btn btn-primary" value="Login" routerLink="/login">
+      </div>
+      <div class="Container" *ngIf="router.url === '/login'">
+        <input type="button" class="btn btn-primary" value="Doctor Register Here" routerLink="/doctorregistration">
+        <input type="button" class="btn btn-primary" value="Volunteer Register Here" routerLink="/volunteerregistration">
+      </div>
+      <div class="Container" *ngIf="router.url === '/doctorregistration'">
+        <input type="button" class="btn btn-primary" value="Login" routerLink="/login">
+        <input type="button" class="btn btn-primary" value="Volunteer Register Here" routerLink="/volunteerregistration">
+      </div>
+      <div class="Container" *ngIf="router.url === '/volunteerregistration'">
+        <input type="button" class="btn btn-primary" value="Login" routerLink="/login">
+        <input type="button" class="btn btn-primary" value="Doctor Register Here" routerLink="/doctorregistration">
+      </div>
+     
     </div>
   </nav>

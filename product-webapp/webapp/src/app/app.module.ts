@@ -31,10 +31,10 @@ import { SosService } from './services/sos-service';
 import { PatientOtpComponent } from './components/landing-page/patient-otp/patient-otp.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule } from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatFormFieldModule} from '@angular/material/form-field';
 import { FooterComponent } from './components/footer/footer.component';
 import { MatTableModule } from '@angular/material/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -74,8 +74,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatSnackBarModule,
+    MatFormFieldModule,
     MatInputModule,
+    MatSnackBarModule,
     FlexLayoutModule,
     MatFormFieldModule,
     MatCardModule,
