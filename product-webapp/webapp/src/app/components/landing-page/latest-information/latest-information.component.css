@@ -5,3 +5,6 @@ td, th {
   padding: 5px;
   text-align:center;    
 }
+table {
+  width: 100%;
+}

@@ -6,7 +6,8 @@ import { EquipmentService } from './services/equipment.service';
 import { AddEquipmentComponent } from './components/add-equipment/add-equipment.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddMedicineComponent } from './components/add-medicine/add-medicine.component';
@@ -30,10 +31,14 @@ import { SosService } from './services/sos-service';
 import { PatientOtpComponent } from './components/landing-page/patient-otp/patient-otp.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { FooterComponent } from './components/footer/footer.component';
+import { MatTableModule } from '@angular/material/table';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 
 @NgModule({
@@ -58,9 +63,11 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     LatestInformationComponent,
     AddBedComponent,
     ListBedComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -69,7 +76,14 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatPaginatorModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService],
 
