@@ -6,7 +6,8 @@ import { EquipmentService } from './services/equipment.service';
 import { AddEquipmentComponent } from './components/add-equipment/add-equipment.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddMedicineComponent } from './components/add-medicine/add-medicine.component';
@@ -29,7 +30,11 @@ import { InformationService } from './services/information.service';
 import { SosService } from './services/sos-service';
 import { PatientOtpComponent } from './components/landing-page/patient-otp/patient-otp.component';
 import { HeaderComponent } from './components/header/header.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -59,7 +64,14 @@ import { HeaderComponent } from './components/header/header.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    MatInputModule,
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatCardModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService],
 
