@@ -22,11 +22,11 @@ export class SosRequestComponent implements OnInit {
   }
 
   Create(): void {
-    if(this.user.patientName === '' || this.user.city === '' || this.user.email === '' || this.user.gender === '' || this.user.hospitalised === '' || this.user.phoneNo === '' || this.user.requestStatus === '' || this.user1.requirementName === '' || this.user1.requirementQuantity === ''|| this.user1.unitOfMeasure === ''){
+    if (this.user.patientName === '' || this.user.city === '' || this.user.email === '' || this.user.gender === '' || this.user.hospitalised === '' || this.user.phoneNo === '' || this.user.requestStatus === '' || this.user1.requirementName === '' || this.user1.requirementQuantity === '' || this.user1.unitOfMeasure === '' ) {
       this.snackBar.open('Please enter the required details.');
     }
     else{
-      this.sosService.CreateSosRequest(this.user).subscribe( data => { this.snackBar.open('SOS request added successfully.'); this.route.navigate(['/sos']);} );
+      this.sosService.CreateSosRequest(this.user).subscribe( data => { this.snackBar.open('SOS request added successfully.'); this.route.navigate ( [ '/sos' ] ); } );
     }
   }
 }
