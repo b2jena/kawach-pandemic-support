@@ -1,25 +1,32 @@
-<h2 class="text-center">Kawach</h2>
+<h1 class="text-center">Join the Pandemic Support</h1>
 
-<div class="col-md-6">
-  <form>
-    <div class="form-group">
-      <label for="email">E-Mail:</label>
-      <input [(ngModel)]="user.email"  placeholder="Email" name="email" class="form-control" id="email">
-    </div>
-   <button class="btn btn-success" (click)="CreatePatient()">Submit</button>
-  </form>
+<div style="margin-left: 550px;">
+  <h2 class="text-center">Patient login here</h2>
+  <div class="col-md-6 container" style="max-width: 500px;">
+    <mat-form-field>
+      <div class="form-group">
+        <input matInput [(ngModel)]="user.email"  required placeholder="Email" name="email" class="form-control" id="email">
+      </div>
+    </mat-form-field>
+    <button (click)="CreatePatient()" color="primary" mat-raised-button>Submit</button>
+
+  </div>
+
+
+  <div class="col-md-6 container">
+
+    <form appearance="outline" #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)">
+
+      <!-- <div *ngIf="message==='FAIL'">
+        Entered Otp is NOT valid. Please Retry!
+      </div> -->
+
+      <input matInput type = "text" name = "otp" required placeholder = "OTP" class="form-control" ngModel>
+      <button color="primary" mat-raised-button >Verify</button>
+
+    </form>
+
+  </div>
+
 </div>
 
-<div *ngIf="message==='SUCCESS'">
-  <a routerLink="/sos" class="btn btn-info">Verify</a>
-</div>
-<div *ngIf="message==='FAIL'">
-  <h2>Entered Otp is NOT valid. Please Retry!</h2>
-</div>
-
-<form #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)" >
-  <input type = "text" name = "otp" placeholder = "otp" ngModel>
-  <br/>
-
-  <input type = "submit" value = "Verfied">
-</form>

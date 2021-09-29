@@ -1,26 +1,28 @@
-<h2>List Equipments... </h2>
+<div class="container">
+  <mat-card><h2>List Equipments... </h2></mat-card>
 <div class="col-md-6">
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Equipment Name</th>
-                <th>City</th>
-                <th>Hospital</th>
-                <th>Address</th>
-                <th>Contact Person</th>
-                <th>Mobile Number</th>
+                <th><mat-card>Equipment Name</mat-card></th>
+                <th><mat-card>City</mat-card></th>
+                <th><mat-card>Hospital</mat-card></th>
+                <th><mat-card>Address</mat-card></th>
+                <th><mat-card>Contact Person</mat-card></th>
+                <th><mat-card>Mobile Number</mat-card></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let equipment of equipments">
-                <td>{{equipment.equipmentName}}</td>
-                <td>{{equipment.city}}</td>
-                <td>{{equipment.hospital}}</td>
-                <td>{{equipment.address}}</td>
-                <td>{{equipment.contactPerson}}</td>
-                <td>{{equipment.mobileNumber}}</td>
-                <td><button class="btn btn-danger" (click)="deleteEquipment(equipment)">Delete Equipment</button></td>
+                <td><mat-card>{{equipment.equipmentName}}</mat-card></td>
+                <td><mat-card>{{equipment.city}}</mat-card></td>
+                <td><mat-card>{{equipment.hospital}}</mat-card></td>
+                <td><mat-card>{{equipment.address}}</mat-card></td>
+                <td><mat-card>{{equipment.contactPerson}}</mat-card></td>
+                <td><mat-card>{{equipment.mobileNumber}}</mat-card></td>
+                <td><mat-card><button class="btn btn-danger" (click)="deleteEquipment(equipment)">Delete Equipment</button></mat-card></td>
             </tr>
         </tbody>
     </table>
+</div>
 </div>
