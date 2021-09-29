@@ -29,6 +29,11 @@ import { InformationService } from './services/information.service';
 import { SosService } from './services/sos-service';
 import { PatientOtpComponent } from './components/landing-page/patient-otp/patient-otp.component';
 import { HeaderComponent } from './components/header/header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -59,7 +64,12 @@ import { HeaderComponent } from './components/header/header.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSnackBarModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService],
 
