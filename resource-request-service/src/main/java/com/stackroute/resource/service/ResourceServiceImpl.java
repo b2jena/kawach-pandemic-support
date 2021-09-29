@@ -1,5 +1,6 @@
 package com.stackroute.resource.service;
 
+import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.Resources;
 import com.stackroute.resource.repository.ResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,15 @@ public class ResourceServiceImpl implements ResourceService{
         this.resourceRepository = resourceRepository;
     }
     @Override
-    public Resources saveResource(Resources resources) {
-        resources.setId(UUID.randomUUID());
-        return resourceRepository.save(resources);
+    public Resources saveResource(Resources resources) throws NullValueException {
+        if (resources.getMedicineName() == null || resources.getPharmacy() == null || resources.getAddress() == null || resources.getCity() == null || resources.getContactPerson() == null || resources.getMobileNumber() == null) {
+            throw new NullValueException();
+        } else if (resources.getMedicineName().equals("") || resources.getPharmacy().equals("") || resources.getAddress().equals("") || resources.getCity().equals("") || resources.getContactPerson().equals("") || resources.getMobileNumber().equals("")) {
+            throw new NullValueException();
+        } else {
+            resources.setId(UUID.randomUUID());
+            return resourceRepository.save(resources);
+        }
     }
     @Override
     public List<Resources> getAllResources() {

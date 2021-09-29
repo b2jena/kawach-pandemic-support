@@ -1,5 +1,6 @@
 package com.stackroute.resource.controller;
 
+import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.Resources;
 import com.stackroute.resource.service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class ResourceController {
     }
 
     @PostMapping("medicine/create")
-    public ResponseEntity<Resources> saveResource(@RequestBody Resources resources){
+    public ResponseEntity<Resources> saveResource(@RequestBody Resources resources) throws NullValueException {
         Resources savedResources = resourceService.saveResource(resources);
         return new ResponseEntity<>(savedResources,HttpStatus.CREATED);
     }
