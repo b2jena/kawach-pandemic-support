@@ -13,7 +13,7 @@ export class SosService {
 
   CreateSosRequest(SosRequest: SOSRequest): Observable <SOSRequest> {
     console.log(SosRequest);
-    return this.httpService.post<SOSRequest>('http://localhost:9900/sos/createSos', SosRequest);
+    return this.httpService.post<SOSRequest>('http://localhost:9901/sos/createSos', SosRequest);
   }
 }
 
@@ -37,12 +37,12 @@ export class SOSRequest{
   public email: string;
   public hospitalised: string;
   public city: string;
-  public requir: Array<Requirment> = [];
+  public requir: Array <string> = [];
   public requestStatus: string;
 
 
 
-  constructor( patientName: string, email: string, requir: Array<Requirment>, phoneNo: string, city: string, gender: string, hospitalised: string, requestStatus: string) {
+  constructor( patientName: string, email: string, requir: Array <string>, phoneNo: string, city: string, gender: string, hospitalised: string, requestStatus: string) {
     this.patientName = patientName;
     this.gender = gender;
     this.phoneNo = phoneNo;

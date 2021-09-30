@@ -9,9 +9,9 @@ export class OtpServiceService {
   patient: Patient[] = [];
   constructor(private httpService: HttpClient) { }
 
-  CreatePatient(patient: Patient): Observable<Patient> {
+  CreatePatient(patient: Patient) {
     console.log(patient);
-    return this.httpService.post<Patient>('http://localhost:9999/api/v1/patient', patient);
+    return this.httpService.post('http://localhost:9999/api/v1/generateOtp', patient);
   }
 
   VerifyOtp(otp: string): Observable<string>{
