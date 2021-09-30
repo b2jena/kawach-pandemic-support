@@ -19,6 +19,7 @@
   <packaging>jar</packaging>
 
   <name>resource-request-service</name>
+  <description>Project for Spring Boot</description>
   <!-- FIXME change it to the project's website --> 
   <url>http://www.example.com</url>
 
@@ -94,7 +95,6 @@
     </dependency>
   </dependencies>
 
-
 <!--  <build>-->
 <!--    <pluginManagement>&lt;!&ndash; lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) &ndash;&gt;-->
 <!--      <plugins>-->
@@ -103,27 +103,6 @@
 <!--          <artifactId>maven-clean-plugin</artifactId>-->
 <!--          <version>3.1.0</version>-->
 <!--        </plugin>-->
-
-
-<!--        <plugin>-->
-<!--          <groupId>org.springframework.boot</groupId>-->
-<!--          <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--        </plugin>-->
-
-<!--        <plugin>-->
-<!--          <groupId>org.apache.maven.plugins</groupId>-->
-<!--          <artifactId>maven-jar-plugin</artifactId>-->
-<!--          <configuration>-->
-<!--            <archive>-->
-<!--              <manifest>-->
-<!--                <addClasspath>true</addClasspath>-->
-<!--                <mainClass>com.stackroute.resource.AddResourceServiceApplication</mainClass>-->
-<!--              </manifest>-->
-<!--            </archive>-->
-<!--          </configuration>-->
-<!--        </plugin>-->
-
-
 <!--        &lt;!&ndash; default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging &ndash;&gt;-->
 <!--        <plugin>-->
 <!--          <artifactId>maven-resources-plugin</artifactId>-->
@@ -161,13 +140,12 @@
 <!--      </plugins>-->
 <!--    </pluginManagement>-->
 <!--  </build>-->
-
-    <build>
-      <plugins>
-        <plugin>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-maven-plugin</artifactId>
-        </plugin>
-      </plugins>
-    </build>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 </project>

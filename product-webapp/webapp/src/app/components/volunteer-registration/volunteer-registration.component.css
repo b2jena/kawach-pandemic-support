@@ -26,8 +26,14 @@ mat-card-title{text-align: center} */
 .form-container{
     margin: 0 auto;
     width: 0px auto;
+    margin-top: 20px;
 }
 .button{
     top:10%;
     right: 10%;
+}
+
+form{
+    display: flex;
+  justify-content: center;
 }

@@ -1,13 +1,13 @@
 version: "2"
 services:
-  eureka-server:
-    build: eureka-server/
-    container_name: eureka-server
-    restart: always
-    network_mode: "host"
-    hostname: localhost
-    ports:
-      - 8076:8076
+#  eureka-server:
+#    build: eureka-server/
+#    container_name: eureka-server
+#    restart: always
+#    network_mode: "host"
+#    hostname: localhost
+#    ports:
+#      - 8076:8076
 #  api-gateway:
 #    build: api-gateway/
 #    container_name: api-gateway
@@ -30,7 +30,6 @@ services:
 #    hostname: localhost
 #    ports:
 #      - "8099:8099"
-
   patient-otp-service:
     build: patient-otp-service/
     container_name: patient-otp-service
@@ -39,6 +38,23 @@ services:
     hostname: localhost
     ports:
       - 9999:9999
+  resource-request-service:
+    build: resource-request-service/
+    container_name: resource-request-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 9901:9901
+
+  user-management-service:
+    build: user-management-service/
+    container_name: user-management-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8081:8081
 
   information-service:
     build: information-service/
@@ -49,11 +65,29 @@ services:
     ports:
       - 1234:1234
 
-  resource-request-service:
-    build: resource-request-service/
-    container_name: resource-request-service
+  user-management-service:
+    build: user-management-service/
+    container_name: user-management-service
     restart: always
     network_mode: "host"
     hostname: localhost
     ports:
-      - 9901:9901
+      - 8081:8081
+
+  user-authentication-service:
+    build: user-authentication-service/
+    container_name: user-authentication-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 9099:9099
+
+  doctor-consultation-service:
+    build: doctor-consultation-service/
+    container_name: doctor-consultation-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8082:8082
