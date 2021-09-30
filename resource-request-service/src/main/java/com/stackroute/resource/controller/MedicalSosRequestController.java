@@ -43,8 +43,8 @@ public class MedicalSosRequestController {
         return new ResponseEntity<String>("updated successfully" ,HttpStatus.OK );
     }
 
-    @GetMapping("sos/getRes")
-    public ResponseEntity<List<Resources>> getAllResources(){
-        return new ResponseEntity<List<Resources>>((List<Resources>)resourceService.getAllResources(),HttpStatus.OK);
+    @GetMapping("sos/getRes/{city}")
+    public ResponseEntity<List<Resources>> getAllMedicine(@PathVariable("city") String city){
+        return new ResponseEntity<List<Resources>>((List<Resources>)resourceService.getAllMedicine(city),HttpStatus.OK);
     }
 }
