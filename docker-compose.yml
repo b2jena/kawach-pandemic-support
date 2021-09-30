@@ -1,21 +1,23 @@
 version: "2"
 services:
-#  eureka-server:
-#    build: eureka-server/
-#    container_name: eureka-server
-#    restart: always
-#    network_mode: "host"
-#    hostname: localhost
-#    ports:
-#      - 8076:8076
-  api-gateway:
-    build: api-gateway/
-    container_name: api-gateway
+  eureka-server:
+    build: eureka-server/
+    container_name: eureka-server
     restart: always
     network_mode: "host"
     hostname: localhost
     ports:
-      - 8086:8086
+      - 8076:8076
+#  api-gateway:
+#    build: api-gateway/
+#    container_name: api-gateway
+#    depends_on:
+#      - eureka-server
+#    restart: always
+#    network_mode: "host"
+#    hostname: localhost
+#    ports:
+#      - 8086:8086
 #  product-webapp:
 #    build: product-webapp/
 #    image: product-webapp
@@ -28,6 +30,7 @@ services:
 #    hostname: localhost
 #    ports:
 #      - "8099:8099"
+
   patient-otp-service:
     build: patient-otp-service/
     container_name: patient-otp-service
@@ -36,3 +39,21 @@ services:
     hostname: localhost
     ports:
       - 9999:9999
+
+  information-service:
+    build: information-service/
+    container_name: information-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 1234:1234
+
+  resource-request-service:
+    build: resource-request-service/
+    container_name: resource-request-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 9901:9901
