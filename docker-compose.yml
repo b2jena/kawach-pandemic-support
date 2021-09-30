@@ -1,6 +1,15 @@
 version: "2"
 services:
-#  eureka-server:
+  patient-otp-service:
+    build: patient-otp-service/
+    container_name: patient-otp-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 9999:9999
+
+  #  eureka-server:
 #    build: eureka-server/
 #    container_name: eureka-server
 #    restart: always
@@ -30,11 +39,3 @@ services:
 #    hostname: localhost
 #    ports:
 #      - "8099:8099"
-  patient-otp-service:
-    build: patient-otp-service/
-    container_name: patient-otp-service
-    restart: always
-    network_mode: "host"
-    hostname: localhost
-    ports:
-      - 9999:9999

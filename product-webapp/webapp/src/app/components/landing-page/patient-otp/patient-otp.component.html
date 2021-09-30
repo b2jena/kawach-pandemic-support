@@ -3,15 +3,14 @@
 <div style="margin-left: 550px;">
   <h2 class="text-center">Patient login here</h2>
   <div class="col-md-6 container" style="max-width: 500px;">
-    <mat-form-field>
+    <form>
       <div class="form-group">
         <input matInput [(ngModel)]="user.email"  required placeholder="Email" name="email" class="form-control" id="email">
       </div>
-    </mat-form-field>
+    </form>
     <button (click)="CreatePatient()" color="primary" mat-raised-button>Submit</button>
-
   </div>
-
+<br>
 
   <div class="col-md-6 container">
 
