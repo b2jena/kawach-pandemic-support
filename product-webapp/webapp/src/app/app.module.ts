@@ -7,14 +7,13 @@ import { AddEquipmentComponent } from './components/add-equipment/add-equipment.
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddMedicineComponent } from './components/add-medicine/add-medicine.component';
 import { ListMedicinesComponent } from './components/list-medicines/list-medicines.component';
 import { SosRequestComponent } from './components/sos-request/sos-request.component';
 import { UpdateMedicineComponent } from './components/update-medicine/update-medicine.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SMedicineService } from './services/s-medicine.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DoctorRegistrationComponent } from './components/doctor-registration/doctor-registration.component';
@@ -29,11 +28,19 @@ import { LatestInformationComponent } from './components/landing-page/latest-inf
 import { InformationService } from './services/information.service';
 import { SosService } from './services/sos-service';
 import { PatientOtpComponent } from './components/landing-page/patient-otp/patient-otp.component';
-import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatCardModule } from '@angular/material/card';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import { HeaderComponent } from './components/header/header.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Overlay } from '@angular/cdk/overlay';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatExpansionModule  } from '@angular/material/expansion';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FooterComponent } from './components/footer/footer.component';
 import { MatTableModule } from '@angular/material/table';
@@ -73,20 +80,30 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    MatSnackBarModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatSliderModule,
     MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatCardModule,
+    MatSelectModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    // FlexLayoutModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatExpansionModule,
+    MatInputModule,
     MatSnackBarModule,
     FlexLayoutModule,
-    MatFormFieldModule,
     MatCardModule,
     MatTableModule,
-    MatFormFieldModule,
-    MatCardModule,
     MatPaginatorModule
   ],
-  providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService],
+  providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
+  MatSnackBar, Overlay],
 
   bootstrap: [AppComponent]
 })
