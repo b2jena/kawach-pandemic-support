@@ -1,26 +1,51 @@
-<h1 class="text-center">Join the Pandemic Support</h1>
-
-<div style="margin-left: 550px;">
-  <h2 class="text-center">Patient login here</h2>
-  <div class="col-md-6 container" style="max-width: 500px;">
-    <form>
-      <div class="form-group" style="max-height: 100px;">
-        <input matInput [(ngModel)]="user.email"  required placeholder="Email" name="email" class="form-control" id="email">
-      </div>
-    </form>
-    <button (click)="CreatePatient()" color="primary" mat-raised-button>Submit</button>
+<div class="row">
+  <div class="col-md-6">
+    <div>
+      <img class='image' src='https://media.istockphoto.com/vectors/group-of-doctor-and-nurse-unite-standing-together-to-fight-corona-vector-id1249123814' alt = "Image is not there"
+    Width = "500" height="200" style="position: relative; top: -10px; ">
+    </div>
   </div>
-<br>
+  <div class="col-md-6">
+    <mat-card>
 
-  <div class="col-md-6 container">
-
-    <form appearance="outline" #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)">
-      <input matInput type = "text" name = "otp" required placeholder = "OTP" ngModel>
-      <button color="primary" mat-raised-button >Verify</button>
-
-    </form>
-
+      <mat-card-header>
+        <mat-card-title>Patient login here</mat-card-title>
+      </mat-card-header>
+    
+      <mat-card-content>
+    
+        <div class="row">
+    
+          <div class="col-sm-6">
+    
+            <mat-form-field class="example-full-width1 col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+                      <input matInput [(ngModel)]="user.email"  required placeholder="Email" name="email" class="form-control" id="email">
+            </mat-form-field>
+    
+          </div>
+    
+          <div class="col-md-6">
+            <input type="button" class="btn btn-block btn-outline-danger" (click)="CreatePatient()" value="Generate OTP">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <mat-form-field class="example-full-width1 col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+                     <input matInput [(ngModel)]="otp" required placeholder="OTP" name="otp" class="form-control" id="otp">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <input type="button" class="btn btn-block btn-outline-success" (click)="onClickSubmit()" value="Verify">
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card> 
+    
   </div>
 
 </div>
+
+
+
+
 

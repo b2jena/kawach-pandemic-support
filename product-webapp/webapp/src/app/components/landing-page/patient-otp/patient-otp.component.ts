@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class PatientOtpComponent implements OnInit {
   user: Patient = new Patient('');
   message = '';
+  otp: string = '';
   constructor(private patientotp: OtpServiceService, private httpClient: HttpClient, private route: Router , private snackbar: MatSnackBar) {
   }
   ngOnInit(): void {
@@ -36,13 +37,13 @@ snack.onAction().subscribe(() => {
       else{
       this.patientotp.CreatePatient(this.user).subscribe( data => { this.showSnackbar('Please Check E-mail for OTP.', 'x'); }); }
       }
-      onClickSubmit(mess: { otp: string; }): void {
-        if (mess.otp === '')
+      onClickSubmit(): void {
+        if (this.otp === '')
         {
           this.showSnackbar('Please Enter OTP', 'x');
         }
         else{
-          this.patientotp.VerifyOtp(mess.otp).subscribe(response => {this.message = response;
+          this.patientotp.VerifyOtp(this.otp).subscribe(response => {this.message = response;
             if (this.message === 'SUCCESS')
           {
               this.route.navigate(['/sos']);
