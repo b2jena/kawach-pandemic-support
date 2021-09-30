@@ -34,7 +34,9 @@ export class VolunteerRegistrationComponent implements OnInit {
 
   createVolunteer(): void{
     this.userService.createVolunteer(this.user).subscribe( (data) => this.snackBar.open((this.message = data).toString(), this.action, {
-      duration: 3000
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
     }));
     // this._snackBar.open(this.message.toString());
   }

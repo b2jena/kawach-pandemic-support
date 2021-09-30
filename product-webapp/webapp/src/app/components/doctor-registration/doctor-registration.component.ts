@@ -53,7 +53,9 @@ export class DoctorRegistrationComponent implements OnInit {
   }
   createDoctor(): void{
     this.userService.createDoctor(this.user).subscribe( (data) => this.snackBar.open((this.message = data).toString(), this.action, {
-      duration: 3000
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
     }));
   }
 

@@ -47,6 +47,15 @@ services:
     ports:
       - 9901:9901
 
+  user-management-service:
+    build: user-management-service/
+    container_name: user-management-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8081:8081
+
   information-service:
     build: information-service/
     container_name: information-service
