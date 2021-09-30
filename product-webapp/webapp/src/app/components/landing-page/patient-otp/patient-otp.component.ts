@@ -15,32 +15,46 @@ export class PatientOtpComponent implements OnInit {
   }
   ngOnInit(): void {
   }
+  showSnackbar(content: string, action: string) {
+    let snack = this.snackbar.open(content, action, {
+      duration: 2000,
+      verticalPosition: 'top', // Allowed values are  'top' | 'bottom'
+      horizontalPosition: 'center', // Allowed values are 'start' | 'center' | 'end' | 'left' | 'right'
+    });
+snack.afterDismissed().subscribe(() => {
+  console.log("This will be shown after snackbar disappeared");
+});
+snack.onAction().subscribe(() => {
+  console.log("This will be called when snackbar button clicked");
+});
+  }
     CreatePatient(): void {
       if (this.user.email === '')
       {
-        this.snackbar.open('Please Enter Email');
+        this.showSnackbar('Please Enter Email', 'x');
       }
       else{
-      this.patientotp.CreatePatient(this.user).subscribe( data => { this.snackbar.open('Please Check E-mail for OTP.'); }); }
+      this.patientotp.CreatePatient(this.user).subscribe( data => { this.showSnackbar('Please Check E-mail for OTP.', 'x'); }); }
       }
       onClickSubmit(mess: { otp: string; }): void {
         if (mess.otp === '')
         {
-          this.snackbar.open('Please Enter OTP');
+          this.showSnackbar('Please Enter OTP', 'x');
         }
         else{
-          this.patientotp.VerifyOtp(mess.otp).subscribe(response => this.handleResponse(response));
-          if (this.message === 'SUCCESS')
+          this.patientotp.VerifyOtp(mess.otp).subscribe(response => {this.message = response;
+            if (this.message === 'SUCCESS')
           {
               this.route.navigate(['/sos']);
           }
-          if (this.message === 'FAIL')
+            if (this.message === 'FAIL')
           {
-            this.snackbar.open('Please Enter OTP'); }
+            this.showSnackbar('Please Enter Correct OTP', 'x'); }
+        });
         }
      }
      handleResponse(response: string): void
      {
-       this.message = response;
+       
      }
 }

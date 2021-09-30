@@ -4,7 +4,7 @@
   <h2 class="text-center">Patient login here</h2>
   <div class="col-md-6 container" style="max-width: 500px;">
     <form>
-      <div class="form-group">
+      <div class="form-group" style="max-height: 100px;">
         <input matInput [(ngModel)]="user.email"  required placeholder="Email" name="email" class="form-control" id="email">
       </div>
     </form>
@@ -15,12 +15,7 @@
   <div class="col-md-6 container">
 
     <form appearance="outline" #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)">
-
-      <!-- <div *ngIf="message==='FAIL'">
-        Entered Otp is NOT valid. Please Retry!
-      </div> -->
-
-      <input matInput type = "text" name = "otp" required placeholder = "OTP" class="form-control" ngModel>
+      <input matInput type = "text" name = "otp" required placeholder = "OTP" ngModel>
       <button color="primary" mat-raised-button >Verify</button>
 
     </form>
