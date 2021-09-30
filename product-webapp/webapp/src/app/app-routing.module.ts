@@ -17,6 +17,8 @@ import { DoctorRegistrationComponent } from './components/doctor-registration/do
 import { VolunteerRegistrationComponent } from './components/volunteer-registration/volunteer-registration.component';
 import { WarroomDashboardComponent } from './components/warroom-dashboard/warroom-dashboard.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { PatientDashboardComponent } from './components/patient-dashboard/patient-dashboard.component';
+import { WarroomAddComponent } from './components/warroom-dashboard/warroom-add/warroom-add.component';
 // import { CloseSosRequestComponent } from './components/close-sos-request/close-sos-request.component';
 
 const routes: Routes = [
@@ -66,6 +68,9 @@ const routes: Routes = [
   }, {
     path: 'listbed',
     component: ListBedComponent
+  }, {
+    path: 'war-room-add',
+    component: WarroomAddComponent
   }
 ];
 

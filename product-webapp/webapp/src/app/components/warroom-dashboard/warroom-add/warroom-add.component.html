@@ -1,0 +1,43 @@
+<h1 style="text-align:center">War Room Dashboard</h1>
+<mat-grid-list cols="3" >
+    <mat-grid-tile rowHeight= "3:1">
+        <button mat-raised-button color="primary" routerLink="/">Medical SOS</button>
+    </mat-grid-tile>
+    <mat-grid-tile rowHeight= "3:1">
+        <button mat-raised-button color="primary" routerLink=""> Verification</button>
+    </mat-grid-tile>
+    <mat-grid-tile rowHeight= "3:1">
+                <button mat-stroked-button color="primary">
+                    Add Resources
+                </button>
+                <!--
+            <mat-action-row>
+            <button mat-raised-button color="primary" (click)="routeTo('Medicine')"> Medicine</button>
+            </mat-action-row>
+            <mat-action-row>
+            <button mat-raised-button color="primary" (click)="routeTo('Equipment')"> Medical Equipment</button>
+            </mat-action-row>
+            <mat-action-row>
+            <button mat-raised-button color="primary" class="btn btn-md btn-primary btn-style" (click)="routeTo('Bed')"> Bed</button>
+            </mat-action-row>-->
+    </mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+<mat-grid-tile>
+<mat-list role="list">
+    <mat-list-item role="listitem">
+        <button style="margin-left: 40px;" mat-raised-button color="primary" routerLink="/addmedicine">Add Medicine</button>
+    </mat-list-item>
+    <mat-list-item role="listitem">
+        <button style="margin-left: 40px;" mat-raised-button color="primary" routerLink="/addequipment">Add Medical Equipment</button>
+    </mat-list-item>
+    <mat-list-item role="listitem">
+        <button style="margin-left: 40px;" mat-raised-button color="primary" routerLink="/addbed">Add Bed</button>
+    </mat-list-item>
+  </mat-list>
+</mat-grid-tile>
+</mat-grid-list>
+<!--<button style="margin-left: 40px;" mat-raised-button color="primary" routerLink="/addmedicine"> Medicine</button>            
+<button style="margin-left: 40px;" mat-raised-button color="primary" routerLink="/addequipment"> Medical Equipment</button>
+ <button style="margin-left: 40px;" mat-raised-button color="primary" routerLink="/addbed"> Bed</button>-->
+ 

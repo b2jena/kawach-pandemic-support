@@ -42,6 +42,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { FooterComponent } from './components/footer/footer.component';
 import { MatTableModule } from '@angular/material/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { PatientDashboardComponent } from './components/patient-dashboard/patient-dashboard.component';
+import { WarroomAddComponent } from './components/warroom-dashboard/warroom-add/warroom-add.component';
+import { MatListModule } from '@angular/material/list';
 
 
 
@@ -68,7 +71,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AddBedComponent,
     ListBedComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    PatientDashboardComponent,
+    WarroomAddComponent
   ],
   imports: [
     FormsModule,
@@ -88,7 +93,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule,
     MatCardModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatListModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
   MatSnackBar, Overlay],
