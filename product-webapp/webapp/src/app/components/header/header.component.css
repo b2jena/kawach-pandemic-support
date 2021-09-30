@@ -8,3 +8,35 @@ body{
     margin-right:0px;
     /*so the last one dont push the div thas giving the space only between the inputs*/
 }
+
+/* .header{
+    padding: 20px;
+    width: 100%;
+    background-color:cornflowerblue;
+    position: fixed;
+    top: 0%;
+} */
+
+.fixed {
+    position: fixed;
+    width: 100%;
+    transition: 0.2s linear;
+    top: 0px;
+    z-index: 998;
+    
+}
+
+.nofixed {
+    position: static;
+    transition: 0.2s linear;
+    top: -50px;
+    z-index: 998;
+}
+
+/* .navbar navbar-light, .container-fluid{
+    position: fixed;
+    top: 0%;
+    background-color: cornflowerblue;
+    padding: 10px;
+    z-index: 998;
+} */
