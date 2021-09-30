@@ -67,7 +67,7 @@ public class OTPController {
     public ResponseEntity<String> validateOtp(@PathVariable int otpNum) {
         final String SUCCESS = "SUCCESS";
         final String FAIL = "FAIL";
-        int num = 10;
+//        int num = 10;
 //        if(num == otpNum)
 //        {return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);}
 //        else

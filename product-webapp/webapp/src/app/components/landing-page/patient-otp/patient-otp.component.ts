@@ -11,23 +11,23 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class PatientOtpComponent implements OnInit {
   user: Patient = new Patient('');
   message = '';
-  otp: string = '';
+  otp = '';
   constructor(private patientotp: OtpServiceService, private httpClient: HttpClient, private route: Router , private snackbar: MatSnackBar) {
   }
   ngOnInit(): void {
   }
   showSnackbar(content: string, action: string) {
-    let snack = this.snackbar.open(content, action, {
+    const snack = this.snackbar.open(content, action, {
       duration: 2000,
       verticalPosition: 'top', // Allowed values are  'top' | 'bottom'
       horizontalPosition: 'center', // Allowed values are 'start' | 'center' | 'end' | 'left' | 'right'
     });
-snack.afterDismissed().subscribe(() => {
-  console.log("This will be shown after snackbar disappeared");
-});
-snack.onAction().subscribe(() => {
-  console.log("This will be called when snackbar button clicked");
-});
+    snack.afterDismissed().subscribe(() => {
+      console.log('This will be shown after snackbar disappeared');
+    });
+    snack.onAction().subscribe(() => {
+      console.log('This will be called when snackbar button clicked');
+    });
   }
     CreatePatient(): void {
       if (this.user.email === '')
@@ -43,19 +43,7 @@ snack.onAction().subscribe(() => {
           this.showSnackbar('Please Enter OTP', 'x');
         }
         else{
-          this.patientotp.VerifyOtp(this.otp).subscribe(response => {this.message = response;
-            if (this.message === 'SUCCESS')
-          {
-              this.route.navigate(['/sos']);
-          }
-            if (this.message === 'FAIL')
-          {
-            this.showSnackbar('Please Enter Correct OTP', 'x'); }
-        });
+          this.patientotp.VerifyOtp(this.otp).subscribe(response => {this.message = response; if (this.message === 'SUCCESS'){this.route.navigate(['/sos']); }if (this.message === 'FAIL'){this.showSnackbar('Please Enter Correct OTP', 'x'); }});
         }
-     }
-     handleResponse(response: string): void
-     {
-       
      }
 }
