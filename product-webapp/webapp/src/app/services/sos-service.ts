@@ -13,7 +13,27 @@ export class SosService {
 
   CreateSosRequest(SosRequest: SOSRequest): Observable <SOSRequest> {
     console.log(SosRequest);
-    return this.httpService.post<SOSRequest>('http://localhost:9900/sos/createSos', SosRequest);
+    console.log(Requirment);
+    return this.httpService.post<SOSRequest>('http://localhost:9901/sos/createSos', SosRequest);
+  }
+
+  PostFile(file: File): Observable <File> {
+    // console.log(file);
+    console.log(file);
+    return this.httpService.post<File>('http://localhost:9901/sos/createSos/upload', file);
+  }
+
+}
+
+export class Requirment{
+  public requirementName: string;
+  public requirementQuantity: string;
+  public unitOfMeasure: string;
+
+  constructor( requirementName: string, requirementQuantity: string, unitOfMeasure: string){
+    this.requirementName = requirementName;
+    this.requirementQuantity = requirementQuantity;
+    this.unitOfMeasure = unitOfMeasure;
   }
 }
 
@@ -25,23 +45,19 @@ export class SOSRequest{
   public email: string;
   public hospitalised: string;
   public city: string;
-  public requirementName: string;
-  public requirementQuantity: string;
-  public unitOfMeasure: string;
+  public requir: Array<Requirment>;
   public requestStatus: string;
 
 
 
-  constructor( patientName: string, email: string, phoneNo: string, city: string, gender: string, hospitalised: string, requirementName: string, requirementQuantity: string, unitOfMeasure: string, requestStatus: string) {
+  constructor( patientName: string, email: string, requir: Array <Requirment>, phoneNo: string, city: string, gender: string, hospitalised: string, requestStatus: string) {
     this.patientName = patientName;
     this.gender = gender;
     this.phoneNo = phoneNo;
     this.email = email;
     this.hospitalised = hospitalised;
     this.city = city;
-    this.requirementName = requirementName;
-    this.requirementQuantity = requirementQuantity;
-    this.unitOfMeasure = unitOfMeasure;
+    this.requir = requir;
     this.requestStatus = requestStatus;
   }
 }

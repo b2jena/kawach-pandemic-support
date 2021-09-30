@@ -1,5 +1,6 @@
 package com.stackroute.resource.controller;
 
+import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.Equipments;
 import com.stackroute.resource.service.EquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class EquipmentController {
     }
 
     @PostMapping("equipment/create")
-    public ResponseEntity<Equipments> saveEquipment(@RequestBody Equipments equipments){
+    public ResponseEntity<Equipments> saveEquipment(@RequestBody Equipments equipments) throws NullValueException {
         Equipments savedEquipments = equipmentService.saveEquipment(equipments);
         return new ResponseEntity<>(savedEquipments, HttpStatus.CREATED);
     }

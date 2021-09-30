@@ -7,69 +7,123 @@
   <title>Document</title>
 </head>
 <body>
+  <mat-card>
   <div class='container' padding-top='20rem'>
-    <div class="form-group">
-      <label for="name">Paitent Name:</label>
-      <input type="name" [(ngModel)]="user.patientName" placeholder="Name" name="name" class="form-control" id="name">
-    </div>
+    <h1 style = "text-align: center;">
+      Raise an SOS Request
+    </h1>
+    <mat-card>
+      <div class="form-group">
+        <label for="name">Paitent Name:</label>
+        <input type="text" id="name" name="name" class="form-control"
+        required minlength="4" appForbiddenName="bob"
+        [(ngModel)]="user.patientName" #name="ngModel">
 
-    <div class="form-group">
-      <label for="name">Phone Number:</label>
-      <input type="name" [(ngModel)]="user.phoneNo" placeholder="Phone Number" name="name" class="form-control" id="name">
-    </div>
+        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+          class="alert">
 
-    <div class="form-group">
-      <label for="name">Email id.:</label>
-      <input type="email" [(ngModel)]="user.email" placeholder="Email id." name="name" class="form-control" id="name">
-    </div>
+          <div *ngIf="name.errors?.required">
+            Name is required.
+          </div>
+        </div>
+      </div>
+    </mat-card>
 
-    <div class="form-group">
-      <label for="name">City:</label>
-      <input type="name" [(ngModel)]="user.city" placeholder="City" name="name" class="form-control" id="name">
-    </div>
+    <mat-card>
+      <div class="form-group">
+        <label for="name">Phone Number:</label>
+        <input type="text" id="name" name="name" class="form-control"
+        required minlength="4" appForbiddenName="bob"
+        [(ngModel)]="user.phoneNo" #name="ngModel">
 
-    <div class="form-group">
-      <label for="name">Gender:</label>
-      <select class="form-select" [(ngModel)]="user.gender" aria-label="Default select example">
-        <option value="1">Male</option>
-        <option value="2">Female</option>
-      </select>
-    </div>
+        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+          class="alert">
 
-    <div class="form-group">
-      <label for="name">Hospitalised status:</label>
-      <select class="form-select" [(ngModel)]="user.hospitalised" aria-label="Default select example">
-        <option value="1">Hospitalised</option>
-        <option value="2">Not Hospitalised</option>
-      </select>
-    </div>
+          <div *ngIf="name.errors?.required">
+            phone number is required.
+          </div>
+        </div>
+      </div>
+    </mat-card>
 
-    <div class="form-group">
-      <label for="name">Requrement Name:</label>
-      <input type="name" [(ngModel)]="user.requirementName" placeholder="Name" name="name" class="form-control" id="name">
-    </div>
+    <mat-card>
+      <div class="form-group">
+        <label for="name">Email Id.:</label>
+        <input type="email" [(ngModel)]="user.email" placeholder="Email id." name="name" class="form-control" id="name" required>
+      </div>
+    </mat-card>
 
-    <div class="form-group">
-      <label for="name">Requrement Quantity:</label>
-      <input type="name" [(ngModel)]="user.requirementQuantity" placeholder="Name" name="name" class="form-control" id="name">
-    </div>
+    <mat-card>
+      <div class="form-group">
+        <label for="name">City:</label>
+        <input type="name" [(ngModel)]="user.city" placeholder="City" name="name" class="form-control" id="name" required>
+      </div>
+    </mat-card>
 
-    <div class="form-group">
-      <label for="name">Unit of Mesures:</label>
-      <input type="name" [(ngModel)]="user.unitOfMeasure" placeholder="Name" name="name" class="form-control" id="name">
-    </div>
+    <mat-card>
+      <div class="form-group">
+        <label for="name">Gender:</label>
+        <select class="form-select" [(ngModel)]="user.gender" aria-label="Default select example" required>
+          <option value="1">Male</option>
+          <option value="2">Female</option>
+        </select>
+      </div>
+    </mat-card>
 
-    <div class="form-group">
-      <label for="name">Request status:</label>
-      <select class="form-select" [(ngModel)]="user.requestStatus" aria-label="Default select example">
-        <option value="1">Open</option>
-        <option value="2">Close</option>
-      </select>
-    </div>
+    <mat-card>
+      <div class="form-group">
+        <label for="name">Hospitalised status:</label>
+        <select class="form-select" [(ngModel)]="user.hospitalised" aria-label="Default select example" required>
+          <option value="1">Hospitalised</option>
+          <option value="2">Not Hospitalised</option>
+        </select>
+      </div>
+    </mat-card>
 
+    <mat-card>
+      <div class="form-group">
+        <label for="name">Requrement Name:</label>
+        <input type="name" [(ngModel)]="user1.requirementName" placeholder="Name" name="name" class="form-control" id="name" required>
+      </div>
+    </mat-card>
 
-    <button type="button" class="btn btn-primary btn-lg" style="margin-top: 40px;" (click)="Create()">Submit</button>
+    <mat-card>
+      <div class="form-group">
+        <label for="name">Requrement Quantity:</label>
+        <input type="name" [(ngModel)]="user1.requirementQuantity" placeholder="Name" name="name" class="form-control" id="name" required>
+      </div>
+    </mat-card>
+
+    <mat-card>
+      <div class="form-group">
+        <label for="name">Unit of Mesures:</label>
+        <input type="name" [(ngModel)]="user1.unitOfMeasure" placeholder="Name" name="name" class="form-control" id="name" required>
+      </div>
+    </mat-card>
+
+    <mat-card>
+      <div class="form-group">
+        <label for="name">Request status:</label>
+        <select class="form-select" [(ngModel)]="user.requestStatus" aria-label="Default select example" required>
+          <option value="1">Open</option>
+          <option value="2">Close</option>
+        </select>
+      </div>
+    </mat-card>
+
+    <mat-card>
+      <div class="input-group">
+        <input type="file" [(ngModel)]="file" enctype="multipart/form-data" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+        <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04" (click)="Upload()">Button</button>
+      </div>
+    </mat-card>
+
+    <mat-card>
+      <button type="button" class="btn btn-primary btn-lg" style="align-items: center;" (click)="Create()">Submit</button>
+    </mat-card>
+
   </div>
+</mat-card>
 </body>
 </html>
 

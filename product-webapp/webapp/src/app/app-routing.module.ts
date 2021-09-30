@@ -17,7 +17,7 @@ import { DoctorRegistrationComponent } from './components/doctor-registration/do
 import { VolunteerRegistrationComponent } from './components/volunteer-registration/volunteer-registration.component';
 import { WarroomDashboardComponent } from './components/warroom-dashboard/warroom-dashboard.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-//import { CloseSosRequestComponent } from './components/close-sos-request/close-sos-request.component';
+// import { CloseSosRequestComponent } from './components/close-sos-request/close-sos-request.component';
 
 const routes: Routes = [
   {
