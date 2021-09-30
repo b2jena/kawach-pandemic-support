@@ -3,17 +3,15 @@
     align-items: flex-start !important;
  }
 
- .Container input{ /* You Can Name it what you want*/
+ .Container mat-grid-list{ /* You Can Name it what you want*/
     margin-right:16px;
     }
-    .Container input:last-child{
+    .Container mat-grid-list:last-child{
     margin-right:0px;
     /*so the last one dont push the div thas giving the space only between the inputs*/
 }
 
-img {
-    float: left;
-    width:  100px;
-    height: 100px;
-    object-fit: cover;
+.cards{
+    margin-right: 16px;
+    position: float;
 }
