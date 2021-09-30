@@ -38,7 +38,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { FooterComponent } from './components/footer/footer.component';
 import { MatTableModule } from '@angular/material/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { GridComponent } from './components/landing-page/grid/grid.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { DoctorCardComponent } from './components/landing-page/grid/doctor-card/doctor-card.component';
+import { PatientCardComponent } from './components/landing-page/grid/patient-card/patient-card.component';
+import { VolunteerCardComponent } from './components/landing-page/grid/volunteer-card/volunteer-card.component';
 
 
 @NgModule({
@@ -64,7 +68,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AddBedComponent,
     ListBedComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    GridComponent,
+    DoctorCardComponent,
+    PatientCardComponent,
+    VolunteerCardComponent,
   ],
   imports: [
     FormsModule,
@@ -83,7 +91,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatTableModule,
     MatFormFieldModule,
     MatCardModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatGridListModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService],
 
