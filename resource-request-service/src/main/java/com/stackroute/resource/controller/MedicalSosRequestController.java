@@ -23,6 +23,9 @@ public class MedicalSosRequestController {
         this.medicalSosRequestService = medicalSosRequestService;
         this.resourceService = resourceService;
     }
+
+
+
     @PostMapping("sos/createSos")
     public ResponseEntity<MedicalSosRequest> saveSosRequest  (@RequestBody MedicalSosRequest medicalSosRequest) throws NullValueException {
         MedicalSosRequest savedSosRequest = medicalSosRequestService.saveSosRequest(medicalSosRequest);

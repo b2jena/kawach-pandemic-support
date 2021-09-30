@@ -1,0 +1,25 @@
+cloud:
+  aws:
+    credentials:
+      accessKey: AKIASAGZP6GNH5ILDDA2
+      secretKey: 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
+    region:
+      static: us-east-2
+    stack:
+      auto: false
+
+application:
+  bucket:
+    name: kawach-buckets
+
+
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2MB
+      max-file-size: 5MB
+      max-request-size: 10MB
+
+#server:
+#  port: 9090
