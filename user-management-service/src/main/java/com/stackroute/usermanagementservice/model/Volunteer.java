@@ -19,6 +19,6 @@ public class Volunteer {
     @Id
     private String emailId;
     private String fullName;
-    private int phoneNumber;
+    private long phoneNumber;
     private String password;
 }

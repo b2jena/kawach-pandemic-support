@@ -17,8 +17,8 @@ import java.util.Map;
 
 
 @RestController
-@RequestMapping("api/v1")
-@CrossOrigin("http://localhost:4200")
+@RequestMapping("/api/v1")
+@CrossOrigin
 public class OTPController {
 
     public PatientServiceI patientServiceI;
@@ -34,69 +34,65 @@ public class OTPController {
     @Autowired
     public EmailService emailService;
 
-    @PostMapping(path="/patient")
-    public ResponseEntity<Patient> savePatient(@RequestBody  Patient patient) throws NoEmailException {
-        Patient patient1=  patientServiceI.saveUser(patient);
-        if(patient1.getEmail() == null)
-        {
+    @PostMapping(path = "/patient")
+    public ResponseEntity<Patient> savePatient(@RequestBody Patient patient) throws NoEmailException {
+        Patient patient1 = patientServiceI.saveUser(patient);
+        if (patient1.getEmail() == null) {
             throw new NoEmailException("Please enter email");
-        }
-        else
-        {
+        } else {
             System.out.println(patient1.getEmail());
             return new ResponseEntity<Patient>(patient1, HttpStatus.OK);
         }
     }
+
     static String email;
+
     @PostMapping("/generateOtp")
-    public ResponseEntity<String> generateOTP(@RequestBody  Patient patient) throws MessagingException, NoEmailException {
-        Patient patient1=  patientServiceI.saveUser(patient);
-        if(patient1.getEmail() == null)
-        {
+    public ResponseEntity<?> generateOTP(@RequestBody Patient patient) throws MessagingException, NoEmailException {
+        Patient patient1 = patientServiceI.saveUser(patient);
+        if (patient1.getEmail() == null) {
             throw new NoEmailException("Please enter email");
         }
         email = patient1.getEmail();
         int otp = otpService.generateOTP(email);
-        Map<String,String> replacements = new HashMap<String,String>();
+        Map<String, String> replacements = new HashMap<String, String>();
         replacements.put("user", email);
         replacements.put("otpnum", String.valueOf(otp));
         emailService.sendOtpMessage(email, "OTP -SpringBoot", String.valueOf(otp));
         System.out.println("Mail sent");
-        return new ResponseEntity<String>("OTP Sent to " + email, HttpStatus.OK);
+        return new ResponseEntity<>(patient, HttpStatus.OK);
     }
 
     @GetMapping("/validateOtp/{otpNum}")
-    public ResponseEntity<String>  validateOtp(@PathVariable int otpNum){
+    public ResponseEntity<String> validateOtp(@PathVariable int otpNum) {
         final String SUCCESS = "SUCCESS";
         final String FAIL = "FAIL";
         //Validate the Otp
-        if(otpNum >= 0){
+        if (otpNum >= 0) {
 
             int serverOtp = otpService.getOtp(email);
-            if(serverOtp > 0){
-                if(otpNum == serverOtp){
+            if (serverOtp > 0) {
+                if (otpNum == serverOtp) {
                     otpService.clearOTP(email);
                     System.out.println("correct");
-                    return new ResponseEntity<String>(SUCCESS, HttpStatus.ACCEPTED);
-                }
-                else {
+                    return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+                } else {
                     System.out.println("incorrect");
-                    return new ResponseEntity<String>(FAIL, HttpStatus.ACCEPTED);
+                    return new ResponseEntity<String>(FAIL, HttpStatus.OK);
                 }
-            }else {
+            } else {
                 System.out.println("incorrect");
 
-                return new ResponseEntity<String>(FAIL, HttpStatus.ACCEPTED);
+                return new ResponseEntity<String>(FAIL, HttpStatus.OK);
             }
-        }else {
+        } else {
             System.out.println("incorrect");
-            return new ResponseEntity<String>(FAIL, HttpStatus.ACCEPTED);
+            return new ResponseEntity<String>(FAIL, HttpStatus.OK);
         }
     }
 
     @GetMapping("/patients")
-    public ResponseEntity<List<Patient>> getAllUser()
-    {
+    public ResponseEntity<List<Patient>> getAllUser() {
         return new ResponseEntity<List<Patient>>((List<Patient>) patientServiceI.getAll(), HttpStatus.OK);
 
     }
