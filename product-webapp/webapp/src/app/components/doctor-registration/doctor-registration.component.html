@@ -41,38 +41,37 @@
 
    <form [formGroup]="profileForm" class="form-container">
 
-    <mat-card style="width: 300px; text-align: center;">
+    <mat-card style="width: 500px; text-align: center;">
 
-      <mat-card-title>Register</mat-card-title>
-      <p>As a Doctor</p><br>
+      <mat-card-title>Register as a Doctor</mat-card-title><br>
 
     <mat-card-content style="justify-content: center;">
 
-      <mat-form-field appearance="outline" style="width: 225px;">
+      <mat-form-field appearance="outline" style="width: 300px;">
         <mat-label>Email</mat-label>
         <input matInput formControlName="emailId" placeholder="pat@example.com" [formControl]="email" required [(ngModel)]="user.emailId">
         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field><br>
 
-      <mat-form-field appearance="outline" style="width: 225px;">
+      <mat-form-field appearance="outline" style="width: 300px;">
         <mat-label>Full Name</mat-label>
         <input matInput formControlName="fullName" placeholder="pat" required [formControl]="name" [(ngModel)]="user.fullName">
         <mat-error *ngIf="name.invalid">{{getErrorName()}}</mat-error>
       </mat-form-field><br>
 
-      <mat-form-field appearance="outline" style="width: 225px;">
+      <mat-form-field appearance="outline" style="width: 300px;">
         <mat-label>Medical Registration Id</mat-label>
         <input matInput formControlName="medicalRegistrationId" placeholder="" required [formControl]="medId" [(ngModel)]="user.medicalRegistrationId">
         <mat-error *ngIf="medId.invalid">{{getErrorName()}}</mat-error>
       </mat-form-field><br>
 
-      <mat-form-field appearance="outline" style="width: 225px;">
+      <mat-form-field appearance="outline" style="width: 300px;">
         <mat-label>Phone Number</mat-label>
         <input matInput type="number" formControlName="phoneNumber" placeholder="" required [formControl]="ph" [(ngModel)]="user.phoneNumber">
         <mat-error *ngIf="ph.invalid">{{getErrorPh()}}</mat-error>
       </mat-form-field><br>
 
-      <mat-form-field appearance="outline" style="width: 225px;">
+      <mat-form-field appearance="outline" style="width: 300px;">
         <mat-label>Specialization</mat-label>
         <mat-select [(ngModel)]="user.specialization" formControlName="specialization">
           <mat-option *ngFor="let spec of specialisation" [value]="spec.value">
@@ -81,7 +80,7 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" style="width: 300px;">
         <mat-label>Password</mat-label>
         <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" placeholder="Include special characters" required [formControl]="pass" [(ngModel)]="user.password">
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>

@@ -10,4 +10,6 @@ public interface ResourceService {
     List<Resources> getAllResources();
 
     Resources updateResource(Resources resources);
+
+    List<Resources> getAllMedicine(String city);
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.stackroute</groupId>
@@ -9,11 +10,14 @@
     <relativePath>../pom.xml</relativePath>
     <!-- lookup parent from repository -->
   </parent>
+
   <groupId>com.stackroute</groupId>
   <artifactId>patient-otp-service</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
+
   <name>patient-otp-service</name>
-  <description>Project for Spring Boot</description>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
 
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
@@ -137,7 +141,6 @@
 <!--      </plugins>-->
 <!--    </pluginManagement>-->
 <!--  </build>-->
-
   <build>
     <plugins>
       <plugin>
@@ -146,5 +149,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>

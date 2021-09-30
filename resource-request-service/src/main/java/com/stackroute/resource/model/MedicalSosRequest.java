@@ -18,6 +18,7 @@ import java.util.UUID;
 public class MedicalSosRequest {
     @Transient
     public static final String SEQUENCE_NAME="sequence";
+    //public static city;
     @Id
     private UUID requestId;
     private String patientName;
@@ -25,7 +26,7 @@ public class MedicalSosRequest {
     private String phoneNo;
     private String email;
     private String hospitalised;
-    private String city;
+    public String city;
     public ArrayList<Requirement> requirement;
     private String requestStatus;
 //    private String uploadPrescription;

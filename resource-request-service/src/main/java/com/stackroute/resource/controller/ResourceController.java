@@ -35,7 +35,8 @@ public class ResourceController {
     @PutMapping("medicine/update")
     public ResponseEntity<Resources> updateResource(@RequestBody Resources resources){
         Resources updatedResources = resourceService.updateResource(resources);
-        return new ResponseEntity<Resources>
-                (updatedResources,HttpStatus.CREATED);
+        return new ResponseEntity<Resources>(updatedResources,HttpStatus.CREATED);
     }
+
+
 }
