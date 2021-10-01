@@ -111,12 +111,18 @@
       </div>
     </mat-card>
 
-    <mat-card>
+    <!-- <mat-card>
       <div class="input-group">
-        <input type="file" [(ngModel)]="file" enctype="multipart/form-data" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+        <input type="file" [(ngModel)]="file" enctype="multipart/form-data" class="form-control" id="myFile" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
         <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04" (click)="Upload()">Button</button>
       </div>
+    </mat-card> -->
+
+
+    <mat-card>
+      <app-upload-file></app-upload-file>
     </mat-card>
+
 
     <mat-card>
       <button type="button" class="btn btn-primary btn-lg" style="align-items: center;" (click)="Create()">Submit</button>
