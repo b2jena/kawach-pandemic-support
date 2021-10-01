@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Requirment, SOSRequest, SosService } from 'src/app/services/sos-service';
+import { requirement, SOSRequest, SosService } from 'src/app/services/sos-service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 // import { AnyRecord } from 'dns';
@@ -15,7 +15,7 @@ import { FormGroup } from '@angular/forms';
 
 export class SosRequestComponent implements OnInit {
 
-  user1: Requirment = new Requirment('', '', '');
+  user1: requirement = new requirement('', '', '');
   user: SOSRequest = new SOSRequest('', '', [this.user1], '', '', '', '', '');
   file: File | any ;
 

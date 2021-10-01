@@ -114,7 +114,7 @@ import { CloseSosComponent } from './components/close-sos/close-sos.component';
     MatFormFieldModule,
     MatCardModule,
     MatPaginatorModule,
-    MatGridListModule
+    MatGridListModule,
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
   MatSnackBar, Overlay],
