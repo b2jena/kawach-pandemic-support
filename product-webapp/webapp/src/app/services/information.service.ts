@@ -12,7 +12,7 @@ export class InformationService {
 
   public getInformation(): Observable<LocationStats[]>
   {
-    return this.httpService.get<LocationStats[]>('http://localhost:1234/api/v1/information');
+    return this.httpService.get<LocationStats[]>('http://localhost:8769/api/v1/information');
   }
 }
 export class LocationStats {

@@ -47,15 +47,6 @@ services:
     ports:
       - 9901:9901
 
-  user-management-service:
-    build: user-management-service/
-    container_name: user-management-service
-    restart: always
-    network_mode: "host"
-    hostname: localhost
-    ports:
-      - 8081:8081
-
   information-service:
     build: information-service/
     container_name: information-service
@@ -91,3 +82,33 @@ services:
     hostname: localhost
     ports:
       - 8082:8082
+
+  mongodb-user:
+    image: mongo:latest
+    container_name: "mongodb-user"
+    hostname: localhost
+    ports:
+      - 27017:27017
+    volumes:
+      - /db/mongo:/data/db
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - 15672:15672
+      - 5672:5672
+
+  mysql-user:
+    container_name: "mysql-user"
+    image: mysql
+    hostname: localhost
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=userDB
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    volumes:
+      - ./my-db2:/var/lib/mysql

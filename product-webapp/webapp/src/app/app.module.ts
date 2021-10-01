@@ -46,7 +46,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MatTableModule } from '@angular/material/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
-
+import { GridComponent } from './components/landing-page/grid/grid.component';
+import { DoctorCardComponent } from './components/landing-page/grid/doctor-card/doctor-card.component';
+import { PatientCardComponent } from './components/landing-page/grid/patient-card/patient-card.component';
+import { VolunteerCardComponent } from './components/landing-page/grid/volunteer-card/volunteer-card.component';
+import { CloseSosComponent } from './components/close-sos/close-sos.component';
 
 
 @NgModule({
@@ -74,6 +78,11 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     HeaderComponent,
     FooterComponent,
     UploadFileComponent,
+    GridComponent,
+    DoctorCardComponent,
+    PatientCardComponent,
+    VolunteerCardComponent,
+    CloseSosComponent,
   ],
   imports: [
     FormsModule,
@@ -102,7 +111,10 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     FlexLayoutModule,
     MatCardModule,
     MatTableModule,
-    MatPaginatorModule
+    MatFormFieldModule,
+    MatCardModule,
+    MatPaginatorModule,
+    MatGridListModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
   MatSnackBar, Overlay],

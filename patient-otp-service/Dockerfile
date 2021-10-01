@@ -1,7 +1,7 @@
-FROM openjdk:11
+FROM openjdk:11-jre-slim
 
 EXPOSE 9999
 
-ADD ./target/patient-otp-service-0.0.1-SNAPSHOT.jar /patient-otp-service-0.0.1-SNAPSHOT.jar
+ADD ./target/patient-otp-service-1.0.0.jar patient-otp-service-1.0.0.jar
 
-ENTRYPOINT ["java","-jar", "/patient-otp-service-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar", "/patient-otp-service-1.0.0.jar"]
