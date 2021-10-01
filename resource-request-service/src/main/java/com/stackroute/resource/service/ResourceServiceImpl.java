@@ -54,4 +54,20 @@ public class ResourceServiceImpl implements ResourceService {
         List<Resources> request = mongoTemplate.find(query, Resources.class);
         return request;
     }
+
+    @Override
+    public List<Resources> getAllEquipment(String City) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("city").in(City));
+        List<Resources> request = mongoTemplate.find(query, Resources.class);
+        return request;
+    }
+
+    @Override
+    public List<Resources> getAllBeds(String City) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("city").in(City));
+        List<Resources> request = mongoTemplate.find(query, Resources.class);
+        return request;
+    }
 }
