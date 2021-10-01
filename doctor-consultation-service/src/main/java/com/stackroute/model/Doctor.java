@@ -6,7 +6,6 @@ import javax.persistence.Id;
 @Entity
 public class Doctor {
     @Id
-    private int id;
     private String email;
     private String firstname;
     private String lastname;
@@ -16,48 +15,39 @@ public class Doctor {
         super();
     }
 
-    public Doctor(int id, String email, String firstname, String lastname, int status) {
-        this.id = id;
+    public Doctor(String email, String firstname, String lastname, int status) {
         this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;
         this.status = status;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public String getEmail() {
         return email;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public String getFirstname() {
+        return firstname;
+    }
+
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
 
+    public String getLastname() {
+        return lastname;
+    }
+
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public int getStatus() {
+        return status;
     }
 
     public void setStatus(int status) {

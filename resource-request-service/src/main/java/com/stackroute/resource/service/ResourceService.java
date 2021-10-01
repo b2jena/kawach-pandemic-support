@@ -12,4 +12,8 @@ public interface ResourceService {
     Resources updateResource(Resources resources);
 
     List<Resources> getAllMedicine(String city);
+
+    List<Resources> getAllEquipment(String City);
+
+    List<Resources> getAllBeds(String City);
 }

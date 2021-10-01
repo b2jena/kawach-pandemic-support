@@ -20,7 +20,7 @@ public class DoctorController {
         this.doctorService = doctorService;
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> setStatus(@RequestBody int id) throws DoctorNotFoundException {
         String result = doctorService.changeStatus(id);
         return new ResponseEntity<String>(result, HttpStatus.OK );

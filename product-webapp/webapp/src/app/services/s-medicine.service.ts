@@ -25,14 +25,14 @@ export class SMedicineService{
 }
 export class Medicine{
   public city: string;
-  public medName: string;
+  public medicineName: string;
   public pharmacy: string;
   public address: string;
   public contactPerson: string;
   public mobileNumber: string;
-  constructor( city: string, medName: string, pharmacy: string, address: string, contactPerson: string, mobileNumber: string) {
+  constructor( city: string, medicineName: string, pharmacy: string, address: string, contactPerson: string, mobileNumber: string) {
     this.city = city;
-    this.medName = medName;
+    this.medicineName = medicineName;
     this.pharmacy = pharmacy;
     this.address = address;
     this.contactPerson = contactPerson;

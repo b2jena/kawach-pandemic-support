@@ -47,4 +47,15 @@ public class MedicalSosRequestController {
     public ResponseEntity<List<Resources>> getAllMedicine(@PathVariable("city") String city){
         return new ResponseEntity<List<Resources>>((List<Resources>)resourceService.getAllMedicine(city),HttpStatus.OK);
     }
+
+    @GetMapping("sos/getEquipment/{city}")
+    public ResponseEntity<List<Resources>> getAllEquipment(@PathVariable("city") String city){
+        return new ResponseEntity<List<Resources>>((List<Resources>)resourceService.getAllEquipment(city),HttpStatus.OK);
+    }
+
+    @GetMapping("sos/getBeds/{city}")
+    public ResponseEntity<List<Resources>> getAllBeds(@PathVariable("city") String city){
+        return new ResponseEntity<List<Resources>>((List<Resources>)resourceService.getAllBeds(city),HttpStatus.OK);
+    }
+
 }

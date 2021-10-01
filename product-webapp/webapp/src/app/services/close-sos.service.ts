@@ -5,27 +5,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class SosService {
+export class CloseSosService {
 
-  SosRequest: SOSRequest[] = [];
+  closeSos: CloseSos[] = [];
 
   constructor(private httpService: HttpClient) { }
 
-  CreateSosRequest(SosRequest: SOSRequest): Observable <SOSRequest> {
-    console.log(SosRequest);
-    console.log(requirement);
-    return this.httpService.post<SOSRequest>('http://localhost:9901/sos/createSos', SosRequest);
+  getSos(): Observable<CloseSos>{
+    return this.httpService.get<CloseSos>('http://localhost:9900/sos/getSos');
   }
-
-  PostFile(file: File): Observable <File> {
-    // console.log(file);
-    console.log(file);
-    return this.httpService.post<File>('http://localhost:9901/sos/createSos/upload', file);
-  }
-
 }
 
-export class requirement{
+
+export class Requirment{
   public requirementName: string;
   public requirementQuantity: string;
   public unitOfMeasure: string;
@@ -37,7 +29,7 @@ export class requirement{
   }
 }
 
-export class SOSRequest{
+export class CloseSos{
 
   public patientName: string;
   public gender: string;
@@ -45,19 +37,19 @@ export class SOSRequest{
   public email: string;
   public hospitalised: string;
   public city: string;
-  public requirement: Array<requirement>;
+  public requir: Array<Requirment>;
   public requestStatus: string;
 
 
 
-  constructor( patientName: string, email: string, requirement: Array <requirement>, phoneNo: string, city: string, gender: string, hospitalised: string, requestStatus: string) {
+  constructor( patientName: string, email: string, requir: Array <Requirment>, phoneNo: string, city: string, gender: string, hospitalised: string, requestStatus: string) {
     this.patientName = patientName;
     this.gender = gender;
     this.phoneNo = phoneNo;
     this.email = email;
     this.hospitalised = hospitalised;
     this.city = city;
-    this.requirement = requirement;
+    this.requir = requir;
     this.requestStatus = requestStatus;
   }
 }

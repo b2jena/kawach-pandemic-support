@@ -1,31 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { Requirment, SOSRequest, SosService } from 'src/app/services/sos-service';
+import { requirement, SOSRequest, SosService } from 'src/app/services/sos-service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 // import { AnyRecord } from 'dns';
 import { FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-sos-request',
   templateUrl: './sos-request.component.html',
   styleUrls: ['./sos-request.component.css']
 })
+
+
 export class SosRequestComponent implements OnInit {
-  // selectedFile: File
 
-  // onFileChanged(event: { target: { files: File[]; }; }) {
-  //   this.selectedFile = event.target.files[0]
-  // }
-
-  user1: Requirment = new Requirment('', '', '');
+  user1: requirement = new requirement('', '', '');
   user: SOSRequest = new SOSRequest('', '', [this.user1], '', '', '', '', '');
-  file: File | any;
-
-
-
+  file: File | any ;
 
   constructor(private sosService: SosService, private snackBar: MatSnackBar, private route: Router) { }
-
 
   ngOnInit(): void {}
 
@@ -38,7 +32,6 @@ export class SosRequestComponent implements OnInit {
       this.snackBar.open('Please enter the required details.');
     }
     else{
-
       console.log(this.user1);
       console.log(this.user1.requirementName);
       console.log(this.user1.requirementQuantity);
@@ -47,7 +40,3 @@ export class SosRequestComponent implements OnInit {
     }
   }
 }
-// function Upload() {
-//   throw new Error('Function not implemented.');
-// }
-

@@ -18,7 +18,7 @@ export class AddMedicineComponent implements OnInit {
   ngOnInit() {
   }
     CreateMedicine(): void {
-      if ( this.user.medName === '' || this.user.address === '' || this.user.city === '' || this.user.contactPerson === '' || this.user.mobileNumber === '' || this.user.pharmacy === ''){
+      if ( this.user.medicineName === '' || this.user.address === '' || this.user.city === '' || this.user.contactPerson === '' || this.user.mobileNumber === '' || this.user.pharmacy === ''){
         this.snackBar.open('Please fill the empty field(s).');
       } else {
         this.medicineService.CreateMedicine(this.user).subscribe( data => { this.snackBar.open('Medicine added successfully.'); });
