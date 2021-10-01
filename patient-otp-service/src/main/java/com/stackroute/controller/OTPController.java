@@ -67,6 +67,12 @@ public class OTPController {
     public ResponseEntity<String> validateOtp(@PathVariable int otpNum) {
         final String SUCCESS = "SUCCESS";
         final String FAIL = "FAIL";
+//        int num = 10;
+//        if(num == otpNum)
+//        {return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);}
+//        else
+//            return new ResponseEntity<String>(FAIL, HttpStatus.OK);
+
         //Validate the Otp
         if (otpNum >= 0) {
 
@@ -89,6 +95,7 @@ public class OTPController {
             System.out.println("incorrect");
             return new ResponseEntity<String>(FAIL, HttpStatus.OK);
         }
+
     }
 
     @GetMapping("/patients")
