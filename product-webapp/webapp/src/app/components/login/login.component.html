@@ -1,25 +1,38 @@
-<div class="mat-display-1" style="text-align: center; 
-margin-top: 20px;" color="accent">Login</div>
+<div style="width: 50%; margin-left: 580px; margin-top: 20px;">
+  <mat-card>
+    <mat-card-header style="text-align: center;">
+      <mat-card-title >
+Login
+</mat-card-title>
+</mat-card-header>
 
+<br>
 <div>
   
+<mat-card-content>
   <div class="form-group" style="text-align: center;">  
           
-        <mat-form-field appearance="fill" color="accent">
+        <mat-form-field color="accent">
           <mat-label floatLabel="auto"> Email ID: </mat-label>
         <input matInput [(ngModel)]="userobj.id" name="email" class="form-control" type="text" >   
       </mat-form-field>
   </div>  
   <div class="row" class="" style="text-align: center;">  
           
-        <mat-form-field appearance="fill" color="accent">
+        <mat-form-field  color="accent">
           <mat-label for="password"> Password: </mat-label>
         <input matInput [(ngModel)]="userobj.password" name="password" class="form-control" type="password" > 
       </mat-form-field>  
   </div>  
+<mat-card-actions>
   <div class="row" style="margin-top: 20px; text-align: center;">  
     <div class="col-md-offset-1">  
-        <button mat-raised-button color="accent" class="btn btn-md btn-primary btn-style" (click)=login() >Login</button>  
+        <button mat-raised-button color="primary" class="btn btn-md btn-primary btn-style" (click)=login() >Login</button>  
     </div>  
   </div>  
+</mat-card-actions>
+
+</mat-card-content>
+</div>
+</mat-card>
 </div>

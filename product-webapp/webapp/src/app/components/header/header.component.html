@@ -22,8 +22,8 @@
       </div>
     </div>
   </nav> -->
-
-  <nav class="navbar navbar-light" style="background-color: pink;">
+  
+  <nav class="navbar navbar-light" style="background-color: cornflowerblue;" (scroll)="onscroll()" [ngClass]="navbarfixed?'fixed':'nofixed'">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Kawach</a>
       <div *ngIf="router.url === '/'">
@@ -44,3 +44,4 @@
      
     </div>
   </nav>
+  
