@@ -5,7 +5,7 @@
         Add Resources </button>
     </mat-grid-tile>
     <mat-grid-tile>
-        <button mat-raised-button color="primary" routerLink="/">Medical SOS</button>
+        <button mat-raised-button color="primary" routerLink="/closesos">Medical SOS</button>
     </mat-grid-tile>
     <mat-grid-tile >
         <button mat-raised-button color="primary" routerLink=""> Verification</button>
@@ -28,7 +28,7 @@
   </mat-list>
 </mat-grid-tile>
 <mat-grid-tile colspan="2" rowspan="6">
-  <div class="container" style="">
+  <div class="container">
     <div class="col-md-6">
       <mat-card>
         <h2 class="text-center">Add Medicine</h2>
@@ -36,8 +36,8 @@
         <form>
           <mat-card>
           <div class="form-group">
-            <label for="name">Medicine Name:</label>
-            <input type="name" [(ngModel)]="user.medName" placeholder="Name" name="name" class="form-control" id="name">
+            <label for="medicineName">Medicine Name:</label>
+            <input type="name" [(ngModel)]="user.medicineName" placeholder="Medicine Name" name="medicineName" class="form-control" id="medicineName">
           </div>
         </mat-card>
         <mat-card>
@@ -79,11 +79,12 @@
           </div>
         </mat-card>
         <mat-card>
-          <button mat-stroked-button color="primary" class="btn btn-success" (click)="CreateMedicine()">Submit</button>
+          <button mat-raised-button color="primary" class="btn btn-success" (click)="CreateMedicine()">Submit</button>
         </mat-card>
         </form>
         </div>
     </div>
+    
 </mat-grid-tile>
 </mat-grid-list>
 
@@ -96,8 +97,8 @@
     <form>
       <mat-card>
       <div class="form-group">
-        <label for="name">Medicine Name:</label>
-        <input type="name" [(ngModel)]="user.medName" placeholder="Name" name="name" class="form-control" id="name">
+        <label for="medicineName">Medicine Name:</label>
+        <input type="name" [(ngModel)]="user.medicineName" placeholder="Medicine Name" name="medicineName" class="form-control" id="medicineName">
       </div>
     </mat-card>
     <mat-card>

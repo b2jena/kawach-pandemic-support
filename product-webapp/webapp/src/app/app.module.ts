@@ -49,6 +49,12 @@ import { PatientDashboardComponent } from './components/patient-dashboard/patien
 import { WarroomAddComponent } from './components/warroom-dashboard/warroom-add/warroom-add.component';
 import { MatListModule } from '@angular/material/list';
 
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { GridComponent } from './components/landing-page/grid/grid.component';
+import { DoctorCardComponent } from './components/landing-page/grid/doctor-card/doctor-card.component';
+import { PatientCardComponent } from './components/landing-page/grid/patient-card/patient-card.component';
+import { VolunteerCardComponent } from './components/landing-page/grid/volunteer-card/volunteer-card.component';
+import { CloseSosComponent } from './components/close-sos/close-sos.component';
 
 
 @NgModule({
@@ -76,7 +82,13 @@ import { MatListModule } from '@angular/material/list';
     HeaderComponent,
     FooterComponent,
     PatientDashboardComponent,
-    WarroomAddComponent
+    WarroomAddComponent,
+    UploadFileComponent,
+    GridComponent,
+    DoctorCardComponent,
+    PatientCardComponent,
+    VolunteerCardComponent,
+    CloseSosComponent,
   ],
   imports: [
     FormsModule,
@@ -106,7 +118,11 @@ import { MatListModule } from '@angular/material/list';
     MatCardModule,
     MatTableModule,
     MatPaginatorModule,
-    MatListModule
+    MatListModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatPaginatorModule,
+    MatGridListModule,
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
   MatSnackBar, Overlay],

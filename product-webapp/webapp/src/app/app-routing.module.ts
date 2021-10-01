@@ -20,6 +20,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { PatientDashboardComponent } from './components/patient-dashboard/patient-dashboard.component';
 import { WarroomAddComponent } from './components/warroom-dashboard/warroom-add/warroom-add.component';
 // import { CloseSosRequestComponent } from './components/close-sos-request/close-sos-request.component';
+import { CloseSosComponent } from './components/close-sos/close-sos.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,9 @@ const routes: Routes = [
   }, {
     path: 'war-room-add',
     component: WarroomAddComponent
+  }, {
+    path: 'closesos',
+    component: CloseSosComponent
   }
 ];
 
