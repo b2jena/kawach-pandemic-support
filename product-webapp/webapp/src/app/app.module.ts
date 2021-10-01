@@ -45,6 +45,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { FooterComponent } from './components/footer/footer.component';
 import { MatTableModule } from '@angular/material/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
 
 
 
@@ -71,7 +72,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AddBedComponent,
     ListBedComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    UploadFileComponent,
   ],
   imports: [
     FormsModule,
