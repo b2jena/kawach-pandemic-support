@@ -49,6 +49,7 @@ import { GridComponent } from './components/landing-page/grid/grid.component';
 import { DoctorCardComponent } from './components/landing-page/grid/doctor-card/doctor-card.component';
 import { PatientCardComponent } from './components/landing-page/grid/patient-card/patient-card.component';
 import { VolunteerCardComponent } from './components/landing-page/grid/volunteer-card/volunteer-card.component';
+import { CarouselComponent } from './components/landing-page/carousel/carousel.component';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { VolunteerCardComponent } from './components/landing-page/grid/volunteer
     DoctorCardComponent,
     PatientCardComponent,
     VolunteerCardComponent,
+    CarouselComponent,
   ],
   imports: [
     FormsModule,
