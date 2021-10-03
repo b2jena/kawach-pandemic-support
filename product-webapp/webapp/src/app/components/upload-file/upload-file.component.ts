@@ -1,5 +1,7 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UploadFileService } from 'src/app/services/upload-service.service';
 
@@ -16,7 +18,22 @@ export class UploadFileComponent implements OnInit {
   progress: { percentage: number } = { percentage: 0 };
   selectedFile = null;
   changeImage = false;
+
   constructor(private uploadService: UploadFileService, private snackBar: MatSnackBar){}
+
+  showSnackbar(content: string, action: string) {
+    const snack = this.snackBar.open(content, action, {
+      duration: 2000,
+      verticalPosition: 'top', // Allowed values are  'top' | 'bottom'
+      horizontalPosition: 'center', // Allowed values are 'start' | 'center' | 'end' | 'left' | 'right'
+    });
+    snack.afterDismissed().subscribe(() => {
+      console.log('This will be shown after snackbar disappeared');
+    });
+    snack.onAction().subscribe(() => {
+      console.log('This will be called when snackbar button clicked');
+    });
+  }
 
   change() {
     this.changeImage = true;
@@ -25,14 +42,14 @@ export class UploadFileComponent implements OnInit {
     this.selectedFile = event.target.files[0];
   }
   upload() {
+
     this.progress.percentage = 0;
     this.currentFileUpload = this.selectedFiles.item(0);
     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
       if (event.type === HttpEventType.UploadProgress) {
         console.log(event);
-        // this.progress.percentage = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
-         this.snackBar.open('File Successfully Uploaded');
+        this.showSnackbar('File Successfully Uploaded', 'x');
       }
       this.selectedFiles = undefined;
      }

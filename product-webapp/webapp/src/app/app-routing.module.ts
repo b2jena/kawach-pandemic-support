@@ -18,11 +18,12 @@ import { VolunteerRegistrationComponent } from './components/volunteer-registrat
 import { WarroomDashboardComponent } from './components/warroom-dashboard/warroom-dashboard.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { CloseSosComponent } from './components/close-sos/close-sos.component';
+import { HeaderTabsComponent } from './components/header-tabs/header-tabs.component';
 
 const routes: Routes = [
   {
     path: 'sos',
-    component: SosRequestComponent
+    component: HeaderTabsComponent
   }, {
     path: 'addmedicine',
     component: AddMedicineComponent

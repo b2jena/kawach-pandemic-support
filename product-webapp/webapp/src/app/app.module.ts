@@ -51,6 +51,11 @@ import { DoctorCardComponent } from './components/landing-page/grid/doctor-card/
 import { PatientCardComponent } from './components/landing-page/grid/patient-card/patient-card.component';
 import { VolunteerCardComponent } from './components/landing-page/grid/volunteer-card/volunteer-card.component';
 import { CloseSosComponent } from './components/close-sos/close-sos.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { MatDividerModule } from '@angular/material/divider';
+import { HeaderTabsComponent } from './components/header-tabs/header-tabs.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -83,6 +88,7 @@ import { CloseSosComponent } from './components/close-sos/close-sos.component';
     PatientCardComponent,
     VolunteerCardComponent,
     CloseSosComponent,
+    HeaderTabsComponent,
   ],
   imports: [
     FormsModule,
@@ -90,9 +96,13 @@ import { CloseSosComponent } from './components/close-sos/close-sos.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatTabsModule,
     BrowserAnimationsModule,
+    MaterialFileInputModule,
+    MatDividerModule,
     MatSnackBarModule,
     MatFormFieldModule,
+    MatToolbarModule,
     ReactiveFormsModule,
     MatSliderModule,
     MatButtonModule,

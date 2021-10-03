@@ -1,0 +1,14 @@
+.example-full-width {
+  width: 100%;
+  padding-top: 0px;
+}
+button{
+  margin-top: 8px;
+  margin-left: 20px;
+  align-items: right;
+  size: 20px;
+}
+.mat-form-field{
+  padding-top: 0.0px;
+  line-height: 1;
+  }
