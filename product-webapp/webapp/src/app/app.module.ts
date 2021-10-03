@@ -45,6 +45,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { FooterComponent } from './components/footer/footer.component';
 import { MatTableModule } from '@angular/material/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { PatientDashboardComponent } from './components/patient-dashboard/patient-dashboard.component';
+import { WarroomAddComponent } from './components/warroom-dashboard/warroom-add/warroom-add.component';
+import { MatListModule } from '@angular/material/list';
+
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { GridComponent } from './components/landing-page/grid/grid.component';
 import { DoctorCardComponent } from './components/landing-page/grid/doctor-card/doctor-card.component';
@@ -82,6 +86,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     ListBedComponent,
     HeaderComponent,
     FooterComponent,
+    PatientDashboardComponent,
+    WarroomAddComponent,
     UploadFileComponent,
     GridComponent,
     DoctorCardComponent,
@@ -121,6 +127,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     FlexLayoutModule,
     MatCardModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatListModule,
     MatFormFieldModule,
     MatCardModule,
     MatPaginatorModule,
