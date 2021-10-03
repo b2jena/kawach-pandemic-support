@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,9 +8,9 @@
 </head>
 <body>
   <div class='container'>
-    <form class="form-container" #loginForm="ngForm">
+    <mat-card>
+      <form class="form-container" #loginForm="ngForm">
 
-      <mat-card>
         <mat-card-header>
           <mat-card-title class="center">Raise a Medical SOS Request</mat-card-title>
         </mat-card-header>
@@ -119,15 +119,19 @@
               </mat-form-field>
             </div>
           </div>
+        </mat-card-content>
+      </form>
 
+      <form [formGroup] = "patientForm">
 
+        <mat-card-content>
           <div class="d-flex justify-content-between context">
             <div>
               <mat-card-title>Requirment List</mat-card-title>
             </div>
             <div class = "d-flex flex-row-reverse bd-highlight">
               <div class="example-button-container">
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-primary" (click) = "AddRequirment()">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-plus-fill" viewBox="0 0 16 16">
                     <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/>
                   </svg>
@@ -136,7 +140,7 @@
               </div>
 
               <div class="example-button-container">
-                <button type="button" class="btn btn-danger">
+                <button type="button" class="btn btn-danger" (click) = "removeRequest()">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-minus-fill" viewBox="0 0 16 16">
                     <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM6 7.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1 0-1z"/>
                   </svg>
@@ -146,41 +150,217 @@
             </div>
           </div>
 
+           <div formArrayName="requirement">
 
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Requirement Name</mat-label>
-            <input type="text" formControlName= "requirmentForm.requirementNameFormControl" matInput  placeholder="Requirement Name">
-            <mat-error *ngIf="requirementNameFormControl.hasError('required')">
-              Requirment is <strong>required</strong>
-              [(ngModel)]="user1.requirementName"
-            </mat-error>
-          </mat-form-field>
+            <div *ngFor="let contact of contactFormGroup.controls; let i = index;">
 
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Requirement Quantity</mat-label>
-            <input type="text" formControlName= "requirementQuantityFormControl" matInput placeholder="Requirement Quantity">
-            <mat-error *ngIf="requirementQuantityFormControl.hasError('required')">
-              Requirment is <strong>required</strong>
-              [(ngModel)]="user1.requirementQuantity"
-            </mat-error>
-          </mat-form-field>
+             <div [formGroupName] = "i">
 
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Unit of Mesures</mat-label>
-            <input type="text" formControlName= "unitOfMeasureFormControl" matInput  placeholder="Requirement Quantity">
-            <mat-error *ngIf="unitOfMeasureFormControl.hasError('required')">
-              Requirment is <strong>required</strong>
-              [(ngModel)]="user1.unitOfMeasure"
-            </mat-error>
-          </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Requirement Name</mat-label>
+                  <input type="text" formControlName= requirementName matInput  placeholder="Requirement Name">
+                   <mat-error *ngIf="getContactsFormGroup(i).controls['requirementName'].hasError('required')">
+                    Requirment is <strong>required</strong>
+                    [(ngModel)]="user1.requirementName"
+                  </mat-error>
+                </mat-form-field>
 
-            <button mat-raised-button color="primary" [disabled]="loginForm.form.invalid" (click)="Create()" routerLink = "/sos">
-              Submit
-            </button>
-          </mat-card-content>
-      </mat-card>
-    </form>
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Requirement Quantity</mat-label>
+                    <input type="text" formControlName= requirementQuantity matInput placeholder="Requirement Quantity">
+                     <mat-error *ngIf="getContactsFormGroup(i).controls['requirementQuantity'].hasError('required')">
+                      Requirment is <strong>required</strong>
+                      [(ngModel)]="user1.requirementQuantity"
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Unit of Mesures</mat-label>
+                  <input type="text" formControlName = unitOfMeasure matInput  placeholder="Requirement Quantity">
+                    <mat-error *ngIf="unitOfMeasureFormControl.hasError('required')">
+                    Requirment is <strong>required</strong>
+                    [(ngModel)]="user1.unitOfMeasure"
+                  </mat-error>
+                </mat-form-field>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <button mat-raised-button color="primary" [disabled]="loginForm.form.invalid" (click)="Create()" routerLink = "/sos">
+            Submit
+          </button>
+        </mat-card-content>
+      </form>
+    </mat-card>
   </div>
 </body>
 </html>
+-->
+
+
+<div class="container">
+    <mat-card>
+        <form class="form-container" #loginForm="ngForm">
+            <mat-card-header>
+                <mat-card-title class="center">Raise a Medical SOS Request</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Patient Name</mat-label>
+                            <input type="text" matInput [formControl]="nameFormControl" [(ngModel)]="user.patientName" placeholder="Name" />
+                            <mat-error *ngIf="nameFormControl.errors?.pattern && !nameFormControl.hasError('required')">
+                                Please enter a valid Name of (3 - 20 letters), No numbers or Special character allowed
+                            </mat-error>
+                            <mat-error *ngIf="nameFormControl.hasError('required')"> Name is <strong>required</strong> </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Phone Number</mat-label>
+                            <span matPrefix>+91 &nbsp;</span>
+                            <input type="tel" matInput placeholder="555-555-1234" [formControl]="telFormControl" [(ngModel)]="user.phoneNo" />
+                            <mat-error *ngIf="telFormControl.errors?.pattern && !telFormControl.hasError('required')">
+                                Please enter a valid Valid Phone Number
+                            </mat-error>
+                            <mat-error *ngIf="telFormControl.hasError('required')"> Phone Number is <strong>required</strong> </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input type="email" matInput [formControl]="emailFormControl" [(ngModel)]="user.email" placeholder="Ex. pat@example.com" />
+                            <mat-error *ngIf="emailFormControl.errors?.pattern && !emailFormControl.hasError('required')">
+                                Please enter a valid email address
+                            </mat-error>
+                            <mat-error *ngIf="emailFormControl.hasError('required')"> Email is <strong>required</strong> </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>City</mat-label>
+                            <input type="text" matInput [formControl]="cityFormControl" [(ngModel)]="user.city" placeholder="City" />
+                            <mat-error *ngIf="cityFormControl.errors?.pattern && !cityFormControl.hasError('required')">
+                                Please enter a valid City Name of (4 - 20 letters), No numbers or Special character allowed
+                            </mat-error>
+                            <mat-error *ngIf="cityFormControl.hasError('required')"> City name is <strong>required</strong> </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Select Gender</mat-label>
+                            <mat-select [(ngModel)]="user.gender" [formControl]="genderFormControl">
+                                <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                                    {{gender.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="genderFormControl.hasError('required')"> Gender is <strong>required</strong> </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label> Hospitalised Status: </mat-label>
+                            <mat-select [(ngModel)]="user.hospitalised" [formControl]="hospitalFormControl">
+                                <mat-option *ngFor="let hospitalised of hospitaliseds" [value]="hospitalised.value">
+                                    {{hospitalised.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="hospitalFormControl.hasError('required')"> Hospitalised status is <strong>required</strong> </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <app-upload-file></app-upload-file>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Request Status</mat-label>
+                            <mat-select [(ngModel)]="user.requestStatus" [formControl]="requestStatusFormControl">
+                                <mat-option *ngFor="let requestStatus of requestStatuses" [value]="requestStatus.value">
+                                    {{requestStatus.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="requestStatusFormControl.hasError('required')"> Request Status is <strong>required</strong> </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-card-content>
+        </form>
+
+        <form [formGroup]="patientForm">
+            <mat-card-content>
+                <div class="d-flex justify-content-between context">
+                    <div>
+                        <mat-card-title>Requirment List</mat-card-title>
+                    </div>
+                    <div class="d-flex flex-row-reverse bd-highlight">
+                        <div class="example-button-container">
+                            <button type="button" class="btn btn-primary" (click)="AddRequirment()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-plus-fill" viewBox="0 0 16 16">
+                                    <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z" />
+                                </svg>
+                                Add New Item
+                            </button>
+                        </div>
+
+                        <div class="example-button-container">
+                            <button type="button" class="btn btn-danger" (click)="removeRequest()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-minus-fill" viewBox="0 0 16 16">
+                                    <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM6 7.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1 0-1z" />
+                                </svg>
+                                Deleat the Latest Item
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div formArrayName="requirement">
+                    <div *ngFor="let contact of contactFormGroup.controls; let i = index;">
+                        <div [formGroupName]="i">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Requirement Name</mat-label>
+                                <input type="text" formControlName="requirementName" matInput placeholder="Requirement Name" />
+                                <mat-error *ngIf="getContactsFormGroup(i).controls['requirementName'].hasError('required')">
+                                    Requirment is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Requirement Quantity</mat-label>
+                                <input type="text" formControlName="requirementQuantity" matInput placeholder="Requirement Quantity" />
+                                <mat-error *ngIf="getContactsFormGroup(i).controls['requirementQuantity'].hasError('required')">
+                                    Requirment is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Unit of Mesures</mat-label>
+                                <input type="text" formControlName="unitOfMeasure" matInput placeholder="Requirement Quantity" />
+                                <mat-error *ngIf="getContactsFormGroup(i).controls['unitOfMeasure'].hasError('required')">
+                                  Requirment is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <button mat-raised-button color="primary" [disabled]="loginForm.form.invalid" (click)="Create()" routerLink="/sos">
+                    Submit
+                </button>
+            </mat-card-content>
+        </form>
+    </mat-card>
+</div>
 

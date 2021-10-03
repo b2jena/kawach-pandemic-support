@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FormArray, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -45,12 +46,14 @@ export class SOSRequest{
   public email: string;
   public hospitalised: string;
   public city: string;
-  public requirement: Array<Requirement>;
+  // public requirement: Array<Requirement>;
+  public requirement: any;
   public requestStatus: string;
 
 
 
-  constructor( patientName: string, email: string, requirement: Array <Requirement>, phoneNo: string, city: string, gender: string, hospitalised: string, requestStatus: string) {
+  // constructor( patientName: string, email: string, requirement: Array <Requirement>, phoneNo: string, city: string, gender: string, hospitalised: string, requestStatus: string) {
+  constructor( patientName: string, email: string, requirement: any, phoneNo: string, city: string, gender: string, hospitalised: string, requestStatus: string) {
     this.patientName = patientName;
     this.gender = gender;
     this.phoneNo = phoneNo;
