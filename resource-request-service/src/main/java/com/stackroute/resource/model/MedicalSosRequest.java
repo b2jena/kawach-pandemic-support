@@ -29,5 +29,6 @@ public class MedicalSosRequest {
     public String city;
     public ArrayList<Requirement> requirement;
     private String requestStatus;
+    private String formStatus;
 //    private String uploadPrescription;
 }

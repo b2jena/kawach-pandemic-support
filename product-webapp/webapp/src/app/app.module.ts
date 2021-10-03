@@ -48,7 +48,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { PatientDashboardComponent } from './components/patient-dashboard/patient-dashboard.component';
 import { WarroomAddComponent } from './components/warroom-dashboard/warroom-add/warroom-add.component';
 import { MatListModule } from '@angular/material/list';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { GridComponent } from './components/landing-page/grid/grid.component';
 import { DoctorCardComponent } from './components/landing-page/grid/doctor-card/doctor-card.component';
@@ -101,6 +101,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatAutocompleteModule,
     FormsModule,
     MatTabsModule,
     BrowserAnimationsModule,

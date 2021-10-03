@@ -46,14 +46,12 @@ export class SOSRequest{
   public email: string;
   public hospitalised: string;
   public city: string;
-  // public requirement: Array<Requirement>;
   public requirement: any;
   public requestStatus: string;
+  public formStatus: string;
 
 
-
-  // constructor( patientName: string, email: string, requirement: Array <Requirement>, phoneNo: string, city: string, gender: string, hospitalised: string, requestStatus: string) {
-  constructor( patientName: string, email: string, requirement: any, phoneNo: string, city: string, gender: string, hospitalised: string, requestStatus: string) {
+  constructor( patientName: string, formStatus: string, email: string, requirement: any, phoneNo: string, city: string, gender: string, hospitalised: string, requestStatus: string) {
     this.patientName = patientName;
     this.gender = gender;
     this.phoneNo = phoneNo;
@@ -62,5 +60,6 @@ export class SOSRequest{
     this.city = city;
     this.requirement = requirement;
     this.requestStatus = requestStatus;
+    this.formStatus = formStatus;
   }
 }
