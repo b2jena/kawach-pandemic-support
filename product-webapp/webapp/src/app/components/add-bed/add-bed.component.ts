@@ -40,8 +40,14 @@ export class AddBedComponent implements OnInit {
       if ( this.user.bedType === '' || this.user.address === '' || this.user.city === '' || this.user.contactPerson === '' || this.user.mobileNumber === ''){
         this.showSnackbars('Please fill the empty field(s).', 'x');
       } else {
+        this.user.verificationStatus = this.isActive;
+        console.log("data:",this.user);
         this.equipmentService.CreateBed(this.user).subscribe( data => { this.showSnackbars('Bed added successfully.', 'x'); });
       }
       console.log(this.user.verificationStatus);
+    }
+
+    check() {
+      this.isActive = !this.isActive;
     }
 }
