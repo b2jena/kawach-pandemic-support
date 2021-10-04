@@ -38,9 +38,7 @@
         </mat-card>
         <mat-card>
           <div class="form-check">
-            <input [(ngModel)]="isActive" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <!-- <input [(ngModel)]="isActive" type="checkbox"> -->
-            <!-- <mat-checkbox [(ngModel)]="isActive"> -->
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (change)="check()">
             <label class="form-check-label" for="flexCheckDefault">
               Confirmed and verified
             </label>

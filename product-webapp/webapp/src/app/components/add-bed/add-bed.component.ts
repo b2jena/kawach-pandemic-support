@@ -41,7 +41,7 @@ export class AddBedComponent implements OnInit {
         this.showSnackbars('Please fill the empty field(s).', 'x');
       } else {
         this.user.verificationStatus = this.isActive;
-        console.log("data:",this.user);
+        console.log('data:', this.user);
         this.equipmentService.CreateBed(this.user).subscribe( data => { this.showSnackbars('Bed added successfully.', 'x'); });
       }
       console.log(this.user.verificationStatus);
