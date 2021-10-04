@@ -39,6 +39,7 @@ export class AddEquipmentComponent implements OnInit {
       if ( this.user.equipmentName === '' || this.user.hospital === '' || this.user.address === '' || this.user.city === '' || this.user.contactPerson === '' || this.user.mobileNumber === ''){
         this.showSnackbars('Please fill the empty field(s).', 'x');
       } else {
+        this.user.verificationStatus = this.isActive;
         this.equipmentService.CreateEquipment(this.user).subscribe( data => { this.showSnackbars('Equipment added successfully.', 'x'); });
       }
     }

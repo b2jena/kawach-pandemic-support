@@ -30,12 +30,14 @@ export class Medicine{
   public address: string;
   public contactPerson: string;
   public mobileNumber: string;
-  constructor( city: string, medicineName: string, pharmacy: string, address: string, contactPerson: string, mobileNumber: string) {
+  public verificationStatus: boolean;
+  constructor( city: string, medicineName: string, pharmacy: string, address: string, contactPerson: string, mobileNumber: string, verificationStatus: boolean) {
     this.city = city;
     this.medicineName = medicineName;
     this.pharmacy = pharmacy;
     this.address = address;
     this.contactPerson = contactPerson;
     this.mobileNumber = mobileNumber;
+    this.verificationStatus = verificationStatus;
   }
 }

@@ -15,7 +15,8 @@ export class AddMedicineComponent implements OnInit {
     Validators.required,
     Validators.pattern('^[0-9]{10}'),
   ]);
-  user: Medicine = new Medicine( '', '', '', '', '', '' );
+  isActive = false;
+  user: Medicine = new Medicine( '', '', '', '', '', '', this.isActive);
 
   constructor(private medicineService: SMedicineService, private snackBar: MatSnackBar) { }
 
@@ -39,7 +40,11 @@ export class AddMedicineComponent implements OnInit {
       if ( this.user.medicineName === '' || this.user.address === '' || this.user.city === '' || this.user.contactPerson === '' || this.user.mobileNumber === '' || this.user.pharmacy === ''){
         this.showSnackbars('Please fill the empty field(s).', 'x');
       } else {
+        this.user.verificationStatus = this.isActive;
         this.medicineService.CreateMedicine(this.user).subscribe( data => { this.showSnackbars('Medicine added successfully.', 'x'); });
       }
+    }
+    check() {
+      this.isActive = !this.isActive;
     }
 }

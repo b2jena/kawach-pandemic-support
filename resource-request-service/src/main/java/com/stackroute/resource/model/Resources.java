@@ -24,4 +24,5 @@ public class Resources {
     private String address;
     private String contactPerson;
     private String mobileNumber;
+    private Boolean verificationStatus;
 }

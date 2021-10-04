@@ -8,7 +8,8 @@ import { Medicine, SMedicineService } from 'src/app/services/s-medicine.service'
   styleUrls: ['./update-medicine.component.css']
 })
 export class UpdateMedicineComponent implements OnInit {
-  user: Medicine = new Medicine( '', '', '', '', '', '' );
+  isActive = false;
+  user: Medicine = new Medicine( '', '', '', '', '', '', this.isActive);
   constructor(private medService: SMedicineService) { }
   ngOnInit() {
   }
@@ -18,5 +19,8 @@ export class UpdateMedicineComponent implements OnInit {
         .subscribe( data => {
           alert('Medicine updated successfully.');
         });
+  }
+  check() {
+    this.isActive = !this.isActive;
   }
 }
