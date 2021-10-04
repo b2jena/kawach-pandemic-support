@@ -1,25 +1,75 @@
-<div class="mat-display-1" style="text-align: center; 
-margin-top: 20px;" color="accent">Login</div>
+<mat-grid-list cols="6">
+  <mat-grid-tile colspan="3" rowspan="2">
+    <div style="width: 90%; height: 90%; position: absolute; margin-top: 20px;">
+    <mat-card class="example-card" >
+      <img mat-card-image src="/assets/img/login-security.png" style="
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: auto;
+      width: 500px; height: 300px;">
+    </mat-card>
+  </div>
+  </mat-grid-tile>
 
-<div>
-  
-  <div class="form-group" style="text-align: center;">  
-          
-        <mat-form-field appearance="fill" color="accent">
-          <mat-label floatLabel="auto"> Email ID: </mat-label>
-        <input matInput [(ngModel)]="userobj.id" name="email" class="form-control" type="text" >   
-      </mat-form-field>
-  </div>  
-  <div class="row" class="" style="text-align: center;">  
-          
-        <mat-form-field appearance="fill" color="accent">
-          <mat-label for="password"> Password: </mat-label>
-        <input matInput [(ngModel)]="userobj.password" name="password" class="form-control" type="password" > 
-      </mat-form-field>  
-  </div>  
-  <div class="row" style="margin-top: 20px; text-align: center;">  
-    <div class="col-md-offset-1">  
-        <button mat-raised-button color="accent" class="btn btn-md btn-primary btn-style" (click)=login() >Login</button>  
-    </div>  
-  </div>  
-</div>
+  <mat-grid-tile colspan="3" rowspan="2">
+    <div style="width: 90%; height: 90%; position: absolute; margin-top: 20px;">
+      <mat-card>
+          <mat-card-content >
+            <h2>
+            <div style="text-align: center;">
+              Login
+            </div>
+          </h2>
+    
+    </mat-card-content>
+    
+    <br>
+    
+    <div>
+      
+    <mat-card-content>
+      <form [formGroup]="profileForm">
+      <div style="text-align: center;">  
+        
+            <mat-form-field color="accent">
+              <mat-label floatLabel="auto"> Email ID: </mat-label>
+            <input matInput [(ngModel)]="userobj.id" type="text" formControlName="email" [formControl]="email" required> 
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            
+          </mat-form-field>
+      </div>  
+      <div class="row" class="" style="text-align: center;">  
+              
+            <mat-form-field  color="accent">
+              <mat-label for="password"> Password: </mat-label>
+            <input matInput [(ngModel)]="userobj.password" type="password" formControlName="password" [formControl]="pass" required> 
+            <mat-error *ngIf="pass.invalid">{{getErrorPass()}}</mat-error>
+          </mat-form-field>  
+      </div>  
+    </form>
+    <mat-card-actions>
+      <div class="row" style="margin-top: 20px; text-align: center;">  
+        <div class="col-md-offset-1">  
+            <button mat-raised-button color="primary" class="btn btn-md btn-primary btn-style" (click)=login() >Login</button>  
+        </div>  
+      </div>  
+    </mat-card-actions>
+    
+    </mat-card-content>
+    </div>
+    </mat-card>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+
+
+
+
+
+<!--formControlName="email"
+
+<mat-error *ngIf="email.invalid && email.touched">
+          Check if your email ID is a valid email address
+        </mat-error>-->

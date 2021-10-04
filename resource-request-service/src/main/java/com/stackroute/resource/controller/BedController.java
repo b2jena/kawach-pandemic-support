@@ -23,8 +23,15 @@ public class BedController {
     @PostMapping("bed/create")
     public ResponseEntity<Beds> saveBed(@RequestBody Beds beds) throws NullValueException {
         //System.out.println("bikash"+beds.getBedType());
-        Beds savedBeds = bedService.saveBed(beds);
-        return new ResponseEntity<>(savedBeds, HttpStatus.CREATED);
+
+        try{
+            Beds savedBeds = bedService.saveBed(beds);
+            return new ResponseEntity<>(savedBeds, HttpStatus.CREATED);
+        } catch (Exception exc){
+            System.out.println(exc);
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
+
     }
 
     @GetMapping("bed/getAll")

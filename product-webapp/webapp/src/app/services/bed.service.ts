@@ -11,17 +11,17 @@ export class BedService{
   constructor(private httpService: HttpClient) { }
   CreateBed(bed: Bed): Observable<Bed> {
     console.log(bed);
-    return this.httpService.post<Bed>('http://localhost:9900/bed/create', bed);
+    return this.httpService.post<Bed>('http://localhost:9901/bed/create', bed);
   }
   public deleteBed(bed: Bed) {
-    return this.httpService.delete<Bed>('http://localhost:9900/bed//delete/' + bed.city);
+    return this.httpService.delete<Bed>('http://localhost:9901/bed//delete/' + bed.city);
   }
   public updateBed(bed: Bed) {
     console.log(bed);
-    return this.httpService.put<Bed>('http://localhost:9900/bed/update', bed);
+    return this.httpService.put<Bed>('http://localhost:9901/bed/update', bed);
   }
   getBeds(){
-    return this.httpService.get<Bed[]>('http://localhost:9900/bed/getAll');
+    return this.httpService.get<Bed[]>('http://localhost:9901/bed/getAll');
   }
 }
 export class Bed{
@@ -30,11 +30,14 @@ export class Bed{
   public address: string;
   public contactPerson: string;
   public mobileNumber: string;
-  constructor( city: string, bedType: string, address: string, contactPerson: string, mobileNumber: string) {
+  // public verificationStatus: string;
+  public verificationStatus: boolean;
+  constructor( city: string, bedType: string, address: string, contactPerson: string, mobileNumber: string, verificationStatus: boolean) {
     this.city = city;
     this.bedType = bedType;
     this.address = address;
     this.contactPerson = contactPerson;
     this.mobileNumber = mobileNumber;
+    this.verificationStatus = verificationStatus;
   }
 }

@@ -1,0 +1,25 @@
+body{
+  background-color: rgba(227, 189, 245, 0.685);
+}
+
+.container{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 0px;
+  background-color: rgba(236, 235, 235, 0.801);
+  /* background-color: black; */
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.context{
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.example-button-container{
+  margin-left: 10px;
+}
+

@@ -1,7 +1,164 @@
 <div class="container">
+    <div class="col-md-6">
+        <mat-card><h2 class="text-center">Add Equipment</h2></mat-card>
+        <form>
+          <mat-card>
+          <div class="form-group">
+            <label for="equipmentName">Equipment Name:</label>
+            <input type="name" [(ngModel)]="user.equipmentName" placeholder="Equipment Name" name="name" class="form-control" id="equipmentName">
+          </div>
+          </mat-card>
+          <mat-card>
+          <div class="form-group">
+            <label for="hospital">Hospital:</label>
+            <input [(ngModel)]="user.hospital" placeholder="Hospital" name="hospital" class="form-control" id="hospital">
+          </div>
+          </mat-card>
+          <mat-card>
+          <div class="form-group">
+            <label for="city">City:</label>
+            <input [(ngModel)]="user.city" placeholder="City Name" name="city" class="form-control" id="city">
+          </div>
+          </mat-card>
+          <mat-card>
+          <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="name" [(ngModel)]="user.address" placeholder="Address" name="address" class="form-control" id="address">
+          </div>
+          </mat-card>
+    
+          <mat-card>
+          <div class="form-group">
+            <label for="contactPerson">Contact Person:</label>
+            <input type="name" [(ngModel)]="user.contactPerson" placeholder="Contact Person" name="contactPerson" class="form-control" id="contactPerson">
+          </div>
+        </mat-card>
+          <mat-card>
+          <div class="form-group">
+            <label for="mobileNumber">Mobile Number:</label>
+            <input type="number" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
+            <mat-error *ngIf="mobFormControl.errors?.pattern && !mobFormControl.hasError('required')">
+              Please enter a valid Valid Phone Number
+            </mat-error>
+            <mat-error *ngIf="mobFormControl.hasError('required')"> Phone Number is required </mat-error>
+          </div>
+        </mat-card>
+          <mat-card>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Click here only if it's verified
+            </label>
+          </div>
+        </mat-card>
+          <mat-card>
+          <button mat-raised-button color="primary" class="btn btn-success" (click)="CreateEquipment()">Submit</button>
+        </mat-card>
+        </form>
+        </div>
+    </div>
+
+
+
+
+<!-- <h1 style="text-align:center">War Room Dashboard</h1>
+<mat-grid-list cols="3" rowHeight= "3:1" >
+    <mat-grid-tile >
+        <button mat-stroked-button color="primary">
+        Add Resources </button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <button mat-raised-button color="primary" routerLink="/closesos">Medical SOS</button>
+    </mat-grid-tile>
+    <mat-grid-tile >
+        <button mat-raised-button color="primary" routerLink=""> Verification</button>
+    </mat-grid-tile>
+<mat-grid-tile rowspan="2">
+<mat-list role="list">
+    <mat-list-item role="listitem">
+        <button style="margin-left: 40px;" mat-raised-button color="primary" routerLink="/addmedicine">Add Medicine</button>
+    </mat-list-item>
+    <mat-list-item role="listitem">
+        <button style="margin-left: 40px;" mat-stroked-button color="primary" routerLink="/addequipment">Add Medical Equipment</button>
+    </mat-list-item>
+    <mat-list-item role="listitem">
+        <button style="margin-left: 40px;" mat-raised-button color="primary" routerLink="/addbed">Add Bed</button>
+    </mat-list-item>
+  </mat-list>
+</mat-grid-tile>
+<mat-grid-tile colspan="2" rowspan="6">
+  <div class="container">
+    <div class="col-md-6">
+        <mat-card><h2 class="text-center">Add Equipment</h2></mat-card>
+        <form>
+          <mat-card>
+          <div class="form-group">
+            <label for="equipmentName">Equipment Name:</label>
+            <input type="name" [(ngModel)]="user.equipmentName" placeholder="Equipment Name" name="name" class="form-control" id="equipmentName">
+          </div>
+          </mat-card>
+          <mat-card>
+          <div class="form-group">
+            <label for="hospital">Hospital:</label>
+            <input [(ngModel)]="user.hospital" placeholder="Hospital" name="hospital" class="form-control" id="hospital">
+          </div>
+          </mat-card>
+          <mat-card>
+          <div class="form-group">
+            <label for="city">City:</label>
+            <input [(ngModel)]="user.city" placeholder="City Name" name="city" class="form-control" id="city">
+          </div>
+          </mat-card>
+          <mat-card>
+          <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="name" [(ngModel)]="user.address" placeholder="Address" name="address" class="form-control" id="address">
+          </div>
+          </mat-card>
+    
+          <mat-card>
+          <div class="form-group">
+            <label for="contactPerson">Contact Person:</label>
+            <input type="name" [(ngModel)]="user.contactPerson" placeholder="Contact Person" name="contactPerson" class="form-control" id="contactPerson">
+          </div>
+        </mat-card>
+          <mat-card>
+          <div class="form-group">
+            <label for="mobileNumber">Mobile Number:</label>
+            <input type="number" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
+            <mat-error *ngIf="mobFormControl.errors?.pattern && !mobFormControl.hasError('required')">
+              Please enter a valid Valid Phone Number
+            </mat-error>
+            <mat-error *ngIf="mobFormControl.hasError('required')"> Phone Number is required </mat-error>
+          </div>
+        </mat-card>
+          <mat-card>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Click here only if it's verified
+            </label>
+          </div>
+        </mat-card>
+          <mat-card>
+          <button mat-raised-button color="primary" class="btn btn-success" (click)="CreateEquipment()">Submit</button>
+        </mat-card>
+        </form>
+        </div>
+    </div>
+</mat-grid-tile>
+</mat-grid-list> -->
+
+
+
+
+
+
+
+
+<!--<div class="container">
 <div class="col-md-6">
     <mat-card><h2 class="text-center">Add Equipment</h2></mat-card>
-    <!-- <mat-card>Add Equipment</mat-card> -->
     <form>
       <mat-card>
       <div class="form-group">
@@ -37,7 +194,7 @@
       <mat-card>
       <div class="form-group">
         <label for="mobileNumber">Mobile Number:</label>
-        <input type="name" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
+        <input type="number" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
       </div>
     </mat-card>
       <mat-card>
@@ -53,4 +210,4 @@
     </mat-card>
     </form>
     </div>
-</div>
+</div>-->

@@ -98,7 +98,7 @@ public class UserController {
             response.add(userDetails.getRole().toString());
             responseEntity = new ResponseEntity<>(response, HttpStatus.OK);
         } catch (UserNotFoundException e) {
-            responseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+            responseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.OK);
         }
         return responseEntity;
     }

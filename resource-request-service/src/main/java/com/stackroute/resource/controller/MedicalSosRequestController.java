@@ -23,6 +23,9 @@ public class MedicalSosRequestController {
         this.medicalSosRequestService = medicalSosRequestService;
         this.resourceService = resourceService;
     }
+
+
+
     @PostMapping("sos/createSos")
     public ResponseEntity<MedicalSosRequest> saveSosRequest  (@RequestBody MedicalSosRequest medicalSosRequest) throws NullValueException {
         MedicalSosRequest savedSosRequest = medicalSosRequestService.saveSosRequest(medicalSosRequest);
@@ -40,8 +43,19 @@ public class MedicalSosRequestController {
         return new ResponseEntity<String>("updated successfully" ,HttpStatus.OK );
     }
 
-    @GetMapping("sos/getRes")
-    public ResponseEntity<List<Resources>> getAllResources(){
-        return new ResponseEntity<List<Resources>>((List<Resources>)resourceService.getAllResources(),HttpStatus.OK);
+    @GetMapping("sos/getRes/{city}")
+    public ResponseEntity<List<Resources>> getAllMedicine(@PathVariable("city") String city){
+        return new ResponseEntity<List<Resources>>((List<Resources>)resourceService.getAllMedicine(city),HttpStatus.OK);
     }
+
+    @GetMapping("sos/getEquipment/{city}")
+    public ResponseEntity<List<Resources>> getAllEquipment(@PathVariable("city") String city){
+        return new ResponseEntity<List<Resources>>((List<Resources>)resourceService.getAllEquipment(city),HttpStatus.OK);
+    }
+
+    @GetMapping("sos/getBeds/{city}")
+    public ResponseEntity<List<Resources>> getAllBeds(@PathVariable("city") String city){
+        return new ResponseEntity<List<Resources>>((List<Resources>)resourceService.getAllBeds(city),HttpStatus.OK);
+    }
+
 }
