@@ -30,11 +30,14 @@ export class Bed{
   public address: string;
   public contactPerson: string;
   public mobileNumber: string;
-  constructor( city: string, bedType: string, address: string, contactPerson: string, mobileNumber: string) {
+  // public verificationStatus: string;
+  public verificationStatus: boolean;
+  constructor( city: string, bedType: string, address: string, contactPerson: string, mobileNumber: string, verificationStatus: boolean) {
     this.city = city;
     this.bedType = bedType;
     this.address = address;
     this.contactPerson = contactPerson;
     this.mobileNumber = mobileNumber;
+    this.verificationStatus = verificationStatus;
   }
 }
