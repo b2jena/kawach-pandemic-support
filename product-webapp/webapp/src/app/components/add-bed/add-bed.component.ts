@@ -14,9 +14,10 @@ export class AddBedComponent implements OnInit {
     Validators.required,
     Validators.pattern('^[0-9]{10}'),
   ]);
-  // strValue: String = "N";
-  isActive = false;
-  user: Bed = new Bed( '', '', '', '', '', this.isActive);
+  vStatus = [
+    { id: 1, select: false, name: 'Click here only if verified'}
+  ]
+  user: Bed = new Bed( '', '', '', '', '', this.vStatus[0].select);
 
   constructor(private equipmentService: BedService, private snackBar: MatSnackBar) { }
 
@@ -36,12 +37,37 @@ export class AddBedComponent implements OnInit {
       console.log('This will be called when snackbar button clicked');
     });
   }
+  onChange($event: any){
+    const id = $event.target.value;
+    const isChecked = $event.target.checked;
+    console.log(id, isChecked);
+    console.log(this.vStatus);
+    this.vStatus = this.vStatus.map((d) => {
+      if (d.id == id){
+        d.select = isChecked;
+        return d;
+      }return d;
+    });
+    console.log(this.vStatus);
+  }
+
     CreateBed(): void {
       if ( this.user.bedType === '' || this.user.address === '' || this.user.city === '' || this.user.contactPerson === '' || this.user.mobileNumber === ''){
+        this.user.verificationStatus = this.vStatus[0].select;
+        console.log(this.user.verificationStatus);
+        console.log("Here")
+        console.log(this.vStatus[0].select);
         this.showSnackbars('Please fill the empty field(s).', 'x');
       } else {
+        this.user.verificationStatus = this.vStatus[0].select;
+        // console.log(this.user.verificationStatus);
+        console.log("Here")
+        console.log(this.vStatus[0].select);
         this.equipmentService.CreateBed(this.user).subscribe( data => { this.showSnackbars('Bed added successfully.', 'x'); });
       }
+      // this.user.verificationStatus = this.vStatus[0].select;
+      console.log("Here")
+      console.log(this.vStatus[0].select);
       console.log(this.user.verificationStatus);
     }
 }
