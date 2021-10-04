@@ -15,7 +15,7 @@ export class WarroomDashboardComponent implements OnInit {
 
   routeTo(role: string): void{
     if ( role === 'sos'){
-      this.router.navigate(['/sos']);
+      this.router.navigate(['/closesos']);
     }
     else if ( role === 'Verification'){
       this.router.navigate( ['/listmedicine'] );

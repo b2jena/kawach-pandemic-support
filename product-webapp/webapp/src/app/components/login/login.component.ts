@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
         // After 3 seconds, remove the show class from DIV
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
       }*/
-
+      this.loginService.showsnackbar(this.obj[0]);
       this.storage.set(this.key, this.obj[1]);
       this.routetoDash(this.obj[2]);
     }
