@@ -14,7 +14,8 @@ export class AddEquipmentComponent implements OnInit {
     Validators.required,
     Validators.pattern('^[0-9]{10}'),
   ]);
-  user: Equipment = new Equipment( '', '', '', '', '', '' );
+  isActive = false;
+  user: Equipment = new Equipment( '', '', '', '', '', '', this.isActive);
 
   constructor(private equipmentService: EquipmentService, private snackBar: MatSnackBar) { }
 
@@ -40,5 +41,8 @@ export class AddEquipmentComponent implements OnInit {
       } else {
         this.equipmentService.CreateEquipment(this.user).subscribe( data => { this.showSnackbars('Equipment added successfully.', 'x'); });
       }
+    }
+    check() {
+      this.isActive = !this.isActive;
     }
 }

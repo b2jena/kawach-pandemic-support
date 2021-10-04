@@ -13,7 +13,7 @@ import { AddMedicineComponent } from './components/add-medicine/add-medicine.com
 import { ListMedicinesComponent } from './components/list-medicines/list-medicines.component';
 import { SosRequestComponent } from './components/sos-request/sos-request.component';
 import { UpdateMedicineComponent } from './components/update-medicine/update-medicine.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SMedicineService } from './services/s-medicine.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DoctorRegistrationComponent } from './components/doctor-registration/doctor-registration.component';
