@@ -37,7 +37,7 @@
           <mat-card>
           <div class="form-group">
             <label for="mobileNumber">Mobile Number:</label>
-            <input type="number" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
+            <input type="name" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
             <mat-error *ngIf="mobFormControl.errors?.pattern && !mobFormControl.hasError('required')">
               Please enter a valid Valid Phone Number
             </mat-error>
