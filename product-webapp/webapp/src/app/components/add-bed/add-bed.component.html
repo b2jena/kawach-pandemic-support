@@ -113,12 +113,18 @@
         <mat-card>
           <div class="form-group">
             <label for="mobileNumber">Mobile Number:</label>
-            <input [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
+            <input [formControl]= "mobFormControl" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
+            <mat-error *ngIf="mobFormControl.errors?.pattern && !mobFormControl.hasError('required')">
+              Please enter a valid Valid Phone Number
+            </mat-error>
+            <mat-error *ngIf="mobFormControl.hasError('required')"> Phone Number is required</mat-error>
           </div>
         </mat-card>
         <mat-card>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <input [(ngModel)]="isActive" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <!-- <input [(ngModel)]="isActive" type="checkbox"> -->
+            <!-- <mat-checkbox [(ngModel)]="isActive"> -->
             <label class="form-check-label" for="flexCheckDefault">
               Confirmed and verified
             </label>

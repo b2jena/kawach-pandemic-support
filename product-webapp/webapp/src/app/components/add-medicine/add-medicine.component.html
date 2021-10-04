@@ -61,6 +61,8 @@
 
 <!-- <h1 style="text-align:center">War Room Dashboard</h1>
 <mat-grid-list cols="3" rowHeight= "3:1" style="">
+<h1 style="text-align:center">War Room Dashboard</h1>
+<mat-grid-list cols="3" rowHeight= "3:1">
     <mat-grid-tile >
         <button mat-stroked-button color="primary">
         Add Resources </button>
@@ -125,6 +127,10 @@
           <div class="form-group">
             <label for="mobileNumber">Mobile Number:</label>
             <input type="number" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
+            <mat-error *ngIf="mobFormControl.errors?.pattern && !mobFormControl.hasError('required')">
+              Please enter a valid Valid Phone Number
+            </mat-error>
+            <mat-error *ngIf="mobFormControl.hasError('required')"> Phone Number is required </mat-error>
           </div>
         </mat-card>
         <mat-card>
