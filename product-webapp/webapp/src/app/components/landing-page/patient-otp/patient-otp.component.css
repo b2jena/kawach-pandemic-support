@@ -1,0 +1,15 @@
+.card-container {
+    /*  not needed styles to reflect it */ 
+    padding: 10px;
+    color: white;
+    /* width: 500px; */
+  
+    /* needed styles below */
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* .mat-card {
+    margin: 5px;
+    padding: 5px;
+} */
