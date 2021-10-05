@@ -136,6 +136,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatCardModule,
     MatPaginatorModule,
     MatGridListModule,
+    MatSelectModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
   MatSnackBar, Overlay],
