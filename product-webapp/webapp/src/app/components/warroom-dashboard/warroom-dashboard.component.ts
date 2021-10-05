@@ -13,6 +13,8 @@ export class WarroomDashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+
   routeTo(role: string): void{
     if ( role === 'sos'){
       this.router.navigate(['/closesos']);

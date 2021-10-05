@@ -61,6 +61,10 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatDividerModule } from '@angular/material/divider';
 import { HeaderTabsComponent } from './components/header-tabs/header-tabs.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { TimeslotComponent } from './components/doctor-dashboard/timeslot/timeslot.component';
+import { FeedbackComponent } from './components/doctor-dashboard/feedback/feedback.component';
+import { ConsultComponent } from './components/doctor-dashboard/consult/consult.component';
 
 
 @NgModule({
@@ -97,7 +101,15 @@ import { MatTabsModule } from '@angular/material/tabs';
     CarouselComponent,
     CloseSosComponent,
     HeaderTabsComponent,
-  ],
+    TimeslotComponent,
+    FeedbackComponent,
+    ConsultComponent,
+   ],
+  // entryComponents: [
+  //   AddMedicineComponent,
+  //   AddBedComponent,
+  //   AddEquipmentComponent
+  // ],
   imports: [
     FormsModule,
     BrowserModule,
@@ -136,6 +148,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatCardModule,
     MatPaginatorModule,
     MatGridListModule,
+    MatSidenavModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
   MatSnackBar, Overlay],
