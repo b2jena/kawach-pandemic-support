@@ -4,6 +4,9 @@ import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.Beds;
 import com.stackroute.resource.repository.BedRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +20,10 @@ public class BedServiceImpl implements BedService{
     public BedServiceImpl(BedRepository bedRepository) {
         this.bedRepository = bedRepository;
     }
+
+    @Autowired
+    MongoTemplate mongoTemplate;
+
     @Override
     public Beds saveBed(Beds beds) throws NullValueException {
         if (beds.getBedType() == null || beds.getAddress() == null || beds.getCity() == null || beds.getContactPerson() == null || beds.getMobileNumber() == null) {
@@ -32,4 +39,21 @@ public class BedServiceImpl implements BedService{
     public List<Beds> getAllBeds() {
         return (List<Beds>) bedRepository.findAll();
     }
+
+    @Override
+    public Beds getUnverifiedBed()
+    {
+//        List<Beds> beds = bedRepository.findAll();
+//        List<Beds> unverified = beds.stream().filter(c -> c.getVerificationStatus() == false)
+//                .collect(Collectors.toList());
+
+        Query query = new Query();
+        query.addCriteria(Criteria.where("verificationStatus").is(false));
+        List<Beds> unverified = mongoTemplate.find(query, Beds.class);
+
+        return unverified == null ? null : unverified.get(0);
+    }
+
+
+
 }
