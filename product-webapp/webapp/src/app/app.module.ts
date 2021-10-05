@@ -61,6 +61,8 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatDividerModule } from '@angular/material/divider';
 import { HeaderTabsComponent } from './components/header-tabs/header-tabs.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { WarroomVerifyComponent } from './components/warroom-dashboard/warroom-verify/warroom-verify.component';
+import { VerifyBedComponent } from './components/verify/verify-bed/verify-bed.component';
 
 
 @NgModule({
@@ -97,6 +99,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     CarouselComponent,
     CloseSosComponent,
     HeaderTabsComponent,
+    WarroomVerifyComponent,
+    VerifyBedComponent,
   ],
   imports: [
     FormsModule,

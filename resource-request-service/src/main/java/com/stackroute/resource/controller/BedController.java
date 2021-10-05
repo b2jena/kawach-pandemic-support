@@ -38,4 +38,10 @@ public class BedController {
     public ResponseEntity<List<Beds>> getAllBeds(){
         return new ResponseEntity<List<Beds>>((List<Beds>)bedService.getAllBeds(),HttpStatus.OK);
     }
+
+    @GetMapping("bed/getUnverified")
+    public ResponseEntity<Beds> getUnverifiedBed()
+    {
+        return new ResponseEntity<>(bedService.getUnverifiedBed(), HttpStatus.OK);
+    }
 }

@@ -23,6 +23,11 @@ export class BedService{
   getBeds(){
     return this.httpService.get<Bed[]>('http://localhost:9901/bed/getAll');
   }
+
+  public getUnverifiedBed()
+  {
+    return this.httpService.get<Bed>('http://localhost:9901/bed/getUnverified');
+  }
 }
 export class Bed{
   public city: string;

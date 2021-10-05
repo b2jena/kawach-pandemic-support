@@ -9,4 +9,6 @@ public interface BedService {
     Beds saveBed(Beds beds) throws NullValueException;
 
     List<Beds> getAllBeds();
+
+    Beds getUnverifiedBed();
 }

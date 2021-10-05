@@ -1,0 +1,19 @@
+import { Component, OnInit } from '@angular/core';
+import { BedService, Bed } from 'src/app/services/bed.service';
+
+@Component({
+  selector: 'app-verify-bed',
+  templateUrl: './verify-bed.component.html',
+  styleUrls: ['./verify-bed.component.css']
+})
+export class VerifyBedComponent implements OnInit {
+  public bed !: Bed;
+  constructor(private bedService: BedService) { }
+
+  ngOnInit(): void {
+      this.bedService.getUnverifiedBed().subscribe(data => {
+        console.log(this.bed = data);
+      });
+  }
+
+}
