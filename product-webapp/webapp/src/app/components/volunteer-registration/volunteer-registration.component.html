@@ -44,30 +44,30 @@
 
         <mat-form-field appearance="outline" style="width: 300px;">
           <mat-label>Email</mat-label>
-          <input matInput formControlName="emailId" placeholder="pat@example.com" [formControl]="email" required [(ngModel)]="user.emailId">
-          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          <input matInput formControlName="emailId" placeholder="pat@example.com" required [(ngModel)]="user.emailId">
+          <mat-error *ngIf="profileForm.get('emailId')?.invalid && profileForm.get('emailId')?.touched">Invalid Email</mat-error>
         </mat-form-field><br>
 
         <mat-form-field appearance="outline" style="width: 300px;">
           <mat-label>Full Name</mat-label>
-          <input matInput formControlName="fullName" placeholder="pat" required [formControl]="name" [(ngModel)]="user.fullName">
-          <mat-error *ngIf="name.invalid">{{getErrorName()}}</mat-error>
+          <input matInput formControlName="fullName" placeholder="pat" required [(ngModel)]="user.fullName">
+          <mat-error *ngIf="profileForm.get('fullName')?.invalid && profileForm.get('fullName')?.touched">Required Field</mat-error>
         </mat-form-field><br>
 
         <mat-form-field appearance="outline" style="width: 300px;">
           <mat-label>Phone Number</mat-label>
-          <input matInput type="number" formControlName="phoneNumber" placeholder="1234567890" required [formControl]="ph" [(ngModel)]="user.phoneNumber">
-          <mat-error *ngIf="ph.invalid">{{getErrorPh()}}</mat-error>
+          <input matInput type="number" formControlName="phoneNumber" required [(ngModel)]="user.phoneNumber">
+          <mat-error *ngIf="profileForm.get('phoneNumber')?.invalid && profileForm.get('phoneNumber')?.touched">Required Field</mat-error>
         </mat-form-field><br>
 
         <mat-form-field appearance="outline" style="width: 300px;">
           <mat-label>Password</mat-label>
-          <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" placeholder="Include special characters" required [formControl]="pass" [(ngModel)]="user.password">
+          <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" placeholder="Include special characters" required [(ngModel)]="user.password">
           <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          <mat-error *ngIf="pass.invalid">{{getErrorPass()}}</mat-error>
+          <mat-error *ngIf="profileForm.get('password')?.invalid && profileForm.get('password')?.touched">Required Field</mat-error>
         </mat-form-field><br>
 
-        <button mat-raised-button color="primary" (click)="createVolunteer()">Register</button>
+        <button mat-raised-button color="primary" [disabled]="profileForm?.invalid" (click)="createVolunteer()">Register</button>
 
       </mat-card-content>
 

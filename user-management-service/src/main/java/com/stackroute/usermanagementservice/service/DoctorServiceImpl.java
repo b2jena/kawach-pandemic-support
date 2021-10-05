@@ -26,10 +26,10 @@ public class DoctorServiceImpl implements DoctorService {
             throw new NullValueException();
         } else if (doctor.getEmailId().equals("") || doctor.getPassword().equals("") || doctor.getFullName().equals("") || doctor.getMedicalRegistrationId().equals("") || doctor.getSpecialization().equals("")) {
             throw new NullValueException();
-        }else if (doctorRepository.existsById(doctor.getEmailId())) {
+        } else if (doctorRepository.existsById(doctor.getEmailId())) {
             throw new UserAlreadyExistsException();
         }
-            Doctor savedDoctor = doctorRepository.save(doctor);
+        Doctor savedDoctor = doctorRepository.save(doctor);
 
         return savedDoctor;
     }
