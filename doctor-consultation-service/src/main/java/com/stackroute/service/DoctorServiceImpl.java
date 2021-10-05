@@ -1,59 +1,52 @@
 package com.stackroute.service;
 
+import com.stackroute.exception.DoctorAlreadyPresentException;
 import com.stackroute.exception.DoctorNotFoundException;
 import com.stackroute.model.Doctor;
-import com.stackroute.repo.DoctorRepo;
+import com.stackroute.repo.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class DoctorServiceImpl implements DoctorService {
-    private DoctorRepo doctorRepo;
+    private DoctorRepository doctorRepository;
+    private RedisTemplate redisTemplate;
+    public static final String HASH_KEY="Doctor";
 
     @Autowired
-    public DoctorServiceImpl(DoctorRepo doctorRepo) {
-        this.doctorRepo = doctorRepo;
+    public DoctorServiceImpl(DoctorRepository doctorRepository, RedisTemplate redisTemplate) {
+        this.doctorRepository = doctorRepository;
+        this.redisTemplate = redisTemplate;
+    }
+
+
+    @Override
+    public void saveDoctorRedis(Doctor doctor) throws DoctorAlreadyPresentException{
+        redisTemplate.opsForSet().add(HASH_KEY, doctor.getEmail(),doctor);
     }
 
     @Override
-    public String changeStatus(int id) throws DoctorNotFoundException {
-        Doctor doctor = doctorRepo.findById(id);
-        if (doctor == null) {
-            throw new DoctorNotFoundException("Doctor not found");
-        } else {
-            if (doctor.getStatus() == 0) {
-                doctor.setStatus(1);
-            } else {
-                doctor.setStatus(0);
-            }
-            return "Status Changed";
-        }
+    public Set<Doctor> findAllDoctorRedis() throws DoctorNotFoundException{
+        return redisTemplate.opsForSet().members(HASH_KEY);
     }
 
     @Override
-    public Doctor findById(int id) {
-        return doctorRepo.findById(id);
+    public void updateStatusDoctorRedis(Doctor doctor) throws DoctorNotFoundException{
+        redisTemplate.opsForSet().
     }
 
     @Override
-    public List<Doctor> findByStatus(int status) throws DoctorNotFoundException {
-        List<Doctor> list = doctorRepo.findByStatus(status);
-        if (list == null) {
-            throw new DoctorNotFoundException("Not Doctors available");
-        }
-        return list;
-
+    public Doctor findByEmail(String id) {
+        return redisTemplate.opsForSet().f;
     }
 
     @Override
-    public Doctor saveDoctor(Doctor doctor) {
-        return doctorRepo.save(doctor);
-    }
-
-    @Override
-    public List<Doctor> getAll() {
-        return (List<Doctor>) doctorRepo.findAll();
+    public Doctor findById(String email) {
+        System.out.println("called findById() from DB.");
+        return (Doctor) redisTemplate.opsForHash().get(HASH_KEY,email);
     }
 }

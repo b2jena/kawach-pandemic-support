@@ -1,18 +1,20 @@
 package com.stackroute.service;
 
+import com.stackroute.exception.DoctorAlreadyPresentException;
 import com.stackroute.exception.DoctorNotFoundException;
 import com.stackroute.model.Doctor;
 
 import java.util.List;
+import java.util.Set;
 
 public interface DoctorService {
-    String changeStatus(int id) throws DoctorNotFoundException;
+    void saveDoctorRedis(Doctor doctor) throws DoctorAlreadyPresentException;
 
-    Doctor findById(int id);
+    Set<Doctor> findAllDoctorRedis() throws DoctorNotFoundException;
 
-    List<Doctor> findByStatus(int status) throws DoctorNotFoundException;
+    Doctor findByEmail(String id) ;
 
-    Doctor saveDoctor(Doctor doctor);
+    List<Doctor> findByStatus(String status) throws DoctorNotFoundException;
 
-    List<Doctor> getAll();
+    void updateStatusDoctorRedis(Doctor doctor) throws DoctorNotFoundException;
 }
