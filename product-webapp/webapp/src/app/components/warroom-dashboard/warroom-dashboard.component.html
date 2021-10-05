@@ -3,7 +3,23 @@
 <mat-tab-group mat-align-tabs="center">
     <mat-tab label="Medical SOS"> <app-close-sos></app-close-sos> </mat-tab>
 
-    <mat-tab label="Verification"> Verification Component to be placed here </mat-tab>
+    <mat-tab label="Verification">
+         <!-- <app-warroom-verify></app-warroom-verify> -->
+         <br>
+        <br>
+        <div class="container">
+            <div id="content">
+              <div id="main-content">
+                <mat-tab-group>
+                    <mat-tab label="Verify Bed">
+                        <app-verify-bed></app-verify-bed>           
+                    </mat-tab>
+                </mat-tab-group>
+                </div>
+            </div>
+        </div>
+        
+    </mat-tab>
 
     <mat-tab label="Add Resources"> 
         <br>
