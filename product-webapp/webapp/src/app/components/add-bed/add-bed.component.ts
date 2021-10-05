@@ -51,3 +51,4 @@ export class AddBedComponent implements OnInit {
       this.isActive = !this.isActive;
     }
 }
+

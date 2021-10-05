@@ -9,6 +9,7 @@
                 <th><mat-card>Address</mat-card></th>
                 <th><mat-card>Contact Person</mat-card></th>
                 <th><mat-card>Mobile Number</mat-card></th>
+                <th><mat-card>Verification Status</mat-card></th>
             </tr>
         </thead>
         <tbody>
@@ -18,6 +19,7 @@
                 <td><mat-card>{{bed.address}}</mat-card></td>
                 <td><mat-card>{{bed.contactPerson}}</mat-card></td>
                 <td><mat-card>{{bed.mobileNumber}}</mat-card></td>
+                <td><mat-card>{{bed.verificationStatus}}</mat-card></td>
                 <td><mat-card><button class="btn btn-danger" (click)="deleteBed(bed)">Delete Bed</button></mat-card></td>
             </tr>
         </tbody>

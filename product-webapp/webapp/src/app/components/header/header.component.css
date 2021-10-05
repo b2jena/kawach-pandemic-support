@@ -1,6 +1,4 @@
-body{
-    background-color: blanchedalmond;
-}
+
 .Container input{ /* You Can Name it what you want*/
     margin-right:16px;
     }
@@ -51,3 +49,11 @@ body{
     padding: 10px;
     z-index: 998;
 } */
+.test.btn-toolbar{
+    display: block !important;
+}
+.bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+  }
