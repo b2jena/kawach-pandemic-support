@@ -1,6 +1,6 @@
 <mat-grid-list cols="6">
   <mat-grid-tile colspan="3" rowspan="2">
-    <div style="width: 90%; height: 90%; position: absolute; margin-top: 20px;">
+    <div style="width: 90%; height: 80%; position: absolute; margin-top: 20px;">
     <mat-card class="example-card" >
       <img mat-card-image src="/assets/img/login-security.png" style="
       display: block;
@@ -17,12 +17,12 @@
       <mat-card>
           <mat-card-content >
             <h2>
-            <div style="text-align: center;">
-              Login
-            </div>
-          </h2>
+              <div style="text-align: center;">
+                Login
+              </div>
+            </h2>
     
-    </mat-card-content>
+          </mat-card-content>
     
     <br>
     
@@ -34,8 +34,8 @@
         
             <mat-form-field color="accent">
               <mat-label floatLabel="auto"> Email ID: </mat-label>
-            <input matInput [(ngModel)]="userobj.id" type="text" formControlName="email" [formControl]="email" required> 
-            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              <input matInput [(ngModel)]="userobj.id" type="text" formControlName="email" [formControl]="email" required> 
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
             
           </mat-form-field>
       </div>  

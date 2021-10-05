@@ -11,7 +11,7 @@ import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 })
 export class LoginComponent implements OnInit {
 
-  email = new FormControl('', [Validators.required, Validators.email]);
+  email = new FormControl('', [Validators.required, Validators.email, Validators.pattern('^[A-za-z]{4,20}'), ]);
   pass = new FormControl('', [Validators.required]);
 
   /* form = ({
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
    }
 
   profileForm = this.formBuilder.group({
-    emailId: [''],
+    email: [''],
     password: ['']
   });
 
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void{
-    if (this.userobj.id === ''){
+    if (this.userobj.id === '' || this.email.invalid){
       // window.alert('Email ID cannot be empty');
       /*x = document.getElementById("snackbar");
 
@@ -49,7 +49,8 @@ export class LoginComponent implements OnInit {
         // After 3 seconds, remove the show class from DIV
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
       }*/
-      this.loginService.showsnackbar('Email ID cannot be empty');
+      // this.loginService.showsnackbar('Email ID cannot be empty');
+      this.loginService.showsnackbar(this.getErrorMessage());
     }
     else if (this.userobj.password === ''){
       // window.alert('Password cannot be empty');
