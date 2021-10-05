@@ -74,14 +74,21 @@ services:
     ports:
       - 9099:9099
 
+#  doctor-consultation-service:
+#    build: doctor-consultation-service/
+#    container_name: doctor-consultation-service
+#    restart: always
+#    network_mode: "host"
+#    hostname: localhost
+#    ports:
+#      - 8082:8082
+
   mongodb-user:
     image: mongo:latest
     container_name: "mongodb-user"
     hostname: localhost
     ports:
       - 27017:27017
-    volumes:
-      - /db/mongo:/data/db
 
   rabbitmq:
     image: rabbitmq:3-management
@@ -99,4 +106,3 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=userDB
-      

@@ -1,22 +1,10 @@
 package com.stackroute.repo;
 
 import com.stackroute.model.Doctor;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Set;
-
 @Repository
-public interface DoctorRepository {
-
-    void save(Doctor doctor);
-
-    Set<Doctor> findAll();
-
-    Doctor findByEmail(String id);
-
-    List<Doctor> findByStatus(int status);
-
-    void updateStatus(Doctor doctor);
-
+public interface DoctorRepository extends MongoRepository<Doctor, String> {
+    Doctor findByEmailId(String emailId);
 }

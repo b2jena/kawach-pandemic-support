@@ -5,16 +5,12 @@ import com.stackroute.exception.DoctorNotFoundException;
 import com.stackroute.model.Doctor;
 
 import java.util.List;
-import java.util.Set;
 
 public interface DoctorService {
-    void saveDoctorRedis(Doctor doctor) throws DoctorAlreadyPresentException;
-
-    Set<Doctor> findAllDoctorRedis() throws DoctorNotFoundException;
-
-    Doctor findByEmail(String id) ;
-
-    List<Doctor> findByStatus(String status) throws DoctorNotFoundException;
-
-    void updateStatusDoctorRedis(Doctor doctor) throws DoctorNotFoundException;
+    Doctor saveDoctorMongoDB(Doctor doctor);
+    Doctor getDoctorByEmailId(String emailId) throws DoctorNotFoundException;
+    List<Doctor> getAllDoctors();
+    void saveDoctorRedis(String emailId) throws DoctorNotFoundException, DoctorAlreadyPresentException;
+    void deleteDoctorRedis(String emailId) throws DoctorNotFoundException;
+    List<Doctor> getAllDoctorRedis();
 }

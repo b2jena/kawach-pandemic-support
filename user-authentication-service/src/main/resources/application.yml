@@ -21,7 +21,7 @@ spring:
     username: guest
     exchange: user.exchange
     queue: user.queue
-    routingkey: user.routingKey
+    routingkey: user.routingkey
 app:
   seeddata:
 #    id1: meghna@email.com

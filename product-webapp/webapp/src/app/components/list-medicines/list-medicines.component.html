@@ -10,16 +10,18 @@
                 <th><mat-card>Address</mat-card></th>
                 <th><mat-card>Contact Person</mat-card></th>
                 <th><mat-card>Mobile Number</mat-card></th>
+                <th><mat-card>Verification Status</mat-card></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let medicine of medicines">
                 <td><mat-card>{{medicine.city}}</mat-card></td>
-                <td><mat-card>{{medicine.medName}}</mat-card></td>
+                <td><mat-card>{{medicine.medicineName}}</mat-card></td>
                 <td><mat-card>{{medicine.pharmacy}}</mat-card></td>
                 <td><mat-card>{{medicine.address}}</mat-card></td>
                 <td><mat-card>{{medicine.contactPerson}}</mat-card></td>
                 <td><mat-card>{{medicine.mobileNumber}}</mat-card></td>
+                <td><mat-card>{{medicine.verificationStatus}}</mat-card></td>
                 <td><mat-card><button class="btn btn-danger" (click)="deleteMedicine(medicine)">Delete Medicine</button></mat-card></td>
             </tr>
         </tbody>

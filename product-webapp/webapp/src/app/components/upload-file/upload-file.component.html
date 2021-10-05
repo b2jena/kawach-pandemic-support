@@ -1,4 +1,17 @@
-<h1>Upload Your Prescription Here</h1>
-<input type="file" id="customFile" (change)="selectFile($event)">
-<button class="btn btn-primary" [disabled]="!selectedFiles" (click)="upload()">Save File</button>
+<div class="row">
+  <div class="col-sm-9">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Upload Prescription (.pdf format only)</mat-label>
+      <ngx-mat-file-input placeholder="Basic Input" [accept]="'.pdf'" (change)="selectFile($event)"></ngx-mat-file-input>
+    </mat-form-field>
+  </div>
 
+  <div class="col-sm-3">
+    <div>
+      <button mat-raised-button color="primary" [disabled]="!selectedFiles" (click)="upload()">
+        Upload
+      </button>
+    </div>
+  </div>
+
+</div>

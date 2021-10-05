@@ -9,10 +9,9 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
-public class DoctorServiceImpl implements DoctorService {
+public class DoctorServiceImpl implements DoctorService{
     private DoctorRepository doctorRepository;
     private RedisTemplate redisTemplate;
     public static final String HASH_KEY="Doctor";
@@ -24,29 +23,60 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
 
+
     @Override
-    public void saveDoctorRedis(Doctor doctor) throws DoctorAlreadyPresentException{
-        redisTemplate.opsForSet().add(HASH_KEY, doctor.getEmail(),doctor);
+    public Doctor saveDoctorMongoDB(Doctor doctor) {
+        return doctorRepository.save(doctor);
     }
 
     @Override
-    public Set<Doctor> findAllDoctorRedis() throws DoctorNotFoundException{
-        return redisTemplate.opsForSet().members(HASH_KEY);
+    public Doctor getDoctorByEmailId(String emailId) throws DoctorNotFoundException {
+        Doctor doctor = doctorRepository.findByEmailId(emailId);
+        if(doctor == null)
+        {
+            throw new DoctorNotFoundException("Doctor not found");
+        }
+        else{
+            return doctor;
+        }
     }
 
     @Override
-    public void updateStatusDoctorRedis(Doctor doctor) throws DoctorNotFoundException{
-        redisTemplate.opsForSet().
+    public List<Doctor> getAllDoctors() {
+        return doctorRepository.findAll();
     }
 
     @Override
-    public Doctor findByEmail(String id) {
-        return redisTemplate.opsForSet().f;
+    public void saveDoctorRedis(String emailId) throws DoctorNotFoundException, DoctorAlreadyPresentException {
+        Doctor doctor = doctorRepository.findByEmailId(emailId);
+//        if(doctor == null)
+//        {
+//            throw new DoctorNotFoundException("Doctor not found");
+//        }
+//        else{
+//            if(redisTemplate.opsForSet().isMember(HASH_KEY, emailId))
+//            {
+//                throw new DoctorAlreadyPresentException("Doctor already active");
+//            }else{
+//                redisTemplate.opsForHash().put(HASH_KEY, doctor.getEmailId(),doctor);}
+//        }
+        redisTemplate.opsForHash().put(HASH_KEY, doctor.getEmailId(),doctor);
+
+}
+
+    @Override
+    public void deleteDoctorRedis(String emailId) throws DoctorNotFoundException {
+        if(!redisTemplate.opsForHash().hasKey(HASH_KEY, emailId))
+        {
+            throw new DoctorNotFoundException("Doctor not found");
+        }
+        else{
+            redisTemplate.opsForHash().delete(HASH_KEY, emailId);
+        }
     }
 
     @Override
-    public Doctor findById(String email) {
-        System.out.println("called findById() from DB.");
-        return (Doctor) redisTemplate.opsForHash().get(HASH_KEY,email);
+    public List<Doctor> getAllDoctorRedis() {
+        return redisTemplate.opsForHash().values(HASH_KEY);
     }
 }

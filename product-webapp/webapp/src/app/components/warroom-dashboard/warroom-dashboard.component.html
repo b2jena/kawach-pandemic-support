@@ -1,31 +1,74 @@
 <h1 style="text-align:center">War Room Dashboard</h1>
-<mat-grid-list cols="3" >
-    <mat-grid-tile rowHeight= "40px">
-        <button mat-raised-button color="accent" (click)="routeTo('sos')"> SOS</button>
+
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Medical SOS"> <app-close-sos></app-close-sos> </mat-tab>
+
+    <mat-tab label="Verification"> Verification Component to be placed here </mat-tab>
+
+    <mat-tab label="Add Resources"> 
+        <br>
+        <br>
+        <div class="container">
+            <div id="content">
+              <div id="main-content">
+                <mat-tab-group >
+                    <mat-tab label="Medicine">
+                        <app-add-medicine></app-add-medicine> 
+                    </mat-tab>
+                
+                    <mat-tab label="Medical Equipment"> <app-add-equipment></app-add-equipment> </mat-tab>
+                
+                    <mat-tab label="Bed">
+                        <app-add-bed></app-add-bed>
+                                     
+                    </mat-tab>
+                  </mat-tab-group>
+              </div>
+            </div>
+          </div>
+          
+
+        <!-- <mat-tab-group mat-align-tabs="center">
+            <mat-tab label="Medicine" style="margin-top: 100px;">
+                <app-add-medicine></app-add-medicine> 
+            </mat-tab>
+        
+            <mat-tab label="Medical Equipment"> <app-add-equipment></app-add-equipment> </mat-tab>
+        
+            <mat-tab label="Bed">
+                <app-add-bed></app-add-bed>
+                             
+            </mat-tab>
+          </mat-tab-group> -->
+        
+    </mat-tab>
+  </mat-tab-group>
+
+<!-- <mat-grid-list cols="3" rowHeight= "4:1">
+    <mat-grid-tile >
+        <button mat-raised-button color="primary" routerLink="/addmedicine">
+            Add Resources
+        </button>
+        
     </mat-grid-tile>
-    <mat-grid-tile rowHeight= "40px">
-        <button mat-raised-button color="accent"  (click)="routeTo('Verification')"> Verification</button>
+    <mat-grid-tile>
+        <button mat-raised-button color="primary" (click)="routeTo('sos')">Medical SOS</button>
     </mat-grid-tile>
     <mat-grid-tile >
-        <mat-expansion-panel>
-            <mat-expansion-panel-header color="accent">
-                <mat-panel-title color="accent">
-                    Add Resources
-                </mat-panel-title>
-            </mat-expansion-panel-header>
+        <button mat-raised-button color="primary"  (click)="routeTo('Verification')"> Verification</button>
+                <!--
             <mat-action-row>
-            <button mat-raised-button color="accent" (click)="routeTo('Medicine')"> Medicine</button>
+            <button mat-raised-button color="primary" (click)="routeTo('Medicine')"> Medicine</button>
             </mat-action-row>
             <mat-action-row>
-            <button mat-raised-button color="accent" (click)="routeTo('Equipment')"> Medical Equipment</button>
+            <button mat-raised-button color="primary" (click)="routeTo('Equipment')"> Medical Equipment</button>
             </mat-action-row>
             <mat-action-row>
-            <button mat-raised-button color="accent" class="btn btn-md btn-primary btn-style" (click)="routeTo('Bed')"> Bed</button>
+            <button mat-raised-button color="primary" class="btn btn-md btn-primary btn-style" (click)="routeTo('Bed')"> Bed</button>
             </mat-action-row>
-        </mat-expansion-panel>
     </mat-grid-tile>
 
 </mat-grid-list>
 <br>
 <br>
-<br>
+<br> -->

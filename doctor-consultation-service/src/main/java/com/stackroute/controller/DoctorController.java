@@ -1,5 +1,6 @@
 package com.stackroute.controller;
 
+import com.stackroute.exception.DoctorAlreadyPresentException;
 import com.stackroute.exception.DoctorNotFoundException;
 import com.stackroute.model.Doctor;
 import com.stackroute.service.DoctorService;
@@ -11,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/api/v1/")
-@CrossOrigin("http://localhost:4200/")
 public class DoctorController {
     private DoctorService doctorService;
 
@@ -21,25 +22,36 @@ public class DoctorController {
         this.doctorService = doctorService;
     }
 
-    @GetMapping("/doctor/{id}")
-    public ResponseEntity<Doctor> findDoctor(@PathVariable String id) throws DoctorNotFoundException {
-        Doctor doctor1 = doctorService.findById(id);
-        return new ResponseEntity<Doctor>(doctor1, HttpStatus.OK );
+    @PostMapping("doctor/{emailId}")
+    public void saveDoctorRedis(@PathVariable  String emailId) throws DoctorNotFoundException, DoctorAlreadyPresentException, DoctorNotFoundException, DoctorAlreadyPresentException {
+        doctorService.saveDoctorRedis(emailId);
     }
-    @GetMapping("/stat/{status}")
-    public ResponseEntity<List<Doctor>> findByStatus(@PathVariable int status) throws DoctorNotFoundException {
-        List<Doctor> result = doctorService.findByStatus(status);
-        return new ResponseEntity<List<Doctor>>(result, HttpStatus.OK );
+
+    @PostMapping("doctorm")
+    public ResponseEntity<Doctor> saveDoctorMongoDB(@RequestBody  Doctor doctor) throws DoctorNotFoundException, DoctorAlreadyPresentException {
+        Doctor doctor1 = doctorService.saveDoctorMongoDB(doctor);
+        return new ResponseEntity<Doctor>(doctor1, HttpStatus.OK);
     }
-    @PostMapping("/doctor")
-    public ResponseEntity<Doctor> saveUser(@RequestBody Doctor doctor)
-    {
-        Doctor savedDoctor = doctorService.save(doctor);
-        return new ResponseEntity<Doctor>(savedDoctor, HttpStatus.CREATED );
+
+    @GetMapping("doctorm/{emailId}")
+    public ResponseEntity<Doctor> getDoctorByEmailId(@PathVariable  String emailId) throws DoctorNotFoundException {
+        Doctor doctor = doctorService.getDoctorByEmailId(emailId);
+        return new ResponseEntity<Doctor>(doctor, HttpStatus.OK);
     }
-    @GetMapping("/doctors")
-    public ResponseEntity<List<Doctor>> getAllUser()
-    {
-        return new ResponseEntity<List<Doctor>>(doctorService.findAll(), HttpStatus.OK);
+
+    @GetMapping("doctorm")
+    public List<Doctor> getAllDoctors() {
+        return doctorService.getAllDoctors();
+    }
+    @DeleteMapping("doctor/{emailId}")
+    public String deleteDoctorRedis(@PathVariable String emailId) throws DoctorNotFoundException {
+        doctorService.deleteDoctorRedis(emailId);
+        return "Deleted";
+    }
+
+    @GetMapping("doctor")
+    public List<Doctor> getAllDoctorRedis(){
+        List<Doctor> list = doctorService.getAllDoctorRedis();
+        return list;
     }
 }

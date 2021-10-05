@@ -1,5 +1,5 @@
 import { Component, Inject, Injectable, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService, User } from 'src/app/services/login.service';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
@@ -11,13 +11,21 @@ import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 })
 export class LoginComponent implements OnInit {
 
-  form = new FormGroup({
-    email : new FormControl('' , Validators.required),
-    password : new FormControl('' , Validators.required)
-  });
+  email = new FormControl('', [Validators.required, Validators.email]);
+  pass = new FormControl('', [Validators.required]);
 
-  constructor(private router: Router, private loginService: LoginService, @Inject(SESSION_STORAGE) private storage: WebStorageService) {
+  /* form = ({
+    email : new FormControl('' , [ Validators.required, Validators.email ]),
+    password : new FormControl('' , Validators.required)
+  });*/
+
+  constructor(private router: Router, private formBuilder: FormBuilder, private loginService: LoginService, @Inject(SESSION_STORAGE) private storage: WebStorageService) {
    }
+
+  profileForm = this.formBuilder.group({
+    emailId: [''],
+    password: ['']
+  });
 
   key: any;
 
@@ -72,7 +80,7 @@ export class LoginComponent implements OnInit {
         // After 3 seconds, remove the show class from DIV
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
       }*/
-
+      this.loginService.showsnackbar(this.obj[0]);
       this.storage.set(this.key, this.obj[1]);
       this.routetoDash(this.obj[2]);
     }
@@ -87,4 +95,25 @@ export class LoginComponent implements OnInit {
     }
   }
 
-}
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'Mandatory field';
+    }
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+
+  getErrorPass(){
+    return this.pass.hasError('required') ? 'Mandatory field' : '';
+    }
+
+  }
+
+  /*get email(){
+    return this.form.get('email');
+  }
+
+  get password(){
+    return this.form.get('password');
+  }*/
+
+

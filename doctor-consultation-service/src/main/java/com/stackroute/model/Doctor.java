@@ -4,21 +4,22 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+//import org.springframework.data.redis.core.RedisHash;
 
-import javax.persistence.Id;
 import java.io.Serializable;
 
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-@RedisHash("Doctor")
+@Document(collection = "doctors")
+//@RedisHash("Doctor")
 public class Doctor implements Serializable {
     @Id
-    private String email;
-    private String firstName;
-    private String lastName;
-    private String status;
+    private String emailId;
+    private String fullName;
     private String specialization;
+
 }
