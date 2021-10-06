@@ -22,6 +22,10 @@ import { WarroomAddComponent } from './components/warroom-dashboard/warroom-add/
 // import { CloseSosRequestComponent } from './components/close-sos-request/close-sos-request.component';
 import { CloseSosComponent } from './components/close-sos/close-sos.component';
 import { HeaderTabsComponent } from './components/header-tabs/header-tabs.component';
+import { PageOneComponent } from './components/warroom-dashboard/warroom-add/pages/page-one/page-one.component';
+import { PageTwoComponent } from './components/warroom-dashboard/warroom-add/pages/page-two/page-two.component';
+import { PageThreeComponent } from './components/warroom-dashboard/warroom-add/pages/page-three/page-three.component';
+// import { PageOneComponent } from './components/warroom-dashboard/warroom-add/pages/page-one/page-one.component';
 
 const routes: Routes = [
   {
@@ -72,7 +76,15 @@ const routes: Routes = [
     component: ListBedComponent
   }, {
     path: 'war-room-add',
-    component: WarroomAddComponent
+    component: WarroomAddComponent,
+    children: [
+      {
+        path: 'one', component: PageOneComponent
+      },
+      {
+        path: 'two', component: PageTwoComponent
+      }
+    ]
   }, {
     path: 'closesos',
     component: CloseSosComponent

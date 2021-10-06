@@ -3,11 +3,12 @@
         <mat-card><h2 class="text-center">Add Equipment</h2></mat-card>
         <form>
           <mat-card>
-          <div class="form-group">
-            <label for="equipmentName">Equipment Name:</label>
-            <input type="name" [(ngModel)]="user.equipmentName" placeholder="Equipment Name" name="name" class="form-control" id="equipmentName">
-          </div>
-          </mat-card>
+            <div class="form-group">
+              <label for="equipmentName">Equipment Name:</label>
+              <input type="name" [(ngModel)]="user.equipmentName" placeholder="Equipment Name" name="name" class="form-control" id="equipmentName">
+            </div>
+            </mat-card>
+  
           <mat-card>
           <div class="form-group">
             <label for="hospital">Hospital:</label>
@@ -36,7 +37,7 @@
           <mat-card>
           <div class="form-group">
             <label for="mobileNumber">Mobile Number:</label>
-            <input type="number" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
+            <input type="name" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
             <mat-error *ngIf="mobFormControl.errors?.pattern && !mobFormControl.hasError('required')">
               Please enter a valid Valid Phone Number
             </mat-error>
@@ -44,12 +45,12 @@
           </div>
         </mat-card>
           <mat-card>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Click here only if it's verified
-            </label>
-          </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (change)="check()">
+              <label class="form-check-label" for="flexCheckDefault">
+                Confirmed and verified
+              </label>
+            </div>  
         </mat-card>
           <mat-card>
           <button mat-raised-button color="primary" class="btn btn-success" (click)="CreateEquipment()">Submit</button>

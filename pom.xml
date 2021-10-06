@@ -32,6 +32,7 @@
         <module>patient-otp-service</module>
         <module>user-authentication-service</module>
         <module>information-service</module>
+        <module>volunteer-revert-service</module>
     </modules>
 
     <dependencies>

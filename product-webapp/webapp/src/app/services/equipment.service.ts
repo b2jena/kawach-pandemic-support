@@ -31,12 +31,14 @@ export class Equipment{
   public address: string;
   public contactPerson: string;
   public mobileNumber: string;
-  constructor( city: string, equipmentName: string, hospital: string, address: string, contactPerson: string, mobileNumber: string) {
+  public verificationStatus: boolean;
+  constructor( city: string, equipmentName: string, hospital: string, address: string, contactPerson: string, mobileNumber: string, verificationStatus: boolean) {
     this.city = city;
     this.equipmentName = equipmentName;
     this.hospital = hospital;
     this.address = address;
     this.contactPerson = contactPerson;
     this.mobileNumber = mobileNumber;
+    this.verificationStatus = verificationStatus;
   }
 }

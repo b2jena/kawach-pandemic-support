@@ -8,12 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
 
         SpringApplication.run(App.class, args);
-        System.out.println("Spring boot is running");
+        System.out.println("Doctor Consultation service is running");
     }
 }

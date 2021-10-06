@@ -1,5 +1,6 @@
 package com.stackroute.usermanagementservice.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stackroute.usermanagementservice.exception.NullValueException;
 import com.stackroute.usermanagementservice.exception.UserAlreadyExistsException;
 import com.stackroute.usermanagementservice.model.Doctor;
@@ -12,6 +13,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
@@ -37,10 +41,17 @@ public class UserController {
     }
 
     @PostMapping("register/doctor")
-    public ResponseEntity<String> saveDoctors(@RequestBody Doctor doctor) throws UserAlreadyExistsException, NullValueException {
+    public ResponseEntity<String> saveDoctors(@RequestParam(value = "image") MultipartFile image,
+                                              @RequestParam("item") String item) throws IOException, UserAlreadyExistsException, NullValueException {
+        Doctor doctor = new ObjectMapper().readValue(item, Doctor.class);
+        doctor.setImageByte(image.getBytes());
+        doctor.setImageName(image.getOriginalFilename());
+        doctor.setType(image.getContentType());
         doctorService.saveDoctor(doctor);
         String doctorLoginDetails = doctor.getEmailId() + ", " + doctor.getPassword() + ", " + doctorTag;
+        String doctorOnlineDetails = doctor.getEmailId() + ", " + doctor.getFullName() + ", " + doctor.getSpecialization();
         rabbitMqSender.send(doctorLoginDetails);
+        rabbitMqSender.sendDoctor(doctorOnlineDetails);
         return new ResponseEntity<>(userGotSaved, HttpStatus.CREATED);
     }
 

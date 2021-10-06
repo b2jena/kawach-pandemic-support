@@ -1,4 +1,5 @@
 package com.stackroute.resource.service;
+
 import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.Resources;
 
@@ -16,4 +17,6 @@ public interface ResourceService {
     List<Resources> getAllEquipment(String City);
 
     List<Resources> getAllBeds(String City);
+
+    Resources getUnverifiedResources();
 }

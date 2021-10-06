@@ -38,5 +38,10 @@ public class ResourceController {
         return new ResponseEntity<Resources>(updatedResources,HttpStatus.CREATED);
     }
 
+    @GetMapping("medicine/getUnverified")
+    public ResponseEntity<Resources> getUnverifiedBed()
+    {
+        return new ResponseEntity<>(resourceService.getUnverifiedResources(), HttpStatus.OK);
+    }
 
 }

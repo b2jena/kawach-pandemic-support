@@ -65,6 +65,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { TimeslotComponent } from './components/doctor-dashboard/timeslot/timeslot.component';
 import { FeedbackComponent } from './components/doctor-dashboard/feedback/feedback.component';
 import { ConsultComponent } from './components/doctor-dashboard/consult/consult.component';
+import { WarroomVerifyComponent } from './components/warroom-dashboard/warroom-verify/warroom-verify.component';
+import { VerifyBedComponent } from './components/verify/verify-bed/verify-bed.component';
+import { PageOneComponent } from './components/warroom-dashboard/warroom-add/pages/page-one/page-one.component';
+import { PageThreeComponent } from './components/warroom-dashboard/warroom-add/pages/page-three/page-three.component';
+import { PageTwoComponent } from './components/warroom-dashboard/warroom-add/pages/page-two/page-two.component';
 
 
 @NgModule({
@@ -104,12 +109,12 @@ import { ConsultComponent } from './components/doctor-dashboard/consult/consult.
     TimeslotComponent,
     FeedbackComponent,
     ConsultComponent,
-   ],
-  // entryComponents: [
-  //   AddMedicineComponent,
-  //   AddBedComponent,
-  //   AddEquipmentComponent
-  // ],
+    WarroomVerifyComponent,
+    VerifyBedComponent,
+    PageOneComponent,
+    PageThreeComponent,
+    PageTwoComponent
+  ],
   imports: [
     FormsModule,
     BrowserModule,
@@ -148,7 +153,8 @@ import { ConsultComponent } from './components/doctor-dashboard/consult/consult.
     MatCardModule,
     MatPaginatorModule,
     MatGridListModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatSelectModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
   MatSnackBar, Overlay],
