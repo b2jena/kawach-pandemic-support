@@ -19,7 +19,14 @@
                 <td>{{bed.contactPerson}}</td>
                 <td>{{bed.mobileNumber}}</td>
                 <td>{{bed.verificationStatus}}</td>
+                <td>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (change)="check()">
+                </td>
             </tr>
+
+            
         </tbody>
     </table>
+
+    <button class="btn btn-success" (click)="putVerified()">Submit</button>
 </div>
