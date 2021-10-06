@@ -63,7 +63,9 @@ import { HeaderTabsComponent } from './components/header-tabs/header-tabs.compon
 import { MatTabsModule } from '@angular/material/tabs';
 import { WarroomVerifyComponent } from './components/warroom-dashboard/warroom-verify/warroom-verify.component';
 import { VerifyBedComponent } from './components/verify/verify-bed/verify-bed.component';
-
+import { ChatComponent } from './components/chat/chat.component';
+import { DataService } from './components/chat/service/data.service';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -101,6 +103,7 @@ import { VerifyBedComponent } from './components/verify/verify-bed/verify-bed.co
     HeaderTabsComponent,
     WarroomVerifyComponent,
     VerifyBedComponent,
+    ChatComponent
   ],
   imports: [
     FormsModule,
@@ -140,10 +143,12 @@ import { VerifyBedComponent } from './components/verify/verify-bed/verify-bed.co
     MatCardModule,
     MatPaginatorModule,
     MatGridListModule,
-    MatSelectModule
+    MatSelectModule,
+    MatToolbarModule,
+    MatSidenavModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
-  MatSnackBar, Overlay],
+  MatSnackBar, Overlay, DataService],
 
   bootstrap: [AppComponent]
 })
