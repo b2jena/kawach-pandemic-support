@@ -54,6 +54,13 @@ public class BedServiceImpl implements BedService{
         return unverified == null ? null : unverified.get(0);
     }
 
+    @Override
+    public List<Beds> getAllBedsByCity(String City) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("city").in(City));
+        List<Beds> request = mongoTemplate.find(query, Beds.class);
+        return request;
+    }
 
 
 }

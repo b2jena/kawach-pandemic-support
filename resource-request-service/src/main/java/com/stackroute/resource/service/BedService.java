@@ -11,4 +11,8 @@ public interface BedService {
     List<Beds> getAllBeds();
 
     Beds getUnverifiedBed();
+
+    List<Beds> getAllBedsByCity(String city);
+
+
 }
