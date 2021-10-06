@@ -18,11 +18,19 @@ export class VerifyBedComponent implements OnInit {
   }
 
   putVerified(): void{
-    if (this.isActive === true)
-    {
       this.bed.verificationStatus = true;
-      this.bedService.updateBed(this.bed);
-    }
+      this.bedService.updateBed(this.bed).subscribe(data => {
+        console.log(this.bed = data);
+      });
+      this.bedService.getUnverifiedBed().subscribe(data => {
+        console.log(this.bed = data);
+      });
+  }
+
+  passOn(): void{
+    this.bedService.getUnverifiedBed().subscribe(data => {
+      console.log(this.bed = data);
+    });
   }
 
   check() {
