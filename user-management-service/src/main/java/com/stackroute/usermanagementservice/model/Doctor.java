@@ -22,5 +22,11 @@ public class Doctor {
     private long phoneNumber;
     private String password;
     private String specialization;
+    private byte[] imageByte;
+
+    private String imageName;
+
+    private String type;
+
 
 }

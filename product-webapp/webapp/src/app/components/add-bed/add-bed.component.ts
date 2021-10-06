@@ -14,37 +14,14 @@ export class AddBedComponent implements OnInit {
     Validators.required,
     Validators.pattern('^[0-9]{10}'),
   ]);
-  vStatus = [
-    { id: 1, select: false, name: 'click Here onle if verefied'}
-  ]
   // strValue: String = "N";
-  // strValue: String = "N";
-  // this.vStatus[0].select
-  // isActive: boolean = true;
-  user: Bed = new Bed( '', '', '', '', '', this.vStatus[0].select);
+  isActive = false;
+  user: Bed = new Bed( '', '', '', '', '', this.isActive);
 
   constructor(private equipmentService: BedService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
-
-
-  onChange($event: any){
-    const id = $event.target.value;
-    const isChecked = $event.target.checked;
-    console.log(id, isChecked);
-    console.log(this.vStatus);
-
-    this.vStatus = this.vStatus.map((d) => {
-      if (d.id == id){
-        d.select = isChecked;
-        return d;
-      }return d;
-    });
-
-    console.log(this.vStatus);
-  }
-
   showSnackbars(content: string, action: string) {
     const snack = this.snackBar.open(content, action, {
       duration: 2000,
@@ -61,20 +38,17 @@ export class AddBedComponent implements OnInit {
   }
     CreateBed(): void {
       if ( this.user.bedType === '' || this.user.address === '' || this.user.city === '' || this.user.contactPerson === '' || this.user.mobileNumber === ''){
-        // console.log(this.isActive);
-        this.user.verificationStatus = this.vStatus[0].select;
-        console.log(this.user.verificationStatus);
-        console.log("Here")
-        console.log(this.vStatus[0].select);
         this.showSnackbars('Please fill the empty field(s).', 'x');
       } else {
-        console.log("Here1")
-        console.log(this.vStatus[0].select);
-        this.user.verificationStatus = this.vStatus[0].select;
+        this.user.verificationStatus = this.isActive;
+        console.log('data:', this.user);
         this.equipmentService.CreateBed(this.user).subscribe( data => { this.showSnackbars('Bed added successfully.', 'x'); });
       }
-      console.log("Here2")
-      console.log(this.vStatus[0].select);
       console.log(this.user.verificationStatus);
     }
+
+    check() {
+      this.isActive = !this.isActive;
+    }
 }
+
