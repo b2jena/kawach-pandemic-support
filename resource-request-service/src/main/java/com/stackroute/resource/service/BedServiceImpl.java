@@ -10,7 +10,6 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class BedServiceImpl implements BedService{
@@ -31,7 +30,7 @@ public class BedServiceImpl implements BedService{
         } else if (beds.getBedType().equals("") || beds.getAddress().equals("") || beds.getCity().equals("") || beds.getContactPerson().equals("") || beds.getMobileNumber().equals("")) {
             throw new NullValueException();
         } else {
-            beds.setBedId(UUID.randomUUID());
+//            beds.setBedId(UUID.randomUUID());
             return bedRepository.save(beds);
         }
     }

@@ -44,4 +44,9 @@ public class BedController {
     {
         return new ResponseEntity<>(bedService.getUnverifiedBed(), HttpStatus.OK);
     }
+
+    @PutMapping("bed/update")
+    public ResponseEntity<Beds> putVerifiedBed(@RequestBody Beds beds) throws NullValueException {
+        return new ResponseEntity<>(bedService.saveBed(beds), HttpStatus.OK);
+    }
 }
