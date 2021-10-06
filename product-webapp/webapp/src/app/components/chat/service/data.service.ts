@@ -4,7 +4,7 @@ import {webSocket, WebSocketSubject} from 'rxjs/webSocket';
 import {environment} from '../../../../environments/environment';
 import {Message} from '../types/message';
 // environments/environment.prod.ts
-export const WS_ENDPOINT = environment.wsEndpoint;  
+export const WS_ENDPOINT = environment.wsEndpoint;
 // we can also use this -> wsEndpoint: 'ws://localhost:8081'
 
 @Injectable({
@@ -55,7 +55,7 @@ export class DataService {
       closeObserver: {
         next: () => {
           console.log('[DataService]: connection closed');
-          this.socket$ != undefined;
+          this.socket$ = undefined;
           this.connect();
         }
       }

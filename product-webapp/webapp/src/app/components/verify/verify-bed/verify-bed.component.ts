@@ -23,7 +23,6 @@ export class VerifyBedComponent implements OnInit {
       this.bed.verificationStatus = true;
       this.bedService.updateBed(this.bed);
     }
-      
   }
 
   check() {
