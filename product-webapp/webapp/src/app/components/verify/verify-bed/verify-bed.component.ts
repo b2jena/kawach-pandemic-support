@@ -25,8 +25,7 @@ export class VerifyBedComponent implements OnInit {
         this.bedService.getUnverifiedBed().subscribe(data2 => {
           console.log(this.bed = data2);
         });
-      }); 
-  }
+      }); }
 
   passOn(): void{
     this.count += 1;
