@@ -13,5 +13,7 @@ public interface BedService {
 
     Beds getUnverifiedBed();
 
+    List<Beds> getAllBedsByCity(String city);
+
     void updateBed(UUID bedId);
 }

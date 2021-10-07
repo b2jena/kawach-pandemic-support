@@ -61,4 +61,11 @@ public class EquipmentServiceImpl implements EquipmentService{
         updateQuery.set("verificationStatus",true);
         mongoTemplate.upsert(query,updateQuery, Equipments.class);
     }
+    public List<Equipments> getEquipmentByCity(String City) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("city").in(City));
+        List<Equipments> request = mongoTemplate.find(query, Equipments.class);
+        return request;
+    }
+
 }

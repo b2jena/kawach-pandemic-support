@@ -15,10 +15,6 @@ public interface ResourceService {
 
     List<Resources> getAllMedicine(String city);
 
-    List<Resources> getAllEquipment(String City);
-
-    List<Resources> getAllBeds(String City);
-
     Resources getUnverifiedResources();
 
     void UpdateMedicine(UUID medId);

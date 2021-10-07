@@ -63,6 +63,8 @@ import { HeaderTabsComponent } from './components/header-tabs/header-tabs.compon
 import { MatTabsModule } from '@angular/material/tabs';
 import { WarroomVerifyComponent } from './components/warroom-dashboard/warroom-verify/warroom-verify.component';
 import { VerifyBedComponent } from './components/verify/verify-bed/verify-bed.component';
+import { DoctorCardsComponent } from './components/patient-dashboard/doctor-cards/doctor-cards.component';
+
 import { ChatComponent } from './components/chat/chat.component';
 import { DataService } from './components/chat/service/data.service';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -107,7 +109,9 @@ import { VerifyEquipmentsComponent } from './components/verify/verify-equipments
     VerifyBedComponent,
     ChatComponent,
     VerifyMedicineComponent,
-    VerifyEquipmentsComponent
+    VerifyEquipmentsComponent,
+    DoctorCardsComponent,
+    ChatComponent
   ],
   imports: [
     FormsModule,

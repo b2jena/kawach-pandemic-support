@@ -11,4 +11,5 @@ public interface EquipmentService {
     List<Equipments> getAllEquipments();
     Equipments getUnverifiedEquipments();
     void UpdateEquipment(UUID equipId);
+    List<Equipments> getEquipmentByCity(String city);
 }

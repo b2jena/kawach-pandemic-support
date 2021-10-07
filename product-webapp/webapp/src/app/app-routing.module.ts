@@ -78,6 +78,9 @@ const routes: Routes = [
     path: 'closesos',
     component: CloseSosComponent
   }, {
+    path: 'pdashb',
+    component: PatientDashboardComponent
+  }, {
     path: 'chat',
     component: ChatComponent
   }

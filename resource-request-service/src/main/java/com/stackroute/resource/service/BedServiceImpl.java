@@ -66,4 +66,13 @@ public class BedServiceImpl implements BedService{
         updateQuery.set("verificationStatus",true);
         mongoTemplate.upsert(query,updateQuery,Beds.class);
     }
+    @Override
+    public List<Beds> getAllBedsByCity(String City) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("city").in(City));
+        List<Beds> request = mongoTemplate.find(query, Beds.class);
+        return request;
+    }
+
+
 }
