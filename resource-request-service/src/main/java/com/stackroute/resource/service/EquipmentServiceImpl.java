@@ -2,7 +2,6 @@ package com.stackroute.resource.service;
 
 import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.Equipments;
-import com.stackroute.resource.model.Resources;
 import com.stackroute.resource.repository.EquipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;

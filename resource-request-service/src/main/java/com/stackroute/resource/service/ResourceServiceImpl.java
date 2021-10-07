@@ -1,7 +1,6 @@
 package com.stackroute.resource.service;
 
 import com.stackroute.resource.exception.NullValueException;
-import com.stackroute.resource.model.Beds;
 import com.stackroute.resource.model.Resources;
 import com.stackroute.resource.repository.ResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
