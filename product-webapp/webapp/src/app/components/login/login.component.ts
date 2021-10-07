@@ -11,7 +11,7 @@ import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 })
 export class LoginComponent implements OnInit {
 
-  email = new FormControl('', [Validators.required, Validators.email, Validators.pattern('^[A-za-z]{4,20}'), ]);
+  email = new FormControl('', [Validators.required, Validators.email/*, Validators.pattern('^[A-za-z]{4,20}'), */]);
   pass = new FormControl('', [Validators.required]);
 
   /* form = ({
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       // this.loginService.showsnackbar('Email ID cannot be empty');
       this.loginService.showsnackbar(this.getErrorMessage());
     }
-    else if (this.userobj.password === ''){
+    else if (this.userobj.password === '' || this.pass.invalid){
       // window.alert('Password cannot be empty');
       /*x = document.getElementById("snackbar");
 
@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
         // After 3 seconds, remove the show class from DIV
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
       }*/
-      this.loginService.showsnackbar('Password cannot be empty');
+      this.loginService.showsnackbar(this.getErrorPass());
     }
     else{
       this.loginService.generateToken(this.userobj).subscribe( data => { this.obj = data ; } );
@@ -98,23 +98,16 @@ export class LoginComponent implements OnInit {
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
-      return 'Mandatory field';
+      return 'Mandatory field- Email ID cannot be empty';
     }
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
   getErrorPass(){
-    return this.pass.hasError('required') ? 'Mandatory field' : '';
+    return this.pass.hasError('required') ? 'Mandatory field- Password cannot be empty' : '';
     }
 
   }
 
-  /*get email(){
-    return this.form.get('email');
-  }
-
-  get password(){
-    return this.form.get('password');
-  }*/
 
 

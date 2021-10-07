@@ -61,15 +61,22 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatDividerModule } from '@angular/material/divider';
 import { HeaderTabsComponent } from './components/header-tabs/header-tabs.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { TimeslotComponent } from './components/doctor-dashboard/timeslot/timeslot.component';
+import { FeedbackComponent } from './components/doctor-dashboard/feedback/feedback.component';
+import { ConsultComponent } from './components/doctor-dashboard/consult/consult.component';
 import { WarroomVerifyComponent } from './components/warroom-dashboard/warroom-verify/warroom-verify.component';
 import { VerifyBedComponent } from './components/verify/verify-bed/verify-bed.component';
+
 import { DoctorCardsComponent } from './components/patient-dashboard/doctor-cards/doctor-cards.component';
 
 import { ChatComponent } from './components/chat/chat.component';
 import { DataService } from './components/chat/service/data.service';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { VerifyMedicineComponent } from './components/verify/verify-bed/verify-medicine/verify-medicine.component';
 import { VerifyEquipmentsComponent } from './components/verify/verify-equipments/verify-equipments.component';
+import { WarroomAddBedComponent } from './components/warroom-dashboard/warroom-add-bed/warroom-add-bed.component';
+import { WarroomAddMedicineComponent } from './components/warroom-dashboard/warroom-add-medicine/warroom-add-medicine.component';
+import { WarroomAddEquipmentComponent } from './components/warroom-dashboard/warroom-add-equipment/warroom-add-equipment.component';
 
 @NgModule({
   declarations: [
@@ -105,13 +112,19 @@ import { VerifyEquipmentsComponent } from './components/verify/verify-equipments
     CarouselComponent,
     CloseSosComponent,
     HeaderTabsComponent,
+    TimeslotComponent,
+    FeedbackComponent,
+    ConsultComponent,
     WarroomVerifyComponent,
     VerifyBedComponent,
     ChatComponent,
     VerifyMedicineComponent,
     VerifyEquipmentsComponent,
     DoctorCardsComponent,
-    ChatComponent
+    ChatComponent,
+    WarroomAddBedComponent,
+    WarroomAddMedicineComponent,
+    WarroomAddEquipmentComponent
   ],
   imports: [
     FormsModule,
@@ -151,6 +164,7 @@ import { VerifyEquipmentsComponent } from './components/verify/verify-equipments
     MatCardModule,
     MatPaginatorModule,
     MatGridListModule,
+    MatSidenavModule,
     MatSelectModule,
     MatToolbarModule,
     MatSidenavModule
