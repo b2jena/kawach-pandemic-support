@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BedService{
   // apiBaseUrl=environment.apiBaseUrl;
-  Bed: Bed[] = [];
+  Bed!: Bed;
   constructor(private httpService: HttpClient) { }
   CreateBed(bed: Bed): Observable<Bed> {
     console.log(bed);
@@ -20,9 +20,15 @@ export class BedService{
     console.log(bed);
     return this.httpService.put<Bed>('http://localhost:9901/bed/update', bed);
   }
-  getBeds(){
+  public getBeds(){
     return this.httpService.get<Bed[]>('http://localhost:9901/bed/getAll');
   }
+
+  public getUnverifiedBed()
+  {
+    return this.httpService.get<Bed>('http://localhost:9901/bed/getUnverified');
+  }
+
 }
 export class Bed{
   public city: string;

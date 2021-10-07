@@ -1,56 +1,25 @@
 package com.stackroute.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+//import org.springframework.data.redis.core.RedisHash;
 
-@Entity
-public class Doctor {
+import java.io.Serializable;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Document(collection = "doctors")
+//@RedisHash("Doctor")
+public class Doctor implements Serializable {
     @Id
-    private String email;
-    private String firstname;
-    private String lastname;
-    private int status;
+    private String emailId;
+    private String fullName;
+    private String specialization;
 
-    public Doctor() {
-        super();
-    }
-
-    public Doctor(String email, String firstname, String lastname, int status) {
-        this.email = email;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.status = status;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
 }

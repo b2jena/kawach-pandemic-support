@@ -11,13 +11,14 @@ export class CloseSosService {
 
   constructor(private httpService: HttpClient) { }
 
-  getSos(): Observable<CloseSos>{
-    return this.httpService.get<CloseSos>('http://localhost:9900/sos/getSos');
+  getSos(): Observable<CloseSos[]>{
+    return this.httpService.get<CloseSos[]>('http://localhost:9901/sos/getSos');
   }
 }
 
 
-export class Requirment{
+
+export class Requirement{
   public requirementName: string;
   public requirementQuantity: string;
   public unitOfMeasure: string;
@@ -37,19 +38,20 @@ export class CloseSos{
   public email: string;
   public hospitalised: string;
   public city: string;
-  public requir: Array<Requirment>;
+  public requirement: any;
   public requestStatus: string;
+  public formStatus: string;
 
 
-
-  constructor( patientName: string, email: string, requir: Array <Requirment>, phoneNo: string, city: string, gender: string, hospitalised: string, requestStatus: string) {
+  constructor( patientName: string, formStatus: string, email: string, requirement: any, phoneNo: string, city: string, gender: string, hospitalised: string, requestStatus: string) {
     this.patientName = patientName;
     this.gender = gender;
     this.phoneNo = phoneNo;
     this.email = email;
     this.hospitalised = hospitalised;
     this.city = city;
-    this.requir = requir;
+    this.requirement = requirement;
     this.requestStatus = requestStatus;
+    this.formStatus = formStatus;
   }
 }

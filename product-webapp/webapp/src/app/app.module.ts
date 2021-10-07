@@ -61,7 +61,11 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatDividerModule } from '@angular/material/divider';
 import { HeaderTabsComponent } from './components/header-tabs/header-tabs.component';
 import { MatTabsModule } from '@angular/material/tabs';
-
+import { WarroomVerifyComponent } from './components/warroom-dashboard/warroom-verify/warroom-verify.component';
+import { VerifyBedComponent } from './components/verify/verify-bed/verify-bed.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { DataService } from './components/chat/service/data.service';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -97,6 +101,9 @@ import { MatTabsModule } from '@angular/material/tabs';
     CarouselComponent,
     CloseSosComponent,
     HeaderTabsComponent,
+    WarroomVerifyComponent,
+    VerifyBedComponent,
+    ChatComponent
   ],
   imports: [
     FormsModule,
@@ -136,9 +143,12 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatCardModule,
     MatPaginatorModule,
     MatGridListModule,
+    MatSelectModule,
+    MatToolbarModule,
+    MatSidenavModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
-  MatSnackBar, Overlay],
+  MatSnackBar, Overlay, DataService],
 
   bootstrap: [AppComponent]
 })

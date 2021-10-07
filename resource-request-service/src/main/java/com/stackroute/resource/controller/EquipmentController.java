@@ -29,4 +29,10 @@ public class EquipmentController {
     public ResponseEntity<List<Equipments>> getAllEquipments(){
         return new ResponseEntity<List<Equipments>>((List<Equipments>)equipmentService.getAllEquipments(),HttpStatus.OK);
     }
+
+    @GetMapping("equipment/getUnverified")
+    public ResponseEntity<Equipments> getUnverifiedBed()
+    {
+        return new ResponseEntity<>(equipmentService.getUnverifiedEquipments(), HttpStatus.OK);
+    }
 }

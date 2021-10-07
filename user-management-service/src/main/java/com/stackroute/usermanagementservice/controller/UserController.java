@@ -43,13 +43,15 @@ public class UserController {
     @PostMapping("register/doctor")
     public ResponseEntity<String> saveDoctors(@RequestParam(value = "image") MultipartFile image,
                                               @RequestParam("item") String item) throws IOException, UserAlreadyExistsException, NullValueException {
-        Doctor doctor =  new ObjectMapper().readValue(item, Doctor.class);
+        Doctor doctor = new ObjectMapper().readValue(item, Doctor.class);
         doctor.setImageByte(image.getBytes());
         doctor.setImageName(image.getOriginalFilename());
         doctor.setType(image.getContentType());
         doctorService.saveDoctor(doctor);
         String doctorLoginDetails = doctor.getEmailId() + ", " + doctor.getPassword() + ", " + doctorTag;
+        String doctorOnlineDetails = doctor.getEmailId() + ", " + doctor.getFullName() + ", " + doctor.getSpecialization();
         rabbitMqSender.send(doctorLoginDetails);
+        rabbitMqSender.sendDoctor(doctorOnlineDetails);
         return new ResponseEntity<>(userGotSaved, HttpStatus.CREATED);
     }
 

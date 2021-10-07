@@ -36,7 +36,7 @@ export class DoctorRegistrationComponent implements OnInit {
 
   message: any;
   hide = true;
-  action = 'OK';
+  action = '';
   // email = new FormControl('', [Validators.required, Validators.email]);
   // name = new FormControl('', [Validators.required]);
   // medId = new FormControl('', [Validators.required]);
@@ -59,7 +59,7 @@ export class DoctorRegistrationComponent implements OnInit {
     emailId: new FormControl('', [Validators.required, Validators.email]),
     fullName: new FormControl('', Validators.required),
     medicalRegistrationId: new FormControl('', Validators.required),
-    phoneNumber: new FormControl('', Validators.required),
+    phoneNumber: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
     specialization: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
@@ -114,15 +114,19 @@ export class DoctorRegistrationComponent implements OnInit {
       .subscribe(
         (response) => {
           console.log(response);
-          if (response.status === 201) {
-            setTimeout(() => {
-              location.reload();
-            }, 2000);
-          } else {
-            setTimeout(() => {
-              location.reload();
-            }, 2000);
-          }
+          this.message = response.body;
+          this.snackBar.open(this.message, this.action, {
+            duration: 3000
+          });
+          // if (response.status === 201) {
+          //   setTimeout(() => {
+          //     location.reload();
+          //   });
+          // } else {
+          //   setTimeout(() => {
+          //     location.reload();
+          //   }, 2000);
+          // }
         },
         (err) => console.log('Error Occured during saving: ' + err.message)
       );

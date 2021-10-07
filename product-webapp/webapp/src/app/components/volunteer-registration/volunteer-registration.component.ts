@@ -14,19 +14,19 @@ export class VolunteerRegistrationComponent implements OnInit {
   message: any;
   hide = true;
   action = 'OK';
-  email = new FormControl('', [Validators.required, Validators.email]);
-  name = new FormControl('', [Validators.required]);
-  ph = new FormControl('', [Validators.required]);
-  pass = new FormControl('', [Validators.required]);
+  // email = new FormControl('', [Validators.required, Validators.email]);
+  // name = new FormControl('', [Validators.required]);
+  // ph = new FormControl('', [Validators.required]);
+  // pass = new FormControl('', [Validators.required]);
 
   constructor(private userService: UserRegistrationService, private snackBar: MatSnackBar, private formBuilder: FormBuilder) {
   }
 
   profileForm = this.formBuilder.group({
-    emailId: [''],
-    fullName: [''],
-    phoneNumber: [''],
-    password: ['']
+    emailId: new FormControl('', [Validators.required, Validators.email]),
+    fullName: new FormControl('', [Validators.required]),
+    phoneNumber: new FormControl('', [Validators.minLength(10)]),
+    password: new FormControl('', [Validators.required])
   });
 
   ngOnInit(): void {
@@ -45,22 +45,22 @@ export class VolunteerRegistrationComponent implements OnInit {
   //   this._snackBar.open(this.message);
   // }
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'Mandatory field';
-    }
+  // getErrorMessage() {
+  //   if (this.email.hasError('required')) {
+  //     return 'Mandatory field';
+  //   }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
-  getErrorName(){
-    return this.name.hasError('required') ? 'Mandatory field' : '';
-  }
-  getErrorPh(){
-    return this.ph.hasError('required') ? 'Mandatory field' : '';
-  }
-  getErrorPass(){
-    return this.pass.hasError('required') ? 'Mandatory field' : '';
-  }
+  //   return this.email.hasError('email') ? 'Not a valid email' : '';
+  // }
+  // getErrorName(){
+  //   return this.name.hasError('required') ? 'Mandatory field' : '';
+  // }
+  // getErrorPh(){
+  //   return this.ph.hasError('required') ? 'Mandatory field' : '';
+  // }
+  // getErrorPass(){
+  //   return this.pass.hasError('required') ? 'Mandatory field' : '';
+  // }
 
 
 
