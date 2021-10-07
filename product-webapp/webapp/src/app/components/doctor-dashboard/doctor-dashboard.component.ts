@@ -11,5 +11,8 @@ export class DoctorDashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  DoctorOnline(emailId: string){
+    
+  }
 
 }
