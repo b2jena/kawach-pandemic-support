@@ -19,13 +19,12 @@ export class VerifyEquipmentsComponent implements OnInit {
 
   putVerified(): void{
     this.Equip.verificationStatus = true;
-    this.equipService.updateEquipment(this.Equip).subscribe(data => {
-      console.log(this.Equip = data);
-      this.equipService.getUnverifiedEquipments().subscribe(data => {
-        console.log(data = this.Equip);
+    this.equipService.updateEquipment(this.Equip).subscribe(data1 => {
+      console.log(this.Equip = data1);
+      this.equipService.getUnverifiedEquipments().subscribe(data2 => {
+        console.log(data2 = this.Equip);
       });
     });
-    
   }
 
   passOn(): void{
