@@ -18,15 +18,14 @@ export class VerifyMedicineComponent implements OnInit {
 
   putVerified(): void{
     this.med.verificationStatus = true;
-    this.medService.updateMedicine(this.med).subscribe(data => {
-      console.log(this.med = data);
-    });
-    this.medService.getUnverifiedMed().subscribe(data => {
-      console.log(this.med = data);
+    this.medService.updateMedicine(this.med).subscribe(data1 => {
+      console.log(this.med = data1);
+      this.medService.getUnverifiedMed().subscribe(data2 => {
+        console.log(this.med = data2);
+      });
     });
   }
-
-  passOn(): void{
+passOn(): void{
     this.medService.getUnverifiedMed().subscribe(data => {
       console.log(this.med = data);
     });
