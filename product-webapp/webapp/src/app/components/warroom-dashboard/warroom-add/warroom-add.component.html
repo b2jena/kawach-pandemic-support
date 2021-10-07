@@ -1,22 +1,73 @@
-<div style="width: 45%;">
+<div>
+    <mat-toolbar color="primary">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleSidebar()">
+         <mat-icon>menu</mat-icon>
+       </button>
+       <span>Resources</span>
+       <span class="example-spacer"></span>
+     </mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav style="width: 25%;" mode="side" [opened]="opened">
+
+      <mat-action-list>
+        <button mat-list-item routerLink="/war-room-add/one" (click)="toggleSidebar()"> Add Medicine </button>
+        <button mat-list-item routerLink="/war-room-add/two" (click)="toggleSidebar()"> Add Equipment </button>
+        <button mat-list-item (click)="toggleSidebar()"> Add Beds </button>
+      </mat-action-list>
+    </mat-sidenav>
+    <div mat-sidenav-content style="height: 90vh; margin-left: 35px; align-items: center;">
+        <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-container>
+</div>
+
+
+
+<!-- <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <mat-tab-group [@.disabled]="true" dynamicHeight>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        Add Beds
+                    </ng-template>
+                    <app-add-bed></app-add-bed>
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        Add Medicine
+                    </ng-template>
+                    <app-add-medicine></app-add-medicine>
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        Add Equipments
+                    </ng-template>
+                    <app-add-equipment></app-add-equipment>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div> -->
+
+
+
+<!-- <div style="width: 45%;">
     <mat-card>
         <mat-list role="list">
             <mat-list-item role="listitem">
-                <button style="margin-left: 40px;" mat-raised-button color="primary" routerLink="/addmedicine">Add Medicine</button>
+                <button style="margin-left: 40px;" mat-raised-button color="primary" >Add Medicine</button>
             </mat-list-item>
             <mat-list-item role="listitem">
-                <button style="margin-left: 40px;" mat-raised-button color="primary" routerLink="/addequipment">Add Medical Equipment</button>
+                <button style="margin-left: 40px;" mat-raised-button color="primary" >Add Medical Equipment</button>
             </mat-list-item>
             <mat-list-item role="listitem">
-                <button style="margin-left: 40px;" mat-raised-button color="primary" routerLink="/addbed">Add Bed</button>
+                <button style="margin-left: 40px;" mat-raised-button color="primary" >Add Bed</button>
             </mat-list-item>
           </mat-list>
     </mat-card>
-</div>
+</div> -->
 
-<div style="width: 45%;">
-    
-</div>
 
 
 

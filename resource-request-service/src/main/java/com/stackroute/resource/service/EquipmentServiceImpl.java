@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -53,6 +54,13 @@ public class EquipmentServiceImpl implements EquipmentService{
     }
 
     @Override
+    public void UpdateEquipment(UUID equipId) {
+        System.out.println("medId = " + equipId);
+        Query query = new Query(Criteria.where("equipmentId").is(equipId));
+        Update updateQuery = new Update();
+        updateQuery.set("verificationStatus",true);
+        mongoTemplate.upsert(query,updateQuery, Equipments.class);
+    }
     public List<Equipments> getEquipmentByCity(String City) {
         Query query = new Query();
         query.addCriteria(Criteria.where("city").in(City));

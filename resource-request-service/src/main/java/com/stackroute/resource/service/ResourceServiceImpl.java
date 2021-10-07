@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class ResourceServiceImpl implements ResourceService {
@@ -61,6 +63,18 @@ public class ResourceServiceImpl implements ResourceService {
         query.addCriteria(Criteria.where("verificationStatus").is(false));
         List<Resources> unverified = mongoTemplate.find(query, Resources.class);
 
-        return unverified == null ? null : unverified.get(0);
+        if (unverified.size() == 0) return null;
+
+        int randomInd = ThreadLocalRandom.current().nextInt(0, unverified.size());
+        return unverified.get(randomInd);
+    }
+
+    @Override
+    public void UpdateMedicine(UUID medId) {
+        System.out.println("medId = " + medId);
+        Query query = new Query(Criteria.where("id").is(medId));
+        Update updateQuery = new Update();
+        updateQuery.set("verificationStatus",true);
+        mongoTemplate.upsert(query,updateQuery, Resources.class);
     }
 }

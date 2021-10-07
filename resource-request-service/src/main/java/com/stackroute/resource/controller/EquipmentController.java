@@ -35,4 +35,10 @@ public class EquipmentController {
     {
         return new ResponseEntity<>(equipmentService.getUnverifiedEquipments(), HttpStatus.OK);
     }
+
+    @PutMapping("equipment/update")
+    public void VerifyEquipment(@RequestBody Equipments equipment)
+    {
+        equipmentService.UpdateEquipment(equipment.getEquipmentId());
+    }
 }
