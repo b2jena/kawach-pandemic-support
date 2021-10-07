@@ -26,6 +26,7 @@ import { PageOneComponent } from './components/warroom-dashboard/warroom-add/pag
 import { PageTwoComponent } from './components/warroom-dashboard/warroom-add/pages/page-two/page-two.component';
 import { PageThreeComponent } from './components/warroom-dashboard/warroom-add/pages/page-three/page-three.component';
 // import { PageOneComponent } from './components/warroom-dashboard/warroom-add/pages/page-one/page-one.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes = [
   {
@@ -58,7 +59,12 @@ const routes: Routes = [
     component: DoctorDashboardComponent
   }, {
     path: 'war-room-dashboard',
-    component: WarroomDashboardComponent},
+    component: WarroomDashboardComponent,
+    children: [{
+      path: 'war-room-add',
+    component: WarroomAddComponent,
+    }]
+  },
      {
     path: 'addequipment',
     component: AddEquipmentComponent
@@ -88,6 +94,9 @@ const routes: Routes = [
   }, {
     path: 'closesos',
     component: CloseSosComponent
+  }, {
+    path: 'chat',
+    component: ChatComponent
   }
 ];
 

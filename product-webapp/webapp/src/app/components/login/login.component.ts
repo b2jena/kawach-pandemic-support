@@ -105,17 +105,9 @@ export class LoginComponent implements OnInit {
 
   getErrorPass(){
     return this.pass.hasError('required') ? 'Mandatory field- Password cannot be empty' : '';
-    // return this.pass.hasError('Mandatory field');
     }
 
   }
 
-  /*get email(){
-    return this.form.get('email');
-  }
-
-  get password(){
-    return this.form.get('password');
-  }*/
 
 

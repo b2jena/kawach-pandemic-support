@@ -71,6 +71,8 @@ import { PageOneComponent } from './components/warroom-dashboard/warroom-add/pag
 import { PageThreeComponent } from './components/warroom-dashboard/warroom-add/pages/page-three/page-three.component';
 import { PageTwoComponent } from './components/warroom-dashboard/warroom-add/pages/page-two/page-two.component';
 
+import { ChatComponent } from './components/chat/chat.component';
+import { DataService } from './components/chat/service/data.service';
 
 @NgModule({
   declarations: [
@@ -113,7 +115,8 @@ import { PageTwoComponent } from './components/warroom-dashboard/warroom-add/pag
     VerifyBedComponent,
     PageOneComponent,
     PageThreeComponent,
-    PageTwoComponent
+    PageTwoComponent,
+    ChatComponent
   ],
   imports: [
     FormsModule,
@@ -154,10 +157,12 @@ import { PageTwoComponent } from './components/warroom-dashboard/warroom-add/pag
     MatPaginatorModule,
     MatGridListModule,
     MatSidenavModule,
-    MatSelectModule
+    MatSelectModule,
+    MatToolbarModule,
+    MatSidenavModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
-  MatSnackBar, Overlay],
+  MatSnackBar, Overlay, DataService],
 
   bootstrap: [AppComponent]
 })

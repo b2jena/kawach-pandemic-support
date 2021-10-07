@@ -51,4 +51,13 @@ public class EquipmentServiceImpl implements EquipmentService{
 
         return unverified == null ? null : unverified.get(0);
     }
+
+    @Override
+    public List<Equipments> getEquipmentByCity(String City) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("city").in(City));
+        List<Equipments> request = mongoTemplate.find(query, Equipments.class);
+        return request;
+    }
+
 }

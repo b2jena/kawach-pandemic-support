@@ -9,4 +9,5 @@ public interface EquipmentService {
     Equipments saveEquipment(Equipments resources) throws NullValueException;
     List<Equipments> getAllEquipments();
     Equipments getUnverifiedEquipments();
+    List<Equipments> getEquipmentByCity(String city);
 }

@@ -8,6 +8,7 @@ import { BedService, Bed } from 'src/app/services/bed.service';
 })
 export class VerifyBedComponent implements OnInit {
   public bed !: Bed;
+  isActive = false;
   constructor(private bedService: BedService) { }
 
   ngOnInit(): void {
@@ -16,4 +17,23 @@ export class VerifyBedComponent implements OnInit {
       });
   }
 
+  putVerified(): void{
+      this.bed.verificationStatus = true;
+      this.bedService.updateBed(this.bed).subscribe(data => {
+        console.log(this.bed = data);
+      });
+      this.bedService.getUnverifiedBed().subscribe(data => {
+        console.log(this.bed = data);
+      });
+  }
+
+  passOn(): void{
+    this.bedService.getUnverifiedBed().subscribe(data => {
+      console.log(this.bed = data);
+    });
+  }
+
+  check() {
+    this.isActive = !this.isActive;
+  }
 }
