@@ -23,7 +23,7 @@ export class EquipmentService{
   getEquipments(){
     return this.httpService.get<Equipment[]>('http://localhost:9901/equipment/getAll');
   }
-  public getUnverifiedMed()
+  public getUnverifiedEquipments()
   {
     return this.httpService.get<Equipment>('http://localhost:9901/equipment/getUnverified');
   }
