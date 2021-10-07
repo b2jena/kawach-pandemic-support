@@ -20,10 +20,11 @@ export class VerifyMedicineComponent implements OnInit {
     this.med.verificationStatus = true;
     this.medService.updateMedicine(this.med).subscribe(data => {
       console.log(this.med = data);
+      this.medService.getUnverifiedMed().subscribe(data => {
+        console.log(this.med = data);
+      });
     });
-    this.medService.getUnverifiedMed().subscribe(data => {
-      console.log(this.med = data);
-    });
+    
   }
 
   passOn(): void{
