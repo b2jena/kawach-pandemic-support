@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CloseSos, CloseSosService } from 'src/app/services/close-sos.service';
+import { CloseSos, CloseSosService, Requirement } from 'src/app/services/close-sos.service';
 // import { Router } from ' @angular/router';
 
 @Component({
@@ -8,15 +8,18 @@ import { CloseSos, CloseSosService } from 'src/app/services/close-sos.service';
   styleUrls: ['./close-sos.component.css']
 })
 export class CloseSosComponent implements OnInit {
-  closeSos!: CloseSos;
-  constructor(private closeSosService: CloseSosService) { }
+  closeSos !: CloseSos[];
+  constructor(private closeSosService: CloseSosService){ }
   ngOnInit(){
     this.closeSosService.getSos().subscribe(
       response => this.handleSuccessfulResponse(response),
     );
   }
-  handleSuccessfulResponse(response: CloseSos){
+  handleSuccessfulResponse(response: CloseSos[]){
     this.closeSos = response;
   }
 }
-
+  // closeSos : any[];
+  // user1: Requirement = new Requirement('', '', '');
+  // list: Array<Requirement> = [];
+  // closeSos : CloseSos = new CloseSos('', '', '', this.list, '', '', '', '', '');

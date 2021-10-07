@@ -56,22 +56,6 @@ public class ResourceServiceImpl implements ResourceService {
     }
 
     @Override
-    public List<Resources> getAllEquipment(String City) {
-        Query query = new Query();
-        query.addCriteria(Criteria.where("city").in(City));
-        List<Resources> request = mongoTemplate.find(query, Resources.class);
-        return request;
-    }
-
-    @Override
-    public List<Resources> getAllBeds(String City) {
-        Query query = new Query();
-        query.addCriteria(Criteria.where("city").in(City));
-        List<Resources> request = mongoTemplate.find(query, Resources.class);
-        return request;
-    }
-
-    @Override
     public Resources getUnverifiedResources() {
         Query query = new Query();
         query.addCriteria(Criteria.where("verificationStatus").is(false));

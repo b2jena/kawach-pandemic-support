@@ -22,6 +22,7 @@ import { WarroomAddComponent } from './components/warroom-dashboard/warroom-add/
 // import { CloseSosRequestComponent } from './components/close-sos-request/close-sos-request.component';
 import { CloseSosComponent } from './components/close-sos/close-sos.component';
 import { HeaderTabsComponent } from './components/header-tabs/header-tabs.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes = [
   {
@@ -79,6 +80,9 @@ const routes: Routes = [
   }, {
     path: 'pdashb',
     component: PatientDashboardComponent
+  }, {
+    path: 'chat',
+    component: ChatComponent
   }
 ];
 

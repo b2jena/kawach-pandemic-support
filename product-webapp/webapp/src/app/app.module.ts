@@ -65,6 +65,9 @@ import { WarroomVerifyComponent } from './components/warroom-dashboard/warroom-v
 import { VerifyBedComponent } from './components/verify/verify-bed/verify-bed.component';
 import { DoctorCardsComponent } from './components/patient-dashboard/doctor-cards/doctor-cards.component';
 
+import { ChatComponent } from './components/chat/chat.component';
+import { DataService } from './components/chat/service/data.service';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -103,6 +106,7 @@ import { DoctorCardsComponent } from './components/patient-dashboard/doctor-card
     WarroomVerifyComponent,
     VerifyBedComponent,
     DoctorCardsComponent,
+    ChatComponent
   ],
   imports: [
     FormsModule,
@@ -142,10 +146,12 @@ import { DoctorCardsComponent } from './components/patient-dashboard/doctor-card
     MatCardModule,
     MatPaginatorModule,
     MatGridListModule,
-    MatSelectModule
+    MatSelectModule,
+    MatToolbarModule,
+    MatSidenavModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
-  MatSnackBar, Overlay],
+  MatSnackBar, Overlay, DataService],
 
   bootstrap: [AppComponent]
 })
