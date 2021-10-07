@@ -2,11 +2,13 @@ package com.stackroute.resource.service;
 
 import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.Equipments;
+import com.stackroute.resource.model.Resources;
 import com.stackroute.resource.repository.EquipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,5 +52,14 @@ public class EquipmentServiceImpl implements EquipmentService{
         List<Equipments> unverified = mongoTemplate.find(query, Equipments.class);
 
         return unverified == null ? null : unverified.get(0);
+    }
+
+    @Override
+    public void UpdateEquipment(UUID equipId) {
+        System.out.println("medId = " + equipId);
+        Query query = new Query(Criteria.where("equipmentId").is(equipId));
+        Update updateQuery = new Update();
+        updateQuery.set("verificationStatus",true);
+        mongoTemplate.upsert(query,updateQuery, Equipments.class);
     }
 }
