@@ -1,0 +1,20 @@
+<div fxLayout="row wrap">
+  <div fxFlex="30%" *ngFor="let doctor of doctors">
+    <div class="col-md-6">
+      <div>
+        <img class='img-responsive' src='https://i.stack.imgur.com/l60Hf.png' alt = "Image is not there"
+      Width = "200" height="100">
+      </div>
+    </div>
+    <div class="col-md-6">
+        <mat-card class="example-card" style="margin-bottom: 10px; width: 200px;">
+            <mat-card-header>
+                <mat-card-title>{{doctor.fullName}}</mat-card-title>
+                <mat-card-subtitle>{{doctor.specialization}}</mat-card-subtitle>
+            </mat-card-header>
+            <button mat-flat-button color="primary" style="margin-right: 10px" (click)="deleteEmployee(doctor)">Chat</button>
+            <button mat-flat-button color="primary" (click)="deleteEmployee(doctor)">Connect</button>
+            </mat-card>
+    </div>
+  </div>
+</div>

@@ -67,12 +67,16 @@ import { FeedbackComponent } from './components/doctor-dashboard/feedback/feedba
 import { ConsultComponent } from './components/doctor-dashboard/consult/consult.component';
 import { WarroomVerifyComponent } from './components/warroom-dashboard/warroom-verify/warroom-verify.component';
 import { VerifyBedComponent } from './components/verify/verify-bed/verify-bed.component';
-import { PageOneComponent } from './components/warroom-dashboard/warroom-add/pages/page-one/page-one.component';
-import { PageThreeComponent } from './components/warroom-dashboard/warroom-add/pages/page-three/page-three.component';
-import { PageTwoComponent } from './components/warroom-dashboard/warroom-add/pages/page-two/page-two.component';
+
+import { DoctorCardsComponent } from './components/patient-dashboard/doctor-cards/doctor-cards.component';
 
 import { ChatComponent } from './components/chat/chat.component';
 import { DataService } from './components/chat/service/data.service';
+import { VerifyMedicineComponent } from './components/verify/verify-bed/verify-medicine/verify-medicine.component';
+import { VerifyEquipmentsComponent } from './components/verify/verify-equipments/verify-equipments.component';
+import { WarroomAddBedComponent } from './components/warroom-dashboard/warroom-add-bed/warroom-add-bed.component';
+import { WarroomAddMedicineComponent } from './components/warroom-dashboard/warroom-add-medicine/warroom-add-medicine.component';
+import { WarroomAddEquipmentComponent } from './components/warroom-dashboard/warroom-add-equipment/warroom-add-equipment.component';
 
 @NgModule({
   declarations: [
@@ -113,10 +117,14 @@ import { DataService } from './components/chat/service/data.service';
     ConsultComponent,
     WarroomVerifyComponent,
     VerifyBedComponent,
-    PageOneComponent,
-    PageThreeComponent,
-    PageTwoComponent,
-    ChatComponent
+    ChatComponent,
+    VerifyMedicineComponent,
+    VerifyEquipmentsComponent,
+    DoctorCardsComponent,
+    ChatComponent,
+    WarroomAddBedComponent,
+    WarroomAddMedicineComponent,
+    WarroomAddEquipmentComponent
   ],
   imports: [
     FormsModule,

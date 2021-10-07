@@ -22,11 +22,11 @@ import { WarroomAddComponent } from './components/warroom-dashboard/warroom-add/
 // import { CloseSosRequestComponent } from './components/close-sos-request/close-sos-request.component';
 import { CloseSosComponent } from './components/close-sos/close-sos.component';
 import { HeaderTabsComponent } from './components/header-tabs/header-tabs.component';
-import { PageOneComponent } from './components/warroom-dashboard/warroom-add/pages/page-one/page-one.component';
-import { PageTwoComponent } from './components/warroom-dashboard/warroom-add/pages/page-two/page-two.component';
-import { PageThreeComponent } from './components/warroom-dashboard/warroom-add/pages/page-three/page-three.component';
 // import { PageOneComponent } from './components/warroom-dashboard/warroom-add/pages/page-one/page-one.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { WarroomAddBedComponent } from './components/warroom-dashboard/warroom-add-bed/warroom-add-bed.component';
+import { WarroomAddMedicineComponent } from './components/warroom-dashboard/warroom-add-medicine/warroom-add-medicine.component';
+import { WarroomAddEquipmentComponent } from './components/warroom-dashboard/warroom-add-equipment/warroom-add-equipment.component';
 
 const routes: Routes = [
   {
@@ -60,10 +60,21 @@ const routes: Routes = [
   }, {
     path: 'war-room-dashboard',
     component: WarroomDashboardComponent,
-    children: [{
+    children: [
+      {
       path: 'war-room-add',
     component: WarroomAddComponent,
-    }]
+    },
+    {
+      path: 'addbed', component: WarroomAddBedComponent
+    },
+    {
+      path: 'addmedicine', component: WarroomAddMedicineComponent
+    },
+    {
+      path: 'addequipment', component: WarroomAddEquipmentComponent
+    }
+  ]
   },
      {
     path: 'addequipment',
@@ -82,18 +93,13 @@ const routes: Routes = [
     component: ListBedComponent
   }, {
     path: 'war-room-add',
-    component: WarroomAddComponent,
-    children: [
-      {
-        path: 'one', component: PageOneComponent
-      },
-      {
-        path: 'two', component: PageTwoComponent
-      }
-    ]
+    component: WarroomAddComponent
   }, {
     path: 'closesos',
     component: CloseSosComponent
+  }, {
+    path: 'pdashb',
+    component: PatientDashboardComponent
   }, {
     path: 'chat',
     component: ChatComponent

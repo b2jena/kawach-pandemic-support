@@ -8,20 +8,6 @@
      </mat-toolbar>
 <mat-sidenav-container>
     <mat-sidenav style="width: 25%;" mode="side" [opened]="opened">
-      <!-- <button (click)="toggleSidebar()">Close Sidebar</button> -->
-      <!-- <ul class="menu"> -->
-        <!-- <mat-nav-list>
-        <mat-list-item>
-            <a routerLink="/war-room-add/one" (click)="toggleSidebar()">Add Medicine</a>
-        </mat-list-item>
-        <mat-list-item>
-            <a routerLink="/war-room-add/two" (click)="toggleSidebar()">Add Equipment</a>
-        </mat-list-item>
-        <mat-list-item>
-            <a routerLink="/pagethree" (click)="toggleSidebar()">Add Beds</a>
-        </mat-list-item>
-    </mat-nav-list> -->
-      <!-- </ul> -->
 
       <mat-action-list>
         <button mat-list-item routerLink="/war-room-add/one" (click)="toggleSidebar()"> Add Medicine </button>
@@ -30,9 +16,6 @@
       </mat-action-list>
     </mat-sidenav>
     <div mat-sidenav-content style="height: 90vh; margin-left: 35px; align-items: center;">
-        <!-- <button mat-raised-button color="primary" (click)="toggleSidebar()">
-        Toggle Sidebar
-        </button> -->
         <router-outlet></router-outlet>
     </div>
   </mat-sidenav-container>
