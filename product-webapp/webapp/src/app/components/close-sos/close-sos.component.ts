@@ -9,12 +9,7 @@ import { CloseSos, CloseSosService, Requirement } from 'src/app/services/close-s
 })
 export class CloseSosComponent implements OnInit {
   closeSos !: CloseSos[];
-  //closeSos : any[];
-  // user1: Requirement = new Requirement('', '', '');
-  // list: Array<Requirement> = [];
-  // closeSos : CloseSos = new CloseSos('', '', '', this.list, '', '', '', '', '');
-  
-  constructor(private closeSosService: CloseSosService) { }
+  constructor(private closeSosService: CloseSosService){ }
   ngOnInit(){
     this.closeSosService.getSos().subscribe(
       response => this.handleSuccessfulResponse(response),
@@ -24,4 +19,7 @@ export class CloseSosComponent implements OnInit {
     this.closeSos = response;
   }
 }
-
+  // closeSos : any[];
+  // user1: Requirement = new Requirement('', '', '');
+  // list: Array<Requirement> = [];
+  // closeSos : CloseSos = new CloseSos('', '', '', this.list, '', '', '', '', '');
