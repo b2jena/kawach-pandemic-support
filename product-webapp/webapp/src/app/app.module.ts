@@ -66,6 +66,7 @@ import { VerifyBedComponent } from './components/verify/verify-bed/verify-bed.co
 import { ChatComponent } from './components/chat/chat.component';
 import { DataService } from './components/chat/service/data.service';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { VerifyMedicineComponent } from './components/verify/verify-bed/verify-medicine/verify-medicine.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +104,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     HeaderTabsComponent,
     WarroomVerifyComponent,
     VerifyBedComponent,
-    ChatComponent
+    ChatComponent,
+    VerifyMedicineComponent
   ],
   imports: [
     FormsModule,

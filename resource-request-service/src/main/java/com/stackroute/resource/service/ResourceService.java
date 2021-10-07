@@ -4,6 +4,7 @@ import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.Resources;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface ResourceService {
     Resources saveResource(Resources resources) throws NullValueException;
@@ -19,4 +20,6 @@ public interface ResourceService {
     List<Resources> getAllBeds(String City);
 
     Resources getUnverifiedResources();
+
+    void UpdateMedicine(UUID medId);
 }

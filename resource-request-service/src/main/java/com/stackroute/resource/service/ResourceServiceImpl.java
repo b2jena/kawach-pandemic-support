@@ -1,12 +1,14 @@
 package com.stackroute.resource.service;
 
 import com.stackroute.resource.exception.NullValueException;
+import com.stackroute.resource.model.Beds;
 import com.stackroute.resource.model.Resources;
 import com.stackroute.resource.repository.ResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -78,5 +80,14 @@ public class ResourceServiceImpl implements ResourceService {
         List<Resources> unverified = mongoTemplate.find(query, Resources.class);
 
         return unverified == null ? null : unverified.get(0);
+    }
+
+    @Override
+    public void UpdateMedicine(UUID medId) {
+        System.out.println("medId = " + medId);
+        Query query = new Query(Criteria.where("id").is(medId));
+        Update updateQuery = new Update();
+        updateQuery.set("verificationStatus",true);
+        mongoTemplate.upsert(query,updateQuery, Resources.class);
     }
 }
