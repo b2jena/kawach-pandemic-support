@@ -96,6 +96,7 @@ public class UserController {
             response.add("Success");
             response.add(jwtTokenGenerator.generateToken(userDetails));
             response.add(userDetails.getRole().toString());
+            response.add(userDetails.getId().toString());
             responseEntity = new ResponseEntity<>(response, HttpStatus.OK);
         } catch (UserNotFoundException e) {
             responseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.OK);
