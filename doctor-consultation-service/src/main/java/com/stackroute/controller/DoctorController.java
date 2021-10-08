@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(value="*")
 @RequestMapping("/api/v1/")
 public class DoctorController {
     private DoctorService doctorService;
@@ -22,7 +22,7 @@ public class DoctorController {
         this.doctorService = doctorService;
     }
 
-    @PostMapping("doctor/{emailId}")
+    @GetMapping("doctor/{emailId}")
     public void saveDoctorRedis(@PathVariable  String emailId) throws DoctorNotFoundException, DoctorAlreadyPresentException, DoctorNotFoundException, DoctorAlreadyPresentException {
         doctorService.saveDoctorRedis(emailId);
     }
