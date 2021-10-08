@@ -22,7 +22,7 @@ public class DoctorController {
         this.doctorService = doctorService;
     }
 
-    @PostMapping("doctor/{emailId}")
+    @GetMapping("doctor/{emailId}")
     public void saveDoctorRedis(@PathVariable  String emailId) throws DoctorNotFoundException, DoctorAlreadyPresentException, DoctorNotFoundException, DoctorAlreadyPresentException {
         doctorService.saveDoctorRedis(emailId);
     }
