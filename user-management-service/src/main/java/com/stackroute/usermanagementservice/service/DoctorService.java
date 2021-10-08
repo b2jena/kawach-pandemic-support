@@ -8,4 +8,6 @@ import com.stackroute.usermanagementservice.model.Doctor;
 
 public interface DoctorService {
     Doctor saveDoctor(Doctor doctor) throws UserAlreadyExistsException, NullValueException;
+
+    Doctor getDoctorById(String id);
 }
