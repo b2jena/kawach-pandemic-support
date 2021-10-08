@@ -63,6 +63,7 @@ import { HeaderTabsComponent } from './components/header-tabs/header-tabs.compon
 import { MatTabsModule } from '@angular/material/tabs';
 import { WarroomVerifyComponent } from './components/warroom-dashboard/warroom-verify/warroom-verify.component';
 import { VerifyBedComponent } from './components/verify/verify-bed/verify-bed.component';
+import { VolunteerRevertComponent } from './components/landing-page/volunteer-revert/volunteer-revert.component';
 
 
 @NgModule({
@@ -101,6 +102,7 @@ import { VerifyBedComponent } from './components/verify/verify-bed/verify-bed.co
     HeaderTabsComponent,
     WarroomVerifyComponent,
     VerifyBedComponent,
+    VolunteerRevertComponent,
   ],
   imports: [
     FormsModule,
