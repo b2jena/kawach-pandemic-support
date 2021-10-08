@@ -1,0 +1,43 @@
+<mat-card>
+<div class="col-md-6 container center" *ngIf = "med">
+    <table class="table table-borderless p-4">
+        <tbody>
+            <tr>
+                <th>Medicine Name</th>
+                <td>{{med.medicineName}}</td>
+            </tr>
+                
+            <tr>
+                <th>City</th>
+                <td>{{med.city}}</td>
+            </tr>
+
+            <tr>
+                <th>Pharmacy</th>
+                <td>{{med.pharmacy}}</td>
+            </tr>
+
+            <tr>
+                <th>Address</th>
+                <td>{{med.address}}</td>
+            </tr>
+
+            <tr>
+                <th>Contact Person</th>
+                <td>{{med.contactPerson}}</td>
+            </tr>
+
+            <tr>
+                <th>Mobile Number</th>
+                <td>{{med.mobileNumber}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button class="btn btn-primary ml-8 mr-4" (click)="putVerified()">Verify this data</button>
+    <button class="btn btn-primary" (click)="passOn()">Pass on this data</button>
+</div>
+</mat-card>
+<div class="col-md-6 container center" *ngIf = "!med">
+    Nothing to verify
+</div>

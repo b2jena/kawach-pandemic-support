@@ -71,7 +71,7 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 8081:8081
+      - 8090:8090
 
   user-authentication-service:
     build: user-authentication-service/

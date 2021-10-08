@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class BedService{
   // apiBaseUrl=environment.apiBaseUrl;
   Bed!: Bed;
+  count!: number;
   constructor(private httpService: HttpClient) { }
   CreateBed(bed: Bed): Observable<Bed> {
     console.log(bed);

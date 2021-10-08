@@ -40,10 +40,31 @@ public class MedicalSosRequestServiceImpl implements MedicalSosRequestService {
     }
 
     @Override
+    public List<MedicalSosRequest> getMedSOS() {
+        Query query = new Query(Criteria.where("requestStatus").is("Medicine").and("formStatus").is("OPEN"));
+        List<MedicalSosRequest> request = mongoTemplate.find(query, MedicalSosRequest.class);
+        return request;
+    }
+
+    @Override
+    public List<MedicalSosRequest> getEquipSOS() {
+        Query query = new Query(Criteria.where("requestStatus").is("Medical Equipment").and("formStatus").is("OPEN"));
+        List<MedicalSosRequest> request = mongoTemplate.find(query, MedicalSosRequest.class);
+        return request;
+    }
+
+    @Override
+    public List<MedicalSosRequest> getBedSOS() {
+        Query query = new Query(Criteria.where("requestStatus").is("Bed").and("formStatus").is("OPEN"));
+        List<MedicalSosRequest> request = mongoTemplate.find(query, MedicalSosRequest.class);
+        return request;
+    }
+
+    @Override
     public void updateSosRequest(UUID requestId){
         Query query = new Query(Criteria.where("_id").is(requestId));
         Update updateQuery = new Update();
-        updateQuery.set("requestStatus","Close");
+        updateQuery.set("formStatus","CLOSE");
         mongoTemplate.upsert(query,updateQuery,"SOSRequest");
     }
 

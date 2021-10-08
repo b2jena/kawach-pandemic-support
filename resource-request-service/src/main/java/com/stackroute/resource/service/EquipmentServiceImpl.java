@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class EquipmentServiceImpl implements EquipmentService{
@@ -49,10 +51,21 @@ public class EquipmentServiceImpl implements EquipmentService{
         query.addCriteria(Criteria.where("verificationStatus").is(false));
         List<Equipments> unverified = mongoTemplate.find(query, Equipments.class);
 
-        return unverified == null ? null : unverified.get(0);
+        if (unverified.size() == 0) return null;
+
+        int randomInd = ThreadLocalRandom.current().nextInt(0, unverified.size());
+        return unverified.get(randomInd);
     }
 
     @Override
+    public void UpdateEquipment(UUID equipId) {
+        System.out.println("medId = " + equipId);
+        Query query = new Query(Criteria.where("equipmentId").is(equipId));
+        Update updateQuery = new Update();
+        updateQuery.set("verificationStatus",true);
+        mongoTemplate.upsert(query,updateQuery, Equipments.class);
+    }
+
     public List<Equipments> getEquipmentByCity(String City) {
         Query query = new Query();
         query.addCriteria(Criteria.where("city").in(City));

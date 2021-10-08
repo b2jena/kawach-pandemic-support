@@ -22,6 +22,11 @@ export class SMedicineService{
   getMedicines(){
     return this.httpService.get<Medicine[]>('http://localhost:9901/medicine/getAll');
   }
+
+  public getUnverifiedMed()
+  {
+    return this.httpService.get<Medicine>('http://localhost:9901/medicine/getUnverified');
+  }
 }
 export class Medicine{
   public city: string;

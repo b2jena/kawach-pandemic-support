@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DoctorCardsService } from 'src/app/services/doctor-cards.service';
 
 @Component({
   selector: 'app-doctor-dashboard',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./doctor-dashboard.component.css']
 })
 export class DoctorDashboardComponent implements OnInit {
-
-  constructor() { }
+  email =localStorage.getItem("loggedIn");
+  constructor(private doctorService: DoctorCardsService) { }
 
   ngOnInit(): void {
+  }
+  DoctorOnline(emailId: string){
+    this.doctorService.DoctorOnline(emailId).subscribe(data => {});
   }
 
 }
