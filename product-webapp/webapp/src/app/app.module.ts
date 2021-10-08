@@ -67,6 +67,7 @@ import { FeedbackComponent } from './components/doctor-dashboard/feedback/feedba
 import { ConsultComponent } from './components/doctor-dashboard/consult/consult.component';
 import { WarroomVerifyComponent } from './components/warroom-dashboard/warroom-verify/warroom-verify.component';
 import { VerifyBedComponent } from './components/verify/verify-bed/verify-bed.component';
+import { VolunteerRevertComponent } from './components/landing-page/volunteer-revert/volunteer-revert.component';
 
 import { DoctorCardsComponent } from './components/patient-dashboard/doctor-cards/doctor-cards.component';
 
@@ -117,6 +118,7 @@ import { WarroomAddEquipmentComponent } from './components/warroom-dashboard/war
     ConsultComponent,
     WarroomVerifyComponent,
     VerifyBedComponent,
+    VolunteerRevertComponent,
     ChatComponent,
     VerifyMedicineComponent,
     VerifyEquipmentsComponent,

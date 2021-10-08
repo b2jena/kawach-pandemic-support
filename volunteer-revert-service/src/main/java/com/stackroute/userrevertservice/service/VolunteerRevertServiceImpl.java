@@ -6,6 +6,7 @@ import com.stackroute.userrevertservice.repository.VolunteerRevertRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,6 +22,11 @@ public class VolunteerRevertServiceImpl implements VolunteerRevertService {
     @Override
     public void saveVolunteer(Volunteer volunteer) {
         volunteerRevertRepository.save(volunteer);
+    }
+
+    @Override
+    public List<Volunteer> getAllVolunteers() {
+        return (List<Volunteer>) volunteerRevertRepository.findAll();
     }
 
     @Override
