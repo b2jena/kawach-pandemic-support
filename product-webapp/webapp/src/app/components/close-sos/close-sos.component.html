@@ -40,8 +40,10 @@
         {{obj.hospitalised}}<br>
         {{obj.city}}<br>
         
-
       </p>
+      <div *ngFor="let require of obj.requirement">
+        <p>{{require.requirementName}}: {{require.requirementQuantity}}: {{require.unitOfMeasure}}</p>
+      </div> 
     </mat-card-content>
     <mat-card-actions>
       <button mat-button>PASS</button>
