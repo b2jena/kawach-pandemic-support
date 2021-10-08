@@ -23,6 +23,10 @@ export class EquipmentService{
   getEquipments(){
     return this.httpService.get<Equipment[]>('http://localhost:9901/equipment/getAll');
   }
+  public getUnverifiedEquipments()
+  {
+    return this.httpService.get<Equipment>('http://localhost:9901/equipment/getUnverified');
+  }
 }
 export class Equipment{
   public city: string;

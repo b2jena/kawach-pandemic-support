@@ -61,10 +61,23 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatDividerModule } from '@angular/material/divider';
 import { HeaderTabsComponent } from './components/header-tabs/header-tabs.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { TimeslotComponent } from './components/doctor-dashboard/timeslot/timeslot.component';
+import { FeedbackComponent } from './components/doctor-dashboard/feedback/feedback.component';
+import { ConsultComponent } from './components/doctor-dashboard/consult/consult.component';
 import { WarroomVerifyComponent } from './components/warroom-dashboard/warroom-verify/warroom-verify.component';
 import { VerifyBedComponent } from './components/verify/verify-bed/verify-bed.component';
 import { VolunteerRevertComponent } from './components/landing-page/volunteer-revert/volunteer-revert.component';
 
+import { DoctorCardsComponent } from './components/patient-dashboard/doctor-cards/doctor-cards.component';
+
+import { ChatComponent } from './components/chat/chat.component';
+import { DataService } from './components/chat/service/data.service';
+import { VerifyMedicineComponent } from './components/verify/verify-bed/verify-medicine/verify-medicine.component';
+import { VerifyEquipmentsComponent } from './components/verify/verify-equipments/verify-equipments.component';
+import { WarroomAddBedComponent } from './components/warroom-dashboard/warroom-add-bed/warroom-add-bed.component';
+import { WarroomAddMedicineComponent } from './components/warroom-dashboard/warroom-add-medicine/warroom-add-medicine.component';
+import { WarroomAddEquipmentComponent } from './components/warroom-dashboard/warroom-add-equipment/warroom-add-equipment.component';
 
 @NgModule({
   declarations: [
@@ -100,9 +113,20 @@ import { VolunteerRevertComponent } from './components/landing-page/volunteer-re
     CarouselComponent,
     CloseSosComponent,
     HeaderTabsComponent,
+    TimeslotComponent,
+    FeedbackComponent,
+    ConsultComponent,
     WarroomVerifyComponent,
     VerifyBedComponent,
     VolunteerRevertComponent,
+    ChatComponent,
+    VerifyMedicineComponent,
+    VerifyEquipmentsComponent,
+    DoctorCardsComponent,
+    ChatComponent,
+    WarroomAddBedComponent,
+    WarroomAddMedicineComponent,
+    WarroomAddEquipmentComponent
   ],
   imports: [
     FormsModule,
@@ -142,10 +166,13 @@ import { VolunteerRevertComponent } from './components/landing-page/volunteer-re
     MatCardModule,
     MatPaginatorModule,
     MatGridListModule,
-    MatSelectModule
+    MatSidenavModule,
+    MatSelectModule,
+    MatToolbarModule,
+    MatSidenavModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
-  MatSnackBar, Overlay],
+  MatSnackBar, Overlay, DataService],
 
   bootstrap: [AppComponent]
 })
