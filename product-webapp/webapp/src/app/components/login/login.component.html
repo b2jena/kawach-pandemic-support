@@ -32,7 +32,7 @@
       <form [formGroup]="profileForm">
       <div style="text-align: center;">  
         
-            <mat-form-field color="accent">
+            <mat-form-field appearance="outline">
               <mat-label floatLabel="auto"> Email ID: </mat-label>
               <input matInput [(ngModel)]="userobj.id" type="text" formControlName="email" [formControl]="email" required> 
               <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
@@ -41,7 +41,7 @@
       </div>  
       <div class="row" class="" style="text-align: center;">  
               
-            <mat-form-field  color="accent">
+            <mat-form-field appearance="outline">
               <mat-label for="password"> Password: </mat-label>
             <input matInput [(ngModel)]="userobj.password" type="password" formControlName="password" [formControl]="pass" required> 
             <mat-error *ngIf="pass.invalid">{{getErrorPass()}}</mat-error>

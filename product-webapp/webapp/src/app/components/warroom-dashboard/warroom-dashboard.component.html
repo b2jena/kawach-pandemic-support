@@ -1,7 +1,32 @@
 <h1 style="text-align:center">War Room Dashboard</h1>
 
 <mat-tab-group mat-align-tabs="center">
-    <mat-tab label="Medical SOS"> <app-close-sos></app-close-sos> </mat-tab>
+    <mat-tab label="Medical SOS"> 
+        <div>
+            <mat-toolbar color="primary">
+                <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleSidebar()">
+                 <mat-icon>menu</mat-icon>
+               </button>
+               <span>SOS Menu</span>
+               <span class="example-spacer"></span>
+             </mat-toolbar>
+        <mat-sidenav-container>
+            <mat-sidenav style="width: 25%;" mode="side" [opened]="opened">
+                <mat-action-list>
+                    <button mat-list-item routerLink="/war-room-dashboard/sosmedicine" (click)="toggleSidebar()"> SOS Medicine </button>
+                    <button mat-list-item routerLink="/war-room-dashboard/sosequipment" (click)="toggleSidebar()"> SOS Equipment </button>
+                    <button mat-list-item routerLink="/war-room-dashboard/sosbed" (click)="toggleSidebar()"> SOS Beds </button>
+                  </mat-action-list>
+                </mat-sidenav>
+                <div mat-sidenav-content style="height: 90vh; margin-left: 35px; align-items: center;">
+                    <!-- <button mat-raised-button color="primary" (click)="toggleSidebar()">
+                    Toggle Sidebar
+                    </button> -->
+                    <router-outlet></router-outlet>
+                </div>
+              </mat-sidenav-container>
+            </div>
+    </mat-tab>
 
     <mat-tab label="Verification">
          <app-warroom-verify></app-warroom-verify>

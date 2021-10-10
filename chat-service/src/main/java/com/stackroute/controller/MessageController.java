@@ -7,27 +7,38 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-//@RequestMapping("/api/v1/")
-//@CrossOrigin(value = "http://localhost:4200")
+@CrossOrigin("*")
 public class MessageController {
 
     @Autowired
     private MessageService messageService;
 
-    @PostMapping("chat")
-    public ResponseEntity<MessageModel> saveMessage  (@RequestBody MessageModel messageModel){
+        @PostMapping("chat-messages/{senderName}/{reciverName}")
+    public ResponseEntity<MessageModel> messageModel  (@RequestBody MessageModel messageModel){
         try{
             MessageModel messageModels = messageService.saveMessage(messageModel);
-            return new ResponseEntity<MessageModel>(messageModels, HttpStatus.CREATED);
+            return new ResponseEntity<>(messageModels, HttpStatus.CREATED);
         }catch(Exception e){
             System.out.println(e);
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
     }
-    @GetMapping("method")
-    public String method()
-    {
-        return "Works";
+
+    @GetMapping("chat-messages/{senderName}/{reciverName}")
+    public ResponseEntity<List<MessageModel>> getMessages(@PathVariable("senderName") String senderName,
+                                                          @PathVariable("reciverName") String reciverName){
+        return new ResponseEntity<List<MessageModel>>((List<MessageModel>)messageService.
+                getAllMessages(senderName, reciverName),HttpStatus.OK);
     }
+
+    @DeleteMapping("chat-messages/{senderName}/{reciverName}")
+    public ResponseEntity<List<MessageModel>> deleteMessages(@PathVariable("senderName") String senderName,
+                                                          @PathVariable("reciverName") String reciverName){
+        return new ResponseEntity<List<MessageModel>>((List<MessageModel>)messageService.
+                deleteMessages(senderName, reciverName),HttpStatus.OK);
+    }
+
 }
