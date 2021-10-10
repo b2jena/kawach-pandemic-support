@@ -78,6 +78,11 @@ import { VerifyEquipmentsComponent } from './components/verify/verify-equipments
 import { WarroomAddBedComponent } from './components/warroom-dashboard/warroom-add-bed/warroom-add-bed.component';
 import { WarroomAddMedicineComponent } from './components/warroom-dashboard/warroom-add-medicine/warroom-add-medicine.component';
 import { WarroomAddEquipmentComponent } from './components/warroom-dashboard/warroom-add-equipment/warroom-add-equipment.component';
+import { MessageComponent } from './components/message/message.component';
+import { MsgComponent } from './components/message/msg/msg.component';
+import { MessageService } from './services/message.service';
+import { DoctorMessageComponent } from './components/doctor-message/doctor-message.component';
+import {NgxAutoScrollModule} from "ngx-auto-scroll";
 
 @NgModule({
   declarations: [
@@ -126,9 +131,13 @@ import { WarroomAddEquipmentComponent } from './components/warroom-dashboard/war
     ChatComponent,
     WarroomAddBedComponent,
     WarroomAddMedicineComponent,
-    WarroomAddEquipmentComponent
+    WarroomAddEquipmentComponent,
+    MessageComponent,
+    MsgComponent,
+    DoctorMessageComponent
   ],
   imports: [
+    NgxAutoScrollModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
@@ -172,7 +181,7 @@ import { WarroomAddEquipmentComponent } from './components/warroom-dashboard/war
     MatSidenavModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
-  MatSnackBar, Overlay, DataService],
+  MatSnackBar, Overlay, DataService, MessageService],
 
   bootstrap: [AppComponent]
 })

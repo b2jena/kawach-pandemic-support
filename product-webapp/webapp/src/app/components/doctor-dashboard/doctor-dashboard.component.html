@@ -4,18 +4,19 @@
     <mat-card-header>
         <img mat-card-avatar src="/assets/doctor.jpg">
     </mat-card-header>
-     
+
 </mat-card>
 
 <mat-tab-group color="primary">
-    <mat-tab label="Time Slot"> 
+    <mat-tab label="Time Slot">
         <app-timeslot></app-timeslot>
         <button mat-button (click)="DoctorOnline(email)">Make me online</button>
+        <app-doctor-message></app-doctor-message>
     </mat-tab>
-    <mat-tab label="Feedback"> 
+    <mat-tab label="Feedback">
         <app-feedback></app-feedback>
     </mat-tab>
-    <mat-tab label="Consult Q&A"> 
+    <mat-tab label="Consult Q&A">
         <app-consult></app-consult>
     </mat-tab>
   </mat-tab-group>

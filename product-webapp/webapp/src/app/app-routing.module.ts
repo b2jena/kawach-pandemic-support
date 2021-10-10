@@ -27,6 +27,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { WarroomAddBedComponent } from './components/warroom-dashboard/warroom-add-bed/warroom-add-bed.component';
 import { WarroomAddMedicineComponent } from './components/warroom-dashboard/warroom-add-medicine/warroom-add-medicine.component';
 import { WarroomAddEquipmentComponent } from './components/warroom-dashboard/warroom-add-equipment/warroom-add-equipment.component';
+import { MessageComponent } from './components/message/message.component';
 
 const routes: Routes = [
   {
@@ -103,6 +104,9 @@ const routes: Routes = [
   }, {
     path: 'chat',
     component: ChatComponent
+  }, {
+    path: 'message/:name',
+    component: MessageComponent
   }
 ];
 

@@ -27,9 +27,12 @@
     "aws-sdk": "^2.997.0",
     "bootstrap": "^5.1.1",
     "material": "^0.4.3",
+    "materialize-css": "^1.0.0",
+    "ngx-auto-scroll": "^1.1.0",
     "ngx-material-file-input": "^2.1.1",
     "ngx-webstorage-service": "^4.1.0",
     "rxjs": "~6.6.0",
+    "socket.io-client": "^4.2.0",
     "tslib": "^2.0.0",
     "webrtc-signaling-server": "^1.0.0",
     "zone.js": "~0.11.3"
