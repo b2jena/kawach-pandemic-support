@@ -1,5 +1,5 @@
 import { Component, Inject, Injectable, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
+import { Validators, FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService, User } from 'src/app/services/login.service';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
@@ -11,7 +11,7 @@ import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 })
 export class LoginComponent implements OnInit {
 
-  email = new FormControl('', [Validators.required, Validators.email/*, Validators.pattern('^[A-za-z]{4,20}'), */]);
+  email = new FormControl('', [Validators.required, Validators.email]);
   pass = new FormControl('', [Validators.required]);
 
   /* form = ({
@@ -39,30 +39,10 @@ export class LoginComponent implements OnInit {
 
   login(): void{
     if (this.userobj.id === '' || this.email.invalid){
-      // window.alert('Email ID cannot be empty');
-      /*x = document.getElementById("snackbar");
-
-      // Add the "show" class to DIV
-      if (x!= null){
-        x.className = "show";
-
-        // After 3 seconds, remove the show class from DIV
-        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-      }*/
       // this.loginService.showsnackbar('Email ID cannot be empty');
       this.loginService.showsnackbar(this.getErrorMessage());
     }
     else if (this.userobj.password === '' || this.pass.invalid){
-      // window.alert('Password cannot be empty');
-      /*x = document.getElementById("snackbar");
-
-      // Add the "show" class to DIV
-      if (x!= null){
-        x.className = "show";
-
-        // After 3 seconds, remove the show class from DIV
-        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-      }*/
       this.loginService.showsnackbar(this.getErrorPass());
     }
     else{
@@ -71,16 +51,8 @@ export class LoginComponent implements OnInit {
       if(this.obj[0]!= 'Success'){
         this.obj[0] = 'Login failed';
       }*/
-      // alert(this.obj[0]);
-      /*var x = document.getElementById("snackbar");
 
-      // Add the "show" class to DIV
-      if (x!= null){
-        x.className = "show";
-
-        // After 3 seconds, remove the show class from DIV
-        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-      }*/
+      //Wait 2-3 seconds
       this.loginService.showsnackbar(this.obj[0]);
       this.storage.set(this.key, this.obj[1]);
       this.routetoDash(this.obj[2]);
