@@ -13,7 +13,8 @@ public class MessageServiceImpl implements MessageService{
     MongoTemplate mongoTemplate;
     @Autowired
     public MessageServiceImpl(MessageRepository messageRepository) {
-        this.messageRepository = messageRepository;
+        System.out.println("Inside message service IMPL");
+    this.messageRepository = messageRepository;
     }
 
     @Override

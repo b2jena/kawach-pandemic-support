@@ -22,6 +22,9 @@ export class DoctorCardsService {
   public deleteDoctor(emailId: string) {
     return this.httpService.delete<Doctor>('http://localhost:8989/api/v1//doctor/' + emailId);
   }
+  public GetDoctorInfo(emailId: string) {
+    return this.httpService.get<Doctor>('http://localhost:8090/api/v1/doctor/' + emailId)
+  }
 }
 export class Doctor{
   public emailId: string ;

@@ -5,27 +5,29 @@ import com.stackroute.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(value = "http://localhost:4200")
+//@RequestMapping("/api/v1/")
+//@CrossOrigin(value = "http://localhost:4200")
 public class MessageController {
 
     @Autowired
     private MessageService messageService;
 
-        @PostMapping("chat-messages")
+    @PostMapping("chat")
     public ResponseEntity<MessageModel> saveMessage  (@RequestBody MessageModel messageModel){
         try{
             MessageModel messageModels = messageService.saveMessage(messageModel);
-            return new ResponseEntity<>(messageModels, HttpStatus.CREATED);
+            return new ResponseEntity<MessageModel>(messageModels, HttpStatus.CREATED);
         }catch(Exception e){
             System.out.println(e);
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
-
+    }
+    @GetMapping("method")
+    public String method()
+    {
+        return "Works";
     }
 }
