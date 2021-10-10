@@ -1,0 +1,14 @@
+table {
+    width: 100%;
+  }
+
+  .mat-column-score {
+    flex: 0 0 100px;
+  }
+
+  th{
+    background-color: #4154F1;
+    padding: 5px;
+    text-align: center;  
+    color: white
+  }

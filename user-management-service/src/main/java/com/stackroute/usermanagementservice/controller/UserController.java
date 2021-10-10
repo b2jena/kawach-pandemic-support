@@ -63,5 +63,10 @@ public class UserController {
         return new ResponseEntity<>(userGotSaved, HttpStatus.CREATED);
     }
 
+    @GetMapping("/doctor/{id}")
+    public ResponseEntity<Doctor> getDoctor(@PathVariable("id") String id) {
+        return new ResponseEntity<Doctor>(doctorService.getDoctorById(id), HttpStatus.OK);
+    }
+
 
 }

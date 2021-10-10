@@ -31,12 +31,12 @@ export class SosRequestComponent implements OnInit {
 
   nameFormControl = new FormControl('', [
     Validators.required,
-    Validators.pattern('^[A-za-z]{3,20}'),
+    Validators.pattern('^[A-za-z\ ]{3,20}'),
   ]);
 
   cityFormControl = new FormControl('', [
     Validators.required,
-    Validators.pattern('^[A-za-z]{4,20}'),
+    Validators.pattern('^[A-za-z]{3,20}'),
   ]);
 
   genderFormControl = new FormControl('', [Validators.required]);

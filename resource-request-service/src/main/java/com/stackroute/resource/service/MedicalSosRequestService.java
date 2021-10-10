@@ -11,6 +11,9 @@ public interface MedicalSosRequestService {
 
     MedicalSosRequest saveSosRequest(MedicalSosRequest medicalSosRequest) throws NullValueException;
     List<MedicalSosRequest> getSosRequest();
+    List<MedicalSosRequest> getMedSOS();
+    List<MedicalSosRequest> getEquipSOS();
+    List<MedicalSosRequest> getBedSOS();
     void updateSosRequest(UUID id);
 //    List<Resources> getAllRes();
 }

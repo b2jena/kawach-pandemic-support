@@ -21,5 +21,6 @@ public class Doctor implements Serializable {
     private String emailId;
     private String fullName;
     private String specialization;
+    private static final long serialVersionUID = 200856043767861933L;
 
 }

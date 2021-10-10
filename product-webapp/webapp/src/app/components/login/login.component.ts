@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
       this.loginService.showsnackbar(this.obj[0]);
       this.storage.set(this.key, this.obj[1]);
       this.routetoDash(this.obj[2]);
+      localStorage.setItem('loggedIn', this.obj[3]);
     }
   }
 

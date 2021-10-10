@@ -12,7 +12,7 @@ export class CloseSosService {
   constructor(private httpService: HttpClient) { }
 
   getSos(): Observable<CloseSos[]>{
-    return this.httpService.get<CloseSos[]>('http://localhost:9901/sos/getSos');
+    return this.httpService.get<CloseSos[]>('http://localhost:9901/sos/getMedSOS');
   }
 }
 
