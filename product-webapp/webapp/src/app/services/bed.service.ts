@@ -37,7 +37,6 @@ export class Bed{
   public address: string;
   public contactPerson: string;
   public mobileNumber: string;
-  // public verificationStatus: string;
   public verificationStatus: boolean;
   constructor( city: string, bedType: string, address: string, contactPerson: string, mobileNumber: string, verificationStatus: boolean) {
     this.city = city;
