@@ -32,8 +32,8 @@ export class MessageService {
   //   return this.http.post('http://localhost:8080/chat-messages/'+message.sender+'/'+message.reciver, message)
   // }
 
-  deleteMessages(message: Message): Observable<any>{
-    return this.http.delete(`http://localhost:8080/chat-messages/${message.senderName}/${message.reciverName}`)
+  deleteMessages(senderName: any, reciverName: any): Observable<any>{
+    return this.http.delete(`http://localhost:8080/chat-messages/${senderName}/${reciverName}`)
   }
 }
 

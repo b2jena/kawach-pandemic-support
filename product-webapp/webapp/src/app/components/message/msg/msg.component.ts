@@ -64,7 +64,7 @@ export class MsgComponent implements OnInit {
 
 
   deleteMessage(){
-    this.messageService.deleteMessages(this.user).subscribe( data =>{
+    this.messageService.deleteMessages(this.user.senderName, this.user.reciverName).subscribe( data =>{
       console.log(data);
     })
   }

@@ -39,7 +39,8 @@ public class MessageServiceImpl implements MessageService{
     }
 
     @Override
-    public List<MessageModel> deleteMessages(String senderName, String reciverName) {
-        return (List<MessageModel>) messageRepository.deleteMessages(senderName, reciverName);
+    public List<MessageModel> deleteMessages(List<MessageModel> messageModel) {
+        messageRepository.deleteAll(messageModel);
+        return null;
     }
 }
