@@ -42,6 +42,7 @@ export class AddMedicineComponent implements OnInit {
       } else {
         this.user.verificationStatus = this.isActive;
         this.medicineService.CreateMedicine(this.user).subscribe( data => { this.showSnackbars('Medicine added successfully.', 'x'); });
+        window.setTimeout(function(){location.reload()}, 2000);
       }
     }
     check() {

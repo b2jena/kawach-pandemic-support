@@ -57,7 +57,7 @@
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Select Gender</mat-label>
               <mat-select [(ngModel)]="user.gender" [formControl]="genderFormControl">
-                <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                <mat-option *ngFor="let gender of genders" [value]="gender.viewValue">
                   {{gender.viewValue}}
                 </mat-option>
               </mat-select>
@@ -68,7 +68,7 @@
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label> Hospitalised Status: </mat-label>
               <mat-select [(ngModel)]="user.hospitalised" [formControl]="hospitalFormControl">
-                <mat-option *ngFor="let hospitalised of hospitaliseds" [value]="hospitalised.value">
+                <mat-option *ngFor="let hospitalised of hospitaliseds" [value]="hospitalised.viewValue">
                   {{hospitalised.viewValue}}
                 </mat-option>
               </mat-select>
@@ -85,7 +85,7 @@
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Request Type</mat-label>
               <mat-select [(ngModel)]="user.requestStatus" [formControl]="requestStatusFormControl">
-                <mat-option *ngFor="let requestStatus of requestStatuses" [value]="requestStatus.value">
+                <mat-option *ngFor="let requestStatus of requestStatuses" [value]="requestStatus.viewValue">
                   {{requestStatus.viewValue}}
                 </mat-option>
               </mat-select>

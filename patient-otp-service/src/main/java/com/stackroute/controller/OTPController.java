@@ -40,7 +40,6 @@ public class OTPController {
         if (patient1.getEmail() == null) {
             throw new NoEmailException("Please enter email");
         } else {
-            System.out.println(patient1.getEmail());
             return new ResponseEntity<Patient>(patient1, HttpStatus.OK);
         }
     }
@@ -59,7 +58,6 @@ public class OTPController {
         replacements.put("user", email);
         replacements.put("otpnum", String.valueOf(otp));
         emailService.sendOtpMessage(email, "OTP -SpringBoot", String.valueOf(otp));
-        System.out.println("Mail sent");
         return new ResponseEntity<>(patient, HttpStatus.OK);
     }
 
@@ -67,32 +65,21 @@ public class OTPController {
     public ResponseEntity<String> validateOtp(@PathVariable int otpNum) {
         final String SUCCESS = "SUCCESS";
         final String FAIL = "FAIL";
-//        int num = 10;
-//        if(num == otpNum)
-//        {return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);}
-//        else
-//            return new ResponseEntity<String>(FAIL, HttpStatus.OK);
-
-        //Validate the Otp
         if (otpNum >= 0) {
 
             int serverOtp = otpService.getOtp(email);
             if (serverOtp > 0) {
                 if (otpNum == serverOtp) {
                     otpService.clearOTP(email);
-                    System.out.println("correct");
                     return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
                 } else {
-                    System.out.println("incorrect");
                     return new ResponseEntity<String>(FAIL, HttpStatus.OK);
                 }
             } else {
-                System.out.println("incorrect");
 
                 return new ResponseEntity<String>(FAIL, HttpStatus.OK);
             }
         } else {
-            System.out.println("incorrect");
             return new ResponseEntity<String>(FAIL, HttpStatus.OK);
         }
 

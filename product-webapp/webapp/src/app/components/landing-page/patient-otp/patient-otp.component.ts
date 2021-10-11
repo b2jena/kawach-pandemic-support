@@ -43,7 +43,9 @@ export class PatientOtpComponent implements OnInit {
           this.showSnackbar('Please Enter OTP', 'x');
         }
         else{
+
           this.patientotp.VerifyOtp(this.otp).subscribe(response => {this.message = response; if (this.message === 'SUCCESS'){this.route.navigate(['/sos']); }if (this.message === 'FAIL'){this.showSnackbar('Please Enter Correct OTP', 'x'); }});
+          localStorage.setItem("paitentEmail", this.user.email)
         }
      }
 }

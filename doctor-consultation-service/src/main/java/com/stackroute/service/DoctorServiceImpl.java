@@ -49,17 +49,6 @@ public class DoctorServiceImpl implements DoctorService{
     @Override
     public void saveDoctorRedis(String emailId) throws DoctorNotFoundException, DoctorAlreadyPresentException {
         Doctor doctor = doctorRepository.findByEmailId(emailId);
-//        if(doctor == null)
-//        {
-//            throw new DoctorNotFoundException("Doctor not found");
-//        }
-//        else{
-//            if(redisTemplate.opsForSet().isMember(HASH_KEY, emailId))
-//            {
-//                throw new DoctorAlreadyPresentException("Doctor already active");
-//            }else{
-//                redisTemplate.opsForHash().put(HASH_KEY, doctor.getEmailId(),doctor);}
-//        }
         redisTemplate.opsForHash().put(HASH_KEY, doctor.getEmailId(),doctor);
 
 }
