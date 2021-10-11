@@ -21,11 +21,11 @@ export class MessageService {
 
 
   SendMessage(message: Message): Observable<any>{
-    return this.http.post(`http://localhost:8095/chat-messages/${message.senderName}/${message.reciverName}`, message)
+    return this.http.post(`http://localhost:8095/chat-messages/${message.senderName}/${message.reciverName}`, message);
   }
 
   GetAllMessage(message: Message): Observable<any>{
-    return this.http.get(`http://localhost:8095/chat-messages/${message.senderName}/${message.reciverName}`)
+    return this.http.get(`http://localhost:8095/chat-messages/${message.senderName}/${message.reciverName}`);
   }
 
   // SendMessage(message: Message): Observable<any>{
@@ -33,7 +33,7 @@ export class MessageService {
   // }
 
   deleteMessages(message: Message): Observable<any>{
-    return this.http.delete(`http://localhost:8095/chat-messages/${message.senderName}/${message.reciverName}`)
+    return this.http.delete(`http://localhost:8095/chat-messages/${message.senderName}/${message.reciverName}`);
   }
 }
 
