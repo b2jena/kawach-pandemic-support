@@ -12,7 +12,6 @@ application:
   bucket:
     name: kawach-buckets
 
-
 spring:
   servlet:
     multipart:
@@ -20,6 +19,14 @@ spring:
       file-size-threshold: 2MB
       max-file-size: 5MB
       max-request-size: 10MB
+  application:
+    name: RESOURCE-REQUEST-SERVICE
 
-#server:
-#  port: 9090
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8076/eureka/
+  instance:
+    hostname: localhost
