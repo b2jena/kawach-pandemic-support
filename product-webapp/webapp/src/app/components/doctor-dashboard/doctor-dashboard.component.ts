@@ -7,7 +7,8 @@ import { DoctorCardsService } from 'src/app/services/doctor-cards.service';
   styleUrls: ['./doctor-dashboard.component.css']
 })
 export class DoctorDashboardComponent implements OnInit {
-  email = localStorage.getItem('loggedIn');
+  // email = localStorage.getItem('loggedIn');
+  email = 'godwinkhalko2@gmail.com';
   constructor(private doctorService: DoctorCardsService) { }
 
   ngOnInit(): void {

@@ -11,8 +11,16 @@ export class CloseSosService {
 
   constructor(private httpService: HttpClient) { }
 
-  getSos(): Observable<CloseSos[]>{
+  getMedSOS(): Observable<CloseSos[]>{
     return this.httpService.get<CloseSos[]>('http://localhost:9901/sos/getMedSOS');
+  }
+
+  getBedSOS(): Observable<CloseSos[]>{
+    return this.httpService.get<CloseSos[]>('http://localhost:9901/sos/getBedSOS');
+  }
+
+  getEquipSOS(): Observable<CloseSos[]>{
+    return this.httpService.get<CloseSos[]>('http://localhost:9901/sos/getEquipSOS');
   }
 }
 
