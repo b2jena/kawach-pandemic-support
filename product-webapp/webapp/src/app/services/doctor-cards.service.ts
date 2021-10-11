@@ -24,7 +24,7 @@ export class DoctorCardsService {
     return this.httpService.delete<DoctorRedis>('http://localhost:8989/api/v1//doctor/' + emailId);
   }
   public GetDoctorInfo(emailId: string) {
-    return this.httpService.get<Doctor>('http://localhost:8090/api/v1/doctor/' + emailId)
+    return this.httpService.get<Doctor>('http://localhost:8090/api/v1/doctor/' + emailId);
   }
 }
 export class DoctorRedis{

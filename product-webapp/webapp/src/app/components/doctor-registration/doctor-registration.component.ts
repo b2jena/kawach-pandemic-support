@@ -8,6 +8,10 @@ interface Specialization{
   value: string;
 }
 
+interface NumberCode{
+  value: string;
+}
+
 @Component({
   selector: 'app-doctor-registration',
   templateUrl: './doctor-registration.component.html',
@@ -34,31 +38,34 @@ export class DoctorRegistrationComponent implements OnInit {
     {value: 'Psychiatrist'}
   ];
 
+  code: NumberCode[] = [
+    {value: '+91'},
+    {value: '+92'},
+    {value: '+93'},
+    {value: '+94'},
+    {value: '+95'},
+    {value: '+91'},
+    {value: '+1'},
+    {value: '+31'},
+    {value: '+32'},
+    {value: '+33'},
+  ];
+
   message: any;
   hide = true;
   action = '';
-  // email = new FormControl('', [Validators.required, Validators.email]);
-  // name = new FormControl('', [Validators.required]);
-  // medId = new FormControl('', [Validators.required]);
-  // ph = new FormControl('', [Validators.required]);
-  // pass = new FormControl('', [Validators.required]);
+
 
 
   constructor(private userService: UserRegistrationService, private formBuilder: FormBuilder, private snackBar: MatSnackBar, private httpClient: HttpClient) {}
 
-  // profileForm = this.formBuilder.group({
-  //   emailId: [''],
-  //   fullName: [''],
-  //   medicalRegistrationId: [''],
-  //   phoneNumber: [''],
-  //   specialization: [''],
-  //   password: ['']
-  // });
+
 
   profileForm = this.formBuilder.group({
     emailId: new FormControl('', [Validators.required, Validators.email]),
     fullName: new FormControl('', Validators.required),
     medicalRegistrationId: new FormControl('', Validators.required),
+    code: new FormControl('', Validators.required),
     phoneNumber: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
     specialization: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
@@ -70,33 +77,7 @@ export class DoctorRegistrationComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // createDoctor(): void{
-  //   this.userService.createDoctor(this.user).subscribe( (data) => this.snackBar.open((this.message = data).toString(), this.action, {
-  //     duration: 3000,
-  //     horizontalPosition: 'center',
-  //     verticalPosition: 'top'
-  //   }));
-  // }
 
-  // getErrorMessage() {
-  //   if (this.email.hasError('required')) {
-  //     return 'Mandatory field';
-  //   }
-
-  //   return this.email.hasError('email') ? 'Not a valid email' : '';
-  // }
-  // getErrorName(){
-  //   return this.name.hasError('required') ? 'Mandatory field' : '';
-  // }
-  // getErrorPh(){
-  //   return this.ph.hasError('required') ? 'Mandatory field' : '';
-  // }
-  // getErrorPass(){
-  //   return this.pass.hasError('required') ? 'Mandatory field' : '';
-  // }
-  // getErrormedId(){
-  //   return this.medId.hasError('required') ? 'Mandatory field' : '';
-  // }
 
   submitData() {
     console.log('form data:', this.profileForm.value);
@@ -118,15 +99,11 @@ export class DoctorRegistrationComponent implements OnInit {
           this.snackBar.open(this.message, this.action, {
             duration: 3000
           });
-          // if (response.status === 201) {
-          //   setTimeout(() => {
-          //     location.reload();
-          //   });
-          // } else {
-          //   setTimeout(() => {
-          //     location.reload();
-          //   }, 2000);
-          // }
+          if (response.body === 'You have been successfully registered! Kindly Login now') {
+            setTimeout(() => {
+              window.location.replace('http://localhost:4200/login');
+            }, 3000);
+          }
         },
         (err) => console.log('Error Occured during saving: ' + err.message)
       );

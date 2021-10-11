@@ -19,6 +19,7 @@ public class Doctor {
     private String emailId;
     private String fullName;
     private String medicalRegistrationId;
+    private String code;
     private long phoneNumber;
     private String password;
     private String specialization;

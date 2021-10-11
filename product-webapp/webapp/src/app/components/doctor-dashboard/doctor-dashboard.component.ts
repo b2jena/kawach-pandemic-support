@@ -8,7 +8,6 @@ import { DoctorCardsService } from 'src/app/services/doctor-cards.service';
 })
 export class DoctorDashboardComponent implements OnInit {
   email = localStorage.getItem('loggedIn');
-  // email = 'godwinkhalko2@gmail.com';
   constructor(private doctorService: DoctorCardsService) { }
 
   ngOnInit(): void {
@@ -17,7 +16,7 @@ export class DoctorDashboardComponent implements OnInit {
     this.doctorService.DoctorOnline(emailId).subscribe(data => {});
   }
   DoctorOffline(emailId: string){
-    this.doctorService.deleteDoctor(emailId).subscribe(data=>{});
+    this.doctorService.deleteDoctor(emailId).subscribe(data => {});
   }
 
 }
