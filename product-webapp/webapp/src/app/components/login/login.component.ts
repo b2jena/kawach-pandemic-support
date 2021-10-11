@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
           }
       
         }
-    }
+      }
 
   routetoDash(role: string): void{
     if ( role === 'Doctor'){

@@ -13,11 +13,8 @@ export class VolunteerRegistrationComponent implements OnInit {
   user: Volunteer = new Volunteer('', '', 0, '');
   message: any;
   hide = true;
-  action = 'OK';
-  // email = new FormControl('', [Validators.required, Validators.email]);
-  // name = new FormControl('', [Validators.required]);
-  // ph = new FormControl('', [Validators.required]);
-  // pass = new FormControl('', [Validators.required]);
+  action = '';
+
 
   constructor(private userService: UserRegistrationService, private snackBar: MatSnackBar, private formBuilder: FormBuilder) {
   }
@@ -33,35 +30,16 @@ export class VolunteerRegistrationComponent implements OnInit {
   }
 
   createVolunteer(): void{
-    this.userService.createVolunteer(this.user).subscribe( (data) => this.snackBar.open((this.message = data).toString(), this.action, {
-      duration: 3000,
+    this.userService.createVolunteer(this.user).subscribe(
+      (data) => {this.snackBar.open((this.message = data).toString(), this.action, {
+        duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'top'
-    }));
-    // this._snackBar.open(this.message.toString());
+    });
+    if (data.toString() === 'You have been successfully registered! Kindly Login now'){
+    setTimeout(() => { window.location.replace('http://localhost:4200/login'); },
+    3000);
   }
-
-  // openSnackBar(message: string) {
-  //   this._snackBar.open(this.message);
-  // }
-
-  // getErrorMessage() {
-  //   if (this.email.hasError('required')) {
-  //     return 'Mandatory field';
-  //   }
-
-  //   return this.email.hasError('email') ? 'Not a valid email' : '';
-  // }
-  // getErrorName(){
-  //   return this.name.hasError('required') ? 'Mandatory field' : '';
-  // }
-  // getErrorPh(){
-  //   return this.ph.hasError('required') ? 'Mandatory field' : '';
-  // }
-  // getErrorPass(){
-  //   return this.pass.hasError('required') ? 'Mandatory field' : '';
-  // }
-
-
-
-}
+  }
+    );
+}}
