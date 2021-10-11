@@ -14,6 +14,6 @@ public interface MessageRepository extends MongoRepository<MessageModel, Long> {
     List<MessageModel> getAllMessages(String senderName, String reciverName);
 
     @Query("{$or: [ {'senderName': ?0}, { 'reciverName': ?0} ]}")
-    List<MessageModel> deleteMessages(String senderName, String reciverName);
+    List<MessageModel> deleteAll(String senderName);
 
 }
