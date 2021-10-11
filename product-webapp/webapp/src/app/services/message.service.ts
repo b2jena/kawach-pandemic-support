@@ -39,7 +39,6 @@ export class MessageService {
 
 
 
-
 export class Message{
   // public sender: string;
   // public reciver: string;

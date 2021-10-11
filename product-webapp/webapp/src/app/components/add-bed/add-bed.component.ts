@@ -43,7 +43,7 @@ export class AddBedComponent implements OnInit {
         this.user.verificationStatus = this.isActive;
         console.log('data:', this.user);
         this.equipmentService.CreateBed(this.user).subscribe( data => { this.showSnackbars('Bed added successfully.', 'x'); });
-        window.setTimeout(function(){location.reload()}, 2000);
+        window.setTimeout(function(){location.reload();}, 2000);
       }
       console.log(this.user.verificationStatus);
     }

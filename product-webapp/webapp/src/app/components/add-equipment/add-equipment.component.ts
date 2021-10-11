@@ -41,7 +41,7 @@ export class AddEquipmentComponent implements OnInit {
       } else {
         this.user.verificationStatus = this.isActive;
         this.equipmentService.CreateEquipment(this.user).subscribe( data => { this.showSnackbars('Equipment added successfully.', 'x'); });
-        window.setTimeout(function(){location.reload()}, 2000);
+        window.setTimeout(function(){location.reload();}, 2000);
       }
     }
     check() {

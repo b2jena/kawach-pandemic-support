@@ -16,7 +16,7 @@ export class DoctorDashboardComponent implements OnInit {
     this.doctorService.DoctorOnline(emailId).subscribe(data => {});
   }
   DoctorOffline(emailId: string){
-    this.doctorService.deleteDoctor(emailId).subscribe(data=>{});
+    this.doctorService.deleteDoctor(emailId).subscribe(data => {});
   }
 
 }
