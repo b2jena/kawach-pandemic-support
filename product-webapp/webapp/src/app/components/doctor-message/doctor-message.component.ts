@@ -37,11 +37,11 @@ export class DoctorMessageComponent implements OnInit {
 
 
 
-  user: Message = new Message('', 'paitent', this.message);
+  user: Message = new Message('', 't', this.message);
 
   SendMessage(){
     this.user.senderName = this.messageArray[0].senderName;
-    this.user.senderName = localStorage.getItem("loggedIn");
+    this.user.reciverName = localStorage.getItem("loggedIn");
     console.log(this.user.senderName);
     this.messageService.SendMessage(this.user).subscribe(
       data => {
