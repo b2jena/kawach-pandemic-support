@@ -11,7 +11,7 @@ export class CloseSosComponent implements OnInit {
   closeSos !: CloseSos[];
   constructor(private closeSosService: CloseSosService){ }
   ngOnInit(){
-    this.closeSosService.getSos().subscribe(
+    this.closeSosService.getMedSOS().subscribe(
       response => this.handleSuccessfulResponse(response),
     );
   }
