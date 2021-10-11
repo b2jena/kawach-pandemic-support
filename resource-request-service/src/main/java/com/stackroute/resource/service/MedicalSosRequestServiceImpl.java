@@ -24,10 +24,6 @@ public class MedicalSosRequestServiceImpl implements MedicalSosRequestService {
     public MedicalSosRequestServiceImpl(MedicalSosRequestRepository medicalSosRequestRepository) {
         this.medicalSosRequestRepository = medicalSosRequestRepository;
     }
-//    @Autowired
-//    public MedicalSosRequestServiceImpl(ResourceRepository resourceRepository) {
-//        this.resourceRepository = resourceRepository;
-//    }
 
     @Override
     public MedicalSosRequest saveSosRequest(MedicalSosRequest medicalSosRequest) throws NullValueException {
@@ -46,11 +42,6 @@ public class MedicalSosRequestServiceImpl implements MedicalSosRequestService {
         updateQuery.set("requestStatus","Close");
         mongoTemplate.upsert(query,updateQuery,"SOSRequest");
     }
-
-//    @Override
-//    public List<Resources> getAllRes() {
-//        return (List<Resources>) resourceRepository.findAll();
-//    }
 
 
 }

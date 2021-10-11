@@ -45,10 +45,6 @@ public class BedServiceImpl implements BedService{
     @Override
     public Beds getUnverifiedBed()
     {
-//        List<Beds> beds = bedRepository.findAll();
-//        List<Beds> unverified = beds.stream().filter(c -> c.getVerificationStatus() == false)
-//                .collect(Collectors.toList());
-
         Query query = new Query();
         query.addCriteria(Criteria.where("verificationStatus").is(false));
         List<Beds> unverified = mongoTemplate.find(query, Beds.class);
