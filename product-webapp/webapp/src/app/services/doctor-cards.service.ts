@@ -11,13 +11,19 @@ export class DoctorCardsService {
   constructor(private httpService: HttpClient) { }
   DoctorOnline(emailId: string) {
     console.log(emailId);
-    return this.httpService.post('http://localhost:8989/api/v1/doctor' + emailId, '');
+    return this.httpService.get('http://localhost:8989/api/v1/doctor/' + emailId);
   }
   GetOnlineDoctors(){
     return this.httpService.get<Doctor[]>('http://localhost:8989/api/v1/doctor');
   }
   public deleteEmployee(doctor: Doctor) {
     return this.httpService.delete<Doctor>('http://localhost:8989/api/v1//doctor/' + doctor.emailId);
+  }
+  public deleteDoctor(emailId: string) {
+    return this.httpService.delete<Doctor>('http://localhost:8989/api/v1//doctor/' + emailId);
+  }
+  public GetDoctorInfo(emailId: string) {
+    return this.httpService.get<Doctor>('http://localhost:8090/api/v1/doctor/' + emailId)
   }
 }
 export class Doctor{

@@ -20,28 +20,40 @@
           </mat-list>
     </mat-card>
 </div>
-
 <div *ngFor="let obj of closeSos">
-<tr>
-    <td>{{obj.city}}</td>
-    <td>{{obj.patientName}}</td>
-</tr>
+  {{obj.city}}
+  {{obj.patientName}}
+  <div *ngFor="let require of obj.requirement">
+    <p>{{require.requirementName}}: {{require.requirementQuantity}}: {{require.unitOfMeasure}}</p>
+  </div> 
+</div>
+####
+<div *ngFor="let obj of closeSos">
+ {{obj.city}}
+ {{obj.patientName}}
 <mat-card class="example-card">
     <mat-card-header>
       <div mat-card-avatar class=""></div>
-      <mat-card-title>REQUIREMENT TITLE HERE</mat-card-title>
-      <mat-card-subtitle>REQUIREMENT TYPE HERE</mat-card-subtitle>
+      <div *ngFor="let require of obj.requirement">
+        <p>{{require.requirementName}}: {{require.requirementQuantity}}: {{require.unitOfMeasure}}</p>
+        <mat-card-title>{{require.requirementName}}</mat-card-title>
+        <mat-card-subtitle>{{obj.requestStatus}}</mat-card-subtitle>
+      </div>      
     </mat-card-header>
     <mat-card-content>
       <p>
-        {{obj.patientName}}<br>
-        {{obj.gender}}<br>
-        {{obj.phoneNo}}<br>
-        {{obj.hospitalised}}<br>
-        {{obj.city}}<br>
-        
+        Patient Name : {{obj.patientName}}<br>
+        Gender : {{obj.gender}}<br>
+        Contact No : {{obj.phoneNo}}<br>
+        Email : {{obj.email}}<br>
+        Hospitalised Status : {{obj.hospitalised}}<br>
+        City : {{obj.city}}<br>  
+        Request Status : {{obj.formStatus}}<br>
 
       </p>
+      <div *ngFor="let require of obj.requirement">
+        <p>{{require.requirementName}}: {{require.requirementQuantity}}: {{require.unitOfMeasure}}</p>
+      </div> 
     </mat-card-content>
     <mat-card-actions>
       <button mat-button>PASS</button>
@@ -49,20 +61,4 @@
       <button mat-raised-button color="accent" class="block" style = "align-self: center ;"> SEARCH FOR RESOURCES </button>
     </mat-card-actions>
   </mat-card>
-  
 </div>
-
-<br>
-
-<!-- {{closeSos.patientName}}
-{{closeSos.phoneNo}}
-{{closeSos.gender}}
-{{closeSos.email}}
-{{closeSos.hospitalised}}
-{{closeSos.city}}
-{{closeSos.requir[0]}}
-{{closeSos.requir[1]}}
-{{closeSos.requir[2]}}
-{{closeSos.requestStatus}} -->
-<!-- 
-############################################################### -->

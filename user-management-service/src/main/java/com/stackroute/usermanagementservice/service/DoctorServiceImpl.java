@@ -7,6 +7,8 @@ import com.stackroute.usermanagementservice.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /*Implementation class implementing the necessary methods of doctor Service*/
 @Service
 public class DoctorServiceImpl implements DoctorService {
@@ -32,5 +34,14 @@ public class DoctorServiceImpl implements DoctorService {
         Doctor savedDoctor = doctorRepository.save(doctor);
 
         return savedDoctor;
+    }
+
+    @Override
+    public Doctor getDoctorById(String id) {
+        Optional<Doctor> optional = doctorRepository.findById(id);
+        if (optional.isPresent()) {
+            return optional.get();
+        }
+        return null;
     }
 }

@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(value="*")
 public class MedicalSosRequestController {
     private MedicalSosRequestService medicalSosRequestService;
     private ResourceService resourceService;
@@ -41,6 +41,21 @@ public class MedicalSosRequestController {
     public ResponseEntity<MedicalSosRequest> saveSosRequest  (@RequestBody MedicalSosRequest medicalSosRequest) throws NullValueException {
         MedicalSosRequest savedSosRequest = medicalSosRequestService.saveSosRequest(medicalSosRequest);
         return new ResponseEntity<>(savedSosRequest,HttpStatus.CREATED);
+    }
+
+    @GetMapping("sos/getMedSOS")
+    public ResponseEntity<List<MedicalSosRequest>> getMedicineSOS(){
+        return new ResponseEntity<List<MedicalSosRequest>>((List<MedicalSosRequest>)medicalSosRequestService.getMedSOS(),HttpStatus.OK);
+    }
+
+    @GetMapping("sos/getBedSOS")
+    public ResponseEntity<List<MedicalSosRequest>> getBedSOS(){
+        return new ResponseEntity<List<MedicalSosRequest>>((List<MedicalSosRequest>)medicalSosRequestService.getBedSOS(),HttpStatus.OK);
+    }
+
+    @GetMapping("sos/getEquipSOS")
+    public ResponseEntity<List<MedicalSosRequest>> EquipSOS(){
+        return new ResponseEntity<List<MedicalSosRequest>>((List<MedicalSosRequest>)medicalSosRequestService.getEquipSOS(),HttpStatus.OK);
     }
 
     @GetMapping("sos/getSos")

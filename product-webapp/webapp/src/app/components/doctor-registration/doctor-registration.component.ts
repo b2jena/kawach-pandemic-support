@@ -108,7 +108,7 @@ export class DoctorRegistrationComponent implements OnInit {
     uploadFileData.append('image', this.selectedFile);
 
     this.httpClient
-      .post('http://localhost:8081/api/v1/register/doctor', uploadFileData, {
+      .post('http://localhost:8090/api/v1/register/doctor', uploadFileData, {
         observe: 'response',
       })
       .subscribe(

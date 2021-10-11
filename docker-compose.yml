@@ -18,18 +18,25 @@ services:
 #    hostname: localhost
 #    ports:
 #      - 8086:8086
-#  product-webapp:
+
+  product-webapp-service:
 #    build: product-webapp/
 #    image: product-webapp
 #    depends_on:
 #      - eureka-server
 #      - api-gateway
 #    restart: always
-#    container_name: product-webapp
+    container_name: product-webapp-service-container
+    build: ./product-webapp
+    volumes:
+      - './product-webapp:/usr/src/app'
+    ports:
+      - 4200:4200
 #    network_mode: "host"
 #    hostname: localhost
 #    ports:
 #      - "8099:8099"
+
   patient-otp-service:
     build: patient-otp-service/
     container_name: patient-otp-service
@@ -38,6 +45,7 @@ services:
     hostname: localhost
     ports:
       - 9999:9999
+
   resource-request-service:
     build: resource-request-service/
     container_name: resource-request-service
@@ -63,7 +71,7 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 8081:8081
+      - 8090:8090
 
   user-authentication-service:
     build: user-authentication-service/
