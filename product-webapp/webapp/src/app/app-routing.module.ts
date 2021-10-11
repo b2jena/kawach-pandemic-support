@@ -22,7 +22,6 @@ import { WarroomAddComponent } from './components/warroom-dashboard/warroom-add/
 // import { CloseSosRequestComponent } from './components/close-sos-request/close-sos-request.component';
 import { CloseSosComponent } from './components/close-sos/close-sos.component';
 import { HeaderTabsComponent } from './components/header-tabs/header-tabs.component';
-// import { PageOneComponent } from './components/warroom-dashboard/warroom-add/pages/page-one/page-one.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { WarroomAddBedComponent } from './components/warroom-dashboard/warroom-add-bed/warroom-add-bed.component';
 import { WarroomAddMedicineComponent } from './components/warroom-dashboard/warroom-add-medicine/warroom-add-medicine.component';
@@ -31,6 +30,9 @@ import { MessageComponent } from './components/message/message.component';
 import { WarroomSosMedicineComponent } from './components/warroom-dashboard/warroom-sos-medicine/warroom-sos-medicine.component';
 import { WarroomSosBedComponent } from './components/warroom-dashboard/warroom-sos-bed/warroom-sos-bed.component';
 import { WarroomSosEquipmentComponent } from './components/warroom-dashboard/warroom-sos-equipment/warroom-sos-equipment.component';
+import { WarroomVerifyMedicineComponent } from './components/warroom-dashboard/warroom-verify-medicine/warroom-verify-medicine.component';
+import { WarroomVerifyBedComponent } from './components/warroom-dashboard/warroom-verify-bed/warroom-verify-bed.component';
+import { WarroomVerifyEquipmentComponent } from './components/warroom-dashboard/warroom-verify-equipment/warroom-verify-equipment.component';
 
 
 const routes: Routes = [
@@ -87,6 +89,15 @@ const routes: Routes = [
     },
     {
       path: 'sosequipment', component: WarroomSosEquipmentComponent
+    },
+    {
+      path: 'ver-medicine', component: WarroomVerifyMedicineComponent
+    },
+    {
+      path: 'ver-bed', component: WarroomVerifyBedComponent
+    },
+    {
+      path: 'ver-equipment', component: WarroomVerifyEquipmentComponent
     }
   ]
   },
