@@ -82,7 +82,7 @@ import { MessageComponent } from './components/message/message.component';
 import { MsgComponent } from './components/message/msg/msg.component';
 import { MessageService } from './services/message.service';
 import { DoctorMessageComponent } from './components/doctor-message/doctor-message.component';
-import {NgxAutoScrollModule} from "ngx-auto-scroll";
+import {NgxAutoScrollModule} from 'ngx-auto-scroll';
 import { CloseSosBedComponent } from './components/close-sos-bed/close-sos-bed.component';
 import { CloseSosEquipmentComponent } from './components/close-sos-equipment/close-sos-equipment.component';
 import { WarroomSosMedicineComponent } from './components/warroom-dashboard/warroom-sos-medicine/warroom-sos-medicine.component';

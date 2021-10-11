@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   });*/
 
   constructor(private router: Router, private formBuilder: FormBuilder, private loginService: LoginService, @Inject(SESSION_STORAGE) private storage: WebStorageService) {
-    console.log("In constructor", this.userobj);
+    console.log('In constructor', this.userobj);
   }
 
   profileForm = this.formBuilder.group({
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   // err: string= this.errorMsg.valueOf;
 
   ngOnInit(): void {
-    console.log("On Init", this.userobj);
+    console.log('On Init', this.userobj);
   }
 
 
@@ -51,13 +51,12 @@ export class LoginComponent implements OnInit {
       else{
           this.obj[0] = '';
           this.loginService.generateToken(this.userobj).subscribe( data => { this.obj = data ; } );
-      
 
-          //Wait 2-3 seconds?
-          console.log("userobj in login(): ", this.userobj);
-          console.log("this.obj[] after generateToken(): ",this.obj);
-          if(this.obj[0] === ''){
-            this.loginService.showsnackbar("Error, please try again after some time");
+          // Wait 2-3 seconds?
+          console.log('userobj in login(): ', this.userobj);
+          console.log('this.obj[] after generateToken(): ', this.obj);
+          if (this.obj[0] === ''){
+            this.loginService.showsnackbar('Error, please try again after some time');
           }
           else if (this.obj[0] === 'Success'){
             this.loginService.showsnackbar(this.obj[0]);
@@ -68,7 +67,7 @@ export class LoginComponent implements OnInit {
           else{
             this.loginService.showsnackbar('Error:' + this.obj[0]);
           }
-      
+
         }
     }
 

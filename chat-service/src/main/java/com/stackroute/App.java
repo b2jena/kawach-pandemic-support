@@ -3,17 +3,14 @@ package com.stackroute;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/**
- * Hello world!
- *
- */
+import java.util.logging.Logger;
+
 @SpringBootApplication
-//@ComponentScan("com.javamaster.repository")
-public class App 
-{
-    public static void main( String[] args )
-    {
+public class App {
+    public static void main(String[] args) {
         SpringApplication.run(App.class, args);
-        System.out.println( "Hello World!" );
+
+        Logger logger = Logger.getLogger(App.class.getName());
+        logger.info("Server Started SuccessFuly");
     }
 }

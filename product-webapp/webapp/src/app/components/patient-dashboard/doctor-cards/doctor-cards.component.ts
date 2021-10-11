@@ -9,7 +9,7 @@ import { Doctor } from 'src/app/services/user-registration.service';
 })
 export class DoctorCardsComponent implements OnInit {
   doctors!: DoctorRedis[];
-  doctorM : Doctor;
+  doctorM: Doctor;
   constructor(private doctorService: DoctorCardsService) { }
 
   ngOnInit(): void {
@@ -18,8 +18,8 @@ export class DoctorCardsComponent implements OnInit {
   handleSuccessfulResponse(response: DoctorRedis[] )
 {
     this.doctors = response;
-    this.doctors.forEach((value) =>{
-      this.doctorService.GetDoctorInfo(value.emailId).subscribe((doctorData) => {this.doctorM = doctorData});
+    this.doctors.forEach((value) => {
+      this.doctorService.GetDoctorInfo(value.emailId).subscribe((doctorData) => {this.doctorM = doctorData; });
     });
 }
 deleteEmployee(doctor: DoctorRedis): void {
