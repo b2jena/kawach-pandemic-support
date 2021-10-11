@@ -36,11 +36,9 @@ public class MessageController {
 
     @DeleteMapping("chat-messages/{senderName}/{reciverName}")
     public ResponseEntity<List<MessageModel>> deleteMessages(@PathVariable("senderName") String senderName,
-                                                          @PathVariable("reciverName") String reciverName){
-        List messageModel = messageService.getAllMessages(senderName, reciverName);
-//            messageService.deleteMessages(messageModel);
-        return new ResponseEntity<List<MessageModel>>
-                ((List<MessageModel>)messageService.deleteMessages(messageModel),HttpStatus.OK);
+                                                       @PathVariable("reciverName") String reciverName){
+        return new ResponseEntity<List<MessageModel>>((List<MessageModel>)messageService.
+                deleteAll(senderName),HttpStatus.OK);
     }
 
 }

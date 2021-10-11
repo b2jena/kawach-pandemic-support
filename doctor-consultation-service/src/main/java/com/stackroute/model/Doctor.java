@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-//import org.springframework.data.redis.core.RedisHash;
 
 import java.io.Serializable;
 
@@ -15,7 +14,6 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Document(collection = "doctors")
-//@RedisHash("Doctor")
 public class Doctor implements Serializable {
     @Id
     private String emailId;
@@ -23,4 +21,7 @@ public class Doctor implements Serializable {
     private String specialization;
     private static final long serialVersionUID = 200856043767861933L;
 
+    public String getEmailId() {
+        return emailId;
+    }
 }

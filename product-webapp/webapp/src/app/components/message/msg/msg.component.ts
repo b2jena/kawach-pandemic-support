@@ -1,3 +1,4 @@
+import { User } from './../../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Message, MessageService } from 'src/app/services/message.service';
@@ -27,7 +28,8 @@ export class MsgComponent implements OnInit {
       console.log(params)
       // this.socket.on('refreshPage', () => {
       // this.GetMessage();
-      // return this.reciverName = params.name;
+      this.user.reciverName = params.name;
+      console.log(this.user.reciverName);
       // this.updateSubscription = interval(1000).subscribe((val) => {
       //   this.updateStatus();
       // })
@@ -35,37 +37,44 @@ export class MsgComponent implements OnInit {
 
       setInterval(() => {
         this.GetMessage();
-    }, 1000);
+    }, 10000);
     })
   }
 
 
 
-  user: Message = new Message('paitent', 'doctor', this.message);
+  // user: Message = new Message('', '', this.message);
+
+  user: Message = new Message('paitent', '', this.message);
+
 
   SendMessage(){
-    console.log(this.reciverName);
+    this.user.senderName = localStorage.getItem("paitentEmail");
+    console.log(this.user.senderName);
     this.messageService.SendMessage(this.user).subscribe(
       data => {
         console.log(data);
       }
     );
-    this.GetMessage();
+    // this.GetMessage();
     console.log(this.messageArray)
   }
 
   GetMessage() {
     this.messageService.GetAllMessage(this.user).subscribe(data => {
       this.messageArray = data;
-      console.log(data);
-      console.log(this.messageArray);
+      // console.log(data);
+      // console.log(this.messageArray);
     });
   }
 
 
-  deleteMessage(){
-    this.messageService.deleteMessages(this.user.senderName, this.user.reciverName).subscribe( data =>{
+  deleteMessage(a: any, b: any){
+    console.log(a);
+    console.log(b);
+    this.messageService.deleteMessages(this.user).subscribe( data =>{
+      this.messageArray=data;
       console.log(data);
-    })
+    });
   }
 }

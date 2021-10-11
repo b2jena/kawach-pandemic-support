@@ -19,8 +19,9 @@ export class DoctorMessageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      console.log(params)
+    // this.route.params.subscribe(params => {
+    //   console.log(params)
+
       // this.socket.on('refreshPage', () => {
       // this.GetMessage();
       // return this.reciverName = params.name;
@@ -32,15 +33,16 @@ export class DoctorMessageComponent implements OnInit {
       setInterval(() => {
         this.GetMessage();
     }, 1000);
-    })
-  }
+    }
 
 
 
-  user: Message = new Message('doctor', 'paitent', this.message);
+  user: Message = new Message('', 'paitent', this.message);
 
   SendMessage(){
-    console.log(this.reciverName);
+    this.user.senderName = this.messageArray[0].senderName;
+    this.user.senderName = localStorage.getItem("loggedIn");
+    console.log(this.user.senderName);
     this.messageService.SendMessage(this.user).subscribe(
       data => {
         console.log(data);

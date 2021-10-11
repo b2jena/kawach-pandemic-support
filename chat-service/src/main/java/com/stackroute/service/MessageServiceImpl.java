@@ -39,8 +39,11 @@ public class MessageServiceImpl implements MessageService{
     }
 
     @Override
-    public List<MessageModel> deleteMessages(List<MessageModel> messageModel) {
-        messageRepository.deleteAll(messageModel);
-        return null;
+    public List<MessageModel> deleteAll(String senderName) {
+//        Query query = new Query(Criteria.where("senderName").is(name));
+//        DeleteResult request = mongoTemplate.remove(query, MessageModel.class);
+//        mongoTemplate.deleteAll({"senderName": name});
+
+        return  messageRepository.deleteAll(senderName);
     }
 }

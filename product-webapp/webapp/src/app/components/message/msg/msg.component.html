@@ -1,14 +1,14 @@
-<button type="button" class="btn btn-danger" (click) = "deleteMessage()">Danger</button>
+<button type="button" class="btn btn-danger" (click) = "deleteMessage(user.reciverName, user.senderName )">Danger</button>
 <div class= "row" style="background-color: rgb(215, 235, 241) !important; margin-top: 15px;">
   <div class="container" >
     <div class="col-12" style="padding-right: 0px !important; padding-left: 0px !important">
       <div class= "row" >
         <div class= "d-flex flex-row" style="background: #64b5f6 !important">
             <div class= "p-2 imgCol" style="margin-bottom: 10px !important">
-              <img src="https://avatars.dicebear.com/api/avataaars/.svg" class="circle">
+              <img src="https://www.svgrepo.com/show/26473/avatar.svg" class="circle">
             </div>
               <div class= "p-2 nameCol" style="margin-top: 18px !important">
-                <span>{{reciverName}}</span>
+                <span>{{user.reciverName}}</span>
               </div>
         </div>
       </div>
