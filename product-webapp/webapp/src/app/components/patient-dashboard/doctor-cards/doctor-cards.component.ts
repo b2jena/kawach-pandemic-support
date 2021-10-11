@@ -9,7 +9,7 @@ import { Doctor } from 'src/app/services/user-registration.service';
 })
 export class DoctorCardsComponent implements OnInit {
   doctors!: DoctorRedis[];
-  doctorM: Doctor;
+  doctorM!: Doctor;
   constructor(private doctorService: DoctorCardsService) { }
 
   ngOnInit(): void {

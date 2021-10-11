@@ -1,9 +1,6 @@
-server:
-  port: 8080
-
 spring:
   application:
-    name: "api-gateway"
+    name: VOLUNTEER-REVERT-SERVICE
 
 eureka:
   client:

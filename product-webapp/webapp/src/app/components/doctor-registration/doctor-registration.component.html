@@ -1,110 +1,6 @@
-<!-- <br><div class="container">
-  <h2 class="text-center">Join Kawach!</h2>
-  <p align = "center">As a doctor</p>
-
-  <form>
-    <div class="form-group">
-      <label for="emailId">Email ID:</label>
-      <input [(ngModel)]="user.emailId" placeholder="Email id" name="emailId" class="form-control" id="emailId">
-    </div>
-
-    <div class="form-group">
-      <label for="name">Full Name:</label>
-      <input type="name" [(ngModel)]="user.fullName" placeholder="Full name" name="name" class="form-control" id="name">
-    </div>
-  
-    <div class="form-group">
-      <label for="medId">Medical Registration ID:</label>
-      <input [(ngModel)]="user.medicalRegistrationId" placeholder="Medical registration id" name="medId" class="form-control" id="medId">
-    </div>
-
-    <div class="form-group">
-      <label for="phNo">Phone Number:</label>
-      <input [(ngModel)]="user.phoneNumber" placeholder="Phone number" name="phNo" class="form-control" id="phNo">
-    </div>
-
-    <div class="form-group">
-      <label for="specialization">Specialization:</label>
-      <input [(ngModel)]="user.specialization" placeholder="Specialization" name="specialization" class="form-control" id="specialization">
-    </div>
-
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input [(ngModel)]="user.password" placeholder="Password" name="password" class="form-control" id="password">
-    </div><br>
-  
-    <p align = "center"><button class="btn btn-success" (click)="createDoctor()">Register</button></p>
-  </form>
-  </div>
-
-   -->
-
-   <!-- <form [formGroup]="profileForm" class="form-container">
-
-    <mat-card style="width: 500px; text-align: center;">
-
-      <mat-card-title>Register as a Doctor</mat-card-title><br>
-
-    <mat-card-content style="justify-content: center;">
-
-      <mat-form-field appearance="outline" style="width: 300px;" class="scheduler-field">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="emailId" placeholder="pat@example.com" [formControl]="email" required>
-        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field><br>
-
-      <mat-form-field appearance="outline" style="width: 300px;" class="scheduler-field">
-        <mat-label>Full Name</mat-label>
-        <input matInput formControlName="fullName" placeholder="pat" required [formControl]="name">
-        <mat-error *ngIf="name.invalid">{{getErrorName()}}</mat-error>
-      </mat-form-field><br>
-
-      <mat-form-field appearance="outline" style="width: 300px;" class="scheduler-field">
-        <mat-label>Medical Registration Id</mat-label>
-        <input matInput formControlName="medicalRegistrationId" placeholder="" required [formControl]="medId">
-        <mat-error *ngIf="medId.invalid">{{getErrorName()}}</mat-error>
-      </mat-form-field><br>
-
-      <mat-form-field appearance="outline" style="width: 300px;" class="scheduler-field">
-        <mat-label>Phone Number</mat-label>
-        <input matInput type="number" formControlName="phoneNumber" placeholder="" required [formControl]="ph">
-        <mat-error *ngIf="ph.invalid">{{getErrorPh()}}</mat-error>
-      </mat-form-field><br>
-
-      <mat-form-field appearance="outline" style="width: 300px;" class="scheduler-field">
-        <mat-label>Specialization</mat-label>
-        <mat-select formControlName="specialization">
-          <mat-option *ngFor="let spec of specialisation" [value]="spec.value">
-            {{spec.value}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" style="width: 300px;" class="scheduler-field">
-        <mat-label>Password</mat-label>
-        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" placeholder="Include special characters" required [formControl]="pass">
-        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        <mat-error *ngIf="pass.invalid">{{getErrorPass()}}</mat-error>
-      </mat-form-field><br>
-
-      <div class="custom-file fileInputProfileWrap">
-        <input
-          type="file"
-          accept="image/*"
-          (change)="fileChangeEvent($event)"
-          class="fileInputProfile"
-        /></div><br>
-
-      <button mat-raised-button color="primary" (click)="submitData()">Register</button>
-
-    </mat-card-content>
-
-  </mat-card>  
-
-  </form> -->
 
   <form [formGroup]="profileForm" class="form-container">
-    <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutGap> -->
+    
     
     <mat-card style="width: 500px; text-align: center;">
 
@@ -133,18 +29,22 @@
           <mat-error *ngIf="profileForm.get('medicalRegistrationId')?.invalid && profileForm.get('medicalRegistrationId')?.touched">Required Field</mat-error>
         </mat-form-field><br>
 
+        <mat-form-field appearance="outline" style="width: 70px;">
+          <mat-label></mat-label>
+          <mat-select formControlName="code" placeholder="+91">
+            <mat-option *ngFor="let code of code" [value]="code.value">
+              {{code.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
       
-        <mat-form-field appearance="outline" style="width: 300px;">
+        <mat-form-field appearance="outline" style="width: 230px;">
           <mat-label>Phone Number</mat-label>
           <input matInput type="number" formControlName="phoneNumber" required minlength="10" maxlength="10">
           <mat-error *ngIf="profileForm.get('phoneNumber')?.invalid && profileForm.get('phoneNumber')?.touched">Required Field</mat-error>
         </mat-form-field><br>
-  
-      
-        <!-- <mat-form-field appearance="outline" style="width: 300px;">
-          <mat-label class="mat-caption">Specialization</mat-label>
-          <input matInput type="text"  formControlName="specialization"  placeholder="specialization" >
-        </mat-form-field><br> -->
+
 
         <mat-form-field appearance="outline" style="width: 300px;">
           <mat-label>Specialization</mat-label>
@@ -178,6 +78,6 @@
     </mat-card-content>
 
   </mat-card>
-    <!-- </div> -->
+    
 </form>
   

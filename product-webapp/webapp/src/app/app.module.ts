@@ -88,6 +88,9 @@ import { CloseSosEquipmentComponent } from './components/close-sos-equipment/clo
 import { WarroomSosMedicineComponent } from './components/warroom-dashboard/warroom-sos-medicine/warroom-sos-medicine.component';
 import { WarroomSosBedComponent } from './components/warroom-dashboard/warroom-sos-bed/warroom-sos-bed.component';
 import { WarroomSosEquipmentComponent } from './components/warroom-dashboard/warroom-sos-equipment/warroom-sos-equipment.component';
+import { WarroomVerifyBedComponent } from './components/warroom-dashboard/warroom-verify-bed/warroom-verify-bed.component';
+import { WarroomVerifyMedicineComponent } from './components/warroom-dashboard/warroom-verify-medicine/warroom-verify-medicine.component';
+import { WarroomVerifyEquipmentComponent } from './components/warroom-dashboard/warroom-verify-equipment/warroom-verify-equipment.component';
 
 @NgModule({
   declarations: [
@@ -144,7 +147,10 @@ import { WarroomSosEquipmentComponent } from './components/warroom-dashboard/war
     CloseSosEquipmentComponent,
     WarroomSosMedicineComponent,
     WarroomSosBedComponent,
-    WarroomSosEquipmentComponent
+    WarroomSosEquipmentComponent,
+    WarroomVerifyBedComponent,
+    WarroomVerifyMedicineComponent,
+    WarroomVerifyEquipmentComponent
   ],
   imports: [
     NgxAutoScrollModule,

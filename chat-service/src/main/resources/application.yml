@@ -1,9 +1,6 @@
-server:
-  port: 8080
-
 spring:
   application:
-    name: "api-gateway"
+    name: CHAT-SERVICE
 
 eureka:
   client:
