@@ -50,27 +50,27 @@ export class LoginComponent implements OnInit {
         }
       else{
           this.obj[0] = '';
-          this.loginService.generateToken(this.userobj).subscribe( data => { this.obj = data ; } );
-      
-
-          //Wait 2-3 seconds?
-          console.log("userobj in login(): ", this.userobj);
-          console.log("this.obj[] after generateToken(): ",this.obj);
-          if(this.obj[0] === ''){
-            this.loginService.showsnackbar("Error, please try again after some time");
-          }
-          else if (this.obj[0] === 'Success'){
-            this.loginService.showsnackbar(this.obj[0]);
-            this.storage.set(this.key, this.obj[1]);
-            this.routetoDash(this.obj[2]);
-            localStorage.setItem('loggedIn', this.obj[3]);
-          }
-          else{
-            this.loginService.showsnackbar('Error:' + this.obj[0]);
-          }
-      
+          this.loginService.generateToken(this.userobj).subscribe((data) => {
+            console.log("data:", data);
+            this.obj = data;
+            //Wait 2-3 seconds?
+            console.log("userobj in login(): ", this.userobj);
+            console.log("this.obj[] after generateToken(): ",this.obj);
+            if(this.obj[0] === ''){
+              this.loginService.showsnackbar("Error, please try again after some time");
+            }
+            else if (this.obj[0] === 'Success'){
+              this.loginService.showsnackbar(this.obj[0]);
+              this.storage.set(this.key, this.obj[1]);
+              this.routetoDash(this.obj[2]);
+              localStorage.setItem('loggedIn', this.obj[3]);
+            }
+            else{
+              this.loginService.showsnackbar('Error:' + this.obj[0]);
+            }
+          });
         }
-    }
+      }
 
   routetoDash(role: string): void{
     if ( role === 'Doctor'){

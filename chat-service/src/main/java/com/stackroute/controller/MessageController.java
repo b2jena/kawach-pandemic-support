@@ -16,12 +16,12 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
-        @PostMapping("chat-messages/{senderName}/{reciverName}")
-    public ResponseEntity<MessageModel> messageModel  (@RequestBody MessageModel messageModel){
-        try{
+    @PostMapping("chat-messages/{senderName}/{reciverName}")
+    public ResponseEntity<MessageModel> messageModel(@RequestBody MessageModel messageModel) {
+        try {
             MessageModel messageModels = messageService.saveMessage(messageModel);
             return new ResponseEntity<>(messageModels, HttpStatus.CREATED);
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
@@ -29,16 +29,16 @@ public class MessageController {
 
     @GetMapping("chat-messages/{senderName}/{reciverName}")
     public ResponseEntity<List<MessageModel>> getMessages(@PathVariable("senderName") String senderName,
-                                                          @PathVariable("reciverName") String reciverName){
-        return new ResponseEntity<List<MessageModel>>((List<MessageModel>)messageService.
-                getAllMessages(senderName, reciverName),HttpStatus.OK);
+                                                          @PathVariable("reciverName") String reciverName) {
+        return new ResponseEntity<List<MessageModel>>((List<MessageModel>) messageService.
+                getAllMessages(senderName, reciverName), HttpStatus.OK);
     }
 
     @DeleteMapping("chat-messages/{senderName}/{reciverName}")
     public ResponseEntity<List<MessageModel>> deleteMessages(@PathVariable("senderName") String senderName,
-                                                       @PathVariable("reciverName") String reciverName){
-        return new ResponseEntity<List<MessageModel>>((List<MessageModel>)messageService.
-                deleteAll(senderName),HttpStatus.OK);
+                                                             @PathVariable("reciverName") String reciverName) {
+        return new ResponseEntity<List<MessageModel>>((List<MessageModel>) messageService.
+                deleteAll(senderName), HttpStatus.OK);
     }
 
 }
