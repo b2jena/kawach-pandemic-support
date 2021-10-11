@@ -104,6 +104,24 @@ public class MedicalSosRequestController {
         String message="Beds"+result.get(0).getBedType() + " is available in myCity"+result.get(0).getVerificationStatus() + " address: "+result.get(0).getAddress()+ " Kindly connect Mr/Mrs : "+result.get(0).getContactPerson()+" (Phone number: "+ result.get(0).getMobileNumber()+ "\n Get Well Soon, Stay safe.";
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
+
+    @GetMapping("sos/getSOSMed")
+    public ResponseEntity<MedicalSosRequest> getSOSMed()
+    {
+        return new ResponseEntity<>(medicalSosRequestService.getSOSMed(), HttpStatus.OK);
+    }
+
+    @GetMapping("sos/getSOSEquip")
+    public ResponseEntity<MedicalSosRequest> getSOSEquip()
+    {
+        return new ResponseEntity<>(medicalSosRequestService.getSOSEquip(), HttpStatus.OK);
+    }
+
+    @GetMapping("sos/getSOSBed")
+    public ResponseEntity<MedicalSosRequest> getSOSBed()
+    {
+        return new ResponseEntity<>(medicalSosRequestService.getSOSBed(), HttpStatus.OK);
+    }
 //
 //    {
 //        List<Resources> result = resourceService.getSpecificResource(requirment, myCity);
