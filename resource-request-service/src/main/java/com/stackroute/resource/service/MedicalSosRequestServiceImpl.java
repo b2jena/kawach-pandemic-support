@@ -101,4 +101,13 @@ public class MedicalSosRequestServiceImpl implements MedicalSosRequestService {
         int randomInd = ThreadLocalRandom.current().nextInt(0, sos.size());
         return sos.get(randomInd);
     }
+
+    @Override
+    public void closeSOS(UUID requestId) {
+        System.out.println("IN");
+        Query query = new Query(Criteria.where("_id").is(requestId));
+        Update updateQuery = new Update();
+        updateQuery.set("formStatus","CLOSE");
+        mongoTemplate.upsert(query,updateQuery, MedicalSosRequest.class);
+    }
 }

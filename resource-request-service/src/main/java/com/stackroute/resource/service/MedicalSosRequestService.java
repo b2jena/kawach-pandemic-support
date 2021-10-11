@@ -19,5 +19,6 @@ public interface MedicalSosRequestService {
     MedicalSosRequest getSOSMed();
     MedicalSosRequest getSOSEquip();
     MedicalSosRequest getSOSBed();
+    void closeSOS(UUID requestId);
 //    List<Resources> getAllRes();
 }

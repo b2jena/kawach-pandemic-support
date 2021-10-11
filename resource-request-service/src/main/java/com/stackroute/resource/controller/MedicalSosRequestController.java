@@ -122,6 +122,11 @@ public class MedicalSosRequestController {
     {
         return new ResponseEntity<>(medicalSosRequestService.getSOSBed(), HttpStatus.OK);
     }
+
+    @PutMapping("sos/updateStatus")
+    public void closeSOS(@RequestBody MedicalSosRequest sos) {
+        medicalSosRequestService.closeSOS(sos.getRequestId());
+    }
 //
 //    {
 //        List<Resources> result = resourceService.getSpecificResource(requirment, myCity);
