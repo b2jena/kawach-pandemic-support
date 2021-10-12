@@ -7,15 +7,15 @@ import { CloseSos, CloseSosService, Requirement } from 'src/app/services/close-s
   styleUrls: ['./close-sos-bed.component.css']
 })
 export class CloseSosBedComponent implements OnInit {
-  closeSos !: CloseSos[];
+  public closeSos !: CloseSos;
   constructor(private closeSosService: CloseSosService) { }
 
   ngOnInit(){
-    this.closeSosService.getBedSOS().subscribe(
+    this.closeSosService.getSOSBed().subscribe(
       response => this.handleSuccessfulResponse(response),
     );
   }
-  handleSuccessfulResponse(response: CloseSos[]){
+  handleSuccessfulResponse(response: CloseSos){
     this.closeSos = response;
   }
 }

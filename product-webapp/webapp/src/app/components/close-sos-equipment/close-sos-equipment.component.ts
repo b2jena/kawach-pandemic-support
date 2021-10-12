@@ -8,15 +8,15 @@ import { CloseSos, CloseSosService, Requirement } from 'src/app/services/close-s
   styleUrls: ['./close-sos-equipment.component.css']
 })
 export class CloseSosEquipmentComponent implements OnInit {
-  closeSos !: CloseSos[];
+  closeSos !: CloseSos;
   constructor(private closeSosService: CloseSosService) { }
 
   ngOnInit(){
-    this.closeSosService.getEquipSOS().subscribe(
+    this.closeSosService.getSOSEquip().subscribe(
       response => this.handleSuccessfulResponse(response),
     );
   }
-  handleSuccessfulResponse(response: CloseSos[]){
+  handleSuccessfulResponse(response: CloseSos){
     this.closeSos = response;
   }
 }
