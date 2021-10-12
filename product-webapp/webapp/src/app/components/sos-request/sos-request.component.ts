@@ -15,7 +15,6 @@ import {
   NgForm,
   Validators,
 } from '@angular/forms';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -160,31 +159,26 @@ export class SosRequestComponent implements OnInit {
   showSnackbar(content: string, action: string) {
     const snack = this.snackBar.open(content, action, {
       duration: 3000,
-      verticalPosition: 'top', // Allowed values are  'top' | 'bottom'
-      horizontalPosition: 'center', // Allowed values are 'start' | 'center' | 'end' | 'left' | 'right'
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
     });
     snack.afterDismissed().subscribe(() => {
       window.location.reload();
-      console.log('This will be shown after snackbar disappeared');
     });
     snack.onAction().subscribe(() => {
       window.location.reload();
-      console.log('This will be called when snackbar button clicked');
     });
   }
 
   showSnackbars(content: string, action: string) {
     const snack = this.snackBar.open(content, action, {
       duration: 2000,
-      verticalPosition: 'top', // Allowed values are  'top' | 'bottom'
-      horizontalPosition: 'center', // Allowed values are 'start' | 'center' | 'end' | 'left' | 'right'
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
     });
     snack.afterDismissed().subscribe(() => {
-      console.log('This will be shown after snackbar disappeared');
     });
     snack.onAction().subscribe(() => {
-      // window.location.reload();
-      console.log('This will be called when snackbar button clicked');
     });
   }
 
@@ -216,19 +210,12 @@ export class SosRequestComponent implements OnInit {
       (this.patientForm.get('requirement') as FormArray).value.forEach(
         (i: any) => {
           this.list.push(i);
-          console.log(JSON.stringify(i));
         }
       );
-      console.log(this.list);
+
       this.sosService.CreateSosRequest(this.user).subscribe((data) => {
         this.showSnackbar('SOS request added successfully.', 'x');
       });
-      console.log((this.patientForm.get('requirement') as FormArray).value[0]);
-      console.log(
-        JSON.stringify(
-          (this.patientForm.get('requirement') as FormArray).value[0]
-        )
-      );
     }
   }
 }

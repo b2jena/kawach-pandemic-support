@@ -1,7 +1,5 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UploadFileService } from 'src/app/services/upload-service.service';
 
@@ -24,8 +22,8 @@ export class UploadFileComponent implements OnInit {
   showSnackbar(content: string, action: string) {
     const snack = this.snackBar.open(content, action, {
       duration: 2000,
-      verticalPosition: 'top', // Allowed values are  'top' | 'bottom'
-      horizontalPosition: 'center', // Allowed values are 'start' | 'center' | 'end' | 'left' | 'right'
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
     });
     snack.afterDismissed().subscribe(() => {
       console.log('This will be shown after snackbar disappeared');
