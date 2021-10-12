@@ -44,9 +44,6 @@ public class EquipmentServiceImpl implements EquipmentService{
 
     @Override
     public Equipments getUnverifiedEquipments() {
-//        List<Equipments> equipments = equipmentRepository.findAll();
-//        List<Equipments> unverified = equipments.stream().filter(c -> c.getVerificationStatus() == false)
-//                .collect(Collectors.toList());
         Query query = new Query();
         query.addCriteria(Criteria.where("verificationStatus").is(false));
         List<Equipments> unverified = mongoTemplate.find(query, Equipments.class);

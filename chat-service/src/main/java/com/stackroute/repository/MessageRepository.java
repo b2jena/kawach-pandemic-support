@@ -9,8 +9,8 @@ import java.util.List;
 
 @Repository
 public interface MessageRepository extends MongoRepository<MessageModel, Long> {
-//    @Query("$or : [{'senderName': ?0, 'reciverName': ?1}, {'senderName': ?1, 'reciverName': ?0}]")
-@Query("{$or: [ {'senderName': ?0}, { 'reciverName': ?0} ]}")
+
+    @Query("{$or: [ {'senderName': ?0}, { 'reciverName': ?0} ]}")
     List<MessageModel> getAllMessages(String senderName, String reciverName);
 
     @Query("{$or: [ {'senderName': ?0}, { 'reciverName': ?0} ]}")

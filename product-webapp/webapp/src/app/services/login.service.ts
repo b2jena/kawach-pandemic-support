@@ -18,12 +18,12 @@ export class LoginService {
     try{
       return this.http.post<string[]>('http://localhost:9099/api/v1/login/user', JSON.parse(jsonstr));
     }
-    catch{
+    catch {
       catchError(this.handleError);
       return null;
     }
-    //return this.http.post<string[]>('http://localhost:9099/api/v1/login/user', JSON.parse(jsonstr)).pipe(
-      //catchError(this.handleError) );
+    // return this.http.post<string[]>('http://localhost:9099/api/v1/login/user', JSON.parse(jsonstr)).pipe(
+      // catchError(this.handleError) );
   }
 
   private handleError(error: HttpErrorResponse) {
