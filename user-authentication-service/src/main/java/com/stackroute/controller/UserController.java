@@ -99,7 +99,9 @@ public class UserController {
             response.add(userDetails.getId().toString());
             responseEntity = new ResponseEntity<>(response, HttpStatus.OK);
         } catch (UserNotFoundException e) {
-            responseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.OK);
+            List<String> response=new ArrayList<String>();
+            response.add(e.getMessage());
+            responseEntity = new ResponseEntity<>(response, HttpStatus.OK);
         }
         return responseEntity;
     }
