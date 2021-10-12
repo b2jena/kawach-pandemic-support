@@ -1,8 +1,6 @@
-<p>Doctor-dashboard!</p>
-
 <mat-card>
     <mat-card-header>
-        <img mat-card-avatar src="/assets/doctor.jpg">
+        <img mat-card-avatar src="/assets/doctor.jpg"><p>Welcome DR.{{email}}</p>
     </mat-card-header>
 
 </mat-card>
@@ -10,8 +8,8 @@
 <mat-tab-group color="primary">
     <mat-tab label="Time Slot">
         <app-timeslot></app-timeslot>
-        <button mat-button (click)="DoctorOnline(email)">Make me online</button>
-        <button mat-button (click)="DoctorOffline(email)">Make me offline</button>
+        <button mat-button color="primary" (click)="DoctorOnline(email)">Make me online</button>
+        <button mat-button color="secondary" (click)="DoctorOffline(email)">Make me offline</button>
         <app-doctor-message></app-doctor-message>
     </mat-tab>
     <mat-tab label="Feedback">

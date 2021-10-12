@@ -14,6 +14,10 @@ export class WarroomDashboardComponent implements OnInit {
   verifyMedicine = false;
   verifyBed = false;
 
+  closeEquip= false;
+  closeMed = true;
+  closeBed = false;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -40,6 +44,24 @@ export class WarroomDashboardComponent implements OnInit {
     this.verifyMedicine=false;
     this.verifyEquipment=false;
     this.verifyBed=true;
+  }
+
+  medSos() {
+    this.closeMed=true;
+    this.closeEquip=false;
+    this.closeBed=false;
+  }
+
+  EquipSos() {
+    this.closeMed=false;
+    this.closeEquip=true;
+    this.closeBed=false;
+  }
+
+  bedSos() {
+    this.closeMed=false;
+    this.closeEquip=false;
+    this.closeBed=true;
   }
 
 

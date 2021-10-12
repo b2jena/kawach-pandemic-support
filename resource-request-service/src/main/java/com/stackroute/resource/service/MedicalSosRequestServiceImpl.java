@@ -81,7 +81,7 @@ public class MedicalSosRequestServiceImpl implements MedicalSosRequestService {
     @Override
     public MedicalSosRequest getSOSEquip() {
         Query query = new Query();
-        query.addCriteria(Criteria.where("requestStatus").is("Equipment").and("formStatus").is("OPEN"));
+        query.addCriteria(Criteria.where("requestStatus").is("Medical Equipment").and("formStatus").is("OPEN"));
         List<MedicalSosRequest> sos = mongoTemplate.find(query, MedicalSosRequest.class);
 
         if (sos.size() == 0) return null;

@@ -13,7 +13,7 @@ export class CloseSosBedComponent implements OnInit {
   constructor(private closeSosService: CloseSosService) { }
 
   ngOnInit(): void {
-    this.closeSosService.getSOSMed().subscribe(data => {
+    this.closeSosService.getSOSBed().subscribe(data => {
       console.log(this.closeSos = data);
     });
   }
@@ -29,7 +29,7 @@ export class CloseSosBedComponent implements OnInit {
 
   pass(): void{
     this.count += 1;
-    this.closeSosService.getSOSMed().subscribe(data => {
+    this.closeSosService.getSOSBed().subscribe(data => {
       console.log(this.closeSos = data);
     });
   }

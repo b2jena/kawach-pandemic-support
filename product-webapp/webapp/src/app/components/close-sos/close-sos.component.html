@@ -5,7 +5,7 @@
 <button mat-raised-button color="primary" class="block"> BEDS </button>
 </div> -->
 
-<div style="width: 45%; margin-top: 20px; margin-left: 20px; shape-margin: 20px;">
+<!-- <div style="width: 45%; margin-top: 20px; margin-left: 20px; shape-margin: 20px;">
     <mat-card>
         <mat-list role="list">
             <mat-list-item role="listitem">
@@ -19,16 +19,16 @@
             </mat-list-item>
           </mat-list>
     </mat-card>
-</div>
+</div> -->
 <!-- <div *ngIf = "obj">
   {{obj.city}}
   {{obj.patientName}}
 </div> -->
 
 
-<mat-card>
+<!-- <mat-card>
   <div class="" *ngIf = "closeSos">
-      <table class="" *ngFor="let require of closeSos.requirement">
+      <table class="">
           <tbody>
               <tr>
                   <th>Patient Name</th>
@@ -40,20 +40,22 @@
                 <td>{{closeSos.requestStatus}}</td>
             </tr>
 
-              <tr> 
-                <th>Requirement Name</th>
-                <td>{{require.requirementName}}</td>
-              </tr>
-
-              <tr> 
-                <th>Requirement Quantity</th>               
-                <td>{{require.requirementQuantity}}</td>                
-              </tr>
-
-              <tr> 
-                <th>Quantity</th>                
-                <td>{{require.unitOfMeasure}}</td> <br>
-              </tr>
+              <div *ngFor="let require of closeSos.requirement">
+                <tr> 
+                  <th>Requirement Name</th>
+                  <td>{{require.requirementName}}</td>
+                </tr>
+  
+                <tr> 
+                  <th>Requirement Quantity</th>               
+                  <td>{{require.requirementQuantity}}</td>                
+                </tr>
+  
+                <tr> 
+                  <th>Unit of measure</th>                
+                  <td>{{require.unitOfMeasure}}</td> <br>
+                </tr>
+              </div>
   
               <tr>
                   <th>City</th>
@@ -91,7 +93,7 @@
       <button class="" (click)="pass()">Pass</button>
       <button class="" (click)="search()">Search for Medicines</button>
   </div>
-  </mat-card>
+  </mat-card> -->
   
   <!-- <mat-card>
       <div class="jumbotron" *ngIf = "!bed">
@@ -107,7 +109,6 @@
   <!-- <div *ngFor="let require of obj.requirement">
     <p>{{require.requirementName}}: {{require.requirementQuantity}}: {{require.unitOfMeasure}}</p>
   </div>  -->
-####
 <!-- <div *ngFor="let obj of closeSos">
  {{obj.city}}
  {{obj.patientName}}
@@ -141,4 +142,79 @@
       <button mat-raised-button color="accent" class="block" style = "align-self: center ;"> SEARCH FOR RESOURCES </button>
     </mat-card-actions>
   </mat-card>
-</div> --> -->
+</div> -->
+
+<mat-card *ngIf = "closeSos">
+  <div class="col-md-6 container center">
+      <table class="table table-borderless p-4">
+        <tbody>
+          <tr>
+              <th>Patient Name</th>
+              <td>{{closeSos.patientName}}</td>
+          </tr>
+
+          <tr>
+            <th>Requirement Type</th>
+            <td>{{closeSos.requestStatus}}</td>
+        </tr>
+
+          <!-- <div> -->
+            <tr *ngFor="let require of closeSos.requirement"> 
+              <th>Requirement</th>
+              <td>{{require.requirementName}}: {{require.requirementQuantity}}: {{require.unitOfMeasure}}</td>
+            </tr>
+
+            <!-- <tr> 
+              <th>Requirement Quantity</th>               
+              <td>{{require.requirementQuantity}}</td>                
+            </tr>
+
+            <tr> 
+              <th>Unit of measure</th>                
+              <td>{{require.unitOfMeasure}}</td> <br>
+            </tr> -->
+          <!-- </div> -->
+
+          <tr>
+              <th>City</th>
+              <td>{{closeSos.city}}</td>
+          </tr>
+
+          <tr>
+              <th>Gender</th>
+              <td>{{closeSos.gender}}</td>
+          </tr>
+
+          <tr>
+              <th>Email</th>
+              <td>{{closeSos.email}}</td>
+          </tr>
+
+          <tr>
+              <th>Mobile Number</th>
+              <td>{{closeSos.phoneNo}}</td>
+          </tr>
+
+          <tr>
+            <th>Hospitalisation Status</th>
+            <td>{{closeSos.hospitalised}}</td>
+          </tr>
+
+          <tr>
+            <th>Request Status</th>
+            <td>{{closeSos.formStatus}}</td>
+          </tr>   
+        </tbody>
+      </table>
+  
+      <button class="btn btn-primary ml-8 mr-4" (click)="close()">Close SOS</button>
+      <button class="btn btn-primary ml-8 mr-4" (click)="pass()">Pass SOS</button>
+      <button class="btn btn-primary" (click)="search()">Search Medicine</button>
+  </div>
+  </mat-card>
+  
+  <mat-card *ngIf = "!closeSos">
+      <div class="jumbotron" >
+          <h1 class="display-4">No SOS request raised as of now. Thank you for your selfless support</h1>
+      </div>
+  </mat-card>

@@ -2,7 +2,7 @@
 
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="Medical SOS">
-    <div>
+    <!-- <div>
       <mat-toolbar color="primary">
         <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
           (click)="toggleSidebar()">
@@ -25,6 +25,22 @@
           <router-outlet></router-outlet>
         </div>
       </mat-sidenav-container>
+    </div> -->
+
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+      <div fxLayout="column" fxLayoutAlign="space-around stretch" fxFlex="20">
+        <button mat-raised-button [ngClass]="{'nav-button-active':closeMed, 'nav-button-inactive':!closeMed}" (click)="medSos()">
+          Medicine SOS </button>
+        <button mat-raised-button [ngClass]="{'nav-button-active':closeEquip, 'nav-button-inactive':!closeEquip}" (click)="EquipSos()">
+          Equipment SOS </button>
+        <button mat-raised-button [ngClass]="{'nav-button-active':closeBed, 'nav-button-inactive':!closeBed}" (click)="bedSos()">
+          Beds SOS </button>
+      </div>
+      <div fxFlex="80">
+        <app-close-sos-equipment *ngIf="closeEquip"></app-close-sos-equipment>
+        <app-close-sos *ngIf="closeMed"></app-close-sos>
+        <app-close-sos-bed *ngIf="closeBed"></app-close-sos-bed>
+      </div>
     </div>
   </mat-tab>
 
