@@ -16,23 +16,23 @@ export class MsgComponent implements OnInit {
   socket: any;
 
 
-  user: Message = new Message('paitent', '', '');
+  user: Message = new Message('paitent', 'doctor', '');
 
   constructor(private messageService: MessageService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.user.reciverName = params.name;
+    // this.route.params.subscribe(params => {
+      // this.user.reciverName = params.name;
       setInterval(() => {
         this.GetMessage();
     }, 1000);
-    });
+    // });
   }
 
 
 
   SendMessage(){
-    this.user.senderName = localStorage.getItem('paitentEmail');
+    // this.user.senderName = localStorage.getItem('paitentEmail');
     this.messageService.SendMessage(this.user).subscribe(
       data => {});
   }

@@ -12,7 +12,7 @@
                 <mat-card-title>{{doctorM.fullName}}</mat-card-title>
                 <mat-card-subtitle>{{doctorM.specialization}}</mat-card-subtitle>
             </mat-card-header>
-            <button mat-flat-button color="primary" style="margin-right: 10px">Chat</button>
+            <button mat-flat-button color="primary" style="margin-right: 10px" [routerLink] = "['/message', doctorM.fullName]">Chat</button>
             <button mat-flat-button color="primary">Connect</button>
             </mat-card>
     </div>

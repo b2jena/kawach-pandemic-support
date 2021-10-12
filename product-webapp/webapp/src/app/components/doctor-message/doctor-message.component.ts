@@ -14,7 +14,7 @@ export class DoctorMessageComponent implements OnInit {
   socket: any;
 
 
-  user: Message = new Message('', '', '');
+  user: Message = new Message('doctor', 'paitent', '');
   constructor(private messageService: MessageService, private route: ActivatedRoute) {
   }
 
@@ -29,8 +29,8 @@ export class DoctorMessageComponent implements OnInit {
 
 
   SendMessage(){
-    this.user.senderName = this.messageArray[0].senderName;
-    this.user.reciverName = localStorage.getItem('loggedIn');
+    // this.user.senderName = this.messageArray[0].senderName;
+    // this.user.reciverName = localStorage.getItem('loggedIn');
     this.messageService.SendMessage(this.user).subscribe(
       data => {
       }
