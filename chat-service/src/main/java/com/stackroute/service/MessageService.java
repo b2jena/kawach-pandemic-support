@@ -9,5 +9,5 @@ public interface MessageService {
 
     List<MessageModel> getAllMessages(String senderName, String reciverName);
 
-    List<MessageModel> deleteAll(String senderName);
+    void deleteAll(String senderName);
 }

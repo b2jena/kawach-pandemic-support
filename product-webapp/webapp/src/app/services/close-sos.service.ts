@@ -7,20 +7,25 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class CloseSosService {
 
-  closeSos: CloseSos[] = [];
+  closeSos!: CloseSos;
 
   constructor(private httpService: HttpClient) { }
 
-  getMedSOS(): Observable<CloseSos[]>{
-    return this.httpService.get<CloseSos[]>('http://localhost:9901/sos/getMedSOS');
+  getSOSMed(): Observable<CloseSos>{
+    return this.httpService.get<CloseSos>('http://localhost:9901/sos/getSOSMed');
   }
 
-  getBedSOS(): Observable<CloseSos[]>{
-    return this.httpService.get<CloseSos[]>('http://localhost:9901/sos/getBedSOS');
+  getSOSBed(): Observable<CloseSos>{
+    return this.httpService.get<CloseSos>('http://localhost:9901/sos/getSOSBed');
   }
 
-  getEquipSOS(): Observable<CloseSos[]>{
-    return this.httpService.get<CloseSos[]>('http://localhost:9901/sos/getEquipSOS');
+  getSOSEquip(): Observable<CloseSos>{
+    return this.httpService.get<CloseSos>('http://localhost:9901/sos/getSOSEquip');
+  }
+
+  public closeSOS(sos: CloseSos) {
+    console.log(sos);
+    return this.httpService.put<CloseSos>('http://localhost:9901/sos/updateStatus', sos);
   }
 }
 

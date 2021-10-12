@@ -10,3 +10,15 @@ mat-sidenav{
     background-color: lightcoral;
     width: 200px;
 }
+
+.nav-button-active {
+    margin-bottom: 20px; 
+    margin-left: 20px;
+    background-color: rgb(30, 10, 214);
+}
+
+.nav-button-inactive {
+    margin-bottom: 20px; 
+    margin-left: 20px;
+    background-color: rgb(232, 231, 243);
+}

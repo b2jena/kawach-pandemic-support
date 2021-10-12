@@ -28,7 +28,7 @@ public class MessageServiceImpl implements MessageService{
     }
 
     @Override
-    public List<MessageModel> deleteAll(String senderName) {
-        return  messageRepository.deleteAll(senderName);
+    public void deleteAll(String senderName) {
+        messageRepository.deleteAll();
     }
 }
