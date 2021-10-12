@@ -89,7 +89,7 @@ export class DoctorRegistrationComponent implements OnInit {
     uploadFileData.append('image', this.selectedFile);
 
     this.httpClient
-      .post('http://localhost:8090/api/v1/register/doctor', uploadFileData, {
+      .post('/api/v1/user/register/doctor', uploadFileData, {
         observe: 'response',
       })
       .subscribe(
@@ -101,7 +101,7 @@ export class DoctorRegistrationComponent implements OnInit {
           });
           if (response.body === 'You have been successfully registered! Kindly Login now') {
             setTimeout(() => {
-              window.location.replace('http://localhost:4200/login');
+              window.location.replace('http://localhost:4200/#/login');
             }, 3000);
           }
         },

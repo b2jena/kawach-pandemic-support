@@ -12,19 +12,19 @@ export class DoctorCardsService {
   constructor(private httpService: HttpClient) { }
   DoctorOnline(emailId: string) {
     console.log(emailId);
-    return this.httpService.get('http://localhost:8989/api/v1/doctor/' + emailId);
+    return this.httpService.get('/api/v1/doctor/doctor/' + emailId);
   }
   GetOnlineDoctors(){
-    return this.httpService.get<DoctorRedis[]>('http://localhost:8989/api/v1/doctor');
+    return this.httpService.get<DoctorRedis[]>('/api/v1/doctor/doctor');
   }
   public deleteEmployee(doctor: Doctor) {
-    return this.httpService.delete<DoctorRedis>('http://localhost:8989/api/v1//doctor/' + doctor.emailId);
+    return this.httpService.delete<DoctorRedis>('/api/v1/doctor/doctor/' + doctor.emailId);
   }
   public deleteDoctor(emailId: string) {
-    return this.httpService.delete<DoctorRedis>('http://localhost:8989/api/v1//doctor/' + emailId);
+    return this.httpService.delete<DoctorRedis>('/api/v1/doctor/doctor/' + emailId);
   }
   public GetDoctorInfo(emailId: string) {
-    return this.httpService.get<Doctor>('http://localhost:8090/api/v1/doctor/' + emailId);
+    return this.httpService.get<Doctor>('/api/v1/doctor/doctor/' + emailId);
   }
 }
 export class DoctorRedis{

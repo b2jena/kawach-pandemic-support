@@ -14,8 +14,8 @@ import java.net.URL;
 
 
 @RestController
-@RequestMapping("api/v1")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("api/v1/")
+@CrossOrigin(value = "*")
 public class InformationServiceController {
     Logger logger = LoggerFactory.getLogger(InformationServiceController.class);
     private static String VIRUS_DATA_URL = "https://api.rootnet.in/covid19-in/stats/latest";

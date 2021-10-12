@@ -1,0 +1,34 @@
+version: "2"
+
+services:
+  mongodb-user:
+    image: mongo:latest
+    container_name: "mongodb-user"
+    hostname: localhost
+    ports:
+      - 27017:27017
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - 15672:15672
+      - 5672:5672
+
+  mysql-user:
+    container_name: "mysql-user"
+    image: mysql:latest
+    hostname: localhost
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+
+  database_redis:
+    image: redis:latest
+    container_name: redis_container
+    hostname: localhost
+    network_mode: "host"
+    restart: always
+    ports:
+        - 6379:6379

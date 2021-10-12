@@ -16,7 +16,8 @@ import java.util.*;
  * RestController annotation is used to create Restful web services using Spring MVC
  */
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/")
+@CrossOrigin(value="*")
 public class UserController {
 
     private UserService userService;
@@ -71,7 +72,6 @@ public class UserController {
         return responseEntity;
     }*/
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("login/user")
     public ResponseEntity<?> loginUser(@RequestBody Map<String, String> json) {
         try {

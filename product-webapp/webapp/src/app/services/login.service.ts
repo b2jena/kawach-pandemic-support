@@ -16,13 +16,13 @@ export class LoginService {
   public generateToken(user: User): Observable<string[]>{
     const jsonstr: string = '{ "id":"' + user.id + '", "password":"' + user.password + '" }';
     try{
-      return this.http.post<string[]>('http://localhost:9099/api/v1/login/user', JSON.parse(jsonstr));
+      return this.http.post<string[]>('/api/v1/login/user', JSON.parse(jsonstr));
     }
     catch {
       catchError(this.handleError);
       return null;
     }
-    // return this.http.post<string[]>('http://localhost:9099/api/v1/login/user', JSON.parse(jsonstr)).pipe(
+    // return this.http.post<string[]>('/api/v1/login/user', JSON.parse(jsonstr)).pipe(
       // catchError(this.handleError) );
   }
 

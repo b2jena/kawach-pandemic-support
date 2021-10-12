@@ -10,22 +10,22 @@ export class SMedicineService{
   constructor(private httpService: HttpClient) { }
   CreateMedicine(medicine: Medicine): Observable<Medicine> {
     console.log(medicine);
-    return this.httpService.post<Medicine>('http://localhost:9901/medicine/create', medicine);
+    return this.httpService.post<Medicine>('/api/v1/resource/medicine/create', medicine);
   }
   public deleteMedicine(medicine: Medicine) {
-    return this.httpService.delete<Medicine>('http://localhost:9901/medicine//delete/' + medicine.city);
+    return this.httpService.delete<Medicine>('/api/v1/resource/medicine//delete/' + medicine.city);
   }
   public updateMedicine(medicine: Medicine) {
     console.log(medicine);
-    return this.httpService.put<Medicine>('http://localhost:9901/medicine/update', medicine);
+    return this.httpService.put<Medicine>('/api/v1/resource/medicine/update', medicine);
   }
   getMedicines(){
-    return this.httpService.get<Medicine[]>('http://localhost:9901/medicine/getAll');
+    return this.httpService.get<Medicine[]>('/api/v1/resource/medicine/getAll');
   }
 
   public getUnverifiedMed()
   {
-    return this.httpService.get<Medicine>('http://localhost:9901/medicine/getUnverified');
+    return this.httpService.get<Medicine>('/api/v1/resource/medicine/getUnverified');
   }
 }
 export class Medicine{

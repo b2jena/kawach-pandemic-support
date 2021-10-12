@@ -8,7 +8,7 @@ export class UploadFileService {
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
     const data: FormData = new FormData();
     data.append('file', file);
-    const newRequest = new HttpRequest('POST', 'http://localhost:9901/sos/createSos/upload', data, {
+    const newRequest = new HttpRequest('POST', '/api/v1/resource/sos/createSos/upload', data, {
     reportProgress: true,
     responseType: 'text'
     });

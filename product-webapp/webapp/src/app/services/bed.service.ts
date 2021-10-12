@@ -12,22 +12,22 @@ export class BedService{
   constructor(private httpService: HttpClient) { }
   CreateBed(bed: Bed): Observable<Bed> {
     console.log(bed);
-    return this.httpService.post<Bed>('http://localhost:9901/bed/create', bed);
+    return this.httpService.post<Bed>('/api/v1/resource/bed/create', bed);
   }
   public deleteBed(bed: Bed) {
-    return this.httpService.delete<Bed>('http://localhost:9901/bed//delete/' + bed.city);
+    return this.httpService.delete<Bed>('/api/v1/resource/bed//delete/' + bed.city);
   }
   public updateBed(bed: Bed) {
     console.log(bed);
-    return this.httpService.put<Bed>('http://localhost:9901/bed/update', bed);
+    return this.httpService.put<Bed>('/api/v1/resource/bed/update', bed);
   }
   public getBeds(){
-    return this.httpService.get<Bed[]>('http://localhost:9901/bed/getAll');
+    return this.httpService.get<Bed[]>('/api/v1/resource/bed/getAll');
   }
 
   public getUnverifiedBed()
   {
-    return this.httpService.get<Bed>('http://localhost:9901/bed/getUnverified');
+    return this.httpService.get<Bed>('/api/v1/resource/bed/getUnverified');
   }
 
 }

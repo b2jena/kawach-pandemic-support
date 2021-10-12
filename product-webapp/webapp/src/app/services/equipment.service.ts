@@ -11,21 +11,21 @@ export class EquipmentService{
   constructor(private httpService: HttpClient) { }
   CreateEquipment(equipment: Equipment): Observable<Equipment> {
     console.log(equipment);
-    return this.httpService.post<Equipment>('http://localhost:9901/equipment/create', equipment);
+    return this.httpService.post<Equipment>('/api/v1/resource/equipment/create', equipment);
   }
   public deleteEquipment(equipment: Equipment) {
-    return this.httpService.delete<Equipment>('http://localhost:9901/equipment//delete/' + equipment.city);
+    return this.httpService.delete<Equipment>('/api/v1/resource/equipment//delete/' + equipment.city);
   }
   public updateEquipment(equipment: Equipment) {
     console.log(equipment);
-    return this.httpService.put<Equipment>('http://localhost:9901/equipment/update', equipment);
+    return this.httpService.put<Equipment>('/api/v1/resource/equipment/update', equipment);
   }
   getEquipments(){
-    return this.httpService.get<Equipment[]>('http://localhost:9901/equipment/getAll');
+    return this.httpService.get<Equipment[]>('/api/v1/resource/equipment/getAll');
   }
   public getUnverifiedEquipments()
   {
-    return this.httpService.get<Equipment>('http://localhost:9901/equipment/getUnverified');
+    return this.httpService.get<Equipment>('/api/v1/resource/equipment/getUnverified');
   }
 }
 export class Equipment{

@@ -15,13 +15,13 @@ export class SosService {
   CreateSosRequest(SosRequest: SOSRequest): Observable <SOSRequest> {
     console.log(SosRequest);
     console.log(Requirement);
-    return this.httpService.post<SOSRequest>('http://localhost:9901/sos/createSos', SosRequest);
+    return this.httpService.post<SOSRequest>('/api/v1/resource/sos/createSos', SosRequest);
   }
 
   PostFile(file: File): Observable <File> {
     // console.log(file);
     console.log(file);
-    return this.httpService.post<File>('http://localhost:9901/sos/createSos/upload', file);
+    return this.httpService.post<File>('/api/v1/resource/sos/createSos/upload', file);
   }
 
 }

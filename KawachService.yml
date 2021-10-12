@@ -1,0 +1,119 @@
+version: "2"
+
+services:
+  eureka-server:
+    build: eureka-server/
+    container_name: eureka-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8076:8076
+
+  api-gateway:
+    build: api-gateway/
+    container_name: gateway-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+     - eureka-server
+    ports:
+      - 8080:8080
+
+  chat-service:
+    build: chat-service/
+    container_name: chat-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+     - eureka-server
+    ports:
+      - 8095:8095
+
+  doctor-consultation-service:
+    build: doctor-consultation-service/
+    container_name: doctor-consultation-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+     - eureka-server
+    ports:
+      - 8989:8989
+
+  information-service:
+    build: information-service/
+    container_name: information-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+     - eureka-server
+    ports:
+      - 9765:9765
+
+  patient-otp-service:
+    build: patient-otp-service/
+    container_name: patient-otp-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+     - eureka-server
+    ports:
+      - 9999:9999
+
+  resource-request-service:
+    build: resource-request-service/
+    container_name: resource-request-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+     - eureka-server
+    ports:
+      - 9901:9901
+
+  user-authentication-service:
+    build: user-authentication-service/
+    container_name: user-authentication-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+     - eureka-server
+    ports:
+      - 9099:9099
+
+  user-management-service:
+    build: user-management-service/
+    container_name: user-management-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+     - eureka-server
+    ports:
+      - 8090:8090
+
+  volunteer-revert-service:
+    build: volunteer-revert-service/
+    container_name: volunteer-revert-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+     - eureka-server
+    ports:
+      - 8686:8686
+
+  webapp:
+    build: ./product-webapp/webapp/
+    container_name: webapp
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 4200:4200

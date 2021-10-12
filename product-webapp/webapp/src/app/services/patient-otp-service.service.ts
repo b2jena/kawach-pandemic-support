@@ -11,12 +11,12 @@ export class OtpServiceService {
 
   CreatePatient(patient: Patient) {
     console.log(patient);
-    return this.httpService.post('http://localhost:9999/api/v1/generateOtp', patient);
+    return this.httpService.post('/api/v1/otp/generateOtp', patient);
   }
 
   VerifyOtp(otp: string): Observable<string>{
     console.log(otp);
-    return this.httpService.get('http://localhost:9999/api/v1/validateOtp/' + otp, {responseType: 'text'});
+    return this.httpService.get('/api/v1/otp/validateOtp/' + otp, {responseType: 'text'});
   }
 }
 

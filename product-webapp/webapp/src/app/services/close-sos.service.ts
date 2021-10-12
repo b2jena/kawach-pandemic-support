@@ -12,32 +12,32 @@ export class CloseSosService {
   constructor(private httpService: HttpClient) { }
 
   getSOSMed(): Observable<CloseSos>{
-    return this.httpService.get<CloseSos>('http://localhost:9901/sos/getSOSMed');
+    return this.httpService.get<CloseSos>('/api/v1/resource/sos/getSOSMed');
   }
 
   getSOSBed(): Observable<CloseSos>{
-    return this.httpService.get<CloseSos>('http://localhost:9901/sos/getSOSBed');
+    return this.httpService.get<CloseSos>('/api/v1/resource/sos/getSOSBed');
   }
 
   getSOSEquip(): Observable<CloseSos>{
-    return this.httpService.get<CloseSos>('http://localhost:9901/sos/getSOSEquip');
+    return this.httpService.get<CloseSos>('/api/v1/resource/sos/getSOSEquip');
   }
 
   getMedReq(city: string,requirement: string): Observable<any> {
-    return this.httpService.get<any>(`http://localhost:9901/sos/getMed/${city}/${requirement}`);
+    return this.httpService.get<any>(`/api/v1/resource/sos/getMed/${city}/${requirement}`);
   }
 
   getBedReq(city: string,requirement: string): Observable<any> {
-    return this.httpService.get<any>(`http://localhost:9901/sos/getBeds/${city}/${requirement}`);
+    return this.httpService.get<any>(`/api/v1/resource/sos/getBeds/${city}/${requirement}`);
   }
 
   getEquipReq(city: string,requirement: string): Observable<any> {
-    return this.httpService.get<any>(`http://localhost:9901/sos/getEquipment/${city}/${requirement}`);
+    return this.httpService.get<any>(`/api/v1/resource/sos/getEquipment/${city}/${requirement}`);
   }
 
   public closeSOS(sos: CloseSos) {
     console.log(sos);
-    return this.httpService.put<CloseSos>('http://localhost:9901/sos/updateStatus', sos);
+    return this.httpService.put<CloseSos>('/api/v1/resource/sos/updateStatus', sos);
   }
 }
 

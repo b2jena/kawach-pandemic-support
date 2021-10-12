@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(value="*")
+@RequestMapping("api/v1/resource/")
 public class EquipmentController {
     private EquipmentService equipmentService;
 

@@ -27,7 +27,7 @@ export class VolunteerRevertComponent implements OnInit {
   }
 
   getVolunteers(){
-    this.httpService.get<Volunteer[]>('http://localhost:8686/api/v1/volunteers').subscribe(
+    this.httpService.get<Volunteer[]>('/api/v1/volunteer/volunteers').subscribe(
       (response) => {
         console.log(response);
         // this.volunteers = response;

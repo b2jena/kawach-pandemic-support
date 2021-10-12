@@ -20,6 +20,7 @@ import java.util.UUID;
 
 @RestController
 @CrossOrigin(value="*")
+@RequestMapping("api/v1/resource/")
 public class MedicalSosRequestController {
     private MedicalSosRequestService medicalSosRequestService;
     private ResourceService resourceService;

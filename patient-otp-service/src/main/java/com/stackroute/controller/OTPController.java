@@ -17,8 +17,8 @@ import java.util.Map;
 
 
 @RestController
-@RequestMapping("/api/v1")
-@CrossOrigin
+@RequestMapping("/api/v1/otp/")
+@CrossOrigin(value="*")
 public class OTPController {
 
     public PatientServiceI patientServiceI;

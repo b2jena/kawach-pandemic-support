@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(value="*")
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/volunteer/")
 public class VolunteerRevertController {
     private VolunteerRevertService volunteerRevertService;
 

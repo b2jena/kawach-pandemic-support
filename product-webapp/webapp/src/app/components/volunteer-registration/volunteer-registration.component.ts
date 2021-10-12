@@ -37,7 +37,7 @@ export class VolunteerRegistrationComponent implements OnInit {
       verticalPosition: 'top'
     });
     if (data.toString() === 'You have been successfully registered! Kindly Login now'){
-    setTimeout(() => { window.location.replace('http://localhost:4200/login'); },
+    setTimeout(() => { window.location.replace('http://localhost:4200/#/login'); },
     3000);
   }
   }

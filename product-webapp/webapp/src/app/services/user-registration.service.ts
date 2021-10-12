@@ -15,12 +15,12 @@ export class UserRegistrationService {
 
   createDoctor(doctor: Doctor): Observable<Doctor>{
     console.log(doctor);
-    return this.httpService.post<Doctor>('http://localhost:8090/api/v1/register/doctor', doctor);
+    return this.httpService.post<Doctor>('/api/v1/user/register/doctor', doctor);
   }
 
   createVolunteer(volunteer: Volunteer): Observable<Volunteer>{
     console.log(volunteer);
-    return this.httpService.post<Volunteer>('http://localhost:8090/api/v1/register/volunteer', volunteer);
+    return this.httpService.post<Volunteer>('/api/v1/user/register/volunteer', volunteer);
   }
 }
 
