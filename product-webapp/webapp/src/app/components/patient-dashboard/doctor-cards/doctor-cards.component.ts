@@ -25,7 +25,7 @@ export class DoctorCardsComponent implements OnInit {
       });
     });
 }
-deleteEmployee(doctor: DoctorRedis): void {
+deleteEmployee(doctor: Doctor): void {
   this.doctorService.deleteEmployee(doctor)
     .subscribe( data => {
       this.doctors = this.doctors.filter(u => u !== doctor); }); }
