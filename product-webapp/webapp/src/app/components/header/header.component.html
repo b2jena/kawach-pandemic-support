@@ -22,18 +22,33 @@
       </div>
       
       <div class="Container" *ngIf="router.url === '/war-room-dashboard'">
-        <a href="/login">
+        <a href="/#/login">
+          <img src="/assets/img/logout.png" width="22" height="20" class="d-inline-block" alt="">
+        </a>
+      </div>
+      <div class="Container" *ngIf="router.url === '/war-room-dashboard/addmedicine'">
+        <a href="/#/login">
+          <img src="/assets/img/logout.png" width="22" height="20" class="d-inline-block" alt="">
+        </a>
+      </div>
+      <div class="Container" *ngIf="router.url === '/war-room-dashboard/addequipment'">
+        <a href="/#/login">
+          <img src="/assets/img/logout.png" width="22" height="20" class="d-inline-block" alt="">
+        </a>
+      </div>
+      <div class="Container" *ngIf="router.url === '/war-room-dashboard/addbed'">
+        <a href="/#/login">
           <img src="/assets/img/logout.png" width="22" height="20" class="d-inline-block" alt="">
         </a>
       </div>
       <div class="Container" *ngIf="router.url === '/doctor-dashboard'">
-        <a href="/login">
+        <a href="/#/login">
           <img src="/assets/img/logout.png" width="22" height="20" class="d-inline-block" alt="" >
-          <div class="bottom-right">Log out</div>
+          <!-- <div class="bottom-right">Log out</div> -->
         </a>
       </div>
       <div class="Container" *ngIf="router.url === '/sos'">
-        <a href="/">
+        <a href="/#/">
           <img src="/assets/img/logout.png" width="22" height="20" class="d-inline-block" alt="">
         </a>
       </div>

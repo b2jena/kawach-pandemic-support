@@ -21,6 +21,7 @@ export class DoctorCardsComponent implements OnInit {
     console.log('doctors online from redis:', this.doctors);
     this.doctors.forEach((value) => {
       this.doctorService.GetDoctorInfo(value.emailId).subscribe((doctorData) => {
+        console.log("doctor data:", doctorData);
         this.doctorDetails.push(doctorData);
       });
     });
