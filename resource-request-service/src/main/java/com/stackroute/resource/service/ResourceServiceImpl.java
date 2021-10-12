@@ -50,9 +50,9 @@ public class ResourceServiceImpl implements ResourceService {
     }
 
     @Override
-    public List<Resources> getAllMedicine(String City) {
+    public List<Resources> getAllMedicine(String City, String requirement) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("city").in(City));
+        query.addCriteria(Criteria.where("city").regex(City, "i").and("medicineName").regex(requirement,"i"));
         List<Resources> request = mongoTemplate.find(query, Resources.class);
         return request;
     }

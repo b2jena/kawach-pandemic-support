@@ -13,7 +13,7 @@ public interface ResourceService {
 
     Resources updateResource(Resources resources);
 
-    List<Resources> getAllMedicine(String city);
+    List<Resources> getAllMedicine(String city, String requirement);
 
     Resources getUnverifiedResources();
 

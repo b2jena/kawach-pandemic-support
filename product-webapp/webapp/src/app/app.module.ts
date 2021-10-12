@@ -91,6 +91,9 @@ import { WarroomSosEquipmentComponent } from './components/warroom-dashboard/war
 import { WarroomVerifyBedComponent } from './components/warroom-dashboard/warroom-verify-bed/warroom-verify-bed.component';
 import { WarroomVerifyMedicineComponent } from './components/warroom-dashboard/warroom-verify-medicine/warroom-verify-medicine.component';
 import { WarroomVerifyEquipmentComponent } from './components/warroom-dashboard/warroom-verify-equipment/warroom-verify-equipment.component';
+import { SearchDialogComponent } from './components/search-dialog/search-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -150,7 +153,8 @@ import { WarroomVerifyEquipmentComponent } from './components/warroom-dashboard/
     WarroomSosEquipmentComponent,
     WarroomVerifyBedComponent,
     WarroomVerifyMedicineComponent,
-    WarroomVerifyEquipmentComponent
+    WarroomVerifyEquipmentComponent,
+    SearchDialogComponent
   ],
   imports: [
     NgxAutoScrollModule,
@@ -194,7 +198,8 @@ import { WarroomVerifyEquipmentComponent } from './components/warroom-dashboard/
     MatSidenavModule,
     MatSelectModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDialogModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
   MatSnackBar, Overlay, DataService, MessageService],

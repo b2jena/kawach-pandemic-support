@@ -63,9 +63,9 @@ public class BedServiceImpl implements BedService{
         mongoTemplate.upsert(query,updateQuery,Beds.class);
     }
     @Override
-    public List<Beds> getAllBedsByCity(String City) {
+    public List<Beds> getAllBedsByCity(String City, String requirement) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("city").in(City));
+        query.addCriteria(Criteria.where("city").regex(City, "i").and("bedType").regex(requirement,"i"));
         List<Beds> request = mongoTemplate.find(query, Beds.class);
         return request;
     }
