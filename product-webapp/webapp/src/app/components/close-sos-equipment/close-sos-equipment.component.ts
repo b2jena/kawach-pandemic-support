@@ -8,15 +8,47 @@ import { CloseSos, CloseSosService, Requirement } from 'src/app/services/close-s
   styleUrls: ['./close-sos-equipment.component.css']
 })
 export class CloseSosEquipmentComponent implements OnInit {
-  closeSos !: CloseSos;
+  public closeSos !: CloseSos;
+  isActive = false;
+  count = 0;
   constructor(private closeSosService: CloseSosService) { }
 
-  ngOnInit(){
-    this.closeSosService.getSOSEquip().subscribe(
-      response => this.handleSuccessfulResponse(response),
-    );
+  ngOnInit(): void {
+    this.closeSosService.getSOSEquip().subscribe(data => {
+      console.log(this.closeSos = data);
+    });
   }
-  handleSuccessfulResponse(response: CloseSos){
-    this.closeSos = response;
+
+  close(): void{
+      this.closeSos.formStatus = "CLOSE";
+      this.closeSosService.closeSOS(this.closeSos).subscribe(data1 => {
+        console.log(this.closeSos = data1);
+        this.closeSosService.getSOSEquip().subscribe(data2 => {
+          console.log(this.closeSos = data2);
+        });
+      }); }
+
+  pass(): void{
+    this.count += 1;
+    this.closeSosService.getSOSEquip().subscribe(data => {
+      console.log(this.closeSos = data);
+    });
   }
+
+  check() {
+    this.isActive = !this.isActive;
+  }
+
+  search(){
+    
+  }
+
+  // ngOnInit(){
+  //   this.closeSosService.getSOSEquip().subscribe(
+  //     response => this.handleSuccessfulResponse(response),
+  //   );
+  // }
+  // handleSuccessfulResponse(response: CloseSos){
+  //   this.closeSos = response;
+  // }
 }

@@ -9,6 +9,8 @@ import { CloseSos, CloseSosService, Requirement } from 'src/app/services/close-s
 })
 export class CloseSosComponent implements OnInit {
   public closeSos !: CloseSos;
+  isActive = false;
+  count = 0;
   constructor(private closeSosService: CloseSosService){ }
   // ngOnInit() : void{
   //   this.closeSosService.getSOSMed().subscribe(
@@ -20,6 +22,31 @@ export class CloseSosComponent implements OnInit {
       console.log(this.closeSos = data);
     });
   }
+
+  close(): void{
+      this.closeSos.formStatus = "CLOSE";
+      this.closeSosService.closeSOS(this.closeSos).subscribe(data1 => {
+        console.log(this.closeSos = data1);
+        this.closeSosService.getSOSMed().subscribe(data2 => {
+          console.log(this.closeSos = data2);
+        });
+      }); }
+
+  pass(): void{
+    this.count += 1;
+    this.closeSosService.getSOSMed().subscribe(data => {
+      console.log(this.closeSos = data);
+    });
+  }
+
+  check() {
+    this.isActive = !this.isActive;
+  }
+
+  search(){
+    
+  }
+
   // handleSuccessfulResponse(response: CloseSos){
   //   this.closeSos = response;
   // }

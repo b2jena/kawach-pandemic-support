@@ -22,6 +22,11 @@ export class CloseSosService {
   getSOSEquip(): Observable<CloseSos>{
     return this.httpService.get<CloseSos>('http://localhost:9901/sos/getSOSEquip');
   }
+
+  public closeSOS(sos: CloseSos) {
+    console.log(sos);
+    return this.httpService.put<CloseSos>('http://localhost:9901/sos/updateStatus', sos);
+  }
 }
 
 
