@@ -63,9 +63,9 @@ public class EquipmentServiceImpl implements EquipmentService{
         mongoTemplate.upsert(query,updateQuery, Equipments.class);
     }
 
-    public List<Equipments> getEquipmentByCity(String City) {
+    public List<Equipments> getEquipmentByCity(String City, String requirement) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("city").in(City));
+        query.addCriteria(Criteria.where("city").regex(City, "i").and("equipmentName").regex(requirement,"i"));
         List<Equipments> request = mongoTemplate.find(query, Equipments.class);
         return request;
     }

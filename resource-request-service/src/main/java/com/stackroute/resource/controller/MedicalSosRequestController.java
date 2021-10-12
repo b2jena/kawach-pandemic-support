@@ -3,10 +3,9 @@ package com.stackroute.resource.controller;
 import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.MedicalSosRequest;
 import com.stackroute.resource.model.Resources;
-import com.stackroute.resource.service.BedService;
-import com.stackroute.resource.service.EquipmentService;
-import com.stackroute.resource.service.MedicalSosRequestService;
-import com.stackroute.resource.service.ResourceService;
+import com.stackroute.resource.service.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,13 +25,17 @@ public class MedicalSosRequestController {
     private ResourceService resourceService;
     private BedService bedService;
     private EquipmentService equipmentService;
+    private RabbitMqSender rabbitMqSender;
+
+    private static final Logger logger = LoggerFactory.getLogger(MedicalSosRequestController.class);
 
     @Autowired
-    public MedicalSosRequestController(MedicalSosRequestService medicalSosRequestService, ResourceService resourceService, EquipmentService equipmentService, BedService bedService){
+    public MedicalSosRequestController(MedicalSosRequestService medicalSosRequestService, ResourceService resourceService, EquipmentService equipmentService, BedService bedService, RabbitMqSender rabbitMqSender){
         this.medicalSosRequestService = medicalSosRequestService;
         this.resourceService = resourceService;
         this.equipmentService=equipmentService;
         this.bedService=bedService;
+        this.rabbitMqSender=rabbitMqSender;
     }
 
 
@@ -69,38 +72,41 @@ public class MedicalSosRequestController {
         return new ResponseEntity<String>("updated successfully" ,HttpStatus.OK );
     }
 
-    @GetMapping("sos/getRes/{city}")
-    public ResponseEntity<List<Resources>> getAllMedicine(@PathVariable("city") String city){
-        return new ResponseEntity<List<Resources>>((List<Resources>)resourceService.getAllMedicine(city),HttpStatus.OK);
+    @GetMapping("sos/getMed/{city}/{requirement}")
+    public ResponseEntity<List<Resources>> getAllMedicine(@PathVariable("city") String city, @PathVariable("requirement") String requirement){
+        List<Resources> result=resourceService.getAllMedicine(city, requirement);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping("sos/getEquipment/{city}")
-    public ResponseEntity<List<Equipments>> getAllEquipment(@PathVariable("city") String city){
-        return new ResponseEntity<List<Equipments>>((List<Equipments>)equipmentService.getEquipmentByCity(city),HttpStatus.OK);
+    @GetMapping("sos/getEquipment/{city}/{requirement}")
+    public ResponseEntity<List<Equipments>> getAllEquipment(@PathVariable("city") String city, @PathVariable("requirement") String requirement){
+        List<Equipments> result=equipmentService.getEquipmentByCity(city, requirement);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping("sos/getBeds/{city}")
-    public ResponseEntity<List<Beds>> getAllBeds(@PathVariable("city") String city){
-        return new ResponseEntity<List<Beds>>((List<Beds>)bedService.getAllBedsByCity(city),HttpStatus.OK);
+    @GetMapping("sos/getBeds/{city}/{requirement}")
+    public ResponseEntity<List<Beds>> getAllBeds(@PathVariable("city") String city, @PathVariable("requirement") String requirement){
+        List<Beds> result=bedService.getAllBedsByCity(city, requirement);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping("sos/printMessageMedicines/{city}")
-    public ResponseEntity<String> getMessageMedicines(@PathVariable("city") String city){
-        List<Resources> result=resourceService.getAllMedicine(city);
+    @GetMapping("sos/printMessageMedicines/{city}/{requirement}")
+    public ResponseEntity<String> getMessageMedicines(@PathVariable("city") String city, @PathVariable("requirement") String requirement){
+        List<Resources> result=resourceService.getAllMedicine(city, requirement);
         String message="Medicine"+result.get(0).getMedicineName() +" is available in myCity"+result.get(0).getPharmacy() + " address: "+result.get(0).getAddress()+ " Kindly connect Mr/Mrs : "+result.get(0).getContactPerson()+" (Phone number: "+ result.get(0).getMobileNumber()+ "\n Get Well Soon, Stay safe.";
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
 
-    @GetMapping("sos/printMessageEquipments/{cityE}")
-    public ResponseEntity<String> getMessageEquipments(@PathVariable("cityE") String cityE){
-        List<Equipments> result=equipmentService.getEquipmentByCity(cityE);
+    @GetMapping("sos/printMessageEquipments/{cityE}/{requirement}")
+    public ResponseEntity<String> getMessageEquipments(@PathVariable("cityE") String cityE, @PathVariable("requirement") String requirement){
+        List<Equipments> result=equipmentService.getEquipmentByCity(cityE, requirement);
         String message="Equipment"+result.get(0).getEquipmentName() +" is available in myCity"+result.get(0).getVerificationStatus() + " address: "+result.get(0).getAddress()+ " Kindly connect Mr/Mrs : "+result.get(0).getContactPerson()+" (Phone number: "+ result.get(0).getMobileNumber()+ "\n Get Well Soon, Stay safe.";
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
 
-    @GetMapping("sos/printMessageBeds/{cityB}")
-    public ResponseEntity<String> getMessageBeds(@PathVariable("cityB") String cityB){
-        List<Beds> result=bedService.getAllBedsByCity(cityB);
+    @GetMapping("sos/printMessageBeds/{cityB}/{requirement}")
+    public ResponseEntity<String> getMessageBeds(@PathVariable("cityB") String cityB, @PathVariable("requirement") String requirement){
+        List<Beds> result=bedService.getAllBedsByCity(cityB, requirement);
         String message="Beds"+result.get(0).getBedType() + " is available in myCity"+result.get(0).getVerificationStatus() + " address: "+result.get(0).getAddress()+ " Kindly connect Mr/Mrs : "+result.get(0).getContactPerson()+" (Phone number: "+ result.get(0).getMobileNumber()+ "\n Get Well Soon, Stay safe.";
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
@@ -125,12 +131,9 @@ public class MedicalSosRequestController {
 
     @PutMapping("sos/updateStatus")
     public void closeSOS(@RequestBody MedicalSosRequest sos) {
+        logger.info("Message from frontend when closing:"+sos.getFormStatus());
+        String message = sos.getFormStatus()+"&&"+sos.getEmail();
+        rabbitMqSender.send(message);
         medicalSosRequestService.closeSOS(sos.getRequestId());
     }
-//
-//    {
-//        List<Resources> result = resourceService.getSpecificResource(requirment, myCity);
-//        String message = "Medicine" + result.get(0).getMedicineName() + " is avilable in myCity" + result.get(0).getAvalabilityPlace() + " address: " + result.get(0).getAddress() + " Kindly connect Mr/Mrs : " + result.get(0).getContactPersonName() + " (Phone number: " + result.get(0).getContactMobileNumber() + "\n Get Well Soon, Stay safe.";
-//        return ResponseEntity.status(HttpStatreturn ResponseEntity.status(HttpStatus.OK).body(message);
-//    }
 }

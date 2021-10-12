@@ -1,0 +1,53 @@
+<div mat-dialog-title>
+  Search for the requirement in {{city}}:
+</div>
+<div mat-dialog-content>
+  <div *ngFor="let req of requirement; let i =index">
+    <strong>Requirements {{i+1}}= {{req.requirementName}}: {{req.requirementQuantity}}: {{req.unitOfMeasure}}</strong>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-around center" [formGroup]="searchForm">
+    <div fxFlex="40%">
+      <mat-form-field appearance="outline" class="scheduler-field">
+        <mat-label class="mat-caption">Requirement*</mat-label>
+        <input matInput placeholder="Requirement" formControlName="requirement">
+        <mat-error>Should be filled</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxFlex="40%">
+      <mat-form-field appearance="outline" class="scheduler-field">
+        <mat-label class="mat-caption">City*</mat-label>
+        <input matInput placeholder="City" formControlName="city">
+        <mat-error>Should be filled</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayoutAlign="center" class="scheduler-field">
+    <button mat-raised-button color="primary"
+      [disabled]="!(searchForm.get('requirement').valid && searchForm.get('city').valid)"
+      (click)="searchData()">Search</button>
+  </div>
+  <div *ngIf="showMessages" fxLayout="column" fxLayoutAlign="space-evenly stretch" style="margin:20px">
+    <div fxFlex="90%" *ngFor="let message of messageArray">
+      <mat-card class="mat-elevation-z8">
+        <div class="title">{{message}}</div>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<div mat-dialog-action>
+  <div fxLayout="row" fxLayoutAlign="space-around center" [formGroup]="searchForm">
+    <div fxFlex="90%">
+      <mat-form-field appearance="outline" class="scheduler-field">
+        <mat-label class="mat-caption">Message to be sent*</mat-label>
+        <textarea matInput placeholder="Write your message here for the patient" formControlName="comment"></textarea>
+        <mat-error>Should be filled to close sos request</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around center" class="scheduler-field">
+    <button mat-raised-button color="primary" [disabled]="!searchForm.get('comment').valid" (click)="closeSOS()">Close
+      SOS</button>
+    <button mat-raised-button color="primary" (click)="closeDialog()">Close</button>
+  </div>
+</div>
