@@ -1,19 +1,24 @@
 <div fxLayout="row wrap">
-  <div fxFlex="30%" *ngFor="let doctor of doctors">
+  <div fxFlex="30%" *ngFor="let doc of doctorDetails">
     <div class="col-md-6">
       <div>
-        <img class='img-responsive' src='https://i.stack.imgur.com/l60Hf.png' alt = "Image is not there"
-      Width = "200" height="100">
+        <!-- <img class='img-responsive' src={{doc.imageByte}} alt = "Image Not Found"
+      Width = "200" height="100"> -->
+      <img
+            Width="200" height="100"
+            src="data:image/png;base64,{{ doc.imageByte }}"
+            alt="Card image cap"
+          />
       </div>
     </div>
     <div class="col-md-6">
         <mat-card class="example-card" style="margin-bottom: 10px; width: 200px;">
             <mat-card-header>
-                <mat-card-title>{{doctor.fullName}}</mat-card-title>
-                <mat-card-subtitle>{{doctor.specialization}}</mat-card-subtitle>
+                <mat-card-title>{{doc.fullName}}</mat-card-title>
+                <mat-card-subtitle>{{doc.specialization}}</mat-card-subtitle>
             </mat-card-header>
-            <button mat-flat-button color="primary" style="margin-right: 10px" (click)="deleteEmployee(doctor)" [routerLink]="['/message',doctor.emailId]">Chat</button>
-            <button mat-flat-button color="primary" (click)="deleteEmployee(doctor)">Connect</button>
+            <button mat-flat-button color="primary" style="margin-right: 10px" (click)="deleteEmployee(doc)" [routerLink]="['/message',doc.emailId]">Chat</button>
+            <button mat-flat-button color="primary" (click)="deleteEmployee(doc)">Connect</button>
             </mat-card>
     </div>
   </div>

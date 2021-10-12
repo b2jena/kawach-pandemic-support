@@ -2,6 +2,7 @@ package com.stackroute.resource.service;
 
 import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.MedicalSosRequest;
+import com.stackroute.resource.model.Resources;
 import com.stackroute.resource.repository.MedicalSosRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class MedicalSosRequestServiceImpl implements MedicalSosRequestService {
@@ -24,10 +26,6 @@ public class MedicalSosRequestServiceImpl implements MedicalSosRequestService {
     public MedicalSosRequestServiceImpl(MedicalSosRequestRepository medicalSosRequestRepository) {
         this.medicalSosRequestRepository = medicalSosRequestRepository;
     }
-//    @Autowired
-//    public MedicalSosRequestServiceImpl(ResourceRepository resourceRepository) {
-//        this.resourceRepository = resourceRepository;
-//    }
 
     @Override
     public MedicalSosRequest saveSosRequest(MedicalSosRequest medicalSosRequest) throws NullValueException {
@@ -68,10 +66,47 @@ public class MedicalSosRequestServiceImpl implements MedicalSosRequestService {
         mongoTemplate.upsert(query,updateQuery,"SOSRequest");
     }
 
-//    @Override
-//    public List<Resources> getAllRes() {
-//        return (List<Resources>) resourceRepository.findAll();
-//    }
+    @Override
+    public MedicalSosRequest getSOSMed() {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("requestStatus").is("Medicine").and("formStatus").is("OPEN"));
+        List<MedicalSosRequest> sos = mongoTemplate.find(query, MedicalSosRequest.class);
 
+        if (sos.size() == 0) return null;
 
+        int randomInd = ThreadLocalRandom.current().nextInt(0, sos.size());
+        return sos.get(randomInd);
+    }
+
+    @Override
+    public MedicalSosRequest getSOSEquip() {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("requestStatus").is("Medical Equipment").and("formStatus").is("OPEN"));
+        List<MedicalSosRequest> sos = mongoTemplate.find(query, MedicalSosRequest.class);
+
+        if (sos.size() == 0) return null;
+
+        int randomInd = ThreadLocalRandom.current().nextInt(0, sos.size());
+        return sos.get(randomInd);
+    }
+
+    @Override
+    public MedicalSosRequest getSOSBed() {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("requestStatus").is("Bed").and("formStatus").is("OPEN"));
+        List<MedicalSosRequest> sos = mongoTemplate.find(query, MedicalSosRequest.class);
+
+        if (sos.size() == 0) return null;
+
+        int randomInd = ThreadLocalRandom.current().nextInt(0, sos.size());
+        return sos.get(randomInd);
+    }
+
+    @Override
+    public void closeSOS(UUID requestId) {
+        Query query = new Query(Criteria.where("_id").is(requestId));
+        Update updateQuery = new Update();
+        updateQuery.set("formStatus","CLOSE");
+        mongoTemplate.upsert(query,updateQuery, MedicalSosRequest.class);
+    }
 }

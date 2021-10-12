@@ -1,5 +1,5 @@
-<mat-card>
-<div class="col-md-6 container center" *ngIf = "bed">
+<mat-card *ngIf = "bed">
+<div class="col-md-6 container center" >
     <table class="table center table-borderless">
         <tbody>
             <tr>
@@ -35,6 +35,8 @@
 </div>
 </mat-card>
 
-<div class="col-md-6 container center" *ngIf = "!bed">
-    Nothing to verify
-</div>
+<mat-card *ngIf = "!bed">
+    <div class="jumbotron" >
+        <h1 class="display-4">Nothing to verify as of now. Thank you for your selfless support</h1>
+    </div>
+</mat-card>

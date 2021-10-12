@@ -4,3 +4,12 @@ server:
 spring:
   application:
     name: "api-gateway"
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8076/eureka/
+  instance:
+    hostname: localhost

@@ -1,5 +1,5 @@
-<mat-card>
-    <div class="col-md-6 container center" *ngIf = "Equip">
+<mat-card *ngIf = "Equip">
+    <div class="col-md-6 container center" >
         <table class="table table-borderless">
             <tbody>
                 <tr>
@@ -39,8 +39,8 @@
     </div>
 </mat-card>
 
-<mat-card>
-    <div class="jumbotron" *ngIf = "!Equip">
-        <h1 class="display-4">Nothing to verify</h1>
+<mat-card *ngIf = "!Equip">
+    <div class="jumbotron">
+        <h1 class="display-4">Nothing to verify as of now. Thank you for your selfless support</h1>
     </div>
 </mat-card>

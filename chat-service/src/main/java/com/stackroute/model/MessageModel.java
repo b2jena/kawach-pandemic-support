@@ -13,13 +13,6 @@ import java.time.format.DateTimeFormatter;
 @Data
 @Document(collection = "Message")
 public class MessageModel {
-//    @Transient
-//    public static final String SEQUENCE_NAME="sequence";
-    //public static city;
-//    @Id
-//    private UUID Rid;
-//    private String sender;
-//    private String reciver;
     private String senderName;
     private String reciverName;
     private String messageBody;

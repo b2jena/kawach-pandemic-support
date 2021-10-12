@@ -10,6 +10,13 @@ export class WarroomDashboardComponent implements OnInit {
 
   title = 'Side';
   opened = false;
+  verifyEquipment = false;
+  verifyMedicine = false;
+  verifyBed = false;
+
+  closeEquip= false;
+  closeMed = true;
+  closeBed = false;
 
   constructor(private router: Router) { }
 
@@ -20,6 +27,43 @@ export class WarroomDashboardComponent implements OnInit {
   toggleSidebar(){
     this.opened = !this.opened;
   }
+
+  verMed() {
+    this.verifyMedicine=true;
+    this.verifyEquipment=false;
+    this.verifyBed=false;
+  }
+
+  verEquip() {
+    this.verifyMedicine=false;
+    this.verifyEquipment=true;
+    this.verifyBed=false;
+  }
+
+  verBed() {
+    this.verifyMedicine=false;
+    this.verifyEquipment=false;
+    this.verifyBed=true;
+  }
+
+  medSos() {
+    this.closeMed=true;
+    this.closeEquip=false;
+    this.closeBed=false;
+  }
+
+  EquipSos() {
+    this.closeMed=false;
+    this.closeEquip=true;
+    this.closeBed=false;
+  }
+
+  bedSos() {
+    this.closeMed=false;
+    this.closeEquip=false;
+    this.closeBed=true;
+  }
+
 
   // routeTo(role: string): void{
   //   if ( role === 'sos'){

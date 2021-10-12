@@ -1,60 +1,62 @@
-<div class= "row" style="background-color: rgb(215, 235, 241) !important">
-  <div class="container" >
-    <div class="col-12" style="padding-right: 0px !important; padding-left: 0px !important">
-      <div class= "row" >
-        <div class= "d-flex flex-row" style="background: #64b5f6 !important">
-            <div class= "p-2 imgCol" style="margin-bottom: 10px !important">
-              <img src="https://avatars.dicebear.com/api/avataaars/.svg" class="circle">
-            </div>
-              <div class= "p-2 nameCol" style="margin-top: 18px !important">
-                <span>{{reciverName}}</span>
+<div class="container">
+  <div class= "row" style="background-color: rgb(215, 235, 241) !important; margin-top: 15px;">
+    <div class="container" >
+      <div class="col-12" style="padding-right: 30px !important; padding-left: 12px !important">
+        <div class= "row" >
+          <div class= "d-flex flex-row" style="background: #64b5f6 !important">
+              <div class= "p-2 imgCol" style="margin-bottom: 10px !important">
+                <img src="https://www.svgrepo.com/show/26473/avatar.svg" class="circle">
               </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="container">
-    <div class= "col-12 rowDiv" style="background-color: rgba(32, 197, 209, 0.336) !important">
-      <div class= "row">
-        <div class= "col-12">
-          <div class= "message-wrapper" *ngFor="let message of messageArray">
-            <div class= "left" *ngIf="user.reciverName === message.senderName">
-              <div class= "chat-bubble left slide-left">
-                <div class= "message"> {{message.messageBody}}</div>
-              </div>
-            </div>
-
-            <div class= "right" *ngIf="user.reciverName !== message.senderName">
-              <div class= "chat-bubble right slide-right">
-                <div class= "message"> {{message.messageBody}}</div>
-              </div>
-            </div>
-
-            <div class="cf"></div>
+                <div class= "p-2 nameCol" style="margin-top: 18px !important">
+                  <span>{{user.reciverName}}</span>
+                </div>
           </div>
         </div>
       </div>
     </div>
 
 
-    <div class="container">
-      <div class="col-12" style="margin:0px">
-        <div class="row">
-            <div class="inputRow">
-              <form (ngSubmit) = "SendMessage()">
-                <div class ="input-field inputField col s10">
-                  <textarea name="message" [(ngModel)] = "user.messageBody" class="materialize-textarea inputBox"></textarea>
+    <div class="container" style="margin-top: 25px">
+      <div ngx-auto-scroll="10" observe-attributes class= "col-12 rowDiv" style="background-color: rgba(32, 197, 209, 0.336) !important">
+        <div class= "row">
+          <div class= "col-12">
+            <div class= "message-wrapper" *ngFor="let message of messageArray">
+              <div class= "left" *ngIf="user.reciverName === message.senderName">
+                <div class= "chat-bubble left slide-left">
+                  <div class= "message"> {{message.messageBody}}</div>
                 </div>
-                <div class="input-field col s1">
-                  <button class="suffix btn" style="margin-top: 5px !important">Send</button>
+              </div>
+
+              <div class= "right" *ngIf="user.reciverName !== message.senderName">
+                <div class= "chat-bubble right slide-right">
+                  <div class= "message"> {{message.messageBody}}</div>
                 </div>
-              </form>
+              </div>
+
+              <div class="cf"></div>
             </div>
+          </div>
         </div>
       </div>
-    </div>
 
+
+      <div class="container" style="margin-top: 15px">
+        <div class="col-12" style="margin:0px">
+          <div class="row">
+              <div class="inputRow">
+                <form (ngSubmit) = "SendMessage()">
+                  <div class ="input-group mb-3">
+                    <textarea name="message" [(ngModel)] = "user.messageBody" class="form-control" style="max-height: 50px !important"></textarea>
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-primary" >Send</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
-</div>
+  </div>

@@ -45,10 +45,6 @@ public class BedServiceImpl implements BedService{
     @Override
     public Beds getUnverifiedBed()
     {
-//        List<Beds> beds = bedRepository.findAll();
-//        List<Beds> unverified = beds.stream().filter(c -> c.getVerificationStatus() == false)
-//                .collect(Collectors.toList());
-
         Query query = new Query();
         query.addCriteria(Criteria.where("verificationStatus").is(false));
         List<Beds> unverified = mongoTemplate.find(query, Beds.class);
@@ -67,9 +63,9 @@ public class BedServiceImpl implements BedService{
         mongoTemplate.upsert(query,updateQuery,Beds.class);
     }
     @Override
-    public List<Beds> getAllBedsByCity(String City) {
+    public List<Beds> getAllBedsByCity(String City, String requirement) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("city").in(City));
+        query.addCriteria(Criteria.where("city").regex(City, "i").and("bedType").regex(requirement,"i"));
         List<Beds> request = mongoTemplate.find(query, Beds.class);
         return request;
     }

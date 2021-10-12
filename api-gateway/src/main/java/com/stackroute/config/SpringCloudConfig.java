@@ -11,37 +11,29 @@ public class SpringCloudConfig {
     @Bean
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route(r -> r.path("/api/v1/**")
-                        .uri("http://localhost:8095/")
-                        .id("chat-service"))
+                .route("chat-service", r -> r.path("/api/v1/**")
+                        .uri("http://localhost:8095/"))
 
-                .route(r -> r.path("/api/v1/**")
-                        .uri("http://localhost:8989/")
-                        .id("doctor-consultation-service"))
+                .route("doctor-consultation-service", r -> r.path("/api/v1/**")
+                        .uri("http://localhost:8989/"))
 
-                .route(r -> r.path("/api/v1/**")
-                        .uri("http://localhost:9765/")
-                        .id("information-service"))
+                .route("information-service", r -> r.path("/api/v1/**")
+                        .uri("http://localhost:9765/"))
                 
-                .route(r -> r.path("/api/v1/**")
-                        .uri("http://localhost:9999/")
-                        .id("patient-otp-service"))
+                .route("patient-otp-service", r -> r.path("/api/v1/**")
+                        .uri("http://localhost:9999/"))
 
-                .route(r -> r.path("/api/v1/**")
-                        .uri("http://localhost:9901/")
-                        .id("resource-request-service"))
+                .route("resource-request-service", r -> r.path("/api/v1/**")
+                        .uri("http://localhost:9901/"))
 
-                .route(r -> r.path("/api/v1/**")
-                        .uri("http://localhost:9099/")
-                        .id("user-authentication-service"))
+                .route("user-authentication-service", r -> r.path("/api/v1/**")
+                        .uri("http://localhost:9099/"))
 
-                .route(r -> r.path("/api/v1/**")
-                        .uri("http://localhost:8090/")
-                        .id("user-management-service"))
+                .route("user-management-service", r -> r.path("/api/v1/**")
+                        .uri("http://localhost:8090/"))
 
-                .route(r -> r.path("/api/v1/**")
-                        .uri("http://localhost:8686/")
-                        .id("volunteer-revert-service"))
+                .route("volunteer-revert-service", r -> r.path("/api/v1/**")
+                        .uri("http://localhost:8686/"))
                 .build();
     }
 

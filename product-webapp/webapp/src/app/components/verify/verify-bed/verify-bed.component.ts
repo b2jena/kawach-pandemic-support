@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BedService, Bed } from 'src/app/services/bed.service';
 
 @Component({
@@ -10,14 +11,18 @@ export class VerifyBedComponent implements OnInit {
   public bed !: Bed;
   isActive = false;
   count = 0;
-  constructor(private bedService: BedService) { }
+  constructor(private bedService: BedService, private router: Router) { }
 
   ngOnInit(): void {
-      this.bedService.getUnverifiedBed().subscribe(data => {
-        console.log(this.bed = data);
-      });
+    this.getUnverifiedData();
   }
 
+  getUnverifiedData() {
+    this.bedService.getUnverifiedBed().subscribe(data => {
+      this.bed=data;
+      console.log(this.bed = data);
+      });
+  }
   putVerified(): void{
       this.bed.verificationStatus = true;
       this.bedService.updateBed(this.bed).subscribe(data1 => {

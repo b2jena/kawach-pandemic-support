@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
 
   constructor(private router: Router, private formBuilder: FormBuilder, private loginService: LoginService, @Inject(SESSION_STORAGE) private storage: WebStorageService) {
-    console.log("In constructor", this.userobj);
+    console.log('In constructor', this.userobj);
   }
 
   profileForm = this.formBuilder.group({
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log("On Init", this.userobj);
+    console.log('On Init', this.userobj);
   }
 
 
@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
           }
       
         }
-    }
+      }
 
   routetoDash(role: string): void{
     if ( role === 'Doctor'){

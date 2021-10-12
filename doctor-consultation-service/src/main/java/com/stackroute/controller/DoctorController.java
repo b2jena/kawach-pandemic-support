@@ -30,7 +30,7 @@ public class DoctorController {
     @PostMapping("doctorm")
     public ResponseEntity<Doctor> saveDoctorMongoDB(@RequestBody  Doctor doctor) throws DoctorNotFoundException, DoctorAlreadyPresentException {
         Doctor doctor1 = doctorService.saveDoctorMongoDB(doctor);
-        return new ResponseEntity<Doctor>(doctor1, HttpStatus.OK);
+        return new ResponseEntity<Doctor>(doctor1, HttpStatus.CREATED);
     }
 
     @GetMapping("doctorm/{emailId}")

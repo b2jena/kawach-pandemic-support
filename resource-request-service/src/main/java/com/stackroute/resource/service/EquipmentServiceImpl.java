@@ -44,9 +44,6 @@ public class EquipmentServiceImpl implements EquipmentService{
 
     @Override
     public Equipments getUnverifiedEquipments() {
-//        List<Equipments> equipments = equipmentRepository.findAll();
-//        List<Equipments> unverified = equipments.stream().filter(c -> c.getVerificationStatus() == false)
-//                .collect(Collectors.toList());
         Query query = new Query();
         query.addCriteria(Criteria.where("verificationStatus").is(false));
         List<Equipments> unverified = mongoTemplate.find(query, Equipments.class);
@@ -66,9 +63,9 @@ public class EquipmentServiceImpl implements EquipmentService{
         mongoTemplate.upsert(query,updateQuery, Equipments.class);
     }
 
-    public List<Equipments> getEquipmentByCity(String City) {
+    public List<Equipments> getEquipmentByCity(String City, String requirement) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("city").in(City));
+        query.addCriteria(Criteria.where("city").regex(City, "i").and("equipmentName").regex(requirement,"i"));
         List<Equipments> request = mongoTemplate.find(query, Equipments.class);
         return request;
     }

@@ -32,12 +32,6 @@ public class ResourceController {
         return new ResponseEntity<List<Resources>>((List<Resources>)resourceService.getAllResources(),HttpStatus.OK);
     }
 
-//    @PutMapping("medicine/update")
-//    public ResponseEntity<Resources> updateResource(@RequestBody Resources resources){
-//        Resources updatedResources = resourceService.updateResource(resources);
-//        return new ResponseEntity<Resources>(updatedResources,HttpStatus.CREATED);
-//    }
-
     @GetMapping("medicine/getUnverified")
     public ResponseEntity<Resources> getUnverifiedBed()
     {
