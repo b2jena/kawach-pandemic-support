@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Equipment, EquipmentService } from 'src/app/services/equipment.service';
 
 @Component({
   selector: 'app-warroom-verify-equipment',

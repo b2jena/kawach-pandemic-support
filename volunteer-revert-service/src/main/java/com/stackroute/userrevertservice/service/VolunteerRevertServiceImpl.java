@@ -71,12 +71,18 @@ public class VolunteerRevertServiceImpl implements VolunteerRevertService {
             score += 5;
         } else if (type.equalsIgnoreCase("Medicine_Request_Pass")) {
             score += 1;
-        } else if (type.equalsIgnoreCase("Bed_Resource")) {
+        } else if (type.equalsIgnoreCase("Create_Bed_Resource")) {
             score += 300;
-        } else if (type.equalsIgnoreCase("Equipment_Resource")) {
+        } else if (type.equalsIgnoreCase("Create_Equipment_Resource")) {
             score += 500;
-        } else if (type.equalsIgnoreCase("Medicine_Resource")) {
+        } else if (type.equalsIgnoreCase("Create_Medicine_Resource")) {
             score += 100;
+        } else if (type.equalsIgnoreCase("Verify_Bed_Resource")) {
+            score += 100;
+        } else if (type.equalsIgnoreCase("Verify_Equipment_Resource")) {
+            score += 50;
+        } else if (type.equalsIgnoreCase("Verify_Medicine_Resource")) {
+            score += 30;
         }
 
         return score;

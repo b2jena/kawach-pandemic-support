@@ -11,7 +11,12 @@ export class VerifyMedicineComponent implements OnInit {
   constructor(private medService: SMedicineService) { }
 
   ngOnInit(): void {
+    this.getUnVerfifiedData();
+  }
+
+  getUnVerfifiedData() {
     this.medService.getUnverifiedMed().subscribe(data => {
+      this.med = data;
       console.log(this.med = data);
     });
   }
