@@ -9,7 +9,7 @@ import { Doctor } from 'src/app/services/user-registration.service';
 })
 export class DoctorCardsComponent implements OnInit {
   doctors!: DoctorRedis[];
-  doctorDetails : Array<any> = [];
+  doctorDetails: Array<any> = [];
   constructor(private doctorService: DoctorCardsService) { }
 
   ngOnInit(): void {
@@ -18,14 +18,14 @@ export class DoctorCardsComponent implements OnInit {
   handleSuccessfulResponse(response: DoctorRedis[] )
 {
     this.doctors = response;
-    console.log("doctors online from redis:", this.doctors);
-    this.doctors.forEach((value) =>{
+    console.log('doctors online from redis:', this.doctors);
+    this.doctors.forEach((value) => {
       this.doctorService.GetDoctorInfo(value.emailId).subscribe((doctorData) => {
         this.doctorDetails.push(doctorData);
       });
     });
 }
-deleteEmployee(doctor: DoctorRedis): void {
+deleteEmployee(doctor: Doctor): void {
   this.doctorService.deleteEmployee(doctor)
     .subscribe( data => {
       this.doctors = this.doctors.filter(u => u !== doctor); }); }

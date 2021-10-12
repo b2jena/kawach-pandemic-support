@@ -14,7 +14,6 @@ public class SpringCloudConfig {
                 .route("chat-service", r -> r.path("/api/v1/**")
                         .uri("http://localhost:8095/"))
 
-
                 .route("doctor-consultation-service", r -> r.path("/api/v1/**")
                         .uri("http://localhost:8989/"))
 
