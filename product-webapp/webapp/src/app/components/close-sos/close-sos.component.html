@@ -28,10 +28,10 @@
 
 <mat-card>
   <div class="" *ngIf = "closeSos">
-      <table class="">
+      <table class="" *ngFor="let require of closeSos.requirement">
           <tbody>
               <tr>
-                  <th>patientName</th>
+                  <th>Patient Name</th>
                   <td>{{closeSos.patientName}}</td>
               </tr>
 
@@ -41,8 +41,18 @@
             </tr>
 
               <tr> 
-                <th>Requirement</th>
-                <td>{{closeSos.requirement[0]}}</td>
+                <th>Requirement Name</th>
+                <td>{{require.requirementName}}</td>
+              </tr>
+
+              <tr> 
+                <th>Requirement Quantity</th>               
+                <td>{{require.requirementQuantity}}</td>                
+              </tr>
+
+              <tr> 
+                <th>Quantity</th>                
+                <td>{{require.unitOfMeasure}}</td> <br>
               </tr>
   
               <tr>
