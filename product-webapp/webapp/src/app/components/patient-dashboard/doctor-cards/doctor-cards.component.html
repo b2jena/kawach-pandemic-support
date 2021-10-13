@@ -17,8 +17,7 @@
                 <mat-card-title>{{doc.fullName}}</mat-card-title>
                 <mat-card-subtitle>{{doc.specialization}}</mat-card-subtitle>
             </mat-card-header>
-            <button mat-flat-button color="primary" style="margin-right: 10px" (click)="deleteEmployee(doc)" [routerLink]="['/message',doc.emailId]">Chat</button>
-            <button mat-flat-button color="primary" (click)="deleteEmployee(doc)">Connect</button>
+            <button mat-flat-button color="primary" style="margin-right: 10px" (click)="deleteDoctor(doc)" [routerLink]="['/message',doc.emailId]">Chat</button>
             </mat-card>
     </div>
   </div>

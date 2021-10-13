@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailService {
     //we have autowired or injected the predefined class named JavaMailSender w
-    // hich contains the method to send the mail.
+    // which contains the method to send the mail.
     @Autowired
     private JavaMailSender javaMailSender;
 

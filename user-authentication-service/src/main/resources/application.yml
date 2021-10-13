@@ -7,7 +7,6 @@ spring:
   application:
     name: USER-AUTHENTICATION-SERVICE
   datasource:
-    #    driverClassName: com.mysql.jdbc.Driver
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/test?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
     username: root
@@ -26,10 +25,6 @@ spring:
     routingkey: user.routingkey
 app:
   seeddata:
-#    id1: meghna@email.com
-#    id2: john@email.com
-#    password1: meghna@123
-#    password2: john@123
     logMessage: Loaded users...
   jwttoken:
     message: Login Successful

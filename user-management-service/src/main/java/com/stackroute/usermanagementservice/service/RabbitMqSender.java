@@ -10,7 +10,7 @@ public class RabbitMqSender {
     private RabbitTemplate rabbitTemplate;
 
     @Autowired
-    public RabbitMqSender(RabbitTemplate rabbitTemplate, RabbitTemplate rabbitTemplate1) {
+    public RabbitMqSender(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
 

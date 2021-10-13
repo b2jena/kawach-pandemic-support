@@ -2,16 +2,12 @@ package com.stackroute.domain;
 
 import javax.persistence.*;
 
-/**
- * to define an entity
- */
+
 @Entity
 @Table(name = "User")
 public class User {
 
-    /**
-     * @Id annotation to make id variable as Primary key
-     */
+
     @Id
     @Column(name = "id", length = 50)
     private String id;
@@ -22,16 +18,12 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    /**
-     * default constructor
-     */
+
     public User() {
         super();
     }
 
-    /**
-     * parameterized constructor
-     */
+
     public User(String id, String password) {
         super();
         this.id = id;

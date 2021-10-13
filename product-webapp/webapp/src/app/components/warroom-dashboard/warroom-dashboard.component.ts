@@ -65,22 +65,4 @@ export class WarroomDashboardComponent implements OnInit {
   }
 
 
-  // routeTo(role: string): void{
-  //   if ( role === 'sos'){
-  //     this.router.navigate(['/closesos']);
-  //   }
-  //   else if ( role === 'Verification'){
-  //     this.router.navigate( ['/listmedicine'] );
-  //   }
-  //   else if ( role === 'Medicine'){
-  //     this.router.navigate( ['/addmedicine'] );
-  //   }
-  //   else if ( role === 'Equipment'){
-  //     this.router.navigate( ['/addequipment'] );
-  //   }
-  //   else if ( role === 'Bed'){
-  //     this.router.navigate( ['/addbed'] );
-  //   }
-  // }
-
 }

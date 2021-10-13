@@ -8,8 +8,6 @@ import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
-
 @Service
 public class RabbitMqService implements RabbitListenerConfigurer {
 

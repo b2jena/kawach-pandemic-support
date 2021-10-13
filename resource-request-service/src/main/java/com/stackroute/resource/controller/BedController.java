@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
@@ -22,16 +23,14 @@ public class BedController {
 
     @PostMapping("bed/create")
     public ResponseEntity<Beds> saveBed(@RequestBody Beds beds) throws NullValueException {
-        //System.out.println("bikash"+beds.getBedType());
-
+        Logger logger = Logger.getLogger(BedController.class.getName());
         try{
             Beds savedBeds = bedService.saveBed(beds);
             return new ResponseEntity<>(savedBeds, HttpStatus.CREATED);
-        } catch (Exception exc){
-            System.out.println(exc);
+        } catch (Exception e){
+            logger.info(e + " encountered");
             return new ResponseEntity<>(null, HttpStatus.CONFLICT);
         }
-
     }
 
     @GetMapping("bed/getAll")
