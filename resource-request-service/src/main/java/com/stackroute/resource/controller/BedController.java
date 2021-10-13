@@ -1,6 +1,5 @@
 package com.stackroute.resource.controller;
 
-import com.stackroute.resource.AddResourceServiceApplication;
 import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.Beds;
 import com.stackroute.resource.service.BedService;
