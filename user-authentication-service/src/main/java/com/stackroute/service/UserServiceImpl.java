@@ -7,23 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-/*
- * This class is implementing the UserService interface. This class has to be annotated with
- * @Service annotation.
- * @Service indicates annotated class is a service
- * which hold business logic in the Service layer
- *
- * */
+
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
-    /**
-     * To get the property values
-     */
-//    @Value("${app.service.message1}")
-//    private String message1;
+
 
     @Value("${app.service.message2}")
     private String message2;
@@ -37,12 +27,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveUser(User user){
-
-        /*Optional<User> userResult = userRepository.findById(user.getId());
-
-        if (userResult.isPresent()) {
-            throw new UserAlreadyExistException(message1);
-        }*/
 
         return userRepository.save(user);
     }

@@ -44,7 +44,6 @@ export class LoginComponent implements OnInit {
           this.loginService.showsnackbar(this.getErrorPass());
         }
       else{
-          //this.loginService.generateToken(this.userobj).subscribe( data => { this.obj = data ; } );
           const res= await this.loginService.genToken(this.userobj);
           console.log("res: ",res);
           this.obj= res;
