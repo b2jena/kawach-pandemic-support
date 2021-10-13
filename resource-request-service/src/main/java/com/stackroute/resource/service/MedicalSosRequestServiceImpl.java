@@ -1,8 +1,6 @@
 package com.stackroute.resource.service;
 
-import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.MedicalSosRequest;
-import com.stackroute.resource.model.Resources;
 import com.stackroute.resource.repository.MedicalSosRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -22,16 +20,18 @@ public class MedicalSosRequestServiceImpl implements MedicalSosRequestService {
     SequenceGeneratorService sequenceGeneratorService;
     @Autowired
     MongoTemplate mongoTemplate;
+
     @Autowired
     public MedicalSosRequestServiceImpl(MedicalSosRequestRepository medicalSosRequestRepository) {
         this.medicalSosRequestRepository = medicalSosRequestRepository;
     }
 
     @Override
-    public MedicalSosRequest saveSosRequest(MedicalSosRequest medicalSosRequest) throws NullValueException {
+    public MedicalSosRequest saveSosRequest(MedicalSosRequest medicalSosRequest) {
         medicalSosRequest.setRequestId(UUID.randomUUID());
         return medicalSosRequestRepository.save(medicalSosRequest);
     }
+
     @Override
     public List<MedicalSosRequest> getSosRequest() {
         return (List<MedicalSosRequest>) medicalSosRequestRepository.findAll();
@@ -59,11 +59,11 @@ public class MedicalSosRequestServiceImpl implements MedicalSosRequestService {
     }
 
     @Override
-    public void updateSosRequest(UUID requestId){
+    public void updateSosRequest(UUID requestId) {
         Query query = new Query(Criteria.where("_id").is(requestId));
         Update updateQuery = new Update();
-        updateQuery.set("formStatus","CLOSE");
-        mongoTemplate.upsert(query,updateQuery,"SOSRequest");
+        updateQuery.set("formStatus", "CLOSE");
+        mongoTemplate.upsert(query, updateQuery, "SOSRequest");
     }
 
     @Override
@@ -106,7 +106,7 @@ public class MedicalSosRequestServiceImpl implements MedicalSosRequestService {
     public void closeSOS(UUID requestId) {
         Query query = new Query(Criteria.where("_id").is(requestId));
         Update updateQuery = new Update();
-        updateQuery.set("formStatus","CLOSE");
-        mongoTemplate.upsert(query,updateQuery, MedicalSosRequest.class);
+        updateQuery.set("formStatus", "CLOSE");
+        mongoTemplate.upsert(query, updateQuery, MedicalSosRequest.class);
     }
 }
