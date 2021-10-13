@@ -3,15 +3,23 @@ import { Component, OnInit } from '@angular/core';
 import { OtpServiceService, Patient } from 'src/app/services/patient-otp-service.service';
 import {Router, Routes} from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-patient-otp',
   templateUrl: './patient-otp.component.html',
   styleUrls: ['./patient-otp.component.css']
 })
 export class PatientOtpComponent implements OnInit {
-  user: Patient = new Patient('');
+  patient: Patient = new Patient('');
   message = '';
   otp = '';
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+  ]);
+  otpFormControl = new FormControl('', [
+    Validators.required
+  ]);
   constructor(private patientotp: OtpServiceService, private httpClient: HttpClient, private route: Router , private snackbar: MatSnackBar) {
   }
   ngOnInit(): void {
@@ -30,12 +38,12 @@ export class PatientOtpComponent implements OnInit {
     });
   }
     CreatePatient(): void {
-      if (this.user.email === '')
+      if (this.patient.email === '')
       {
         this.showSnackbar('Please Enter Email', 'x');
       }
       else{
-      this.patientotp.CreatePatient(this.user).subscribe( data => { this.showSnackbar('Please Check E-mail for OTP.', 'x'); }); }
+      this.patientotp.CreatePatient(this.patient).subscribe( data => { this.showSnackbar('Please Check E-mail for OTP.', 'x'); }); }
       }
       onClickSubmit(): void {
         if (this.otp === '')
@@ -45,7 +53,7 @@ export class PatientOtpComponent implements OnInit {
         else{
 
           this.patientotp.VerifyOtp(this.otp).subscribe(response => {this.message = response; if (this.message === 'SUCCESS'){this.route.navigate(['/sos']); }if (this.message === 'FAIL'){this.showSnackbar('Please Enter Correct OTP', 'x'); }});
-          localStorage.setItem('paitentEmail', this.user.email);
+          localStorage.setItem('paitentEmail', this.patient.email);
         }
      }
 }
