@@ -28,6 +28,12 @@ export class LoginService {
       // catchError(this.handleError) );
   }
 
+  login(user: User) {
+    const jsonstr: string = '{ "id":"' + user.id + '", "password":"' + user.password + '" }';
+    return this.http.post<string[]>('/api/v1/login/user', JSON.parse(jsonstr)).pipe(
+      catchError(this.handleError) );
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       console.log('An error occurred:', error.error);

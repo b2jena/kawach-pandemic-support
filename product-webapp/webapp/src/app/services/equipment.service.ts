@@ -11,7 +11,9 @@ export class EquipmentService{
   constructor(private httpService: HttpClient) { }
   CreateEquipment(equipment: Equipment): Observable<Equipment> {
     console.log(equipment);
-    return this.httpService.post<Equipment>('/api/v1/resource/equipment/create', equipment);
+    const addedBy= localStorage.getItem('loggedIn');
+    console.log("addedd by", addedBy);
+    return this.httpService.post<Equipment>(`/api/v1/resource/equipment/create/${addedBy}`, equipment);
   }
   public deleteEquipment(equipment: Equipment) {
     return this.httpService.delete<Equipment>('/api/v1/resource/equipment//delete/' + equipment.city);

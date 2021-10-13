@@ -12,7 +12,9 @@ export class BedService{
   constructor(private httpService: HttpClient) { }
   CreateBed(bed: Bed): Observable<Bed> {
     console.log(bed);
-    return this.httpService.post<Bed>('/api/v1/resource/bed/create', bed);
+    const addedBy= localStorage.getItem('loggedIn');
+    console.log("addedd by", addedBy);
+    return this.httpService.post<Bed>(`/api/v1/resource/bed/create/${addedBy}`, bed);
   }
   public deleteBed(bed: Bed) {
     return this.httpService.delete<Bed>('/api/v1/resource/bed//delete/' + bed.city);

@@ -101,7 +101,8 @@ export class DoctorRegistrationComponent implements OnInit {
           });
           if (response.body === 'You have been successfully registered! Kindly Login now') {
             setTimeout(() => {
-              window.location.replace('http://localhost:4200/#/login');
+              // window.location.replace('http://localhost:4200/#/login');
+              window.location.replace('https://kawach.stackroute.io/#/login');
             }, 3000);
           }
         },

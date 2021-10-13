@@ -2,6 +2,7 @@ package com.stackroute.resource.controller;
 
 import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.Resources;
+import com.stackroute.resource.service.RabbitMqSender;
 import com.stackroute.resource.service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,14 +17,18 @@ import java.util.List;
 public class ResourceController {
 
     private ResourceService resourceService;
+    private RabbitMqSender rabbitMqSender;
 
     @Autowired
-    public ResourceController(ResourceService resourceService) {
+    public ResourceController(ResourceService resourceService, RabbitMqSender rabbitMqSender) {
         this.resourceService = resourceService;
+        this.rabbitMqSender=rabbitMqSender;
     }
 
-    @PostMapping("medicine/create")
-    public ResponseEntity<Resources> saveResource(@RequestBody Resources resources) throws NullValueException {
+    @PostMapping("medicine/create/{addBy}")
+    public ResponseEntity<Resources> saveResource(@RequestBody Resources resources, @PathVariable ("addBy") String addBy) throws NullValueException {
+        rabbitMqSender.sendVolunteer(addBy, "Create_Medicine_Resource");
+
         Resources savedResources = resourceService.saveResource(resources);
         return new ResponseEntity<>(savedResources,HttpStatus.CREATED);
     }

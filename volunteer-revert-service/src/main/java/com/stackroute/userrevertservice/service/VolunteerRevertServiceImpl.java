@@ -35,7 +35,6 @@ public class VolunteerRevertServiceImpl implements VolunteerRevertService {
         int updatedScore = 0;
 
         Optional<Volunteer> optional = volunteerRevertRepository.findById(volunteerIncoming.getEmailId());
-        System.out.println("details:"+optional);
         if (optional.isPresent()) {
             updatedScore = volunteerRevertRepository.findById(volunteerIncoming.getEmailId()).get().getScore() + Score(volunteerIncoming.getType());
             updatedVolunteer = volunteerRevertRepository.findById(volunteerIncoming.getEmailId()).get();

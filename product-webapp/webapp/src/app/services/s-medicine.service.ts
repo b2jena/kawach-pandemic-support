@@ -10,7 +10,8 @@ export class SMedicineService{
   constructor(private httpService: HttpClient) { }
   CreateMedicine(medicine: Medicine): Observable<Medicine> {
     console.log(medicine);
-    return this.httpService.post<Medicine>('/api/v1/resource/medicine/create', medicine);
+    const addedBy= localStorage.getItem('loggedIn');
+    return this.httpService.post<Medicine>(`/api/v1/resource/medicine/create/${addedBy}`, medicine);
   }
   public deleteMedicine(medicine: Medicine) {
     return this.httpService.delete<Medicine>('/api/v1/resource/medicine//delete/' + medicine.city);
