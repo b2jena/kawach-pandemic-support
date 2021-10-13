@@ -24,7 +24,8 @@
         <mat-form-field appearance="outline" style="width: 300px;">
           <mat-label>Phone Number</mat-label>
           <input matInput type="number" formControlName="phoneNumber" required [(ngModel)]="user.phoneNumber">
-          <mat-error *ngIf="profileForm.get('phoneNumber')?.invalid && profileForm.get('phoneNumber')?.touched">Required Field</mat-error>
+          <mat-error *ngIf="profileForm.get('phoneNumber').errors?.pattern && profileForm.get('phoneNumber')?.touched">Please enter a valid phone number</mat-error>
+          <mat-error *ngIf="profileForm.get('phoneNumber').errors?.required && profileForm.get('phoneNumber')?.touched">Required Field</mat-error>
         </mat-form-field><br>
 
         <mat-form-field appearance="outline" style="width: 300px;">

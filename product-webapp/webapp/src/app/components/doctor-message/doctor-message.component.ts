@@ -20,12 +20,8 @@ export class DoctorMessageComponent implements OnInit {
     }, 1000);
     }
   SendMessage(){
-    // this.user.senderName = this.messageArray[0].senderName;
-    // this.user.reciverName = localStorage.getItem('loggedIn');
     this.messageService.SendMessage(this.user).subscribe(
-      data => {
-      }
-    );
+      data => {} );
     this.GetMessage();
   }
   GetMessage() {

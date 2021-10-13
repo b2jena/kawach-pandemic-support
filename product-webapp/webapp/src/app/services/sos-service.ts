@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FormArray, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +12,10 @@ export class SosService {
   constructor(private httpService: HttpClient) { }
 
   CreateSosRequest(SosRequest: SOSRequest): Observable <SOSRequest> {
-    console.log(SosRequest);
-    console.log(Requirement);
     return this.httpService.post<SOSRequest>('http://localhost:9901/sos/createSos', SosRequest);
   }
 
   PostFile(file: File): Observable <File> {
-    // console.log(file);
-    console.log(file);
     return this.httpService.post<File>('http://localhost:9901/sos/createSos/upload', file);
   }
 

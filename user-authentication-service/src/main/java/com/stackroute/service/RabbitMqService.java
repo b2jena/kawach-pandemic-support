@@ -22,9 +22,6 @@ public class RabbitMqService implements RabbitListenerConfigurer {
         this.userService = userService;
     }
 
-    /*
-     * Add annotation to read messages from a queue
-     */
     @RabbitListener(queues = "${spring.rabbitmq.queue}")
     public void recievedMessage(String userDetails) {
 
