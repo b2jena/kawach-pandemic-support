@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Equipment, EquipmentService } from 'src/app/services/equipment.service';
@@ -17,10 +17,20 @@ export class AddEquipmentComponent implements OnInit {
   isActive = false;
   user: Equipment = new Equipment( '', '', '', '', '', '', this.isActive);
 
-  constructor(private equipmentService: EquipmentService, private snackBar: MatSnackBar) { }
+  constructor(private equipmentService: EquipmentService, private snackBar: MatSnackBar,  private formBuilder: FormBuilder) { }
 
   ngOnInit() {
   }
+
+  equipForm = this.formBuilder.group({
+    equipmentName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    city: new FormControl('', Validators.required),
+    hospital: new FormControl('', Validators.required),
+    address: new FormControl('', Validators.required),
+    contactPerson: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    mobileNumber: new FormControl('', [Validators.required, Validators.pattern('[0-9]{10}')]),
+    verificationStatus: new FormControl(''),
+  });
   showSnackbars(content: string, action: string) {
     const snack = this.snackBar.open(content, action, {
       duration: 2000,
@@ -36,13 +46,12 @@ export class AddEquipmentComponent implements OnInit {
     });
   }
     CreateEquipment(): void {
-      if ( this.user.equipmentName === '' || this.user.hospital === '' || this.user.address === '' || this.user.city === '' || this.user.contactPerson === '' || this.user.mobileNumber === ''){
-        this.showSnackbars('Please fill the empty field(s).', 'x');
-      } else {
-        this.user.verificationStatus = this.isActive;
-        this.equipmentService.CreateEquipment(this.user).subscribe( data => { this.showSnackbars('Equipment added successfully.', 'x'); });
-        window.setTimeout(function(){location.reload();}, 2000);
-      }
+      this.equipForm.get('verificationStatus').setValue(this.isActive);
+      console.log("data:", this.equipForm.value);
+      this.equipmentService.CreateEquipment(this.equipForm.value).subscribe( data => {
+         this.showSnackbars('Equipment added successfully.', 'x');
+         this.equipForm.reset();
+        });
     }
     check() {
       this.isActive = !this.isActive;

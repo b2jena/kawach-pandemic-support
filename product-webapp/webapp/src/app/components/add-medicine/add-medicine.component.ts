@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Router } from '@angular/router';
@@ -18,10 +18,20 @@ export class AddMedicineComponent implements OnInit {
   isActive = false;
   user: Medicine = new Medicine( '', '', '', '', '', '', this.isActive);
 
-  constructor(private medicineService: SMedicineService, private snackBar: MatSnackBar) { }
+  constructor(private medicineService: SMedicineService, private snackBar: MatSnackBar, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
   }
+
+  medForm = this.formBuilder.group({
+    medicineName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    city: new FormControl('', Validators.required),
+    pharmacy: new FormControl('', Validators.required),
+    address: new FormControl('', Validators.required),
+    contactPerson: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    mobileNumber: new FormControl('', [Validators.required, Validators.pattern('[0-9]{10}')]),
+    verificationStatus: new FormControl(''),
+  });
   showSnackbars(content: string, action: string) {
     const snack = this.snackBar.open(content, action, {
       duration: 2000,
@@ -37,13 +47,12 @@ export class AddMedicineComponent implements OnInit {
     });
   }
     CreateMedicine(): void {
-      if ( this.user.medicineName === '' || this.user.address === '' || this.user.city === '' || this.user.contactPerson === '' || this.user.mobileNumber === '' || this.user.pharmacy === ''){
-        this.showSnackbars('Please fill the empty field(s).', 'x');
-      } else {
-        this.user.verificationStatus = this.isActive;
-        this.medicineService.CreateMedicine(this.user).subscribe( data => { this.showSnackbars('Medicine added successfully.', 'x'); });
-        window.setTimeout(function(){location.reload();}, 2000);
-      }
+      this.medForm.get('verificationStatus').setValue(this.isActive);
+      console.log("data:", this.medForm.value);
+      this.medicineService.CreateMedicine(this.medForm.value).subscribe( data => {
+         this.showSnackbars('Medicine added successfully.', 'x');
+         this.medForm.reset();
+        });
     }
     check() {
       this.isActive = !this.isActive;

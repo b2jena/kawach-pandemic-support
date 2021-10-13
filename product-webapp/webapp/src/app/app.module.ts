@@ -93,6 +93,9 @@ import { WarroomVerifyMedicineComponent } from './components/warroom-dashboard/w
 import { WarroomVerifyEquipmentComponent } from './components/warroom-dashboard/warroom-verify-equipment/warroom-verify-equipment.component';
 import { SearchDialogComponent } from './components/search-dialog/search-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 
 @NgModule({
@@ -199,7 +202,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSelectModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule,
+    MatTooltipModule
   ],
   providers: [HttpClient, SMedicineService, UserRegistrationService, EquipmentService, BedService, SosService, MatSnackBarModule,
   MatSnackBar, Overlay, DataService, MessageService],

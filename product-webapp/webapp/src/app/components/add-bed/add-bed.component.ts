@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Bed, BedService } from 'src/app/services/bed.service';
@@ -18,10 +18,19 @@ export class AddBedComponent implements OnInit {
   isActive = false;
   user: Bed = new Bed( '', '', '', '', '', this.isActive);
 
-  constructor(private equipmentService: BedService, private snackBar: MatSnackBar) { }
+  constructor(private bedService: BedService, private snackBar: MatSnackBar, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
   }
+
+  bedForm = this.formBuilder.group({
+    bedType: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    city: new FormControl('', Validators.required),
+    address: new FormControl('', Validators.required),
+    contactPerson: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    mobileNumber: new FormControl('', [Validators.required, Validators.pattern('[0-9]{10}')]),
+    verificationStatus: new FormControl(''),
+  });
   showSnackbars(content: string, action: string) {
     const snack = this.snackBar.open(content, action, {
       duration: 2000,
@@ -37,15 +46,12 @@ export class AddBedComponent implements OnInit {
     });
   }
     CreateBed(): void {
-      if ( this.user.bedType === '' || this.user.address === '' || this.user.city === '' || this.user.contactPerson === '' || this.user.mobileNumber === ''){
-        this.showSnackbars('Please fill the empty field(s).', 'x');
-      } else {
-        this.user.verificationStatus = this.isActive;
-        console.log('data:', this.user);
-        this.equipmentService.CreateBed(this.user).subscribe( data => { this.showSnackbars('Bed added successfully.', 'x'); });
-        window.setTimeout(function(){location.reload();}, 2000);
-      }
-      console.log(this.user.verificationStatus);
+      this.bedForm.get('verificationStatus').setValue(this.isActive);
+      console.log("data:", this.bedForm.value);
+      this.bedService.CreateBed(this.bedForm.value).subscribe( data => {
+         this.showSnackbars('Bed added successfully.', 'x');
+         this.bedForm.reset();
+        });
     }
 
     check() {

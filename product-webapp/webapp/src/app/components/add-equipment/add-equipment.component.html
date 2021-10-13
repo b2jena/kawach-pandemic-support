@@ -1,231 +1,63 @@
-<div class="container">
-  <div class="col-md-6">
-      <mat-card><h2 class="text-center">Add Equipment</h2></mat-card>
-      <form>
-        <mat-card>
-          <div class="form-group">
-            <label for="equipmentName">Equipment Name:</label>
-            <input type="name" [(ngModel)]="user.equipmentName" placeholder="Equipment Name" name="name" class="form-control" id="equipmentName">
-          </div>
-          </mat-card>
-
-        <mat-card>
-        <div class="form-group">
-          <label for="hospital">Hospital:</label>
-          <input [(ngModel)]="user.hospital" placeholder="Hospital" name="hospital" class="form-control" id="hospital">
-        </div>
-        </mat-card>
-
-          <mat-card>
-          <div class="form-group">
-            <label for="contactPerson">Contact Person:</label>
-            <input type="name" [(ngModel)]="user.contactPerson" placeholder="Contact Person" name="contactPerson" class="form-control" id="contactPerson">
-          </div>
-        </mat-card>
-          <mat-card>
-          <div class="form-group">
-            <label for="mobileNumber">Mobile Number:</label>
-            <input type="name" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
-            <mat-error *ngIf="mobFormControl.errors?.pattern && !mobFormControl.hasError('required')">
-              Please enter a valid Valid Phone Number
-            </mat-error>
-            <mat-error *ngIf="mobFormControl.hasError('required')"> Phone Number is required </mat-error>
-          </div>
-        </mat-card>
-        <mat-card>
-        <div class="form-group">
-          <label for="city">City:</label>
-          <input [(ngModel)]="user.city" placeholder="City Name" name="city" class="form-control" id="city">
-        </div>
-        </mat-card>
-        <mat-card>
-        <div class="form-group">
-          <label for="address">Address:</label>
-          <input type="name" [(ngModel)]="user.address" placeholder="Address" name="address" class="form-control" id="address">
-        </div>
-        </mat-card>
-
-        <!-- <mat-card>
-        <div class="form-group">
-          <label for="contactPerson">Contact Person:</label>
-          <input type="name" [(ngModel)]="user.contactPerson" placeholder="Contact Person" name="contactPerson" class="form-control" id="contactPerson">
-        </div>
-      </mat-card>
-        <mat-card>
-        <div class="form-group">
-          <label for="mobileNumber">Mobile Number:</label>
-          <input type="number" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
-          <mat-error *ngIf="mobFormControl.errors?.pattern && !mobFormControl.hasError('required')">
-            Please enter a valid Valid Phone Number
-          </mat-error>
-          <mat-error *ngIf="mobFormControl.hasError('required')"> Phone Number is required </mat-error>
-        </div>
-      </mat-card> -->
-        <mat-card>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (change)="check()">
-            <label class="form-check-label" for="flexCheckDefault">
-              Confirmed and verified
-            </label>
-          </div>
-      </mat-card>
-        <mat-card>
-        <button mat-raised-button color="primary" class="btn btn-success" (click)="CreateEquipment()">Submit</button>
-      </mat-card>
-      </form>
+<div style="margin-left: 2%; margin-right: 2%;" [formGroup]="equipForm">
+  <mat-card>
+    <div fxLayout="row">
+      <div fxFlex="50%">
+        <mat-form-field appearance="outline" class="scheduler-field">
+          <mat-label class="mat-caption">Equipment Name</mat-label>
+          <input matInput placeholder="Equipment Name" formControlName="equipmentName">
+          <mat-error>Should be filled and have atleast 2 character</mat-error>
+        </mat-form-field>
       </div>
-  </div>
 
-
-
-
-<!-- <h1 style="text-align:center">War Room Dashboard</h1>
-<mat-grid-list cols="3" rowHeight= "3:1" >
-  <mat-grid-tile >
-      <button mat-stroked-button color="primary">
-      Add Resources </button>
-  </mat-grid-tile>
-  <mat-grid-tile>
-      <button mat-raised-button color="primary" routerLink="/closesos">Medical SOS</button>
-  </mat-grid-tile>
-  <mat-grid-tile >
-      <button mat-raised-button color="primary" routerLink=""> Verification</button>
-  </mat-grid-tile>
-<mat-grid-tile rowspan="2">
-<mat-list role="list">
-  <mat-list-item role="listitem">
-      <button style="margin-left: 40px;" mat-raised-button color="primary" routerLink="/addmedicine">Add Medicine</button>
-  </mat-list-item>
-  <mat-list-item role="listitem">
-      <button style="margin-left: 40px;" mat-stroked-button color="primary" routerLink="/addequipment">Add Medical Equipment</button>
-  </mat-list-item>
-  <mat-list-item role="listitem">
-      <button style="margin-left: 40px;" mat-raised-button color="primary" routerLink="/addbed">Add Bed</button>
-  </mat-list-item>
-</mat-list>
-</mat-grid-tile>
-<mat-grid-tile colspan="2" rowspan="6">
-<div class="container">
-  <div class="col-md-6">
-      <mat-card><h2 class="text-center">Add Equipment</h2></mat-card>
-      <form>
-        <mat-card>
-        <div class="form-group">
-          <label for="equipmentName">Equipment Name:</label>
-          <input type="name" [(ngModel)]="user.equipmentName" placeholder="Equipment Name" name="name" class="form-control" id="equipmentName">
-        </div>
-        </mat-card>
-        <mat-card>
-        <div class="form-group">
-          <label for="hospital">Hospital:</label>
-          <input [(ngModel)]="user.hospital" placeholder="Hospital" name="hospital" class="form-control" id="hospital">
-        </div>
-        </mat-card>
-        <mat-card>
-        <div class="form-group">
-          <label for="city">City:</label>
-          <input [(ngModel)]="user.city" placeholder="City Name" name="city" class="form-control" id="city">
-        </div>
-        </mat-card>
-        <mat-card>
-        <div class="form-group">
-          <label for="address">Address:</label>
-          <input type="name" [(ngModel)]="user.address" placeholder="Address" name="address" class="form-control" id="address">
-        </div>
-        </mat-card>
-
-        <mat-card>
-        <div class="form-group">
-          <label for="contactPerson">Contact Person:</label>
-          <input type="name" [(ngModel)]="user.contactPerson" placeholder="Contact Person" name="contactPerson" class="form-control" id="contactPerson">
-        </div>
-      </mat-card>
-        <mat-card>
-        <div class="form-group">
-          <label for="mobileNumber">Mobile Number:</label>
-          <input type="number" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
-          <mat-error *ngIf="mobFormControl.errors?.pattern && !mobFormControl.hasError('required')">
-            Please enter a valid Valid Phone Number
-          </mat-error>
-          <mat-error *ngIf="mobFormControl.hasError('required')"> Phone Number is required </mat-error>
-        </div>
-      </mat-card>
-        <mat-card>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            Click here only if it's verified
-          </label>
-        </div>
-      </mat-card>
-        <mat-card>
-        <button mat-raised-button color="primary" class="btn btn-success" (click)="CreateEquipment()">Submit</button>
-      </mat-card>
-      </form>
+      <div fxFlex="50%">
+        <mat-form-field appearance="outline" class="scheduler-field">
+          <mat-label class="mat-caption">Hospital</mat-label>
+          <input matInput placeholder="Hospital" formControlName="hospital">
+          <mat-error>Should be filled</mat-error>
+        </mat-form-field>
       </div>
-  </div>
-</mat-grid-tile>
-</mat-grid-list> -->
-
-
-
-
-
-
-
-
-<!--<div class="container">
-<div class="col-md-6">
-  <mat-card><h2 class="text-center">Add Equipment</h2></mat-card>
-  <form>
-    <mat-card>
-    <div class="form-group">
-      <label for="equipmentName">Equipment Name:</label>
-      <input type="name" [(ngModel)]="user.equipmentName" placeholder="Equipment Name" name="name" class="form-control" id="equipmentName">
     </div>
-    </mat-card>
-    <mat-card>
-    <div class="form-group">
-      <label for="hospital">Hospital:</label>
-      <input [(ngModel)]="user.hospital" placeholder="Hospital" name="hospital" class="form-control" id="hospital">
-    </div>
-    </mat-card>
-    <mat-card>
-    <div class="form-group">
-      <label for="city">City:</label>
-      <input [(ngModel)]="user.city" placeholder="City Name" name="city" class="form-control" id="city">
-    </div>
-    </mat-card>
-    <mat-card>
-    <div class="form-group">
-      <label for="address">Address:</label>
-      <input type="name" [(ngModel)]="user.address" placeholder="Address" name="address" class="form-control" id="address">
-    </div>
-    </mat-card>
 
-    <mat-card>
-    <div class="form-group">
-      <label for="contactPerson">Contact Person:</label>
-      <input type="name" [(ngModel)]="user.contactPerson" placeholder="Contact Person" name="contactPerson" class="form-control" id="contactPerson">
+    <div fxLayout="row">
+      <div fxFlex="50%">
+        <mat-form-field appearance="outline" class="scheduler-field">
+          <mat-label class="mat-caption">City</mat-label>
+          <input matInput placeholder="City" formControlName="city">
+          <mat-error>Should be filled</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50%">
+        <mat-form-field appearance="outline" class="scheduler-field">
+          <mat-label class="mat-caption">Address</mat-label>
+          <input matInput placeholder="Address" formControlName="address">
+          <mat-error>Should be filled</mat-error>
+        </mat-form-field>
+      </div>
     </div>
+
+    <div fxLayout="row">
+      <div fxFlex="50%">
+        <mat-form-field appearance="outline" class="scheduler-field">
+          <mat-label class="mat-caption">Contact Person</mat-label>
+          <input matInput placeholder="Contact Person" formControlName="contactPerson">
+          <mat-error>Should be filled and have atleat 3 character</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50%">
+        <mat-form-field appearance="outline" class="scheduler-field">
+          <mat-label class="mat-caption">Phone Number</mat-label>
+          <input matInput placeholder="Phone Number" formControlName="mobileNumber" maxlength="10">
+          <mat-error>Should be filled and have exactly 10 numbers</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center" >
+      <mat-checkbox (change)="check()">Confirmed and Verified</mat-checkbox>
+      <button mat-raised-button color="primary" [disabled]="!equipForm.valid" (click)="CreateEquipment()">Submit</button>
+    </div>
+
   </mat-card>
-    <mat-card>
-    <div class="form-group">
-      <label for="mobileNumber">Mobile Number:</label>
-      <input type="number" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
-    </div>
-  </mat-card>
-    <mat-card>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-      <label class="form-check-label" for="flexCheckDefault">
-        Click here only if it's verified
-      </label>
-    </div>
-  </mat-card>
-    <mat-card>
-    <button mat-raised-button color="primary" class="btn btn-success" (click)="CreateEquipment()">Submit</button>
-  </mat-card>
-  </form>
-  </div>
-</div>-->
+</div>

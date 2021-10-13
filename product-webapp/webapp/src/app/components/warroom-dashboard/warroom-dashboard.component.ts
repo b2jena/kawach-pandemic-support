@@ -11,12 +11,16 @@ export class WarroomDashboardComponent implements OnInit {
   title = 'Side';
   opened = false;
   verifyEquipment = false;
-  verifyMedicine = false;
+  verifyMedicine = true;
   verifyBed = false;
 
   closeEquip= false;
   closeMed = true;
   closeBed = false;
+
+  addMed= true;
+  addEquip= false;
+  addBed= false;
 
   constructor(private router: Router) { }
 
@@ -62,6 +66,24 @@ export class WarroomDashboardComponent implements OnInit {
     this.closeMed=false;
     this.closeEquip=false;
     this.closeBed=true;
+  }
+
+  addMedres() {
+    this.addMed=true;
+    this.addEquip=false;
+    this.addBed=false;
+  }
+
+  addEquipRes() {
+    this.addMed=false;
+    this.addEquip=true;
+    this.addBed=false;
+  }
+
+  addBedRes() {
+    this.addMed=false;
+    this.addEquip=false;
+    this.addBed=true;
   }
 
 
