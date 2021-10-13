@@ -31,7 +31,6 @@ export class MsgComponent implements OnInit {
   deleteMessage(a: any, b: any){
     this.router.navigateByUrl("/sos");
     this.messageService.deleteMessages(this.user).subscribe( data => {
-      // this.messageArray = data;
     });
   }
 }
