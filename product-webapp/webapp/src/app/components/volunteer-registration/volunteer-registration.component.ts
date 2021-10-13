@@ -22,7 +22,7 @@ export class VolunteerRegistrationComponent implements OnInit {
   profileForm = this.formBuilder.group({
     emailId: new FormControl('', [Validators.required, Validators.email]),
     fullName: new FormControl('', [Validators.required]),
-    phoneNumber: new FormControl('', [Validators.minLength(10)]),
+    phoneNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{10}')]),
     password: new FormControl('', [Validators.required])
   });
 

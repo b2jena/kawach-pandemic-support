@@ -66,7 +66,7 @@ export class DoctorRegistrationComponent implements OnInit {
     fullName: new FormControl('', Validators.required),
     medicalRegistrationId: new FormControl('', Validators.required),
     code: new FormControl('', Validators.required),
-    phoneNumber: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
+    phoneNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{10}')]),
     specialization: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
