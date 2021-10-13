@@ -1,3 +1,4 @@
+// import { Requirement } from 'src/app/services/close-sos.service';
 import { Component, OnInit } from '@angular/core';
 import {
   Requirement,
@@ -100,7 +101,6 @@ export class SosRequestComponent implements OnInit {
   });
 
   public RequestList!: FormArray;
-  user1: Requirement = new Requirement('', '', '');
   list: Array<Requirement> = [];
   user: SOSRequest = new SOSRequest('', 'OPEN', '', this.list, '', '', '', '', '');
 

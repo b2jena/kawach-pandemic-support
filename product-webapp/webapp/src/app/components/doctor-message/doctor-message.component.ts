@@ -21,8 +21,7 @@ export class DoctorMessageComponent implements OnInit {
     }
   SendMessage(){
     this.messageService.SendMessage(this.user).subscribe(
-      data => {} );
-    this.GetMessage();
+      data => {window.location.reload();} );
   }
   GetMessage() {
     this.messageService.GetAllMessage(this.user).subscribe(data => {
