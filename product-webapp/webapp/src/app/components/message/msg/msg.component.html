@@ -1,15 +1,20 @@
-<button type="button" class="btn btn-danger" (click) = "deleteMessage(user.reciverName, user.senderName)">Close Chat</button>
+<div style="padding-left: 10px!important">
+<button type="button" class="btn btn-light" (click) = "deleteMessage(user.reciverName, user.senderName)">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+  </svg>
+  <span style="padding-left: 5px!important">Exit From Chat Window</span>
+</button>
+</div>
+
 <div class="container">
 <div class= "row" style="background-color: rgb(215, 235, 241) !important; margin-top: 15px;">
   <div class="container" >
     <div class="col-12" style="padding-right: 30px !important; padding-left: 12px !important">
       <div class= "row" >
         <div class= "d-flex flex-row" style="background: #64b5f6 !important">
-            <div class= "p-2 imgCol" style="margin-bottom: 10px !important">
-              <img src="https://www.svgrepo.com/show/26473/avatar.svg" class="circle">
-            </div>
-              <div class= "p-2 nameCol" style="margin-top: 18px !important">
-                <span>{{user.reciverName}}</span>
+              <div class= "p-2 nameCol" style="margin-top: 18px !important; margin-bottom: 18px !important">
+                <span>You are chatting with Dr.{{doctorEmail}}</span>
               </div>
         </div>
       </div>
@@ -18,7 +23,7 @@
 
 
   <div class="container" style="margin-top: 25px">
-    <div ngx-auto-scroll="10" observe-attributes class= "col-12 rowDiv" style="background-color: rgba(32, 197, 209, 0.336) !important">
+    <div ngx-auto-scroll="10" observe-attributes class= "col-12 rowDiv" style="background-color: rgba(32, 197, 209, 0.336) !important;  max-height: 300px!important; ">
       <div class= "row">
         <div class= "col-12">
           <div class= "message-wrapper" *ngFor="let message of messageArray">
@@ -44,12 +49,12 @@
     <div class="container" style="margin-top: 15px">
       <div class="col-12" style="margin:0px">
         <div class="row">
-            <div class="inputRow">
-              <form (ngSubmit) = "SendMessage()">
-                <div class ="input-group mb-3">
-                  <textarea name="message" [(ngModel)] = "user.messageBody" class="form-control" style="max-height: 50px !important"></textarea>
+            <div class="inputRow" >
+              <form   (ngSubmit) = "SendMessage()" #chatForm="ngForm">
+                <div class ="input-group mb-3" >
+                  <input  name="message"  [formControl]="nameFormControl" required [(ngModel)] = "user.messageBody" class="form-control"  style="color: aliceblue in !important; max-height: 50px !important">
                   <div class="input-group-append">
-                    <button class="btn btn-outline-primary" >Send</button>
+                    <button class="btn btn-outline-primary" [disabled] = "chatForm.invalid">Send</button>
                   </div>
                 </div>
               </form>

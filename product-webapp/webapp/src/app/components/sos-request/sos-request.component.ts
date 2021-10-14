@@ -1,3 +1,4 @@
+// import { Requirement } from 'src/app/services/close-sos.service';
 import { Component, OnInit } from '@angular/core';
 import {
   Requirement,
@@ -100,7 +101,6 @@ export class SosRequestComponent implements OnInit {
   });
 
   public RequestList!: FormArray;
-  user1: Requirement = new Requirement('', '', '');
   list: Array<Requirement> = [];
   user: SOSRequest = new SOSRequest('', 'OPEN', '', this.list, '', '', '', '', '');
 
@@ -129,6 +129,8 @@ export class SosRequestComponent implements OnInit {
 
   ngOnInit(): void {
     this.RequestList = this.patientForm.get('requirement') as FormArray;
+    const patientEmail=localStorage.getItem("paitentEmail");
+    this.user.email = patientEmail;
   }
 
   get contactFormGroup() {

@@ -32,26 +32,27 @@
       <form [formGroup]="profileForm">
       <div style="text-align: center;">  
         
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" style="width: 300px;">
               <mat-label floatLabel="auto"> Email ID: </mat-label>
-              <input matInput [(ngModel)]="userobj.id" type="text" formControlName="email" [formControl]="email" required> 
-              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              <input matInput [(ngModel)]="userobj.id" type="text" formControlName="email" required> 
+              <mat-error *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched">Invalid email</mat-error>
             
           </mat-form-field>
       </div>  
       <div class="row" class="" style="text-align: center;">  
               
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" style="width: 300px;">
               <mat-label for="password"> Password: </mat-label>
-            <input matInput [(ngModel)]="userobj.password" type="password" formControlName="password" [formControl]="pass" required> 
-            <mat-error *ngIf="pass.invalid">{{getErrorPass()}}</mat-error>
+            <input matInput type="text" [(ngModel)]="userobj.password" [type]="hide ? 'password' : 'text'" formControlName="password" required> 
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="profileForm.get('password')?.invalid && profileForm.get('password')?.touched">Required field</mat-error>
           </mat-form-field>  
       </div>  
     </form>
     <mat-card-actions>
       <div class="row" style="margin-top: 20px; text-align: center;">  
         <div class="col-md-offset-1">  
-            <button mat-raised-button color="primary" class="btn btn-md btn-primary btn-style" (click)=login() >Login</button>  
+            <button mat-raised-button color="primary" class="btn btn-md btn-primary btn-style" (click)=login() [disabled]="!profileForm.valid">Login</button>  
         </div>  
       </div>  
     </mat-card-actions>

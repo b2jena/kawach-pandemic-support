@@ -13,7 +13,9 @@ import java.util.List;
 @Service
 public class DoctorServiceImpl implements DoctorService{
     private DoctorRepository doctorRepository;
+    //Autowiring the redis template to use the redis database.
     private RedisTemplate redisTemplate;
+    //defining the Hash key for the redis db.
     public static final String HASH_KEY="Doctor";
 
     @Autowired
@@ -23,12 +25,13 @@ public class DoctorServiceImpl implements DoctorService{
     }
 
 
-
+    //method to save he doctor information into the mongodb database.
     @Override
     public Doctor saveDoctorMongoDB(Doctor doctor) {
         return doctorRepository.save(doctor);
     }
 
+    //To get the doctor information from mongodb
     @Override
     public Doctor getDoctorByEmailId(String emailId) throws DoctorNotFoundException {
         Doctor doctor = doctorRepository.findByEmailId(emailId);
@@ -40,12 +43,13 @@ public class DoctorServiceImpl implements DoctorService{
             return doctor;
         }
     }
-
+    //To get all doctors present in the mongoDB databse
     @Override
     public List<Doctor> getAllDoctors() {
         return doctorRepository.findAll();
     }
 
+    //To save the doctor form mongodb to redis.
     @Override
     public void saveDoctorRedis(String emailId) throws DoctorNotFoundException, DoctorAlreadyPresentException {
         Doctor doctor = doctorRepository.findByEmailId(emailId);
@@ -53,6 +57,7 @@ public class DoctorServiceImpl implements DoctorService{
 
 }
 
+    //To delete the doctor databse from redis.
     @Override
     public void deleteDoctorRedis(String emailId) throws DoctorNotFoundException {
         if(!redisTemplate.opsForHash().hasKey(HASH_KEY, emailId))
@@ -64,6 +69,7 @@ public class DoctorServiceImpl implements DoctorService{
         }
     }
 
+    //To get all the redis doctors.
     @Override
     public List<Doctor> getAllDoctorRedis() {
         return redisTemplate.opsForHash().values(HASH_KEY);

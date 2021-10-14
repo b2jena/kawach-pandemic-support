@@ -35,7 +35,8 @@ export class DoctorRegistrationComponent implements OnInit {
     {value: 'Infectious Disease Specialist'},
     {value: 'Neurologist'},
     {value: 'Pediatrician'},
-    {value: 'Psychiatrist'}
+    {value: 'Psychiatrist'},
+    {value: 'Other'}
   ];
 
   code: NumberCode[] = [
@@ -44,7 +45,6 @@ export class DoctorRegistrationComponent implements OnInit {
     {value: '+93'},
     {value: '+94'},
     {value: '+95'},
-    {value: '+91'},
     {value: '+1'},
     {value: '+31'},
     {value: '+32'},
@@ -62,13 +62,13 @@ export class DoctorRegistrationComponent implements OnInit {
 
 
   profileForm = this.formBuilder.group({
-    emailId: new FormControl('', [Validators.required, Validators.email]),
-    fullName: new FormControl('', Validators.required),
-    medicalRegistrationId: new FormControl('', Validators.required),
+    emailId: new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
+    fullName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    medicalRegistrationId: new FormControl('', [Validators.required, Validators.minLength(4)]),
     code: new FormControl('', Validators.required),
-    phoneNumber: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
+    phoneNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{10}')]),
     specialization: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
+    password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,15}$')]),
   });
 
 

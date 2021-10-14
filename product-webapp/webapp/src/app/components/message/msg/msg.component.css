@@ -104,7 +104,8 @@ input,
 textarea,
 .item-input,
 .item-input-wrapper {
-  background: #64b5f6;
+  background: #fffefe;
+  border: 1px solid;
   height: 38px;
 }
 .text-input {
@@ -143,13 +144,6 @@ a.autolinker {
   height: 38px;
 }
 
-emoji-picker {
-  width: 100% !important;
-  right: 6px;
-}
-emoji-content {
-  width: 100% !important;
-}
 
 .emojiBtn {
   font-size: 20px !important;

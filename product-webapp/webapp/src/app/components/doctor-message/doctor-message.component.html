@@ -4,11 +4,8 @@
       <div class="col-12" style="padding-right: 30px !important; padding-left: 12px !important">
         <div class= "row" >
           <div class= "d-flex flex-row" style="background: #64b5f6 !important">
-              <div class= "p-2 imgCol" style="margin-bottom: 10px !important">
-                <img src="https://www.svgrepo.com/show/26473/avatar.svg" class="circle">
-              </div>
-                <div class= "p-2 nameCol" style="margin-top: 18px !important">
-                  <span>{{user.reciverName}}</span>
+                <div class= "p-2 nameCol" style="margin-top: 18px !important; margin-bottom: 18px !important">
+                  <span>Patient</span>
                 </div>
           </div>
         </div>
@@ -17,7 +14,7 @@
 
 
     <div class="container" style="margin-top: 25px">
-      <div ngx-auto-scroll="10" observe-attributes class= "col-12 rowDiv" style="background-color: rgba(32, 197, 209, 0.336) !important">
+      <div ngx-auto-scroll="10" observe-attributes class= "col-12 rowDiv" style="background-color: rgba(32, 197, 209, 0.336) !important; max-height: 200px!important;">
         <div class= "row">
           <div class= "col-12">
             <div class= "message-wrapper" *ngFor="let message of messageArray">

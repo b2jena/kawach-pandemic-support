@@ -3,6 +3,10 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {UserRegistrationService, Volunteer } from 'src/app/services/user-registration.service';
 
+interface NumberCode{
+  value: string;
+}
+
 @Component({
   selector: 'app-volunteer-registration',
   templateUrl: './volunteer-registration.component.html',
@@ -15,22 +19,34 @@ export class VolunteerRegistrationComponent implements OnInit {
   hide = true;
   action = '';
 
+  code: NumberCode[] = [
+    {value: '+91'},
+    {value: '+92'},
+    {value: '+93'},
+    {value: '+94'},
+    {value: '+95'},
+    {value: '+1'},
+    {value: '+31'},
+    {value: '+32'},
+    {value: '+33'},
+  ];
+
 
   constructor(private userService: UserRegistrationService, private snackBar: MatSnackBar, private formBuilder: FormBuilder) {
   }
 
   profileForm = this.formBuilder.group({
-    emailId: new FormControl('', [Validators.required, Validators.email]),
-    fullName: new FormControl('', [Validators.required]),
-    phoneNumber: new FormControl('', [Validators.minLength(10)]),
-    password: new FormControl('', [Validators.required])
+    emailId: new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
+    fullName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    phoneNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{10}')]),
+    password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,15}$')])
   });
 
   ngOnInit(): void {
   }
 
   createVolunteer(): void{
-    this.userService.createVolunteer(this.user).subscribe(
+    this.userService.createVolunteer(this.profileForm.value).subscribe(
       (data) => {this.snackBar.open((this.message = data).toString(), this.action, {
         duration: 3000,
       horizontalPosition: 'center',

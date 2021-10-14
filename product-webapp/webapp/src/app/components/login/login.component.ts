@@ -20,11 +20,12 @@ export class LoginComponent implements OnInit {
   }
 
   profileForm = this.formBuilder.group({
-    email: [''],
-    password: ['']
+    email: ['', [Validators.required]],
+    password: ['', [Validators.required]]
   });
 
   key: any;
+  hide = true;
 
   obj: string[] = new Array('','','','');
   userobj: User = new User('', '');
@@ -36,14 +37,14 @@ export class LoginComponent implements OnInit {
 
 
   async login(): Promise<any> {
-      if (this.userobj.id === '' || this.email.invalid){
-          this.loginService.showsnackbar('Email ID cannot be empty');
-          this.loginService.showsnackbar(this.getErrorMessage());
-        }
-      else if (this.userobj.password === '' || this.pass.invalid){
-          this.loginService.showsnackbar(this.getErrorPass());
-        }
-      else{
+      // if (this.userobj.id === '' || this.email.invalid){
+      //     // this.loginService.showsnackbar('Email ID cannot be empty');
+      //     this.loginService.showsnackbar(this.getErrorMessage());
+      //   }
+      // else if (this.userobj.password === '' || this.pass.invalid){
+      //     this.loginService.showsnackbar(this.getErrorPass());
+      //   }
+      // else{
         this.loginService.login(this.userobj).subscribe((data)=> {
           console.log("login data:", data);
           this.obj=data;
@@ -80,7 +81,7 @@ export class LoginComponent implements OnInit {
           //   this.loginService.showsnackbar('Error: ' + this.obj[0]);
           // }
       
-        }
+        // }
       }
 
   routetoDash(role: string): void{

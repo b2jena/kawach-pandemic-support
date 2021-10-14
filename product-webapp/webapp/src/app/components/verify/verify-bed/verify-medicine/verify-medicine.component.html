@@ -34,8 +34,9 @@
         </tbody>
     </table>
 
-    <button class="btn btn-primary ml-8 mr-4" (click)="putVerified()">Verify this data</button>
-    <button class="btn btn-primary" (click)="passOn()">Pass on this data</button>
+    <p>**Resources are fetched randomly**</p>
+    <button class="btn btn-primary ml-8 mr-4" (click)="putVerified()" matTooltip="Verify this resource">Verify this data</button>
+    <button class="btn btn-primary" (click)="passOn()" matTooltip="Fetch next unverified resource">Next resource</button>
 </div>
 </mat-card>
 

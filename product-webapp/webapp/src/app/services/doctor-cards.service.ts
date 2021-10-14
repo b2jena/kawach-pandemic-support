@@ -17,8 +17,8 @@ export class DoctorCardsService {
   GetOnlineDoctors(){
     return this.httpService.get<DoctorRedis[]>('/api/v1/doctor/doctor');
   }
-  public deleteEmployee(doctor: Doctor) {
-    return this.httpService.delete<DoctorRedis>('/api/v1/doctor/doctor/' + doctor.emailId);
+  public deleteDoc(doctor: Doctor) {
+    return this.httpService.delete<DoctorRedis>('/api/v1/doctor/' + doctor.emailId);
   }
   public deleteDoctor(emailId: string) {
     return this.httpService.delete<DoctorRedis>('/api/v1/doctor/doctor/' + emailId);

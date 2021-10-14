@@ -14,7 +14,7 @@ public class RabbitMqSender {
     private static final Logger logger = LoggerFactory.getLogger(RabbitMqSender.class);
 
     @Autowired
-    public RabbitMqSender(RabbitTemplate rabbitTemplate, RabbitTemplate rabbitTemplate1) {
+    public RabbitMqSender(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
 

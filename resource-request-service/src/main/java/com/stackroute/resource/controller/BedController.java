@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 @CrossOrigin(value="*")
@@ -26,18 +27,16 @@ public class BedController {
 
     @PostMapping("bed/create/{addBy}")
     public ResponseEntity<Beds> saveBed(@RequestBody Beds beds,@PathVariable ("addBy") String addBy) throws NullValueException {
-        //System.out.println("bikash"+beds.getBedType());
-
+        Logger logger = Logger.getLogger(BedController.class.getName());
         try{
             rabbitMqSender.sendVolunteer(addBy, "Create_Bed_Resource");
             Beds savedBeds = bedService.saveBed(beds);
 
             return new ResponseEntity<>(savedBeds, HttpStatus.CREATED);
-        } catch (Exception exc){
-            System.out.println(exc);
+        } catch (Exception e){
+            logger.info(e + " encountered");
             return new ResponseEntity<>(null, HttpStatus.CONFLICT);
         }
-
     }
 
     @GetMapping("bed/getAll")
