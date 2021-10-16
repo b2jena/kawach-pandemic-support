@@ -23,9 +23,6 @@ public class RabbitMqService implements RabbitListenerConfigurer {
 
     @RabbitListener(queues = "${spring.rabbitmq.queue}")
     public void recievedMessage(String userDetails) {
-
-        System.out.println("received:"+userDetails);
-
         String[] parts=userDetails.split(", ");
         doctor=new Doctor(parts[0],parts[1],parts[2]);
         doctorService.saveDoctorMongoDB(doctor);
