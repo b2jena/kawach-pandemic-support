@@ -18,7 +18,7 @@ export class VolunteerRevertComponent implements OnInit {
   volunteers: Volunteer[] = [];
   displayedColumns: string[] = ['volunteerEmailId', 'score', 'level'];
   dataSource = new MatTableDataSource<Volunteer>([]);
-  // dataSource = this.volunteers;
+  
 
 
 
@@ -30,7 +30,6 @@ export class VolunteerRevertComponent implements OnInit {
     this.httpService.get<Volunteer[]>('/api/v1/volunteer/volunteers').subscribe(
       (response) => {
         console.log(response);
-        // this.volunteers = response;
 
         this.volunteers = response;
         this.volunteers.sort((a, b) => b.score - a.score);

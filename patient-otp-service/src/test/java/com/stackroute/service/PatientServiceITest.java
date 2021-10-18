@@ -42,6 +42,5 @@ class PatientServiceITest {
         assertEquals(userlist, userlist);
         verify(patientRepo,times(1)).save(user);
         verify(patientRepo,times(1)).findAll();
-
     }
 }

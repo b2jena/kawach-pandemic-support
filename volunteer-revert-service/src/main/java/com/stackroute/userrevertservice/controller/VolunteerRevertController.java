@@ -5,6 +5,7 @@ import com.stackroute.userrevertservice.model.Volunteer;
 import com.stackroute.userrevertservice.model.VolunteerIncoming;
 import com.stackroute.userrevertservice.service.VolunteerRevertService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,15 +18,18 @@ import java.util.List;
 public class VolunteerRevertController {
     private VolunteerRevertService volunteerRevertService;
 
+    @Value("${data.controller.successMessage}")
+    private String successMessage;
+
     @Autowired
     public VolunteerRevertController(VolunteerRevertService volunteerRevertService) {
         this.volunteerRevertService = volunteerRevertService;
     }
 
-    @PostMapping("/revert")
+    @PostMapping("revert")
     public ResponseEntity<String> volunteerRevert(@RequestBody VolunteerIncoming volunteerIncoming) {
         volunteerRevertService.volunteerRevertUpdate(volunteerIncoming);
-        return new ResponseEntity<String>("Volunteer details have been updated", HttpStatus.OK);
+        return new ResponseEntity<String>(successMessage, HttpStatus.CREATED);
     }
 
     @GetMapping("/volunteers")
