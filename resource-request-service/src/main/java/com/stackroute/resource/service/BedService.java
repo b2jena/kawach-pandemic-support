@@ -16,4 +16,6 @@ public interface BedService {
     List<Beds> getAllBedsByCity(String city, String requirement);
 
     void updateBed(UUID bedId);
+
+
 }

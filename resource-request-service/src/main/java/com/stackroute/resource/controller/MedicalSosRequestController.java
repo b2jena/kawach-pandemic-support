@@ -15,25 +15,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+
+/*This is a controller class containing Api of saving, fetching, updating and deleting the SOS Requests  from mongoDB database
+ * This class is annotated with @RestController, @CrossOrigin and @RequestMapping annotation*/
+
+
 @RestController
 @CrossOrigin(value="*")
 @RequestMapping("api/v1/resource/")
 public class MedicalSosRequestController {
+
     private MedicalSosRequestService medicalSosRequestService;
     private ResourceService resourceService;
     private BedService bedService;
     private EquipmentService equipmentService;
     private RabbitMqSender rabbitMqSender;
 
+    /*This is to create a logger object by which we can call the functionality of the logger class.*/
     private static final Logger logger = LoggerFactory.getLogger(MedicalSosRequestController.class);
 
+    /*Medical Sos Request Service, Resource Service, Equipment Service, Bed Service, Rabbit Mq Sender is injected in this controller class by @Autowired annotation*/
     @Autowired
-    public MedicalSosRequestController(MedicalSosRequestService medicalSosRequestService, ResourceService resourceService, EquipmentService equipmentService, BedService bedService) {
-        this.medicalSosRequestService = medicalSosRequestService;
-        this.resourceService = resourceService;
-        this.equipmentService = equipmentService;
-        this.bedService = bedService;
-    }
     public MedicalSosRequestController(MedicalSosRequestService medicalSosRequestService, ResourceService resourceService, EquipmentService equipmentService, BedService bedService, RabbitMqSender rabbitMqSender){
         this.medicalSosRequestService = medicalSosRequestService;
         this.resourceService = resourceService;
@@ -43,10 +45,16 @@ public class MedicalSosRequestController {
     }
 
 
+    /*This Post Mapping method is responsible for saving the SOS Request in the mongoDB repository*/
     @PostMapping("sos/createSos")
     public ResponseEntity<MedicalSosRequest> saveSosRequest(@RequestBody MedicalSosRequest medicalSosRequest) {
-        MedicalSosRequest savedSosRequest = medicalSosRequestService.saveSosRequest(medicalSosRequest);
-        return new ResponseEntity<>(savedSosRequest, HttpStatus.CREATED);
+        try {
+            MedicalSosRequest savedSosRequest = medicalSosRequestService.saveSosRequest(medicalSosRequest);
+            return new ResponseEntity<>(savedSosRequest, HttpStatus.CREATED);
+        } catch (Exception exception) {
+            logger.error("Failed to save SOS Request");
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
     }
 
     @GetMapping("sos/getMedSOS")
@@ -166,8 +174,8 @@ public class MedicalSosRequestController {
 
     @PutMapping("sos/updateStatus")
     public void closeSOS(@RequestBody MedicalSosRequest sos) {
-        logger.info("Message from frontend when closing:"+sos.getFormStatus());
-        String message = sos.getFormStatus()+"&&"+sos.getEmail();
+        logger.info("Message from frontend when closing:"+sos.getStrFormStatus());
+        String message = sos.getStrFormStatus()+"&&"+sos.getStrEmail();
         rabbitMqSender.send(message);
         medicalSosRequestService.closeSOS(sos.getRequestId());
     }

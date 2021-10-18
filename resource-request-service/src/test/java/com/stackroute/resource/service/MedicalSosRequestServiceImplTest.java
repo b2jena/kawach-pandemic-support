@@ -1,6 +1,5 @@
 package com.stackroute.resource.service;
 
-import com.stackroute.resource.exception.NullValueException;
 import com.stackroute.resource.model.MedicalSosRequest;
 import com.stackroute.resource.model.Requirement;
 import com.stackroute.resource.repository.MedicalSosRequestRepository;
@@ -22,10 +21,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-
+/*This is to test the Medical SOS Request Service Implementation class */
 @ExtendWith(MockitoExtension.class)
 class MedicalSosRequestServiceImplTest {
 
+    /*This is to mock the mongoDB repository*/
     @Mock
     private MedicalSosRequestRepository repository;
 
@@ -37,6 +37,7 @@ class MedicalSosRequestServiceImplTest {
     private Optional optional;
     SequenceGeneratorService sequenceGeneratorService;
 
+    /*This will run before each test.*/
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
@@ -49,13 +50,15 @@ class MedicalSosRequestServiceImplTest {
         optional = Optional.of(medicalSosRequest);
     }
 
+    /*This will run after each test.*/
     @AfterEach
     public void tearDown() {
         medicalSosRequest = new MedicalSosRequest();
     }
 
+    /*This test is to save a Medical SOS Request after passing a valid SOS Request*/
     @Test
-    void givenMessageModelToSaveThenShouldReturnSavedMessageModel() throws NullValueException {
+    void givenMedicalSosRequestToSaveThenShouldReturnSavedMedicalSosRequest() throws Exception {
         when(repository.save(any())).thenReturn(medicalSosRequest);
         assertEquals(medicalSosRequest, messageService.saveSosRequest(medicalSosRequest))  ;
         verify(repository, times(1)).save(any());

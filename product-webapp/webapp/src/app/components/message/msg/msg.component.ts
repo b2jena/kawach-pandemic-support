@@ -33,20 +33,20 @@ export class MsgComponent implements OnInit {
   }
   SendMessage(){
     this.messageService.SendMessage(this.user).subscribe(
-      data => {
+      () => {
         // window.location.reload();
         this.user.messageBody = '';
       });
     }
 
   GetMessage() {
-    this.messageService.GetAllMessage(this.user).subscribe(data => {
+    this.messageService.GetAllMessage(this.user).subscribe((data: any) => {
       this.messageArray = data;
     });
   }
   deleteMessage(a: any, b: any){
     this.router.navigateByUrl("/sos");
-    this.messageService.deleteMessages(this.user).subscribe( data => {
+    this.messageService.deleteMessages(this.user).subscribe( () => {
     });
   }
 }

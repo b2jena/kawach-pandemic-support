@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/*This is a  configuration  class where all the Amazon S3 bucket configuration is described*/
 @Configuration
 public class StorageConfig {
 
@@ -20,6 +21,7 @@ public class StorageConfig {
     @Value("${cloud.aws.region.static}")
     private String region;
 
+    /*This is to create the bean file to configure the Amazon S3 bucket with credentials */
     @Bean
     public AmazonS3 s3Client() {
         AWSCredentials credentials = new BasicAWSCredentials(accessKey, accessSecret);

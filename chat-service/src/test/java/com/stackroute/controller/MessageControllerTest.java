@@ -29,10 +29,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/*This is to test the Message Controller class */
 @ExtendWith(MockitoExtension.class)
 class MessageControllerTest {
 
     private MockMvc mockMvc;
+    /*this is to mock the Message Service Implementation class in this test file*/
     @Mock
     MessageServiceImpl messageService;
     @InjectMocks
@@ -41,7 +43,7 @@ class MessageControllerTest {
     private Message message;
     private List<Message> messageList;
 
-
+/*This will run before each test.*/
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
@@ -55,11 +57,13 @@ class MessageControllerTest {
         messageList.add(message);
     }
 
+    /*This will run after each test.*/
     @AfterEach
     public void tearDown() {
         message = null;
     }
 
+    /*This test is to save a Message after passing a valid  Message*/
     @Test
     public void givenMessageModelToSaveThenShouldReturnSavedMessageModel() throws Exception {
         when(messageService. saveMessage(any())).thenReturn(message);
@@ -71,6 +75,7 @@ class MessageControllerTest {
         verify(messageService).saveMessage(any());
     }
 
+    /*This test is to fetch List of all Message after doing a get request*/
     @Test
     public void givenMessageModelToFindAllMessageModelThenShouldReturnSavedMessageModelList() throws Exception {
         List<Message> message =  messageService. getAllMessages("Debjit", "Bikash");

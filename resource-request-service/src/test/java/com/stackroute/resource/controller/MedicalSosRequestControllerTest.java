@@ -27,9 +27,12 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/*This is to test the Medical SOS Request Controller class */
 @ExtendWith(MockitoExtension.class)
 class MedicalSosRequestControllerTest {
     private MockMvc mockMvc;
+
+    /*this is to mock the Medical SOS Request Service Implementation class in this test file*/
     @Mock
     MedicalSosRequestServiceImpl messageService;
     @InjectMocks
@@ -39,7 +42,7 @@ class MedicalSosRequestControllerTest {
     private Requirement requirment;
     private List<MedicalSosRequest> messageModelList;
 
-
+    /*This will run before each test.*/
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
@@ -47,33 +50,35 @@ class MedicalSosRequestControllerTest {
         medicalSosRequest = new MedicalSosRequest();
         requirment = new Requirement();
         medicalSosRequest.setRequestId(UUID.randomUUID());
-        medicalSosRequest.setCity("Durgapur");
-        medicalSosRequest.setPatientName("Bikash");
-        medicalSosRequest.setPhoneNo("9832124814");
-        medicalSosRequest.setEmail("b2j1999@gmail.com");
-        medicalSosRequest.setHospitalised("Hospitalised");
-        medicalSosRequest.setRequestStatus("Medicine");
-        medicalSosRequest.setFormStatus("Open");
-        requirment.setRequirementName("DOLO650");
-        requirment.setRequirementQuantity("5");
-        requirment.setUnitOfMeasure("Files");
+        medicalSosRequest.setStrCity("Durgapur");
+        medicalSosRequest.setStrPatientName("Bikash");
+        medicalSosRequest.setStrPhoneNo("9832124814");
+        medicalSosRequest.setStrEmail("b2j1999@gmail.com");
+        medicalSosRequest.setStrHospitalised("Hospitalised");
+        medicalSosRequest.setStrRequestStatus("Medicine");
+        medicalSosRequest.setStrFormStatus("Open");
+        requirment.setStrRequirementName("DOLO650");
+        requirment.setStrRequirementQuantity("5");
+        requirment.setStrUnitOfMeasure("Files");
         ArrayList<Requirement> list = new ArrayList<Requirement>();
         list.add(requirment);
         list.add(new Requirement("Paracitemol", "20", "Pices"));
-        medicalSosRequest.setRequirement(list);
+        medicalSosRequest.setArrRequirement(list);
         messageModelList = new ArrayList<>();
         messageModelList.add(medicalSosRequest);
     }
 
+    /*This will run after each test.*/
     @AfterEach
     public void tearDown() {
         medicalSosRequest = null;
     }
 
+    /*This test is to save a Medical SOS Request after passing a valid SOS Request*/
     @Test
-    public void givenMessageModelToSaveThenShouldReturnSavedMessageModel() throws Exception {
+    public void givenMedicalSosRequestToSaveThenShouldReturnSavedMedicalSosRequest() throws Exception {
         when(messageService. saveSosRequest(any())).thenReturn(medicalSosRequest);
-        mockMvc.perform(post("/sos/createSos")
+        mockMvc.perform(post("/api/v1/resource/sos/createSos")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(medicalSosRequest)))
                 .andExpect(status().isCreated())
@@ -81,6 +86,7 @@ class MedicalSosRequestControllerTest {
         verify(messageService).saveSosRequest(any());
     }
 
+/*This is responsible for converting the JSON data in to String data Format*/
     public static String asJsonString(final Object obj) {
         try {
             return new ObjectMapper().writeValueAsString(obj);

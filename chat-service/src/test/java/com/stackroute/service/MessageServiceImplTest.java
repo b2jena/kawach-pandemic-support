@@ -21,9 +21,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
+/*This is to test the Message Service Implementation class */
 @ExtendWith(MockitoExtension.class)
 class MessageServiceImplTest {
 
+    /*This is to mock the mongoDB repository*/
     @Mock
     private MessageRepository messageRepository;
 
@@ -33,6 +35,7 @@ class MessageServiceImplTest {
     private List<Message> MessageList;
     private Optional optional;
 
+    /*This will run before each test.*/
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
@@ -40,11 +43,13 @@ class MessageServiceImplTest {
         optional = Optional.of(message);
     }
 
+    /*This will run after each test.*/
     @AfterEach
     public void tearDown() {
         message = new Message();
     }
 
+    /*This test is to save a Message after passing a valid  Message*/
     @Test
     void givenMessageModelToSaveThenShouldReturnSavedMessageModel() throws Exception {
         when(messageRepository.save(any())).thenReturn(message);
@@ -52,6 +57,7 @@ class MessageServiceImplTest {
         verify(messageRepository, times(1)).save(any());
     }
 
+    /*This test is to fetch List of all Message*/
     @Test
     void givenGetAllMessagesThenShouldReturnListOfAllMessages() throws NullValueException {
         messageRepository.save(message);

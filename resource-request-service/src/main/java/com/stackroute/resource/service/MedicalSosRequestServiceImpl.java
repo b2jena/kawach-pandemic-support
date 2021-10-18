@@ -2,6 +2,8 @@ package com.stackroute.resource.service;
 
 import com.stackroute.resource.model.MedicalSosRequest;
 import com.stackroute.resource.repository.MedicalSosRequestRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -13,23 +15,36 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
+/*This is the implementation class of Medical SOS Request Service where abstract methods of  Medical SOS Request Service  are implemented*/
 @Service
 public class MedicalSosRequestServiceImpl implements MedicalSosRequestService {
+
+    /*This is to create a logger object by which we can call the functionality of the logger class.*/
+    Logger logger = LoggerFactory.getLogger(MedicalSosRequestServiceImpl.class.getName());
+
     MedicalSosRequestRepository medicalSosRequestRepository;
-    //ResourceRepository resourceRepository;
     SequenceGeneratorService sequenceGeneratorService;
+
+    /*Mongo Template is injected in this Medical SOS Request Service Implementation class by @Autowired annotation*/
     @Autowired
     MongoTemplate mongoTemplate;
 
+    /*Medical Sos Request Repository is injected in this Medical SOS Request Service Implementation class by @Autowired annotation*/
     @Autowired
     public MedicalSosRequestServiceImpl(MedicalSosRequestRepository medicalSosRequestRepository) {
         this.medicalSosRequestRepository = medicalSosRequestRepository;
     }
 
+    /*This Method is responsible for saving the SOS Requests in the mongoDB database */
     @Override
-    public MedicalSosRequest saveSosRequest(MedicalSosRequest medicalSosRequest) {
-        medicalSosRequest.setRequestId(UUID.randomUUID());
-        return medicalSosRequestRepository.save(medicalSosRequest);
+    public MedicalSosRequest saveSosRequest(MedicalSosRequest medicalSosRequest) throws Exception{
+        try {
+            medicalSosRequest.setRequestId(UUID.randomUUID());
+            return medicalSosRequestRepository.save(medicalSosRequest);
+        }catch (Exception e){
+            logger.error(String.valueOf(e));
+            throw  new Exception();
+        }
     }
 
     @Override
