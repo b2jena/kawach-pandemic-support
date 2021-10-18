@@ -61,5 +61,5 @@ class MessageServiceImplTest {
         verify(messageRepository, times(1)).save(message);
         verify(messageRepository, times(1)).findAll();
     }
-    
+
 }
