@@ -63,7 +63,7 @@ class MessageControllerTest {
     @Test
     public void givenMessageModelToSaveThenShouldReturnSavedMessageModel() throws Exception {
         when(messageService. saveMessage(any())).thenReturn(messageModel);
-        mockMvc.perform(post("/chat-messages/Debjit/Bikash")
+        mockMvc.perform(post("/api/v1/chat-messages/Debjit/Bikash")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(messageModel)))
                 .andExpect(status().isCreated())
@@ -74,7 +74,7 @@ class MessageControllerTest {
     @Test
     public void givenMessageModelToFindAllMessageModelThenShouldReturnSavedMessageModelList() throws Exception {
         List<MessageModel> messageModel =  messageService. getAllMessages("Debjit", "Bikash");
-        mockMvc.perform(get("/chat-messages/Debjit/Bikash"))
+        mockMvc.perform(get("/api/v1/chat-messages/Debjit/Bikash"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print());
     }

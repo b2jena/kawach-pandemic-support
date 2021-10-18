@@ -23,7 +23,6 @@ public class MessageController {
             MessageModel messageModels = messageService.saveMessage(messageModel);
             return new ResponseEntity<>(messageModels, HttpStatus.CREATED);
         } catch (Exception e) {
-            System.out.println(e);
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
     }

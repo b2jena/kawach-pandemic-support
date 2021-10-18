@@ -72,7 +72,7 @@ export class SosRequestComponent implements OnInit {
     { value: 'Liter', viewValue: 'Liter' },
     { value: 'Bottle', viewValue: 'Bottle' },
     { value: 'File', viewValue: 'File' },
-    { value: 'Pices', viewValue: 'Pices' },
+    { value: 'Pieces', viewValue: 'Pieces' },
     { value: 'Quantity', viewValue: 'Quantity'},
     { value: 'MiliLiter', viewValue: 'MiliLiter' },
 
