@@ -2,30 +2,7 @@
 
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="Medical SOS">
-    <!-- <div>
-      <mat-toolbar color="primary">
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
-          (click)="toggleSidebar()">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span>SOS Menu</span>
-        <span class="example-spacer"></span>
-      </mat-toolbar>
-      <mat-sidenav-container>
-        <mat-sidenav style="width: 25%;" mode="side" [opened]="opened">
-          <mat-action-list>
-            <button mat-list-item routerLink="/war-room-dashboard/sosmedicine" (click)="toggleSidebar()"> SOS Medicine
-            </button>
-            <button mat-list-item routerLink="/war-room-dashboard/sosequipment" (click)="toggleSidebar()"> SOS Equipment
-            </button>
-            <button mat-list-item routerLink="/war-room-dashboard/sosbed" (click)="toggleSidebar()"> SOS Beds </button>
-          </mat-action-list>
-        </mat-sidenav>
-        <div mat-sidenav-content style="height: 90vh; margin-left: 35px; align-items: center;">
-          <router-outlet></router-outlet>
-        </div>
-      </mat-sidenav-container>
-    </div> -->
+    
 
     <div fxLayout="row" fxLayoutAlign="space-around center">
       <div fxLayout="column" fxLayoutAlign="space-around stretch" fxFlex="20">
@@ -45,27 +22,7 @@
   </mat-tab>
 
   <mat-tab label="Verification">
-    <!-- <div>
-            <mat-toolbar color="primary">
-                <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleSidebar()">
-                 <mat-icon>menu</mat-icon>
-               </button>
-               <span>Verification Menu</span>
-               <span class="example-spacer"></span>
-             </mat-toolbar>
-        <mat-sidenav-container>
-            <mat-sidenav style="width: 25%;" mode="side" [opened]="opened">
-                <mat-action-list>
-                    <button mat-list-item routerLink="/war-room-dashboard/ver-medicine" (click)="toggleSidebar()"> Verify Medicine </button>
-                    <button mat-list-item routerLink="/war-room-dashboard/ver-equipment" (click)="toggleSidebar()"> Verify Equipment </button>
-                    <button mat-list-item routerLink="/war-room-dashboard/ver-bed" (click)="toggleSidebar()"> Verify Beds </button>
-                  </mat-action-list>
-                </mat-sidenav>
-                <div mat-sidenav-content style="height: 90vh; margin-left: 35px; align-items: center;">
-                    <router-outlet></router-outlet>
-                </div>
-              </mat-sidenav-container>
-            </div> -->
+    
     <div fxLayout="row" fxLayoutAlign="space-around center">
       <div fxLayout="column" fxLayoutAlign="space-around stretch" fxFlex="20">
         <button mat-raised-button [ngClass]="{'nav-button-active':verifyMedicine, 'nav-button-inactive':!verifyMedicine}" (click)="verMed()">

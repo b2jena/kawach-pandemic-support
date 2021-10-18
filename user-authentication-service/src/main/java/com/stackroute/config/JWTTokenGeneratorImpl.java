@@ -9,7 +9,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
 
-
+/*This class is implementing the methods of JWTTokenGenerator interface.*/
 @Service
 public class JWTTokenGeneratorImpl implements JWTTokenGenerator{
     @Value("${jwt.secret}")
@@ -18,6 +18,7 @@ public class JWTTokenGeneratorImpl implements JWTTokenGenerator{
     @Value("${app.jwttoken.message}")
     private String message;
 
+    /*This method is to generate and return the JWT*/
     @Override
     public String generateToken(User user) {
         String jwtToken;

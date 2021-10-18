@@ -2,6 +2,7 @@ package com.stackroute.domain;
 
 import javax.persistence.*;
 
+/*This is a model class for the 'User' entity. It contains an id and password, and a role (Doctor or Volunteer)*/
 
 @Entity
 @Table(name = "User")

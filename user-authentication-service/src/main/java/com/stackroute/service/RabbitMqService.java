@@ -10,10 +10,14 @@ import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/*Service layer to receive message via rabbitmq
+* */
 @Component
 public class RabbitMqService implements RabbitListenerConfigurer {
 
+    /*This is to create a logger object to implement functions of the Logger class*/
     private static final Logger logger = LoggerFactory.getLogger(RabbitMqService.class);
+
     private UserService userService;
     private User user2;
 
@@ -22,6 +26,9 @@ public class RabbitMqService implements RabbitListenerConfigurer {
         this.userService = userService;
     }
 
+    /*Method to receive user details from User Management Service and
+    store them in the database
+    * */
     @RabbitListener(queues = "${spring.rabbitmq.queue}")
     public void recievedMessage(String userDetails) {
 
@@ -39,6 +46,8 @@ public class RabbitMqService implements RabbitListenerConfigurer {
 
     }
 
+    /*configureRabbitListeners method is overridden
+    * */
     @Override
     public void configureRabbitListeners(RabbitListenerEndpointRegistrar rabbitListenerEndpointRegistrar) {
 
