@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-
+/*This is a controller class containing the API for receiving user details, searching and verifying
+* from the database and fetching a JWT in case of successful verification*/
 @RestController
 @RequestMapping("/api/v1/")
 @CrossOrigin(value="*")
@@ -22,6 +23,7 @@ public class UserController {
     private JWTTokenGenerator jwtTokenGenerator;
     ResponseEntity<?> responseEntity;
 
+    /*User Service and JWTTokenGenerator are injected here with @Autowired*/
     @Autowired
     public UserController(UserService userService, JWTTokenGenerator jwtTokenGenerator) {
         this.userService = userService;
@@ -40,7 +42,8 @@ public class UserController {
 
 
 
-
+    /*This PostMapping method is to verify user login credentials and return a JWT if verified
+    * or error message if not verified*/
     @PostMapping("login/user")
     public ResponseEntity<?> loginUser(@RequestBody Map<String, String> json) {
         try {

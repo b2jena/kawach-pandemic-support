@@ -24,8 +24,6 @@ export class LoginService {
       catchError(this.handleError);
       return null;
     }
-    // return this.http.post<string[]>('/api/v1/login/user', JSON.parse(jsonstr)).pipe(
-      // catchError(this.handleError) );
   }
 
   login(user: User) {

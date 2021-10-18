@@ -37,14 +37,6 @@ export class LoginComponent implements OnInit {
 
 
   async login(): Promise<any> {
-      // if (this.userobj.id === '' || this.email.invalid){
-      //     // this.loginService.showsnackbar('Email ID cannot be empty');
-      //     this.loginService.showsnackbar(this.getErrorMessage());
-      //   }
-      // else if (this.userobj.password === '' || this.pass.invalid){
-      //     this.loginService.showsnackbar(this.getErrorPass());
-      //   }
-      // else{
         this.loginService.login(this.userobj).subscribe((data)=> {
           console.log("login data:", data);
           this.obj=data;
@@ -61,28 +53,8 @@ export class LoginComponent implements OnInit {
               this.loginService.showsnackbar('Error: ' + this.obj[0]);
             }
         })
-          // const res= await this.loginService.genToken(this.userobj);
-          // console.log("res: ",res);
-          // this.obj= res;
-
-          // console.log("userobj in login(): ", this.userobj);
-          // console.log("this.obj[] after generateToken(): ",this.obj);
-          // console.log("this.obj[0] after generateToken(): ",this.obj[0]);
-          // if(this.obj[0] === ''){
-          //   this.loginService.showsnackbar("Error, please try again after some time");
-          // }
-          // else if (this.obj[0] === 'Success'){
-          //   this.loginService.showsnackbar(this.obj[0]);
-          //   this.storage.set(this.key, this.obj[1]);
-          //   this.routetoDash(this.obj[2]);
-          //   localStorage.setItem('loggedIn', this.obj[3]);
-          // }
-          // else{
-          //   this.loginService.showsnackbar('Error: ' + this.obj[0]);
-          // }
-      
-        // }
-      }
+  
+  }
 
   routetoDash(role: string): void{
     if ( role === 'Doctor'){
