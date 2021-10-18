@@ -1,6 +1,7 @@
 package com.stackroute.service;
 
-import com.stackroute.model.MessageModel;
+import com.stackroute.exception.NullValueException;
+import com.stackroute.model.Message;
 import com.stackroute.repository.MessageRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,39 +29,37 @@ class MessageServiceImplTest {
 
     @InjectMocks
     private MessageServiceImpl messageService;
-    private MessageModel message;
-    private List<MessageModel> MessageList;
+    private Message message;
+    private List<Message> MessageList;
     private Optional optional;
 
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        message = new MessageModel("User1", "User2", "Hi", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")));
+        message = new Message("User1", "User2", "Hi", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")));
         optional = Optional.of(message);
     }
 
     @AfterEach
     public void tearDown() {
-        message = new MessageModel();
+        message = new Message();
     }
 
     @Test
-    void givenMessageModelToSaveThenShouldReturnSavedMessageModel() {
+    void givenMessageModelToSaveThenShouldReturnSavedMessageModel() throws Exception {
         when(messageRepository.save(any())).thenReturn(message);
         assertEquals(message, messageService.saveMessage(message));
         verify(messageRepository, times(1)).save(any());
     }
 
     @Test
-    void givenGetAllMessagesThenShouldReturnListOfAllMessages(){
+    void givenGetAllMessagesThenShouldReturnListOfAllMessages() throws NullValueException {
         messageRepository.save(message);
-        List<MessageModel>MessageList = messageRepository.findAll();
-        List<MessageModel> messageList = messageService.getAllMessages(message.getSenderName(), message.getReciverName());
+        List<Message>MessageList = messageRepository.findAll();
+        List<Message> messageList = messageService.getAllMessages(message.getStrSenderName(), message.getStrReceiverName());
         assertEquals(MessageList, messageList);
         verify(messageRepository, times(1)).save(message);
         verify(messageRepository, times(1)).findAll();
     }
-
-
-
+    
 }

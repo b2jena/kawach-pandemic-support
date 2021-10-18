@@ -7,11 +7,10 @@ import java.util.logging.Logger;
 
 
 @SpringBootApplication
-public class App {
+public class ChatService {
     public static void main(String[] args) {
-        SpringApplication.run(App.class, args);
-        Logger logger = Logger.getLogger(App.class.getName());
-        logger.info("Server Started SuccessFuly");
-
+        SpringApplication.run(ChatService.class, args);
+        Logger logger = Logger.getLogger(ChatService.class.getName());
+        logger.info("Server Started Successfully");
     }
 }

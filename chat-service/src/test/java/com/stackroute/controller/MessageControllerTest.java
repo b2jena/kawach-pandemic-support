@@ -1,7 +1,7 @@
 package com.stackroute.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.stackroute.model.MessageModel;
+import com.stackroute.model.Message;
 import com.stackroute.service.MessageServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,34 +38,34 @@ class MessageControllerTest {
     @InjectMocks
     private MessageController messageController;
 
-    private MessageModel messageModel;
-    private List<MessageModel> messageModelList;
+    private Message message;
+    private List<Message> messageList;
 
 
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(messageController).build();
-        messageModel = new MessageModel();
-        messageModel.setSenderName("Debjit");
-        messageModel.setReciverName("Bikash");
-        messageModel.setMessageBody("Good Morning India");
-        messageModel.setFormattedDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")));
-        messageModelList = new ArrayList<>();
-        messageModelList.add(messageModel);
+        message = new Message();
+        message.setStrSenderName("Debjit");
+        message.setStrReceiverName("Bikash");
+        message.setStrMessageBody("Good Morning India");
+        message.setStrFormattedDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")));
+        messageList = new ArrayList<>();
+        messageList.add(message);
     }
 
     @AfterEach
     public void tearDown() {
-        messageModel = null;
+        message = null;
     }
 
     @Test
     public void givenMessageModelToSaveThenShouldReturnSavedMessageModel() throws Exception {
-        when(messageService. saveMessage(any())).thenReturn(messageModel);
+        when(messageService. saveMessage(any())).thenReturn(message);
         mockMvc.perform(post("/api/v1/chat-messages/Debjit/Bikash")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(messageModel)))
+                .content(asJsonString(message)))
                 .andExpect(status().isCreated())
                 .andDo(MockMvcResultHandlers.print());
         verify(messageService).saveMessage(any());
@@ -73,7 +73,7 @@ class MessageControllerTest {
 
     @Test
     public void givenMessageModelToFindAllMessageModelThenShouldReturnSavedMessageModelList() throws Exception {
-        List<MessageModel> messageModel =  messageService. getAllMessages("Debjit", "Bikash");
+        List<Message> message =  messageService. getAllMessages("Debjit", "Bikash");
         mockMvc.perform(get("/api/v1/chat-messages/Debjit/Bikash"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print());
