@@ -1,5 +1,5 @@
-import { Component, Inject, Injectable, OnInit } from '@angular/core';
-import { Validators, FormControl, FormBuilder } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService, User } from 'src/app/services/login.service';
 import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
@@ -11,14 +11,12 @@ import { SESSION_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 })
 export class LoginComponent implements OnInit {
 
-  email = new FormControl('', [Validators.required, Validators.email]);
-  pass = new FormControl('', [Validators.required]);
-
 
   constructor(private router: Router, private formBuilder: FormBuilder, private loginService: LoginService, @Inject(SESSION_STORAGE) private storage: WebStorageService) {
     console.log('In constructor', this.userobj);
   }
 
+  // Creating profileForm for email ID and password
   profileForm = this.formBuilder.group({
     email: ['', [Validators.required]],
     password: ['', [Validators.required]]
@@ -27,6 +25,7 @@ export class LoginComponent implements OnInit {
   key: any;
   hide = true;
 
+  // Creating objects to store user details (userobj) and to store data returned from back-end (obj)
   obj: string[] = new Array('','','','');
   userobj: User = new User('', '');
 
@@ -36,6 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
 
+  // Implementation of login on click, calls login() of LoginService and routes to dashboard
   async login(): Promise<any> {
         this.loginService.login(this.userobj).subscribe((data)=> {
           console.log("login data:", data);
@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
   
   }
 
+  // Method takes role of user as argument and routes to the corresponding dashboard
   routetoDash(role: string): void{
     if ( role === 'Doctor'){
       this.router.navigate(['/doctor-dashboard']);
@@ -64,17 +65,6 @@ export class LoginComponent implements OnInit {
       this.router.navigate( ['/war-room-dashboard'] );
     }
   }
-
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'Mandatory field- Email ID cannot be empty';
-    }
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
-
-  getErrorPass(){
-    return this.pass.hasError('required') ? 'Mandatory field- Password cannot be empty' : '';
-    }
 
   }
 
