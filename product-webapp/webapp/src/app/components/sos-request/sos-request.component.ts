@@ -127,6 +127,9 @@ export class SosRequestComponent implements OnInit {
     );
   }
 
+/*This Method is triggered when the page initializes, here aRequirment List is created
+*and the patient email id is stored in the email field of user class of type SOSRequest*/
+
   ngOnInit(): void {
     this.RequestList = this.patientForm.get('requirement') as FormArray;
     const patientEmail=localStorage.getItem("paitentEmail");
@@ -137,6 +140,8 @@ export class SosRequestComponent implements OnInit {
     return this.patientForm.get('requirement') as FormArray;
   }
 
+/*This Method is to create a Requirment array */
+
   createContact(): FormGroup {
     return this.fb.group({
       requirementName: [null, Validators.compose([Validators.required])],
@@ -145,9 +150,13 @@ export class SosRequestComponent implements OnInit {
     });
   }
 
+/*This button funtinality is used to add a new requirement feild in the UI*/
+
   AddRequirment() {
     this.RequestList.push(this.createContact());
   }
+
+/*This button funtinality is used to delete the last requirement feild from the UI*/
 
   removeRequest() {
     this.RequestList.removeAt(this.RequestList.length - 1);
@@ -183,6 +192,9 @@ export class SosRequestComponent implements OnInit {
     snack.onAction().subscribe(() => {
     });
   }
+
+
+/*This button funtinality is to make the post request and to Store the SOS Request in mongoDB data base*/
 
   Create(): void {
     if (

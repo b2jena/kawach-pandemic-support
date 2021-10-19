@@ -11,14 +11,17 @@ export class MessageService {
 
   constructor(private http: HttpClient) { }
 
+  /*This is to pass the message data from front end to backend with the help of a post request*/
   SendMessage(message: Message): Observable<any>{
     return this.http.post(`/api/v1/chat-messages/${message.senderName}/${message.reciverName}`, message);
   }
 
+  /*This is to fetching all the message data from backend with the help of a get request*/
   GetAllMessage(message: Message): Observable<any>{
     return this.http.get(`/api/v1/chat-messages/${message.senderName}/${message.reciverName}`);
   }
 
+  /*This is to deleting all the message data from backend with the help of a delete request*/
   deleteMessages(message: Message): Observable<any>{
     return this.http.delete(`/api/v1/chat-messages/${message.senderName}/${message.reciverName}`);
   }
