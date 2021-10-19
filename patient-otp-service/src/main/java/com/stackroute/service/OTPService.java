@@ -2,21 +2,28 @@ package com.stackroute.service;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import com.stackroute.exception.ErrorGeneratingOTP;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import com.google.common.cache.LoadingCache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 
+/*This is the Email service class wherein we define the logic to generate OTP.*/
 @Service
 public class OTPService {
-    // Otp Expiry time,i.e. 4 mins
+    /* Otp Expiry time,i.e. 4 mins*/
     private static final Integer EXPIRE_MINS = 4;
+    Logger logger = LoggerFactory.getLogger(OTPService.class.getName());
 
-    //Importing the LoadingCache to store the patient id and otp,
-    // as a key value pair, in the form of cache.
+
+    /*Importing the LoadingCache to store the patient id and otp,
+       as a key value pair, in the form of cache.*/
     private LoadingCache<String, Integer> otpCache;
 
-    //method to build the loading cache, with expiry time.
+    /*method to build the loading cache, with expiry time.*/
     public OTPService(){
         super();
         otpCache = CacheBuilder.newBuilder().
@@ -28,15 +35,22 @@ public class OTPService {
                 });
     }
 
-    //generate the otp and map it to the patient id.
-    public int generateOTP(String key){
-        Random random = new Random();
-        int otp = 100000 + random.nextInt(900000);
-        otpCache.put(key, otp);
-        return otp;
+    /*generate the otp and map it to the patient id.*/
+    public int generateOTP(String key) throws ErrorGeneratingOTP {
+        try{
+            Random random = new Random();
+            int otp = 100000 + random.nextInt(900000);
+            otpCache.put(key, otp);
+            return otp;
+        }
+        catch(Exception e)
+        {
+            logger.error("Error generating OTP");
+            throw new ErrorGeneratingOTP();
+        }
     }
 
-    //method to get the otp from the respective Patient id key.
+    /*method to get the otp from the respective Patient id key.*/
     public int getOtp(String key){
         try{
             return otpCache.get(key);
@@ -45,7 +59,7 @@ public class OTPService {
         }
     }
 
-    //To clear the key value pair from system.
+    /*To clear the key value pair from system.*/
     public void clearOTP(String key){
         otpCache.invalidate(key);
     }

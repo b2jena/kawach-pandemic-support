@@ -8,6 +8,10 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.UUID;
+/*
+ * This is a Model class, this contains equipmentId, equipmentName, city, hospital, address, contactPerson, mobileNumber, verificationStatus
+ * The Equipment Data will be stored in this format.
+ * */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

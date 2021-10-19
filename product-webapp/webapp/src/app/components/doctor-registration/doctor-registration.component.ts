@@ -78,7 +78,7 @@ export class DoctorRegistrationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+  /* This method is responsible for sending the doctor registration details to the backend and is triggered upon clicking the register button*/
   submitData() {
     console.log('form data:', this.profileForm.value);
     console.log('image:', this.selectedFile);
@@ -110,6 +110,7 @@ export class DoctorRegistrationComponent implements OnInit {
       );
   }
 
+  /*This method is triggered upon clicking on the upload file button and changes the target file to the selected file */
   fileChangeEvent(fileInput: any) {
     const imageIn = fileInput.target.files[0];
     this.selectedFile = imageIn;

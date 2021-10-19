@@ -5,6 +5,9 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/*This is a configuration class containing the method for routing incoming request to the required microservice
+ * This class is annotated with @Configuration and @Bean annotation*/
+
 @Configuration
 public class SpringCloudConfig {
 
@@ -19,7 +22,6 @@ public class SpringCloudConfig {
                 .route(r->r.path("/api/v1/user/**").uri("http://localhost:8090/"))
                 .route(r->r.path("/api/v1/volunteer/**").uri("http://localhost:8686/"))
                 .route(r->r.path("/api/v1/chat-messages/**").uri("http://localhost:8095/"))
-                //mention all the routes of all the services
                 .build();
     }
 

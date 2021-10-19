@@ -15,6 +15,7 @@ export class DoctorCardsComponent implements OnInit {
   ngOnInit(): void {
     this.doctorService.GetOnlineDoctors().subscribe(data => this.handleSuccessfulResponse(data));
   }
+  //Get all the online doctors and to get all the information about them.
   handleSuccessfulResponse(response: DoctorRedis[] )
 {
     this.doctors = response;
@@ -26,6 +27,7 @@ export class DoctorCardsComponent implements OnInit {
       });
     });
 }
+//To delete a particular doctors from databse.
 deleteDoctor(doctor: Doctor): void {
   this.doctorService.deleteDoc(doctor)
     .subscribe( data => {

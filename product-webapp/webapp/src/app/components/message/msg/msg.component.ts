@@ -16,7 +16,7 @@ export class MsgComponent implements OnInit {
   constructor(private messageService: MessageService, private route: ActivatedRoute, private router: Router) {}
 
 /*This Method is triggered when the page initializes, here GetMessage method is called in the interval of every 2 seconds
-*and doctor email is extrcting from the url and stored it in doctor mail.*/
+*and doctor email is extracting  from the url and stored it in doctor mail.*/
 
   ngOnInit(): void {
       setInterval(() => {

@@ -5,6 +5,6 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class DoctorAlreadyPresentException extends Exception{
+public class DatabaseEmptyException extends Exception{
     private String message;
 }

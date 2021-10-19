@@ -13,20 +13,25 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
+/* This is the implementation class of \
+ * ResourceService where abstract methods of  ResourceService  are implemented
+ */
 
 @Service
 public class ResourceServiceImpl implements ResourceService {
     private ResourceRepository resourceRepository;
     SequenceGeneratorService sequenceGeneratorService;
-
+    /*Mongo Template is injected in this ResourceService Implementation class by @Autowired annotation*/
     @Autowired
     MongoTemplate mongoTemplate;
 
+    /*ResourceRepository is injected in this ResourceService Implementation class by @Autowired annotation*/
     @Autowired
     public ResourceServiceImpl(ResourceRepository resourceRepository) {
         this.resourceRepository = resourceRepository;
     }
 
+    /*This method is responsible for saving the medicines in the mongoDB database */
     @Override
     public Resources saveResource(Resources resources) throws NullValueException {
         if (resources.getMedicineName() == null || resources.getPharmacy() == null || resources.getAddress() == null || resources.getCity() == null || resources.getContactPerson() == null || resources.getMobileNumber() == null) {

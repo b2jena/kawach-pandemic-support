@@ -56,7 +56,7 @@ export class SosRequestComponent implements OnInit {
     { value: '3', viewValue: 'Others' },
   ];
 
-  hospitaliseds: Hospitalised[] = [
+  hospitalised: Hospitalised[] = [
     { value: '1', viewValue: 'Hospitalised' },
     { value: '2', viewValue: 'Not Hospitalised' },
   ];
@@ -78,7 +78,7 @@ export class SosRequestComponent implements OnInit {
 
   ];
 
-  Quantityz: Quantitys[] = [
+  Quantityz: Quantity[] = [
     { value: '1', viewValue: '1' },
     { value: '2', viewValue: '2' },
     { value: '3', viewValue: '3' },
@@ -111,8 +111,8 @@ export class SosRequestComponent implements OnInit {
     private route: Router
   ) {}
 
-  get requirmentControl() {
-    return (this.patientForm.get('requirments') as FormArray).controls;
+  get requirementControl() {
+    return (this.patientForm.get('requirements') as FormArray).controls;
   }
 
   isErrorState(
@@ -127,7 +127,7 @@ export class SosRequestComponent implements OnInit {
     );
   }
 
-/*This Method is triggered when the page initializes, here aRequirment List is created
+/*This Method is triggered when the page initializes, here a Requirement List is created
 *and the patient email id is stored in the email field of user class of type SOSRequest*/
 
   ngOnInit(): void {
@@ -140,7 +140,7 @@ export class SosRequestComponent implements OnInit {
     return this.patientForm.get('requirement') as FormArray;
   }
 
-/*This Method is to create a Requirment array */
+/*This Method is to create a Requirement array */
 
   createContact(): FormGroup {
     return this.fb.group({
@@ -150,13 +150,13 @@ export class SosRequestComponent implements OnInit {
     });
   }
 
-/*This button funtinality is used to add a new requirement feild in the UI*/
+/*This button functionality is used to add a new requirement field in the UI*/
 
-  AddRequirment() {
+  AddRequirement() {
     this.RequestList.push(this.createContact());
   }
 
-/*This button funtinality is used to delete the last requirement feild from the UI*/
+/*This button functionality is used to delete the last requirement field from the UI*/
 
   removeRequest() {
     this.RequestList.removeAt(this.RequestList.length - 1);
@@ -194,7 +194,7 @@ export class SosRequestComponent implements OnInit {
   }
 
 
-/*This button funtinality is to make the post request and to Store the SOS Request in mongoDB data base*/
+/*This button functionality is to make the post request and to Store the SOS Request in mongoDB data base*/
 
   Create(): void {
     if (
@@ -253,7 +253,7 @@ interface Uoms{
   viewValue: string;
 }
 
-interface Quantitys{
+interface Quantity{
   value: string;
   viewValue: string;
 }

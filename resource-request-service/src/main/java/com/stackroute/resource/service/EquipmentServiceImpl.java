@@ -13,19 +13,26 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
+/*This is the implementation class of equipmentService where 
+ *abstract methods of  equipmentService  are implemented
+ */
 
 @Service
 public class EquipmentServiceImpl implements EquipmentService{
     private EquipmentRepository equipmentRepository;
     SequenceGeneratorService sequenceGeneratorService;
+
+    /*EquipmentRepository is injected in this EquipmentService Implementation class by @Autowired annotation*/
     @Autowired
     public EquipmentServiceImpl(EquipmentRepository equipmentRepository) {
         this.equipmentRepository = equipmentRepository;
     }
 
+    /*Mongo Template is injected in this equipmentService Implementation class by @Autowired annotation*/
     @Autowired
     MongoTemplate mongoTemplate;
 
+    /*This method is responsible for saving the equipments in the mongoDB database */
     @Override
     public Equipments saveEquipment(Equipments equipments) throws NullValueException {
         if (equipments.getEquipmentName() == null || equipments.getHospital() == null || equipments.getAddress() == null || equipments.getCity() == null || equipments.getContactPerson() == null || equipments.getMobileNumber() == null) {

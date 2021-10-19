@@ -28,14 +28,14 @@ class VolunteerRevertServiceServiceTest {
     private List<Volunteer> volunteerList;
 
     @Test
-    public void givenVolunteerToSave(){
+    public void givenVolunteerToSave() throws Exception {
         Volunteer volunteer = new Volunteer("abc@email.com", 700, "Level-2");
         volunteerRevertService.saveVolunteer(volunteer);
         verify(volunteerRevertRepository, times(1)).save(any());
     }
 
     @Test
-    public void givenGetAllVolunteersShouldReturnListOfAllVolunteers(){
+    public void givenGetAllVolunteersShouldReturnListOfAllVolunteers() throws Exception {
         volunteerRevertRepository.save(volunteer);
         when(volunteerRevertRepository.findAll()).thenReturn(volunteerList);
         List<Volunteer> volunteerList = volunteerRevertService.getAllVolunteers();
@@ -46,7 +46,7 @@ class VolunteerRevertServiceServiceTest {
     }
 
     @Test
-    public void givenVolunteerRevertUpdate(){
+    public void givenVolunteerRevertUpdate() throws Exception {
         VolunteerIncoming volunteerIncoming = new VolunteerIncoming("xyz@gmail.com", "xyz_type");
         volunteerRevertService.volunteerRevertUpdate(volunteerIncoming);
         verify(volunteerRevertRepository, times(1)).findById(volunteerIncoming.getEmailId());

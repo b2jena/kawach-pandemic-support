@@ -45,6 +45,9 @@ export class AddEquipmentComponent implements OnInit {
       console.log('This will be called when snackbar button clicked');
     });
   }
+  /* This button functionality is to make the 
+   * post request and to store the equipment in mongoDB database
+   */
     CreateEquipment(): void {
       this.equipForm.get('verificationStatus').setValue(this.isActive);
       console.log("data:", this.equipForm.value);
