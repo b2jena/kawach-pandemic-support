@@ -46,6 +46,10 @@ export class AddMedicineComponent implements OnInit {
       console.log('This will be called when snackbar button clicked');
     });
   }
+
+  /* This button functionality is to make the 
+   * post request and to store the medicine in mongoDB database
+   */
     CreateMedicine(): void {
       this.medForm.get('verificationStatus').setValue(this.isActive);
       console.log("data:", this.medForm.value);

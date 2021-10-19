@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.logging.Logger;
 
+/* This is a controller class containing Api of saving and fetching the 
+ * beds from mongoDB database.
+ * This class is annotated with @RestController, @CrossOrigin and @RequestMapping annotation
+ * 
+ */
 @RestController
 @CrossOrigin(value="*")
 @RequestMapping("api/v1/resource/")
@@ -19,12 +24,16 @@ public class BedController {
     private BedService bedService;
     private RabbitMqSender rabbitMqSender;
 
+    /* Bed Service, 
+     * Rabbit Mq Sender is injected in this controller class by @Autowired annotation
+     */
+
     @Autowired
     public BedController(BedService bedService, RabbitMqSender rabbitMqSender) {
         this.bedService = bedService;
         this.rabbitMqSender = rabbitMqSender;
     }
-
+    /*This Post Mapping method is responsible for saving bed in the mongoDB repository*/
     @PostMapping("bed/create/{addBy}")
     public ResponseEntity<Beds> saveBed(@RequestBody Beds beds,@PathVariable ("addBy") String addBy) throws NullValueException {
         Logger logger = Logger.getLogger(BedController.class.getName());

@@ -8,7 +8,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.UUID;
 
-
+/*
+ * This is a Model class, this contains Id, medicineName, city, pharmacy, address, contactPerson, mobileNumber, verificationStatus
+ * The Resource Data will be stored in this format.
+ * */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

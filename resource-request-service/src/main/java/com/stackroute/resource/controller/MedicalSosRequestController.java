@@ -117,7 +117,11 @@ public class MedicalSosRequestController {
 //        List<Beds> result = bedService.getAllBedsByCity(cityB);
 //        String message = "Beds" + result.get(0).getBedType() + " is available in myCity" + result.get(0).getVerificationStatus() + " address: " + result.get(0).getAddress() + " Kindly connect Mr/Mrs : " + result.get(0).getContactPerson() + " (Phone number: " + result.get(0).getMobileNumber() + "\n Get Well Soon, Stay safe.";
 //    }
-
+    /**
+     * This getAllMedicine controller method is used to fetch the available resources
+     * from the backend taking city and requirement as path variables.
+     * This is similar to that of getAllEquipment and getAllBeds
+     */
     @GetMapping("sos/getMed/{city}/{requirement}")
     public ResponseEntity<List<Resources>> getAllMedicine(@PathVariable("city") String city, @PathVariable("requirement") String requirement){
         List<Resources> result=resourceService.getAllMedicine(city, requirement);
@@ -156,7 +160,9 @@ public class MedicalSosRequestController {
         String message="Beds"+result.get(0).getBedType() + " is available in myCity"+result.get(0).getVerificationStatus() + " address: "+result.get(0).getAddress()+ " Kindly connect Mr/Mrs : "+result.get(0).getContactPerson()+" (Phone number: "+ result.get(0).getMobileNumber()+ "\n Get Well Soon, Stay safe.";
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
-
+    /**
+     * These 3 controller method call corresponding service methods.
+     */
     @GetMapping("sos/getSOSMed")
     public ResponseEntity<MedicalSosRequest> getSOSMed() {
         return new ResponseEntity<>(medicalSosRequestService.getSOSMed(), HttpStatus.OK);
@@ -172,6 +178,9 @@ public class MedicalSosRequestController {
         return new ResponseEntity<>(medicalSosRequestService.getSOSBed(), HttpStatus.OK);
     }
 
+    /**
+     * This method is called when a volunteer tries to close a form status.
+     */
     @PutMapping("sos/updateStatus")
     public void closeSOS(@RequestBody MedicalSosRequest sos) {
         logger.info("Message from frontend when closing:"+sos.getStrFormStatus());

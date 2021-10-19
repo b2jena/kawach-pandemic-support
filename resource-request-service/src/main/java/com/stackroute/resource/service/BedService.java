@@ -6,7 +6,9 @@ import com.stackroute.resource.model.Beds;
 import java.util.List;
 import java.util.UUID;
 
+/*This is the BedService class where abstract methods are declared*/
 public interface BedService {
+    /*This method will save bed in the mongoDB database */
     Beds saveBed(Beds beds) throws NullValueException;
 
     List<Beds> getAllBeds();

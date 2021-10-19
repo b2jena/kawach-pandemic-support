@@ -80,7 +80,10 @@ public class MedicalSosRequestServiceImpl implements MedicalSosRequestService {
         updateQuery.set("formStatus", "CLOSE");
         mongoTemplate.upsert(query, updateQuery, "SOSRequest");
     }
-
+    /**
+     * This method is used to fetch single sos whose type is medicine and form status in open.
+     * Only the sos whose status is open is fetched. These methods are fetched randomly.
+     */
     @Override
     public MedicalSosRequest getSOSMed() {
         Query query = new Query();
@@ -93,6 +96,10 @@ public class MedicalSosRequestServiceImpl implements MedicalSosRequestService {
         return sos.get(randomInd);
     }
 
+    /**
+     * This method is used to fetch single sos whose type is equipment and form status in open.
+     * Only the sos whose status is open is fetched. These methods are fetched randomly.
+     */
     @Override
     public MedicalSosRequest getSOSEquip() {
         Query query = new Query();
@@ -116,7 +123,7 @@ public class MedicalSosRequestServiceImpl implements MedicalSosRequestService {
         int randomInd = ThreadLocalRandom.current().nextInt(0, sos.size());
         return sos.get(randomInd);
     }
-
+    
     @Override
     public void closeSOS(UUID requestId) {
         Query query = new Query(Criteria.where("_id").is(requestId));

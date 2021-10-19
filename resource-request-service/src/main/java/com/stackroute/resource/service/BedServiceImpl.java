@@ -13,19 +13,20 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
-
+/*This is the implementation class of bedService where abstract methods of  bedService  are implemented*/
 @Service
 public class BedServiceImpl implements BedService{
     private BedRepository bedRepository;
     SequenceGeneratorService sequenceGeneratorService;
+    /*bedRepository is injected in this bedService Implementation class by @Autowired annotation*/
     @Autowired
     public BedServiceImpl(BedRepository bedRepository) {
         this.bedRepository = bedRepository;
     }
-
+    /*Mongo Template is injected in this bedService Implementation class by @Autowired annotation*/
     @Autowired
     MongoTemplate mongoTemplate;
-
+    /*This method is responsible for saving the beds in the mongoDB database */
     @Override
     public Beds saveBed(Beds beds) throws NullValueException {
         if (beds.getBedType() == null || beds.getAddress() == null || beds.getCity() == null || beds.getContactPerson() == null || beds.getMobileNumber() == null) {
