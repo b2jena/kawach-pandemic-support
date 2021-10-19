@@ -7,7 +7,7 @@ import com.stackroute.usermanagementservice.model.Doctor;
 /*Interface containing the methods that needs to be implemented in the implementation class*/
 
 public interface DoctorService {
-    Doctor saveDoctor(Doctor doctor) throws UserAlreadyExistsException, NullValueException;
+    Doctor saveDoctor(Doctor doctor) throws UserAlreadyExistsException, NullValueException, Exception;
 
-    Doctor getDoctorById(String id);
+    Doctor getDoctorById(String id) throws Exception;
 }

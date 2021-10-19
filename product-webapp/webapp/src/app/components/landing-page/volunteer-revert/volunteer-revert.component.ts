@@ -26,6 +26,7 @@ export class VolunteerRevertComponent implements OnInit {
     this.getVolunteers();
   }
 
+  /* This method makes a get request to the backend to retrieve the list of volunteer details and sorts those details based on score */
   getVolunteers(){
     this.httpService.get<Volunteer[]>('/api/v1/volunteer/volunteers').subscribe(
       (response) => {
