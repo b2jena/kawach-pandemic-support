@@ -83,40 +83,41 @@ public class MedicalSosRequestController {
         return new ResponseEntity<String>("updated successfully", HttpStatus.OK);
     }
 
-//    @GetMapping("sos/getRes/{city}")
-//    public ResponseEntity<List<Resources>> getAllMedicine(@PathVariable("city") String city) {
-//        return new ResponseEntity<List<Resources>>((List<Resources>) resourceService.getAllMedicine(city), HttpStatus.OK);
-//    }
+    /**
+     * This method contains the logic to get medicine sos details from the backend.
+     */
+    @GetMapping("sos/getSOSMed")
+    public ResponseEntity<MedicalSosRequest> getSOSMed() {
+        return new ResponseEntity<>(medicalSosRequestService.getSOSMed(), HttpStatus.OK);
+    }
 
-//    @GetMapping("sos/getEquipment/{city}")
-//    public ResponseEntity<List<Equipments>> getAllEquipment(@PathVariable("city") String city) {
-//        return new ResponseEntity<List<Equipments>>((List<Equipments>) equipmentService.getEquipmentByCity(city), HttpStatus.OK);
-//    }
+    /**
+     * This method contains the logic to get equipments sos details from the backend.
+     */
+    @GetMapping("sos/getSOSEquip")
+    public ResponseEntity<MedicalSosRequest> getSOSEquip() {
+        return new ResponseEntity<>(medicalSosRequestService.getSOSEquip(), HttpStatus.OK);
+    }
 
-//    @GetMapping("sos/getBeds/{city}")
-//    public ResponseEntity<List<Beds>> getAllBeds(@PathVariable("city") String city) {
-//        return new ResponseEntity<List<Beds>>((List<Beds>) bedService.getAllBedsByCity(city), HttpStatus.OK);
-//    }
+    /**
+     * This method contains the logic to get beds sos details from the backend.
+     */
+    @GetMapping("sos/getSOSBed")
+    public ResponseEntity<MedicalSosRequest> getSOSBed() {
+        return new ResponseEntity<>(medicalSosRequestService.getSOSBed(), HttpStatus.OK);
+    }
 
-//    @GetMapping("sos/printMessageMedicines/{city}")
-//    public ResponseEntity<String> getMessageMedicines(@PathVariable("city") String city) {
-//        List<Resources> result = resourceService.getAllMedicine(city);
-//        String message = "Medicine" + result.get(0).getMedicineName() + " is available in myCity" + result.get(0).getPharmacy() + " address: " + result.get(0).getAddress() + " Kindly connect Mr/Mrs : " + result.get(0).getContactPerson() + " (Phone number: " + result.get(0).getMobileNumber() + "\n Get Well Soon, Stay safe.";
-//        return ResponseEntity.status(HttpStatus.OK).body(message);
-//    }
+    /**
+     * This method is responsible for updating the MedicalSosRequest status to close.
+     */
+    @PutMapping("sos/updateStatus")
+    public void closeSOS(@RequestBody MedicalSosRequest sos) {
+        logger.info("Message from frontend when closing:"+sos.getStrFormStatus());
+        String message = sos.getStrFormStatus()+"&&"+sos.getStrEmail();
+        rabbitMqSender.send(message);
+        medicalSosRequestService.closeSOS(sos.getRequestId());
+    }
 
-//    @GetMapping("sos/printMessageEquipments/{cityE}")
-//    public ResponseEntity<String> getMessageEquipments(@PathVariable("cityE") String cityE) {
-//        List<Equipments> result = equipmentService.getEquipmentByCity(cityE);
-//        String message = "Equipment" + result.get(0).getEquipmentName() + " is available in myCity" + result.get(0).getVerificationStatus() + " address: " + result.get(0).getAddress() + " Kindly connect Mr/Mrs : " + result.get(0).getContactPerson() + " (Phone number: " + result.get(0).getMobileNumber() + "\n Get Well Soon, Stay safe.";
-//        return ResponseEntity.status(HttpStatus.OK).body(message);
-//    }
-
-//    @GetMapping("sos/printMessageBeds/{cityB}")
-//    public ResponseEntity<String> getMessageBeds(@PathVariable("cityB") String cityB) {
-//        List<Beds> result = bedService.getAllBedsByCity(cityB);
-//        String message = "Beds" + result.get(0).getBedType() + " is available in myCity" + result.get(0).getVerificationStatus() + " address: " + result.get(0).getAddress() + " Kindly connect Mr/Mrs : " + result.get(0).getContactPerson() + " (Phone number: " + result.get(0).getMobileNumber() + "\n Get Well Soon, Stay safe.";
-//    }
     /**
      * This getAllMedicine controller method is used to fetch the available resources
      * from the backend taking city and requirement as path variables.
@@ -128,18 +129,30 @@ public class MedicalSosRequestController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    /**
+     * This getAllEquipment controller method is used to fetch the available equipments
+     * from the backend taking city and requirement as path variables.
+     */
     @GetMapping("sos/getEquipment/{city}/{requirement}")
     public ResponseEntity<List<Equipments>> getAllEquipment(@PathVariable("city") String city, @PathVariable("requirement") String requirement){
         List<Equipments> result=equipmentService.getEquipmentByCity(city, requirement);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    /**
+     * This getAllBeds controller method is used to fetch the available beds
+     * from the backend taking city and requirement as path variables.
+     */
     @GetMapping("sos/getBeds/{city}/{requirement}")
     public ResponseEntity<List<Beds>> getAllBeds(@PathVariable("city") String city, @PathVariable("requirement") String requirement){
         List<Beds> result=bedService.getAllBedsByCity(city, requirement);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    /**
+     * This method is used to print the medicine details that is 
+     * available in our backend on the basis of city and requirement
+     */
     @GetMapping("sos/printMessageMedicines/{city}/{requirement}")
     public ResponseEntity<String> getMessageMedicines(@PathVariable("city") String city, @PathVariable("requirement") String requirement){
         List<Resources> result=resourceService.getAllMedicine(city, requirement);
@@ -147,6 +160,10 @@ public class MedicalSosRequestController {
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
 
+    /**
+     * This method is used to print the equipment details that is 
+     * available in our backend on the basis of city and requirement
+     */
     @GetMapping("sos/printMessageEquipments/{cityE}/{requirement}")
     public ResponseEntity<String> getMessageEquipments(@PathVariable("cityE") String cityE, @PathVariable("requirement") String requirement){
         List<Equipments> result=equipmentService.getEquipmentByCity(cityE, requirement);
@@ -154,38 +171,14 @@ public class MedicalSosRequestController {
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
 
+    /**
+     * This method is used to print the bed details that is 
+     * available in our backend on the basis of city and requirement
+     */
     @GetMapping("sos/printMessageBeds/{cityB}/{requirement}")
     public ResponseEntity<String> getMessageBeds(@PathVariable("cityB") String cityB, @PathVariable("requirement") String requirement){
         List<Beds> result=bedService.getAllBedsByCity(cityB, requirement);
         String message="Beds"+result.get(0).getBedType() + " is available in myCity"+result.get(0).getVerificationStatus() + " address: "+result.get(0).getAddress()+ " Kindly connect Mr/Mrs : "+result.get(0).getContactPerson()+" (Phone number: "+ result.get(0).getMobileNumber()+ "\n Get Well Soon, Stay safe.";
         return ResponseEntity.status(HttpStatus.OK).body(message);
-    }
-    /**
-     * These 3 controller method call corresponding service methods.
-     */
-    @GetMapping("sos/getSOSMed")
-    public ResponseEntity<MedicalSosRequest> getSOSMed() {
-        return new ResponseEntity<>(medicalSosRequestService.getSOSMed(), HttpStatus.OK);
-    }
-
-    @GetMapping("sos/getSOSEquip")
-    public ResponseEntity<MedicalSosRequest> getSOSEquip() {
-        return new ResponseEntity<>(medicalSosRequestService.getSOSEquip(), HttpStatus.OK);
-    }
-
-    @GetMapping("sos/getSOSBed")
-    public ResponseEntity<MedicalSosRequest> getSOSBed() {
-        return new ResponseEntity<>(medicalSosRequestService.getSOSBed(), HttpStatus.OK);
-    }
-
-    /**
-     * This method is called when a volunteer tries to close a form status.
-     */
-    @PutMapping("sos/updateStatus")
-    public void closeSOS(@RequestBody MedicalSosRequest sos) {
-        logger.info("Message from frontend when closing:"+sos.getStrFormStatus());
-        String message = sos.getStrFormStatus()+"&&"+sos.getStrEmail();
-        rabbitMqSender.send(message);
-        medicalSosRequestService.closeSOS(sos.getRequestId());
     }
 }

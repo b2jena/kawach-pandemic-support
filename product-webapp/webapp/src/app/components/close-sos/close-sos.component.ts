@@ -14,17 +14,14 @@ export class CloseSosComponent implements OnInit {
   isActive = false;
   count = 0;
   constructor(private closeSosService: CloseSosService, private dialog: MatDialog){ }
-  // ngOnInit() : void{
-  //   this.closeSosService.getSOSMed().subscribe(
-  //     response => this.handleSuccessfulResponse(response),
-  //   );
-  // }
   ngOnInit(): void {
     this.closeSosService.getSOSMed().subscribe(data => {
       console.log(this.closeSos = data);
     });
   }
-
+  /**
+   * This function is used to close a medical sos request
+   */
   close(message: string): void{
     this.closeSos.formStatus = message;
     this.closeSosService.closeSOS(this.closeSos).subscribe(data1 => {
@@ -34,7 +31,9 @@ export class CloseSosComponent implements OnInit {
       });
     }); 
   }
-
+ /**
+  * This function is used to pass a medical sos request
+  */
   pass(): void{
     this.count += 1;
     this.closeSosService.getSOSMed().subscribe(data => {
@@ -46,6 +45,9 @@ export class CloseSosComponent implements OnInit {
     this.isActive = !this.isActive;
   }
 
+  /**
+   * This function is used to search details of a particular resource
+   */
   search(){
     const messageDialog = this.dialog.open(SearchDialogComponent, {
       disableClose: true,
@@ -66,12 +68,4 @@ export class CloseSosComponent implements OnInit {
       }
     })
   }
-
-  // handleSuccessfulResponse(response: CloseSos){
-  //   this.closeSos = response;
-  // }
 }
-  // closeSos : any[];
-  // user1: Requirement = new Requirement('', '', '');
-  // list: Array<Requirement> = [];
-  // closeSos : CloseSos = new CloseSos('', '', '', this.list, '', '', '', '', '');
