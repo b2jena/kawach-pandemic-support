@@ -7,40 +7,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root'
 })
 export class UserRegistrationService {
-  
-  doctor: Doctor[] = [];
+
   volunteer: Volunteer[] = [];
 
   constructor(private httpService: HttpClient) { }
-
-  createDoctor(doctor: Doctor): Observable<Doctor>{
-    console.log(doctor);
-    return this.httpService.post<Doctor>('/api/v1/user/register/doctor', doctor);
-  }
 
   /* This method makes a post request to the backend to save the volunteer registration details */
   createVolunteer(volunteer: Volunteer): Observable<Volunteer>{
     console.log(volunteer);
     return this.httpService.post<Volunteer>('/api/v1/user/register/volunteer', volunteer);
   }
-}
-export class Doctor{
-
-  public emailId: string;
-  public fullName: string;
-  public medicalRegistrationId: string;
-  public phoneNumber: number;
-  public password: string;
-  public specialization: string;
-
-  constructor(emailId: string, fullName: string, medicalRegistrationId: string, phoneNumber: number, password: string, specialization: string) {
-    this.emailId = emailId;
-    this.fullName = fullName;
-    this.medicalRegistrationId = medicalRegistrationId;
-    this.phoneNumber = phoneNumber;
-    this.password = password;
-    this.specialization = specialization;
-}
 }
 
 export class Volunteer{

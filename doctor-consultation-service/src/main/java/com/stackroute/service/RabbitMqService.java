@@ -1,5 +1,6 @@
 package com.stackroute.service;
 
+import com.stackroute.exception.DoctorNotFoundException;
 import com.stackroute.model.Doctor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +23,7 @@ public class RabbitMqService implements RabbitListenerConfigurer {
     }
 
     @RabbitListener(queues = "${spring.rabbitmq.queue}")
-    public void recievedMessage(String userDetails) {
+    public void recievedMessage(String userDetails) throws DoctorNotFoundException {
         String[] parts=userDetails.split(", ");
         doctor=new Doctor(parts[0],parts[1],parts[2]);
         doctorService.saveDoctorMongoDB(doctor);

@@ -10,13 +10,16 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./patient-otp.component.css']
 })
 export class PatientOtpComponent implements OnInit {
+  //Initializing new Patient object
   patient: Patient = new Patient('');
   message = '';
   otp = '';
+  //validators for email
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
   ]);
+  //validators for otp
   otpFormControl = new FormControl('', [
     Validators.required
   ]);
@@ -24,12 +27,14 @@ export class PatientOtpComponent implements OnInit {
   }
   ngOnInit(): void {
   }
+  //Pop up snackbars
   showSnackbar(content: string, action: string) {
     const snack = this.snackbar.open(content, action, {
       duration: 2000,
       verticalPosition: 'top', // Allowed values are  'top' | 'bottom'
       horizontalPosition: 'center', // Allowed values are 'start' | 'center' | 'end' | 'left' | 'right'
     });
+    //Snackbar after closing
     snack.afterDismissed().subscribe(() => {
       console.log('This will be shown after snackbar disappeared');
     });
@@ -37,6 +42,7 @@ export class PatientOtpComponent implements OnInit {
       console.log('This will be called when snackbar button clicked');
     });
   }
+  //Creating a new Patient with email ID
     CreatePatient(): void {
       if (this.patient.email === '')
       {

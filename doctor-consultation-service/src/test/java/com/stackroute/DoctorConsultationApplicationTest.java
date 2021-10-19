@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class SpringEmailClientTest
+public class DoctorConsultationApplicationTest
 {
     /**
      * Rigorous Test :-)

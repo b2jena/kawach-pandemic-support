@@ -1,13 +1,15 @@
 package com.stackroute.service;
 
-import com.stackroute.entity.Patient;
-import com.stackroute.repository.PatientRepo;
+import com.stackroute.exception.NoEmailException;
+import com.stackroute.model.Patient;
+import com.stackroute.repository.PatientRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import javax.mail.MessagingException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,7 +20,7 @@ import static org.mockito.Mockito.times;
 @ExtendWith(MockitoExtension.class)
 class PatientServiceITest {
     @Mock
-    private PatientRepo patientRepo;
+    private PatientRepository patientRepository;
 
     @InjectMocks
     private PatientServiceImpl patientService;
@@ -26,21 +28,11 @@ class PatientServiceITest {
     private Patient user;
 
     @Test
-    public void givenUserToSaveShouldReturnSavedUser()
-    {
+    public void givenUserToSaveShouldReturnSavedUser() throws NoEmailException {
         Patient user = new Patient("godwinkhalko@gmail.com");
-        when(patientRepo.save(any())).thenReturn(user);
+        when(patientRepository.save(any())).thenReturn(user);
         patientService.saveUser(user);
-        verify(patientRepo, times(1)).save(any());
+        verify(patientRepository, times(1)).save(any());
     }
 
-    @Test
-    public void givenGetAllUsersShouldReturnListOfAllUsers() {
-        patientRepo.save(user);
-        when(patientRepo.findAll()).thenReturn(userList);
-        List<Patient> userlist = patientService.getAll();
-        assertEquals(userlist, userlist);
-        verify(patientRepo,times(1)).save(user);
-        verify(patientRepo,times(1)).findAll();
     }
-}

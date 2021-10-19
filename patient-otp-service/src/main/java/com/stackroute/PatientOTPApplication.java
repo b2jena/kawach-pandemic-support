@@ -16,9 +16,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableRabbit
 @EnableAutoConfiguration
 @SpringBootApplication
-public class SpringEmailClient {
+public class PatientOTPApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SpringEmailClient.class, args);
+        SpringApplication.run(PatientOTPApplication.class, args);
         System.out.println("Client is running");
     }
     @Bean
