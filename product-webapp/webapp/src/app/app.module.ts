@@ -25,7 +25,6 @@ import { WarroomDashboardComponent } from './components/warroom-dashboard/warroo
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 import { LatestInformationComponent } from './components/landing-page/latest-information/latest-information.component';
-import { InformationService } from './services/information.service';
 import { SosService } from './services/sos-service';
 import { PatientOtpComponent } from './components/landing-page/patient-otp/patient-otp.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

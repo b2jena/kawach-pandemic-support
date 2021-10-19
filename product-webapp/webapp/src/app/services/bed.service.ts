@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BedService{
-  // apiBaseUrl=environment.apiBaseUrl;
   Bed!: Bed;
   count!: number;
   constructor(private httpService: HttpClient) { }
