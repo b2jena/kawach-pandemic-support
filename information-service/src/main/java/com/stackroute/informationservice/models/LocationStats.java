@@ -10,22 +10,22 @@ import lombok.Setter;
 @Getter
 @Setter
 public class LocationStats {
-    private String loc;
-    private String confirmedCasesIndian;
-    private String confirmedCasesForeign;
-    private String discharged;
-    private String deaths;
-    private String totalConfirmed;
+    private String strLoc;
+    private String strConfirmedCasesIndian;
+    private String strConfirmedCasesForeign;
+    private String strDischarged;
+    private String strDeaths;
+    private String strTotalConfirmed;
 
     @Override
     public String toString() {
         return "LocationStats{" +
-                "loc='" + loc + '\'' +
-                ", confirmedCasesIndian='" + confirmedCasesIndian + '\'' +
-                ", confirmedCasesForeign='" + confirmedCasesForeign + '\'' +
-                ", discharged='" + discharged + '\'' +
-                ", deaths='" + deaths + '\'' +
-                ", totalConfirmed='" + totalConfirmed + '\'' +
+                "loc='" + strLoc + '\'' +
+                ", confirmedCasesIndian='" + strConfirmedCasesIndian + '\'' +
+                ", confirmedCasesForeign='" + strConfirmedCasesForeign + '\'' +
+                ", discharged='" + strDischarged + '\'' +
+                ", deaths='" + strDeaths + '\'' +
+                ", totalConfirmed='" + strTotalConfirmed + '\'' +
                 '}';
     }
 }

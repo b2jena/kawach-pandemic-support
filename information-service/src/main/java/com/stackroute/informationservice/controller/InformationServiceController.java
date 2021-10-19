@@ -20,17 +20,23 @@ public class InformationServiceController {
     Logger logger = LoggerFactory.getLogger(InformationServiceController.class);
     private static String VIRUS_DATA_URL = "https://api.rootnet.in/covid19-in/stats/latest";
 
+    /*This get mapping is used to fetch information from external api*/
     @GetMapping("/information")
-    public LocationStats[] getData() throws IOException {
-        JsonNode jsonNode = new ObjectMapper().readTree(new URL(VIRUS_DATA_URL));
-        JsonNode regional = jsonNode.get("data").get("regional");
+    public LocationStats[] getData() {
+        try {
+            JsonNode jsonNode = new ObjectMapper().readTree(new URL(VIRUS_DATA_URL));
+            JsonNode regional = jsonNode.get("data").get("regional");
 
-        logger.info("hai this is logiing");
-        ObjectMapper mapper = new ObjectMapper();
+            ObjectMapper mapper = new ObjectMapper();
 
-        LocationStats[] locationStats = mapper.treeToValue(regional, LocationStats[].class);
+            LocationStats[] locationStats = mapper.treeToValue(regional, LocationStats[].class);
 
-        return locationStats;
+            return locationStats;
+        } catch (IOException exception)
+        {
+            logger.error("External API failed");
+            return null;
+        }
     }
 
 
