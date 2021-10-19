@@ -9,18 +9,15 @@ import { Message, MessageService } from 'src/app/services/message.service';
 })
 export class MsgComponent implements OnInit {
 
-  nameFormControl = new FormControl('', [
-    Validators.required,
-  ]);
-
   message: string;
-  reciverName: string;
   messageArray: any = [];
-  socket: any;
   doctorEmail: String;
-
   user: Message = new Message('paitent', 'doctor', '');
   constructor(private messageService: MessageService, private route: ActivatedRoute, private router: Router) {}
+
+/*This Method is triggered when the page initializes, here GetMessage method is called in the interval of every 2 seconds
+*and doctor email is extrcting from the url and stored it in doctor mail.*/
+
   ngOnInit(): void {
       setInterval(() => {
         this.GetMessage();
@@ -31,19 +28,26 @@ export class MsgComponent implements OnInit {
     this.doctorEmail = splitEmail[0];
 
   }
+
+/*This Method is responsible for Sending the message and storing the message details in mongoDB data base*/
+
   SendMessage(){
     this.messageService.SendMessage(this.user).subscribe(
       () => {
-        // window.location.reload();
         this.user.messageBody = '';
       });
     }
+
+/*This Method is responsible for fetching the message details from mongoDB data base and showing it in chat window*/
 
   GetMessage() {
     this.messageService.GetAllMessage(this.user).subscribe((data: any) => {
       this.messageArray = data;
     });
   }
+
+/*This Method is responsible for deleting all the message from mongoDB data base*/
+
   deleteMessage(a: any, b: any){
     this.router.navigateByUrl("/sos");
     this.messageService.deleteMessages(this.user).subscribe( () => {
