@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 providedIn: 'root'})
 export class UploadFileService {
   constructor(private https: HttpClient) { }
+
+  /* This post method is to upload the file in Amazon S3 Bucket */
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
     const data: FormData = new FormData();
     data.append('file', file);
