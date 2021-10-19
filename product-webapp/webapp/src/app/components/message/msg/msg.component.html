@@ -52,7 +52,7 @@
             <div class="inputRow" >
               <form   (ngSubmit) = "SendMessage()" #chatForm="ngForm">
                 <div class ="input-group mb-3" >
-                  <input  name="message"  [formControl]="nameFormControl" required [(ngModel)] = "user.messageBody" class="form-control"  style="color: aliceblue in !important; max-height: 50px !important">
+                  <input  name="message" required [(ngModel)] = "user.messageBody" class="form-control"  style="color: aliceblue in !important; max-height: 50px !important">
                   <div class="input-group-append">
                     <button class="btn btn-outline-primary" [disabled] = "chatForm.invalid">Send</button>
                   </div>
