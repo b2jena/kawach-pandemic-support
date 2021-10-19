@@ -4,7 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+/*
+ * This is a Model class, this contains Location, Confirmed cases for indian, Confirmed cases for foreighn, no of people discharged, deaths and total confirmed
+ * the api Data will be stored in this format.
+ * */
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -17,6 +20,7 @@ public class LocationStats {
     private String strDeaths;
     private String strTotalConfirmed;
 
+    /*To convert to string for displaying purposes*/
     @Override
     public String toString() {
         return "LocationStats{" +
