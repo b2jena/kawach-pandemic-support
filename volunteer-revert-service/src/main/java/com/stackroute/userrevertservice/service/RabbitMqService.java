@@ -9,28 +9,34 @@ import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/*RabbitMq class to fetch the volunteer action details from the queue of resource request service*/
 @Service
 public class RabbitMqService implements RabbitListenerConfigurer {
 
     private VolunteerRevertService volunteerRevertService;
 
+    /*Volunteer Revert Service is injected in this class by @Autowired annotation*/
     @Autowired
-    public RabbitMqService(VolunteerRevertService volunteerRevertService){
+    public RabbitMqService(VolunteerRevertService volunteerRevertService) {
         this.volunteerRevertService = volunteerRevertService;
     }
 
+    /*This is to create a logger object by which we can call the functionality of the logger class.*/
     private static final Logger logger = LoggerFactory.getLogger(RabbitMqService.class);
 
 
+    /*Method to retrieve messages from the rabbit mq queue*/
     @RabbitListener(queues = "${spring.rabbitmq.queue}")
-    public void recievedMessage(String message) {
-
-        String[] parts=message.split("&&");
-        logger.info("Received details: " + parts[0] + ", "+parts[1]);
-        VolunteerIncoming volunteerIncoming = new VolunteerIncoming(parts[1], parts[0]);
-//        volunteerIncoming.setEmailId(parts[1]);
-//        volunteerIncoming.setType(parts[0]);
-        volunteerRevertService.volunteerRevertUpdate(volunteerIncoming);
+    public void recievedMessage(String message) throws Exception {
+        try {
+            String[] parts = message.split("&&");
+            logger.info("Received details: " + parts[0] + ", " + parts[1]);
+            VolunteerIncoming volunteerIncoming = new VolunteerIncoming(parts[1], parts[0]);
+            volunteerRevertService.volunteerRevertUpdate(volunteerIncoming);
+        } catch (Exception e) {
+            logger.error(String.valueOf(e));
+            throw new Exception();
+        }
     }
 
     @Override

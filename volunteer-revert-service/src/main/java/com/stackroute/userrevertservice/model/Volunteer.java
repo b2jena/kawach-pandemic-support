@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/*Volunteer bean class containing all the Volunteer revert parameters*/
 @Document(collection = "volunteerRevert")
 @Getter
 @Setter
@@ -16,7 +17,6 @@ public class Volunteer {
 
     @Id
     private String volunteerEmailId;
-    /* private String type;*/
     private int score;
     private String level;
 }

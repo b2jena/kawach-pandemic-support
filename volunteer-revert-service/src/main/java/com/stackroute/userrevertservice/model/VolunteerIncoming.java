@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/*Volunteer Incoming bean class containing the Volunteer action performed parameters*/
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

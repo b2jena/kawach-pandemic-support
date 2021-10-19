@@ -7,7 +7,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-/*Doctor bean class containing all the registration parameters*/
+/*Doctor bean class containing all the Doctor registration parameters*/
 
 @NoArgsConstructor
 @AllArgsConstructor
