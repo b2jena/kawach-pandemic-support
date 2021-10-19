@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import java.util.logging.Logger;
 
+/*This is the main application class annotated with @SpringBootApplication, @EnableAutoConfiguration & @EnableRabbit annotations*/
 @EnableAutoConfiguration
 @EnableRabbit
 @SpringBootApplication

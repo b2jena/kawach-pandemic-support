@@ -11,10 +11,13 @@ export class SosService {
 
   constructor(private httpService: HttpClient) { }
 
+
+  /*This is to pass the data from front end to backend with the help of a post request*/
   CreateSosRequest(SosRequest: SOSRequest): Observable <SOSRequest> {
     return this.httpService.post<SOSRequest>('/api/v1/resource/sos/createSos', SosRequest);
   }
 
+  /*This os to pass the filedata from front end to backend with the help of an post request to store it in S3 bucket*/
   PostFile(file: File): Observable <File> {
     return this.httpService.post<File>('/api/v1/resource/sos/createSos/upload', file);
   }
