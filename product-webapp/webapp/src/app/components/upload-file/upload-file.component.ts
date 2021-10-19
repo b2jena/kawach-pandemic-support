@@ -39,8 +39,9 @@ export class UploadFileComponent implements OnInit {
   changedImage(event: any) {
     this.selectedFile = event.target.files[0];
   }
-  upload() {
 
+  /* This is to upload the file in Amazon S3 Bucket */
+  upload() {
     this.progress.percentage = 0;
     this.currentFileUpload = this.selectedFiles.item(0);
     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
