@@ -25,8 +25,7 @@ import java.util.List;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /*This is to test the Message Controller class */
@@ -84,6 +83,14 @@ class MessageControllerTest {
                 .andDo(MockMvcResultHandlers.print());
     }
 
+    /*This test is to fetch List of all Message after doing a get request*/
+    @Test
+    public void givenMessageModelToDeleteThenShouldReturnDeletedList() throws Exception {
+        messageService. deleteAll("Debjit");
+        mockMvc.perform(delete("/api/v1/chat-messages/Debjit/Bikash"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print());
+    }
 
 
     public static String asJsonString(final Object obj) {

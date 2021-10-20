@@ -68,4 +68,15 @@ class MessageServiceImplTest {
         verify(messageRepository, times(1)).findAll();
     }
 
+    /*This test is to delete all Message*/
+    @Test
+    void givenDeleteMessagesThenShouldReturnListOfAllMessagesAsZero() throws NullValueException {
+        messageRepository.save(message);
+        List<Message> MessageList = messageRepository.findAll();
+        messageService.deleteAll(message.getStrSenderName());
+        int length = messageService.getAllMessages(message.getStrSenderName(), message.getStrReceiverName()).size();
+        assertEquals(MessageList.size(), 0);
+        verify(messageRepository, times(1)).save(message);
+        verify(messageRepository, times(1)).findAll();
+    }
 }
