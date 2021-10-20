@@ -45,6 +45,7 @@ export class VolunteerRegistrationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+   /* This method is responsible for sending the volunteer registration details to the backend and is triggered on clicking the register button*/
   createVolunteer(): void{
     this.userService.createVolunteer(this.profileForm.value).subscribe(
       (data) => {this.snackBar.open((this.message = data).toString(), this.action, {

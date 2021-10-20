@@ -45,6 +45,10 @@ export class AddBedComponent implements OnInit {
       console.log('This will be called when snackbar button clicked');
     });
   }
+  /* This button functionality is to make the 
+   * post request and to store the bed in mongoDB database
+   */
+
     CreateBed(): void {
       this.bedForm.get('verificationStatus').setValue(this.isActive);
       console.log("data:", this.bedForm.value);

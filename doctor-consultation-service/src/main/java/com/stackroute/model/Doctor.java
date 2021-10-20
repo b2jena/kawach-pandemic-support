@@ -8,7 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
-
+/*This is the model class that contains the parameters for Doctors
+such as EmailId, FullName and Specilization.*/
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -16,12 +17,8 @@ import java.io.Serializable;
 @Document(collection = "doctors")
 public class Doctor implements Serializable {
     @Id
-    private String emailId;
-    private String fullName;
-    private String specialization;
+    private String strEmailId;
+    private String strFullname;
+    private String strSpecalization;
     private static final long serialVersionUID = 200856043767861933L;
-
-    public String getEmailId() {
-        return emailId;
-    }
 }

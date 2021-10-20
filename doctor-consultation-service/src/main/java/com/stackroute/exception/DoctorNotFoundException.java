@@ -1,12 +1,10 @@
 package com.stackroute.exception;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
 public class DoctorNotFoundException extends Exception {
-
-    public DoctorNotFoundException(String message) {
-        super(message);
-    }
-
-    public DoctorNotFoundException() {
-    }
-
+    private String message;
 }

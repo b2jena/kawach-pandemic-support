@@ -10,6 +10,7 @@ export class InformationService {
   LocationStats: LocationStats[] = [];
   constructor(private httpService: HttpClient) { }
 
+  /**Calls the backend to get the required data for displaying */
   public getInformation(): Observable<LocationStats[]>
   {
     return this.httpService.get<LocationStats[]>('/api/v1/information');

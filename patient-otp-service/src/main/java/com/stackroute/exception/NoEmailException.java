@@ -1,7 +1,10 @@
 package com.stackroute.exception;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
 public class NoEmailException extends Exception{
-    public NoEmailException(String message) {super(message); }
-    public NoEmailException() {
-    }
+    private String message;
 }

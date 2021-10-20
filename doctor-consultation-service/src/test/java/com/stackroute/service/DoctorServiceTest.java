@@ -1,5 +1,6 @@
 package com.stackroute.service;
 
+import com.stackroute.exception.DatabaseEmptyException;
 import com.stackroute.exception.DoctorNotFoundException;
 import com.stackroute.model.Doctor;
 import com.stackroute.repo.DoctorRepository;
@@ -26,8 +27,7 @@ class DoctorServiceTest {
     private Doctor user;
 
     @Test
-    public void givenUserToSaveInMongoDBShouldReturnSavedUser()
-    {
+    public void givenUserToSaveInMongoDBShouldReturnSavedUser() throws DoctorNotFoundException {
         Doctor user1 = new Doctor("godwinkhalko2@gmail.com", "Godwin Khalko", "Dermatologist");
         when(userRepository.save(any())).thenReturn(user);
         userService.saveDoctorMongoDB(user);
@@ -35,7 +35,7 @@ class DoctorServiceTest {
     }
 
     @Test
-    public void givenGetAllUsersInMongoDBShouldReturnListOfAllUsers() {
+    public void givenGetAllUsersInMongoDBShouldReturnListOfAllUsers() throws DatabaseEmptyException {
         userRepository.save(user);
         when(userRepository.findAll()).thenReturn(userList);
         List<Doctor> userlist = userService.getAllDoctors();
@@ -48,9 +48,9 @@ class DoctorServiceTest {
     public void givenGetDoctorByEmailIDshouldReturnDoctorWithEmailID() throws DoctorNotFoundException {
         when(userRepository.findByEmailId("godwinkhalko2@gmail.com")).thenReturn(new Doctor("godwinkhalko2@gmail.com", "Godwin Khalko", "Dermatologist"));
         Doctor user3 = userService.getDoctorByEmailId("godwinkhalko2@gmail.com");
-        assertEquals("godwinkhalko2@gmail.com", user3.getEmailId());
-        assertEquals("Godwin Khalko", user3.getFullName());
-        assertEquals("Dermatologist", user3.getSpecialization());
+        assertEquals("godwinkhalko2@gmail.com", user3.getStrEmailId());
+        assertEquals("Godwin Khalko", user3.getStrFullname());
+        assertEquals("Dermatologist", user3.getStrSpecalization());
     }
 
 }

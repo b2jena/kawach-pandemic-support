@@ -8,7 +8,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-/*Volunteer bean class containing all the registering parameters*/
+/*Volunteer bean class containing all the Volunteer registering parameters*/
 
 @Document(collection = "volunteers")
 @NoArgsConstructor

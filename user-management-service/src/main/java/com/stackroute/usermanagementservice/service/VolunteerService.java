@@ -7,5 +7,5 @@ import com.stackroute.usermanagementservice.model.Volunteer;
 /*Interface containing the methods that needs to be implemented in the implementation class*/
 
 public interface VolunteerService {
-    Volunteer saveVolunteer(Volunteer volunteer) throws UserAlreadyExistsException, NullValueException;
+    Volunteer saveVolunteer(Volunteer volunteer) throws UserAlreadyExistsException, NullValueException, Exception;
 }

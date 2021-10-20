@@ -25,7 +25,6 @@ import { WarroomDashboardComponent } from './components/warroom-dashboard/warroo
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 import { LatestInformationComponent } from './components/landing-page/latest-information/latest-information.component';
-import { InformationService } from './services/information.service';
 import { SosService } from './services/sos-service';
 import { PatientOtpComponent } from './components/landing-page/patient-otp/patient-otp.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -46,7 +45,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MatTableModule } from '@angular/material/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PatientDashboardComponent } from './components/patient-dashboard/patient-dashboard.component';
-import { WarroomAddComponent } from './components/warroom-dashboard/warroom-add/warroom-add.component';
 import { MatListModule } from '@angular/material/list';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
@@ -65,7 +63,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { TimeslotComponent } from './components/doctor-dashboard/timeslot/timeslot.component';
 import { FeedbackComponent } from './components/doctor-dashboard/feedback/feedback.component';
 import { ConsultComponent } from './components/doctor-dashboard/consult/consult.component';
-import { WarroomVerifyComponent } from './components/warroom-dashboard/warroom-verify/warroom-verify.component';
 import { VerifyBedComponent } from './components/verify/verify-bed/verify-bed.component';
 import { VolunteerRevertComponent } from './components/landing-page/volunteer-revert/volunteer-revert.component';
 
@@ -75,9 +72,6 @@ import { ChatComponent } from './components/chat/chat.component';
 import { DataService } from './components/chat/service/data.service';
 import { VerifyMedicineComponent } from './components/verify/verify-bed/verify-medicine/verify-medicine.component';
 import { VerifyEquipmentsComponent } from './components/verify/verify-equipments/verify-equipments.component';
-import { WarroomAddBedComponent } from './components/warroom-dashboard/warroom-add-bed/warroom-add-bed.component';
-import { WarroomAddMedicineComponent } from './components/warroom-dashboard/warroom-add-medicine/warroom-add-medicine.component';
-import { WarroomAddEquipmentComponent } from './components/warroom-dashboard/warroom-add-equipment/warroom-add-equipment.component';
 import { MessageComponent } from './components/message/message.component';
 import { MsgComponent } from './components/message/msg/msg.component';
 import { MessageService } from './services/message.service';
@@ -85,12 +79,6 @@ import { DoctorMessageComponent } from './components/doctor-message/doctor-messa
 import {NgxAutoScrollModule} from 'ngx-auto-scroll';
 import { CloseSosBedComponent } from './components/close-sos-bed/close-sos-bed.component';
 import { CloseSosEquipmentComponent } from './components/close-sos-equipment/close-sos-equipment.component';
-import { WarroomSosMedicineComponent } from './components/warroom-dashboard/warroom-sos-medicine/warroom-sos-medicine.component';
-import { WarroomSosBedComponent } from './components/warroom-dashboard/warroom-sos-bed/warroom-sos-bed.component';
-import { WarroomSosEquipmentComponent } from './components/warroom-dashboard/warroom-sos-equipment/warroom-sos-equipment.component';
-import { WarroomVerifyBedComponent } from './components/warroom-dashboard/warroom-verify-bed/warroom-verify-bed.component';
-import { WarroomVerifyMedicineComponent } from './components/warroom-dashboard/warroom-verify-medicine/warroom-verify-medicine.component';
-import { WarroomVerifyEquipmentComponent } from './components/warroom-dashboard/warroom-verify-equipment/warroom-verify-equipment.component';
 import { SearchDialogComponent } from './components/search-dialog/search-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -123,7 +111,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     HeaderComponent,
     FooterComponent,
     PatientDashboardComponent,
-    WarroomAddComponent,
     UploadFileComponent,
     GridComponent,
     DoctorCardComponent,
@@ -135,7 +122,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     TimeslotComponent,
     FeedbackComponent,
     ConsultComponent,
-    WarroomVerifyComponent,
     VerifyBedComponent,
     VolunteerRevertComponent,
     ChatComponent,
@@ -143,20 +129,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     VerifyEquipmentsComponent,
     DoctorCardsComponent,
     ChatComponent,
-    WarroomAddBedComponent,
-    WarroomAddMedicineComponent,
-    WarroomAddEquipmentComponent,
     MessageComponent,
     MsgComponent,
     DoctorMessageComponent,
     CloseSosBedComponent,
     CloseSosEquipmentComponent,
-    WarroomSosMedicineComponent,
-    WarroomSosBedComponent,
-    WarroomSosEquipmentComponent,
-    WarroomVerifyBedComponent,
-    WarroomVerifyMedicineComponent,
-    WarroomVerifyEquipmentComponent,
     SearchDialogComponent
   ],
   imports: [

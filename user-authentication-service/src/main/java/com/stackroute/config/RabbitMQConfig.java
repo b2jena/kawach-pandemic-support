@@ -35,7 +35,6 @@ public class RabbitMQConfig {
 
 
     /*Creating queue
-    Durable queue survives a server restart
     */
     @Bean
     Queue queue() {

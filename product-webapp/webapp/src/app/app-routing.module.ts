@@ -18,21 +18,11 @@ import { VolunteerRegistrationComponent } from './components/volunteer-registrat
 import { WarroomDashboardComponent } from './components/warroom-dashboard/warroom-dashboard.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { PatientDashboardComponent } from './components/patient-dashboard/patient-dashboard.component';
-import { WarroomAddComponent } from './components/warroom-dashboard/warroom-add/warroom-add.component';
 // import { CloseSosRequestComponent } from './components/close-sos-request/close-sos-request.component';
 import { CloseSosComponent } from './components/close-sos/close-sos.component';
 import { HeaderTabsComponent } from './components/header-tabs/header-tabs.component';
 import { ChatComponent } from './components/chat/chat.component';
-import { WarroomAddBedComponent } from './components/warroom-dashboard/warroom-add-bed/warroom-add-bed.component';
-import { WarroomAddMedicineComponent } from './components/warroom-dashboard/warroom-add-medicine/warroom-add-medicine.component';
-import { WarroomAddEquipmentComponent } from './components/warroom-dashboard/warroom-add-equipment/warroom-add-equipment.component';
 import { MessageComponent } from './components/message/message.component';
-import { WarroomSosMedicineComponent } from './components/warroom-dashboard/warroom-sos-medicine/warroom-sos-medicine.component';
-import { WarroomSosBedComponent } from './components/warroom-dashboard/warroom-sos-bed/warroom-sos-bed.component';
-import { WarroomSosEquipmentComponent } from './components/warroom-dashboard/warroom-sos-equipment/warroom-sos-equipment.component';
-import { WarroomVerifyMedicineComponent } from './components/warroom-dashboard/warroom-verify-medicine/warroom-verify-medicine.component';
-import { WarroomVerifyBedComponent } from './components/warroom-dashboard/warroom-verify-bed/warroom-verify-bed.component';
-import { WarroomVerifyEquipmentComponent } from './components/warroom-dashboard/warroom-verify-equipment/warroom-verify-equipment.component';
 
 
 const routes: Routes = [
@@ -66,40 +56,7 @@ const routes: Routes = [
     component: DoctorDashboardComponent
   }, {
     path: 'war-room-dashboard',
-    component: WarroomDashboardComponent,
-    children: [
-      {
-      path: 'war-room-add',
-    component: WarroomAddComponent,
-    },
-    {
-      path: 'addbed', component: WarroomAddBedComponent
-    },
-    {
-      path: 'addmedicine', component: WarroomAddMedicineComponent
-    },
-    {
-      path: 'addequipment', component: WarroomAddEquipmentComponent
-    },
-    {
-      path: 'sosbed', component: WarroomSosBedComponent
-    },
-    {
-      path: 'sosmedicine', component: WarroomSosMedicineComponent
-    },
-    {
-      path: 'sosequipment', component: WarroomSosEquipmentComponent
-    },
-    {
-      path: 'ver-medicine', component: WarroomVerifyMedicineComponent
-    },
-    {
-      path: 'ver-bed', component: WarroomVerifyBedComponent
-    },
-    {
-      path: 'ver-equipment', component: WarroomVerifyEquipmentComponent
-    }
-  ]
+    component: WarroomDashboardComponent
   },
      {
     path: 'addequipment',
@@ -116,9 +73,6 @@ const routes: Routes = [
   }, {
     path: 'listbed',
     component: ListBedComponent
-  }, {
-    path: 'war-room-add',
-    component: WarroomAddComponent
   }, {
     path: 'closesos',
     component: CloseSosComponent
