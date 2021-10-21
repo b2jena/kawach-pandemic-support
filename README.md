@@ -1,5 +1,7 @@
 # kawach-pandemic-support
+
 A patient, doctor and volunteer networking and management platform for pandemic support.
+
 For developing the Front End, we used HTML, CSS, BootStrap 4 and Angular Framework.
 
 For the Back End, we used Spring Boot and NodeJS.
