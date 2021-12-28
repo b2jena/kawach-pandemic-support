@@ -6,10 +6,10 @@ For developing the Front End, we used HTML, CSS, BootStrap 4 and Angular Framewo
 
 For the Back End, we used Spring Boot and NodeJS.
 
-For DevOps we are using Docker, GitLab CI/CD and AWS.
+For DevOps, we are using Docker, GitLab CI/CD and AWS.
 
-For Messaging bus we used RabbitMQ.
+For Messaging bus, we used RabbitMQ.
 
-For Security  we used JWT web token.
+For Security, we used JWT web token.
 
-For Databases we are using NoSQL MongoDB, MySQL RDBMS, In-memory H2 and cache Redis.
+For Databases, we used NoSQL MongoDB, MySQL RDBMS, In-memory H2 and cache Redis.
