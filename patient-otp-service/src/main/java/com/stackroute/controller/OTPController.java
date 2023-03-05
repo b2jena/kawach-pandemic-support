@@ -18,21 +18,21 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/otp/")
-@CrossOrigin(value="*")
+@CrossOrigin(value = "*")
 public class OTPController {
 
+    static String email;
     public PatientServiceI patientServiceI;
-
-    @Autowired
-    public OTPController(PatientServiceI patientServiceI) {
-        this.patientServiceI = patientServiceI;
-    }
-
     @Autowired
     public OTPService otpService;
 
     @Autowired
     public EmailService emailService;
+
+    @Autowired
+    public OTPController(PatientServiceI patientServiceI) {
+        this.patientServiceI = patientServiceI;
+    }
 
     @PostMapping(path = "/patient")
     public ResponseEntity<Patient> savePatient(@RequestBody Patient patient) throws NoEmailException {
@@ -43,8 +43,6 @@ public class OTPController {
             return new ResponseEntity<Patient>(patient1, HttpStatus.OK);
         }
     }
-
-    static String email;
 
     @PostMapping("/generateOtp")
     public ResponseEntity<?> generateOTP(@RequestBody Patient patient) throws MessagingException, NoEmailException {

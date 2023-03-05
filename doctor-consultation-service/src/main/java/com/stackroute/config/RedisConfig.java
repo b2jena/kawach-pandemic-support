@@ -15,15 +15,15 @@ public class RedisConfig {
 
     //WE configure the redis with the configration such as local host and port-number
     @Bean
-    public JedisConnectionFactory jedisConnectionFactory(){
+    public JedisConnectionFactory jedisConnectionFactory() {
         RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration();
         configuration.setHostName("localhost");
         configuration.setPort(6379);
-        return  new JedisConnectionFactory(configuration);
+        return new JedisConnectionFactory(configuration);
     }
 
     //We define the redis template to take in the key value pairs .
-    public RedisTemplate<String, Object> redisTemplate(){
+    public RedisTemplate<String, Object> redisTemplate() {
         RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(jedisConnectionFactory());
         template.setKeySerializer(new StringRedisSerializer());

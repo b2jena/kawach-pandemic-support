@@ -26,16 +26,15 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class MedicalSosRequestServiceImplTest {
 
+    SequenceGeneratorService sequenceGeneratorService;
     @Mock
     private MedicalSosRequestRepository repository;
-
     @InjectMocks
     private MedicalSosRequestServiceImpl messageService;
     private MedicalSosRequest medicalSosRequest;
     private Requirement requirement;
     private List<MedicalSosRequest> MessageList;
     private Optional optional;
-    SequenceGeneratorService sequenceGeneratorService;
 
     @BeforeEach
     public void setUp() {
@@ -45,7 +44,7 @@ class MedicalSosRequestServiceImplTest {
         list.add(requirement);
         requirement = new Requirement("DOLO 650", "two", "File");
         list.add(requirement);
-        medicalSosRequest = new MedicalSosRequest(UUID.randomUUID(), "Debjit", "Male", "9832124814", "dmandal9832124814@gmial.com", "Hospitalised", "Durgapur", list , "Medicine", "Open");
+        medicalSosRequest = new MedicalSosRequest(UUID.randomUUID(), "Debjit", "Male", "9832124814", "dmandal9832124814@gmial.com", "Hospitalised", "Durgapur", list, "Medicine", "Open");
         optional = Optional.of(medicalSosRequest);
     }
 
@@ -57,7 +56,7 @@ class MedicalSosRequestServiceImplTest {
     @Test
     void givenMessageModelToSaveThenShouldReturnSavedMessageModel() throws NullValueException {
         when(repository.save(any())).thenReturn(medicalSosRequest);
-        assertEquals(medicalSosRequest, messageService.saveSosRequest(medicalSosRequest))  ;
+        assertEquals(medicalSosRequest, messageService.saveSosRequest(medicalSosRequest));
         verify(repository, times(1)).save(any());
     }
 }

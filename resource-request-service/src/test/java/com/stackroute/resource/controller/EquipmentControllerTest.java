@@ -3,7 +3,6 @@ package com.stackroute.resource.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stackroute.resource.model.Equipments;
 import com.stackroute.resource.service.EquipmentService;
-import com.stackroute.resource.service.EquipmentServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -30,14 +28,22 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(MockitoExtension.class)
 class EquipmentControllerTest {
-    private MockMvc mockMvc;
     @Mock
     EquipmentService equipmentService;
+    private MockMvc mockMvc;
     @InjectMocks
     private EquipmentController equipmentController;
 
     private Equipments equipments;
     private List<Equipments> equipmentsList;
+
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @BeforeEach
     public void setUp() {
@@ -65,8 +71,8 @@ class EquipmentControllerTest {
     void givenEquipmentToSaveThenShouldReturnSavedEquipment() throws Exception {
         when(equipmentService.saveEquipment(any())).thenReturn(equipments);
         mockMvc.perform(post("/equipment/create")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(asJsonString(equipments)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(asJsonString(equipments)))
                 .andExpect(status().isCreated())
                 .andDo(MockMvcResultHandlers.print());
         verify(equipmentService).saveEquipment(any());
@@ -89,13 +95,5 @@ class EquipmentControllerTest {
 
     @Test
     void verifyEquipment() {
-    }
-
-    public static String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 }

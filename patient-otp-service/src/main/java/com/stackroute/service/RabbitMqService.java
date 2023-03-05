@@ -11,9 +11,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class RabbitMqService implements RabbitListenerConfigurer {
 
-    private EmailService emailService;
-
     private static final Logger logger = LoggerFactory.getLogger(RabbitMqService.class);
+    private EmailService emailService;
 
     @Autowired
     public RabbitMqService(EmailService emailService) {
@@ -23,7 +22,7 @@ public class RabbitMqService implements RabbitListenerConfigurer {
     @RabbitListener(queues = "${spring.rabbitmq.queue}")
     public void recievedMessage(String message) {
 
-        String[] parts=message.split("&&");
+        String[] parts = message.split("&&");
         logger.info("Recieved details part 0: " + parts[0]);
         logger.info("Recieved details part 1: " + parts[1]);
 

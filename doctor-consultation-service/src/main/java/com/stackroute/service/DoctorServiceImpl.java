@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DoctorServiceImpl implements DoctorService{
+public class DoctorServiceImpl implements DoctorService {
+    //defining the Hash key for the redis db.
+    public static final String HASH_KEY = "Doctor";
     private DoctorRepository doctorRepository;
     //Autowiring the redis template to use the redis database.
     private RedisTemplate redisTemplate;
-    //defining the Hash key for the redis db.
-    public static final String HASH_KEY="Doctor";
 
     @Autowired
     public DoctorServiceImpl(DoctorRepository doctorRepository, RedisTemplate redisTemplate) {
@@ -35,14 +35,13 @@ public class DoctorServiceImpl implements DoctorService{
     @Override
     public Doctor getDoctorByEmailId(String emailId) throws DoctorNotFoundException {
         Doctor doctor = doctorRepository.findByEmailId(emailId);
-        if(doctor == null)
-        {
+        if (doctor == null) {
             throw new DoctorNotFoundException("Doctor not found");
-        }
-        else{
+        } else {
             return doctor;
         }
     }
+
     //To get all doctors present in the mongoDB databse
     @Override
     public List<Doctor> getAllDoctors() {
@@ -53,18 +52,16 @@ public class DoctorServiceImpl implements DoctorService{
     @Override
     public void saveDoctorRedis(String emailId) throws DoctorNotFoundException, DoctorAlreadyPresentException {
         Doctor doctor = doctorRepository.findByEmailId(emailId);
-        redisTemplate.opsForHash().put(HASH_KEY, doctor.getEmailId(),doctor);
+        redisTemplate.opsForHash().put(HASH_KEY, doctor.getEmailId(), doctor);
 
-}
+    }
 
     //To delete the doctor databse from redis.
     @Override
     public void deleteDoctorRedis(String emailId) throws DoctorNotFoundException {
-        if(!redisTemplate.opsForHash().hasKey(HASH_KEY, emailId))
-        {
+        if (!redisTemplate.opsForHash().hasKey(HASH_KEY, emailId)) {
             throw new DoctorNotFoundException("Doctor not found");
-        }
-        else{
+        } else {
             redisTemplate.opsForHash().delete(HASH_KEY, emailId);
         }
     }

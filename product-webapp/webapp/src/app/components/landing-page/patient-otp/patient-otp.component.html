@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-md-6">
     <div>
-      <img class='img-responsive' src='/assets/img/strongTogether.jpg' alt = "Image is not there"
-    Width = "400" height="200" style="margin-right: 20px;">
+      <img Width="400" alt="Image is not there" class='img-responsive'
+           height="200" src='/assets/img/strongTogether.jpg' style="margin-right: 20px;">
     </div>
   </div>
   <div class="col-md-6 p-2">
@@ -11,41 +11,44 @@
       <mat-card-header>
         <mat-card-title>Patient login here</mat-card-title>
       </mat-card-header>
-    
+
       <mat-card-content>
-    
+
         <div class="row">
-    
+
           <div class="col-sm-6">
-    
+
             <mat-form-field class="example-full-width1 col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
-                <input type="email" matInput [formControl]="emailFormControl" [(ngModel)]="patient.email"  required placeholder="Email Id" name="email" id="email">
-                <mat-error *ngIf="emailFormControl.errors?.pattern && !emailFormControl.hasError('required')">
-                  Please enter a valid email address
-                </mat-error>
-                <mat-error *ngIf="emailFormControl.hasError('required')"> Email is <strong>required</strong> </mat-error>  
+              <input [(ngModel)]="patient.email" [formControl]="emailFormControl" id="email" matInput name="email"
+                     placeholder="Email Id" required type="email">
+              <mat-error *ngIf="emailFormControl.errors?.pattern && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')"> Email is <strong>required</strong></mat-error>
             </mat-form-field>
-    
+
           </div>
-    
+
           <div class="col-md-6">
-            <input type="button" class="btn btn-block btn-outline-success" (click)="CreatePatient()" value="Generate OTP">
+            <input (click)="CreatePatient()" class="btn btn-block btn-outline-success" type="button"
+                   value="Generate OTP">
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
             <mat-form-field class="example-full-width1 col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
-                     <input matInput [formControl]="otpFormControl" [(ngModel)]="otp" required placeholder="OTP" name="otp"  id="otp">
-                     <mat-error *ngIf="otpFormControl.hasError('required')"> Otp is <strong>required</strong> </mat-error>  
-                    </mat-form-field>
+              <input [(ngModel)]="otp" [formControl]="otpFormControl" id="otp" matInput name="otp" placeholder="OTP"
+                     required>
+              <mat-error *ngIf="otpFormControl.hasError('required')"> Otp is <strong>required</strong></mat-error>
+            </mat-form-field>
           </div>
           <div class="col-md-6">
-            <input type="button" class="btn btn-block btn-outline-success" (click)="onClickSubmit()" value="Verify">
+            <input (click)="onClickSubmit()" class="btn btn-block btn-outline-success" type="button" value="Verify">
           </div>
         </div>
       </mat-card-content>
-    </mat-card> 
-    
+    </mat-card>
+
   </div>
 
 </div>

@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PatientServiceImpl implements PatientServiceI{
+public class PatientServiceImpl implements PatientServiceI {
 
     private PatientRepo patientRepo;
+
     @Autowired
     public PatientServiceImpl(PatientRepo patientRepo) {
         this.patientRepo = patientRepo;

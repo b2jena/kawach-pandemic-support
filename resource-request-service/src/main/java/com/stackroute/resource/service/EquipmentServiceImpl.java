@@ -15,16 +15,16 @@ import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
-public class EquipmentServiceImpl implements EquipmentService{
-    private EquipmentRepository equipmentRepository;
+public class EquipmentServiceImpl implements EquipmentService {
     SequenceGeneratorService sequenceGeneratorService;
+    @Autowired
+    MongoTemplate mongoTemplate;
+    private EquipmentRepository equipmentRepository;
+
     @Autowired
     public EquipmentServiceImpl(EquipmentRepository equipmentRepository) {
         this.equipmentRepository = equipmentRepository;
     }
-
-    @Autowired
-    MongoTemplate mongoTemplate;
 
     @Override
     public Equipments saveEquipment(Equipments equipments) throws NullValueException {
@@ -37,6 +37,7 @@ public class EquipmentServiceImpl implements EquipmentService{
             return equipmentRepository.save(equipments);
         }
     }
+
     @Override
     public List<Equipments> getAllEquipments() {
         return (List<Equipments>) equipmentRepository.findAll();
@@ -59,13 +60,13 @@ public class EquipmentServiceImpl implements EquipmentService{
         System.out.println("medId = " + equipId);
         Query query = new Query(Criteria.where("equipmentId").is(equipId));
         Update updateQuery = new Update();
-        updateQuery.set("verificationStatus",true);
-        mongoTemplate.upsert(query,updateQuery, Equipments.class);
+        updateQuery.set("verificationStatus", true);
+        mongoTemplate.upsert(query, updateQuery, Equipments.class);
     }
 
     public List<Equipments> getEquipmentByCity(String City, String requirement) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("city").regex(City, "i").and("equipmentName").regex(requirement,"i"));
+        query.addCriteria(Criteria.where("city").regex(City, "i").and("equipmentName").regex(requirement, "i"));
         List<Equipments> request = mongoTemplate.find(query, Equipments.class);
         return request;
     }

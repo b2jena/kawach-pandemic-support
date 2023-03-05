@@ -25,20 +25,29 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 /**
  * This class should test the controller layer and you should write unit tests
  * for saving, fetching, deleting and updating a bed
  */
 @ExtendWith(MockitoExtension.class)
 public class BedControllerTest {
-    private MockMvc mockMvc;
     @Mock
     BedService bedService;
+    private MockMvc mockMvc;
     @InjectMocks
     private BedController bedController;
 
     private Beds beds;
     private List<Beds> bedsList;
+
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @BeforeEach
     public void setUp() {
@@ -80,13 +89,5 @@ public class BedControllerTest {
                 .andDo(MockMvcResultHandlers.print());
         verify(bedService).getAllBeds();
         verify(bedService, times(1)).getAllBeds();
-    }
-
-    public static String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 }

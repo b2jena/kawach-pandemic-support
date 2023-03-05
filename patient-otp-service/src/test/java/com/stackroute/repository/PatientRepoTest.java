@@ -9,7 +9,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
@@ -18,8 +19,7 @@ class PatientRepoTest {
     private PatientRepo patientRepo;
 
     @Test
-    public void givenUserToSaveShouldReturnSavedUser()
-    {
+    public void givenUserToSaveShouldReturnSavedUser() {
         Patient patient = new Patient("godwinkhalko@gmail.com");
         patientRepo.save(patient);
         Patient patient1 = patientRepo.findById(patient.getEmail()).get();
@@ -28,15 +28,14 @@ class PatientRepoTest {
     }
 
     @Test
-    public void givenGetALlUsersShouldReturnListOfAllUsers()
-    {
+    public void givenGetALlUsersShouldReturnListOfAllUsers() {
         Patient patient = new Patient("godwinkhalko@gmail.com");
         Patient patient1 = new Patient("rajesh@gmail.com");
 
         patientRepo.save(patient);
         patientRepo.save(patient1);
 
-        List<Patient> userList = (List<Patient>)patientRepo.findAll();
+        List<Patient> userList = (List<Patient>) patientRepo.findAll();
         assertEquals("rajesh@gmail.com", userList.get(1).getEmail());
     }
 

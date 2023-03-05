@@ -52,15 +52,14 @@ class MessageServiceImplTest {
     }
 
     @Test
-    void givenGetAllMessagesThenShouldReturnListOfAllMessages(){
+    void givenGetAllMessagesThenShouldReturnListOfAllMessages() {
         messageRepository.save(message);
-        List<MessageModel>MessageList = messageRepository.findAll();
+        List<MessageModel> MessageList = messageRepository.findAll();
         List<MessageModel> messageList = messageService.getAllMessages(message.getSenderName(), message.getReciverName());
         assertEquals(MessageList, messageList);
         verify(messageRepository, times(1)).save(message);
         verify(messageRepository, times(1)).findAll();
     }
-
 
 
 }

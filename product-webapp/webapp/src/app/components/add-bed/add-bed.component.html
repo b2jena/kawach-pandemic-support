@@ -1,10 +1,10 @@
-<div style="margin-left: 2%; margin-right: 2%;" [formGroup]="bedForm">
+<div [formGroup]="bedForm" style="margin-left: 2%; margin-right: 2%;">
   <mat-card>
     <div fxLayout="row">
       <div fxFlex="100%">
         <mat-form-field appearance="outline" class="scheduler-field">
           <mat-label class="mat-caption">Bed Type</mat-label>
-          <input matInput placeholder="Bed Type" formControlName="bedType">
+          <input formControlName="bedType" matInput placeholder="Bed Type">
           <mat-error>Should be filled and have atleast 2 character</mat-error>
         </mat-form-field>
       </div>
@@ -14,7 +14,7 @@
       <div fxFlex="50%">
         <mat-form-field appearance="outline" class="scheduler-field">
           <mat-label class="mat-caption">City</mat-label>
-          <input matInput placeholder="City" formControlName="city">
+          <input formControlName="city" matInput placeholder="City">
           <mat-error>Should be filled</mat-error>
         </mat-form-field>
       </div>
@@ -22,7 +22,7 @@
       <div fxFlex="50%">
         <mat-form-field appearance="outline" class="scheduler-field">
           <mat-label class="mat-caption">Address</mat-label>
-          <input matInput placeholder="Address" formControlName="address">
+          <input formControlName="address" matInput placeholder="Address">
           <mat-error>Should be filled</mat-error>
         </mat-form-field>
       </div>
@@ -32,7 +32,7 @@
       <div fxFlex="50%">
         <mat-form-field appearance="outline" class="scheduler-field">
           <mat-label class="mat-caption">Contact Person</mat-label>
-          <input matInput placeholder="Contact Person" formControlName="contactPerson">
+          <input formControlName="contactPerson" matInput placeholder="Contact Person">
           <mat-error>Should be filled and have atleat 3 character</mat-error>
         </mat-form-field>
       </div>
@@ -40,15 +40,15 @@
       <div fxFlex="50%">
         <mat-form-field appearance="outline" class="scheduler-field">
           <mat-label class="mat-caption">Phone Number</mat-label>
-          <input matInput placeholder="Phone Number" formControlName="mobileNumber" maxlength="10">
+          <input formControlName="mobileNumber" matInput maxlength="10" placeholder="Phone Number">
           <mat-error>Should be filled and have exactly 10 numbers</mat-error>
         </mat-form-field>
       </div>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center" >
+    <div fxLayout="row" fxLayoutAlign="space-between center">
       <mat-checkbox (change)="check()">Confirmed and Verified</mat-checkbox>
-      <button mat-raised-button color="primary" [disabled]="!bedForm.valid" (click)="CreateBed()">Submit</button>
+      <button (click)="CreateBed()" [disabled]="!bedForm.valid" color="primary" mat-raised-button>Submit</button>
     </div>
 
   </mat-card>

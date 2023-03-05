@@ -41,37 +41,37 @@
             </tr>
 
               <div *ngFor="let require of closeSos.requirement">
-                <tr> 
+                <tr>
                   <th>Requirement Name</th>
                   <td>{{require.requirementName}}</td>
                 </tr>
-  
-                <tr> 
-                  <th>Requirement Quantity</th>               
-                  <td>{{require.requirementQuantity}}</td>                
+
+                <tr>
+                  <th>Requirement Quantity</th>
+                  <td>{{require.requirementQuantity}}</td>
                 </tr>
-  
-                <tr> 
-                  <th>Unit of measure</th>                
+
+                <tr>
+                  <th>Unit of measure</th>
                   <td>{{require.unitOfMeasure}}</td> <br>
                 </tr>
               </div>
-  
+
               <tr>
                   <th>City</th>
                   <td>{{closeSos.city}}</td>
               </tr>
-  
+
               <tr>
                   <th>Gender</th>
                   <td>{{closeSos.gender}}</td>
               </tr>
-  
+
               <tr>
                   <th>Email</th>
                   <td>{{closeSos.email}}</td>
               </tr>
-  
+
               <tr>
                   <th>Mobile Number</th>
                   <td>{{closeSos.phoneNo}}</td>
@@ -85,30 +85,30 @@
               <tr>
                 <th>Request Status</th>
                 <td>{{closeSos.formStatus}}</td>
-              </tr>   
+              </tr>
           </tbody>
       </table>
-  
+
       <button class="" (click)="close()">Close</button>
       <button class="" (click)="pass()">Pass</button>
       <button class="" (click)="search()">Search for Medicines</button>
   </div>
   </mat-card> -->
-  
-  <!-- <mat-card>
-      <div class="jumbotron" *ngIf = "!bed">
-          <h1 class="display-4">Nothing to verify as of now. Thank you for your selfless support</h1>
-      </div>
-  </mat-card> -->
 
-  <!-- <button class="btn btn-primary mr-4" (click)="putVerified()">Verify this data</button>
-  <button class="btn btn-primary" (click)="passOn()">Pass on this data</button> 
+<!-- <mat-card>
+    <div class="jumbotron" *ngIf = "!bed">
+        <h1 class="display-4">Nothing to verify as of now. Thank you for your selfless support</h1>
+    </div>
+</mat-card> -->
+
+<!-- <button class="btn btn-primary mr-4" (click)="putVerified()">Verify this data</button>
+<button class="btn btn-primary" (click)="passOn()">Pass on this data</button>
 </div> -->
 
 
-  <!-- <div *ngFor="let require of obj.requirement">
-    <p>{{require.requirementName}}: {{require.requirementQuantity}}: {{require.unitOfMeasure}}</p>
-  </div>  -->
+<!-- <div *ngFor="let require of obj.requirement">
+  <p>{{require.requirementName}}: {{require.requirementQuantity}}: {{require.unitOfMeasure}}</p>
+</div>  -->
 <!-- <div *ngFor="let obj of closeSos">
  {{obj.city}}
  {{obj.patientName}}
@@ -119,7 +119,7 @@
         <p>{{require.requirementName}}: {{require.requirementQuantity}}: {{require.unitOfMeasure}}</p>
         <mat-card-title>{{require.requirementName}}</mat-card-title>
         <mat-card-subtitle>{{obj.requestStatus}}</mat-card-subtitle>
-      </div>      
+      </div>
     </mat-card-header>
     <mat-card-content>
       <p>
@@ -128,13 +128,13 @@
         Contact No : {{obj.phoneNo}}<br>
         Email : {{obj.email}}<br>
         Hospitalised Status : {{obj.hospitalised}}<br>
-        City : {{obj.city}}<br>  
+        City : {{obj.city}}<br>
         Request Status : {{obj.formStatus}}<br>
 
       </p>
       <div *ngFor="let require of obj.requirement">
         <p>{{require.requirementName}}: {{require.requirementQuantity}}: {{require.unitOfMeasure}}</p>
-      </div> 
+      </div>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button>PASS</button>
@@ -144,77 +144,77 @@
   </mat-card>
 </div> -->
 
-<mat-card *ngIf = "closeSos">
+<mat-card *ngIf="closeSos">
   <div class="col-md-6 container center">
-      <table class="table table-borderless p-4">
-        <tbody>
-          <tr>
-              <th>Patient Name</th>
-              <td>{{closeSos.patientName}}</td>
-          </tr>
+    <table class="table table-borderless p-4">
+      <tbody>
+      <tr>
+        <th>Patient Name</th>
+        <td>{{closeSos.patientName}}</td>
+      </tr>
 
-          <tr>
-            <th>Requirement Type</th>
-            <td>{{closeSos.requestStatus}}</td>
-        </tr>
+      <tr>
+        <th>Requirement Type</th>
+        <td>{{closeSos.requestStatus}}</td>
+      </tr>
 
-          <!-- <div> -->
-            <tr *ngFor="let require of closeSos.requirement"> 
-              <th>Requirement</th>
-              <td>{{require.requirementName}}: {{require.requirementQuantity}}: {{require.unitOfMeasure}}</td>
-            </tr>
+      <!-- <div> -->
+      <tr *ngFor="let require of closeSos.requirement">
+        <th>Requirement</th>
+        <td>{{require.requirementName}}: {{require.requirementQuantity}}: {{require.unitOfMeasure}}</td>
+      </tr>
 
-            <!-- <tr> 
-              <th>Requirement Quantity</th>               
-              <td>{{require.requirementQuantity}}</td>                
-            </tr>
+      <!-- <tr>
+        <th>Requirement Quantity</th>
+        <td>{{require.requirementQuantity}}</td>
+      </tr>
 
-            <tr> 
-              <th>Unit of measure</th>                
-              <td>{{require.unitOfMeasure}}</td> <br>
-            </tr> -->
-          <!-- </div> -->
+      <tr>
+        <th>Unit of measure</th>
+        <td>{{require.unitOfMeasure}}</td> <br>
+      </tr> -->
+      <!-- </div> -->
 
-          <tr>
-              <th>City</th>
-              <td>{{closeSos.city}}</td>
-          </tr>
+      <tr>
+        <th>City</th>
+        <td>{{closeSos.city}}</td>
+      </tr>
 
-          <tr>
-              <th>Gender</th>
-              <td>{{closeSos.gender}}</td>
-          </tr>
+      <tr>
+        <th>Gender</th>
+        <td>{{closeSos.gender}}</td>
+      </tr>
 
-          <tr>
-              <th>Email</th>
-              <td>{{closeSos.email}}</td>
-          </tr>
+      <tr>
+        <th>Email</th>
+        <td>{{closeSos.email}}</td>
+      </tr>
 
-          <tr>
-              <th>Mobile Number</th>
-              <td>{{closeSos.phoneNo}}</td>
-          </tr>
+      <tr>
+        <th>Mobile Number</th>
+        <td>{{closeSos.phoneNo}}</td>
+      </tr>
 
-          <tr>
-            <th>Hospitalisation Status</th>
-            <td>{{closeSos.hospitalised}}</td>
-          </tr>
+      <tr>
+        <th>Hospitalisation Status</th>
+        <td>{{closeSos.hospitalised}}</td>
+      </tr>
 
-          <tr>
-            <th>Request Status</th>
-            <td>{{closeSos.formStatus}}</td>
-          </tr>   
-        </tbody>
-      </table>
-  
-      <!-- <button class="btn btn-primary ml-8 mr-4" (click)="close()">Close SOS</button> -->
-      <button class="btn btn-primary ml-8 mr-4" matTooltip="Fetch next SOS request" (click)="pass()">Next SOS</button>
-      <button class="btn btn-primary" (click)="search()" matTooltip="Search for a resource">Search Medicine</button>
+      <tr>
+        <th>Request Status</th>
+        <td>{{closeSos.formStatus}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <!-- <button class="btn btn-primary ml-8 mr-4" (click)="close()">Close SOS</button> -->
+    <button (click)="pass()" class="btn btn-primary ml-8 mr-4" matTooltip="Fetch next SOS request">Next SOS</button>
+    <button (click)="search()" class="btn btn-primary" matTooltip="Search for a resource">Search Medicine</button>
   </div>
-  </mat-card>
-  
-  <mat-card *ngIf = "!closeSos">
-      <div class="jumbotron" >
-          <h1 class="display-4">No SOS request raised as of now. Thank you for your selfless support</h1>
-      </div>
-  </mat-card>
+</mat-card>
+
+<mat-card *ngIf="!closeSos">
+  <div class="jumbotron">
+    <h1 class="display-4">No SOS request raised as of now. Thank you for your selfless support</h1>
+  </div>
+</mat-card>

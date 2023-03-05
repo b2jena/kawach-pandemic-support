@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface PatientServiceI {
     Patient saveUser(Patient patient);
+
     List<Patient> getAll();
 }

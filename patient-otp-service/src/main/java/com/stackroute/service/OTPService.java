@@ -1,11 +1,12 @@
 package com.stackroute.service;
 
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
-import org.springframework.stereotype.Service;
-import com.google.common.cache.LoadingCache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import org.springframework.stereotype.Service;
+
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class OTPService {
@@ -17,7 +18,7 @@ public class OTPService {
     private LoadingCache<String, Integer> otpCache;
 
     //method to build the loading cache, with expiry time.
-    public OTPService(){
+    public OTPService() {
         super();
         otpCache = CacheBuilder.newBuilder().
                 expireAfterWrite(EXPIRE_MINS, TimeUnit.MINUTES)
@@ -29,7 +30,7 @@ public class OTPService {
     }
 
     //generate the otp and map it to the patient id.
-    public int generateOTP(String key){
+    public int generateOTP(String key) {
         Random random = new Random();
         int otp = 100000 + random.nextInt(900000);
         otpCache.put(key, otp);
@@ -37,16 +38,16 @@ public class OTPService {
     }
 
     //method to get the otp from the respective Patient id key.
-    public int getOtp(String key){
-        try{
+    public int getOtp(String key) {
+        try {
             return otpCache.get(key);
-        }catch (Exception e){
+        } catch (Exception e) {
             return 0;
         }
     }
 
     //To clear the key value pair from system.
-    public void clearOTP(String key){
+    public void clearOTP(String key) {
         otpCache.invalidate(key);
     }
 }

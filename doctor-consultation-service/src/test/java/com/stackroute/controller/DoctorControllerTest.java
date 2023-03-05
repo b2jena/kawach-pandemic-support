@@ -35,6 +35,14 @@ class DoctorControllerTest {
     @InjectMocks
     private DoctorController userController;
 
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @BeforeEach
     public void setUp() {
         user = new Doctor("godwinkhalko2@gmail.com", "Godwin Khalko", "Dermatologist");
@@ -45,18 +53,10 @@ class DoctorControllerTest {
     public void givenUserToSaveShouldReturnSavedUser() throws Exception {
         when(userService.saveDoctorMongoDB(any())).thenReturn(user);
         mockMvc.perform(post("/api/v1/doctorm")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(user)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(asJsonString(user)))
                 .andExpect(status().isCreated());
         verify(userService, times(1)).saveDoctorMongoDB(any());
-    }
-
-    public static String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 }
 

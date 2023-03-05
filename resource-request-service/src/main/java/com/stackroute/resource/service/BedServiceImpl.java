@@ -15,16 +15,16 @@ import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
-public class BedServiceImpl implements BedService{
-    private BedRepository bedRepository;
+public class BedServiceImpl implements BedService {
     SequenceGeneratorService sequenceGeneratorService;
+    @Autowired
+    MongoTemplate mongoTemplate;
+    private BedRepository bedRepository;
+
     @Autowired
     public BedServiceImpl(BedRepository bedRepository) {
         this.bedRepository = bedRepository;
     }
-
-    @Autowired
-    MongoTemplate mongoTemplate;
 
     @Override
     public Beds saveBed(Beds beds) throws NullValueException {
@@ -37,14 +37,14 @@ public class BedServiceImpl implements BedService{
             return bedRepository.save(beds);
         }
     }
+
     @Override
     public List<Beds> getAllBeds() {
         return (List<Beds>) bedRepository.findAll();
     }
 
     @Override
-    public Beds getUnverifiedBed()
-    {
+    public Beds getUnverifiedBed() {
         Query query = new Query();
         query.addCriteria(Criteria.where("verificationStatus").is(false));
         List<Beds> unverified = mongoTemplate.find(query, Beds.class);
@@ -59,13 +59,14 @@ public class BedServiceImpl implements BedService{
         System.out.println("Bed Id = " + bedId);
         Query query = new Query(Criteria.where("bedId").is(bedId));
         Update updateQuery = new Update();
-        updateQuery.set("verificationStatus",true);
-        mongoTemplate.upsert(query,updateQuery,Beds.class);
+        updateQuery.set("verificationStatus", true);
+        mongoTemplate.upsert(query, updateQuery, Beds.class);
     }
+
     @Override
     public List<Beds> getAllBedsByCity(String City, String requirement) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("city").regex(City, "i").and("bedType").regex(requirement,"i"));
+        query.addCriteria(Criteria.where("city").regex(City, "i").and("bedType").regex(requirement, "i"));
         List<Beds> request = mongoTemplate.find(query, Beds.class);
         return request;
     }

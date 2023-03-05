@@ -14,10 +14,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
 class ResourceServiceImplTest {
@@ -47,7 +46,7 @@ class ResourceServiceImplTest {
     @Test
     public void givenBedToSaveThenShouldReturnSavedBed() throws NullValueException {
         when(resourceRepository.save(any())).thenReturn(resources);
-        assertEquals(resources, resourceService.saveResource(resources))  ;
+        assertEquals(resources, resourceService.saveResource(resources));
         verify(resourceRepository, times(1)).save(any());
     }
 

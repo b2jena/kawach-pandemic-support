@@ -10,10 +10,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
 class PatientServiceITest {
@@ -26,8 +25,7 @@ class PatientServiceITest {
     private Patient user;
 
     @Test
-    public void givenUserToSaveShouldReturnSavedUser()
-    {
+    public void givenUserToSaveShouldReturnSavedUser() {
         Patient user = new Patient("godwinkhalko@gmail.com");
         when(patientRepo.save(any())).thenReturn(user);
         patientService.saveUser(user);
@@ -40,7 +38,7 @@ class PatientServiceITest {
         when(patientRepo.findAll()).thenReturn(userList);
         List<Patient> userlist = patientService.getAll();
         assertEquals(userlist, userlist);
-        verify(patientRepo,times(1)).save(user);
-        verify(patientRepo,times(1)).findAll();
+        verify(patientRepo, times(1)).save(user);
+        verify(patientRepo, times(1)).findAll();
     }
 }

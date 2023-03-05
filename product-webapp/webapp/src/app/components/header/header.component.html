@@ -1,57 +1,57 @@
-<nav class="navbar navbar-light nav1" (scroll)="onscroll()" [ngClass]="navbarfixed?'fixed':'nofixed'">
-    
+<nav (scroll)="onscroll()" [ngClass]="navbarfixed?'fixed':'nofixed'" class="navbar navbar-light nav1">
+
   <!-- <nav class="navbar navbar-light fixed-top nav1"> -->
-    <div class="container-fluid" pb-3>
-        <a class="navbar-brand font float-start" href="#">
-          <img src="/assets/img/logo.jpg" width="210" height="60" class="d-inline-block" alt="">
-        </a>
-      <div class = "Container" *ngIf="router.url === '/'">
-        <input type="button" class="btn btn-primary" value="Doctor Register" routerLink="/doctorregistration">
-        <input type="button" class="btn btn-primary" value="Volunteer Register" routerLink="/volunteerregistration">
-        <input type="button" class="btn btn-primary" value="Login" routerLink="/login">
-      </div>
-      <div class="Container" *ngIf="router.url === '/login'">
-        <input type="button" class="btn btn-primary" value="Doctor Register" routerLink="/doctorregistration">
-        <input type="button" class="btn btn-primary" value="Volunteer Register" routerLink="/volunteerregistration">
-      </div>
-      <div class="Container" *ngIf="router.url === '/doctorregistration'">
-        <input type="button" class="btn btn-primary" value="Login" routerLink="/login">
-      </div>
-      <div class="Container" *ngIf="router.url === '/volunteerregistration'">
-          <input type="button" class="btn btn-primary" value="Login" routerLink="/login">
-      </div>
-      
-      <div class="Container" *ngIf="router.url === '/war-room-dashboard'">
-        <a href="/#/login">
-          <img src="/assets/img/logout.png" width="22" height="20" class="d-inline-block" alt="">
-        </a>
-      </div>
-      <div class="Container" *ngIf="router.url === '/war-room-dashboard/addmedicine'">
-        <a href="/#/login">
-          <img src="/assets/img/logout.png" width="22" height="20" class="d-inline-block" alt="">
-        </a>
-      </div>
-      <div class="Container" *ngIf="router.url === '/war-room-dashboard/addequipment'">
-        <a href="/#/login">
-          <img src="/assets/img/logout.png" width="22" height="20" class="d-inline-block" alt="">
-        </a>
-      </div>
-      <div class="Container" *ngIf="router.url === '/war-room-dashboard/addbed'">
-        <a href="/#/login">
-          <img src="/assets/img/logout.png" width="22" height="20" class="d-inline-block" alt="">
-        </a>
-      </div>
-      <div class="Container" *ngIf="router.url === '/doctor-dashboard'">
-        <a href="/#/login">
-          <img src="/assets/img/logout.png" width="22" height="20" class="d-inline-block" alt="" >
-          <!-- <div class="bottom-right">Log out</div> -->
-        </a>
-      </div>
-      <div class="Container" *ngIf="router.url === '/sos'">
-        <a href="/#/">
-          <img src="/assets/img/logout.png" width="22" height="20" class="d-inline-block" alt="">
-        </a>
-      </div>
+  <div class="container-fluid" pb-3>
+    <a class="navbar-brand font float-start" href="#">
+      <img alt="" class="d-inline-block" height="60" src="/assets/img/logo.jpg" width="210">
+    </a>
+    <div *ngIf="router.url === '/'" class="Container">
+      <input class="btn btn-primary" routerLink="/doctorregistration" type="button" value="Doctor Register">
+      <input class="btn btn-primary" routerLink="/volunteerregistration" type="button" value="Volunteer Register">
+      <input class="btn btn-primary" routerLink="/login" type="button" value="Login">
     </div>
-  </nav>
-  
+    <div *ngIf="router.url === '/login'" class="Container">
+      <input class="btn btn-primary" routerLink="/doctorregistration" type="button" value="Doctor Register">
+      <input class="btn btn-primary" routerLink="/volunteerregistration" type="button" value="Volunteer Register">
+    </div>
+    <div *ngIf="router.url === '/doctorregistration'" class="Container">
+      <input class="btn btn-primary" routerLink="/login" type="button" value="Login">
+    </div>
+    <div *ngIf="router.url === '/volunteerregistration'" class="Container">
+      <input class="btn btn-primary" routerLink="/login" type="button" value="Login">
+    </div>
+
+    <div *ngIf="router.url === '/war-room-dashboard'" class="Container">
+      <a href="/#/login">
+        <img alt="" class="d-inline-block" height="20" src="/assets/img/logout.png" width="22">
+      </a>
+    </div>
+    <div *ngIf="router.url === '/war-room-dashboard/addmedicine'" class="Container">
+      <a href="/#/login">
+        <img alt="" class="d-inline-block" height="20" src="/assets/img/logout.png" width="22">
+      </a>
+    </div>
+    <div *ngIf="router.url === '/war-room-dashboard/addequipment'" class="Container">
+      <a href="/#/login">
+        <img alt="" class="d-inline-block" height="20" src="/assets/img/logout.png" width="22">
+      </a>
+    </div>
+    <div *ngIf="router.url === '/war-room-dashboard/addbed'" class="Container">
+      <a href="/#/login">
+        <img alt="" class="d-inline-block" height="20" src="/assets/img/logout.png" width="22">
+      </a>
+    </div>
+    <div *ngIf="router.url === '/doctor-dashboard'" class="Container">
+      <a href="/#/login">
+        <img alt="" class="d-inline-block" height="20" src="/assets/img/logout.png" width="22">
+        <!-- <div class="bottom-right">Log out</div> -->
+      </a>
+    </div>
+    <div *ngIf="router.url === '/sos'" class="Container">
+      <a href="/#/">
+        <img alt="" class="d-inline-block" height="20" src="/assets/img/logout.png" width="22">
+      </a>
+    </div>
+  </div>
+</nav>
+

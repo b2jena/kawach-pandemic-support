@@ -2,9 +2,7 @@ package com.stackroute.resource.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stackroute.resource.model.Resources;
-import com.stackroute.resource.model.Resources;
 import com.stackroute.resource.service.ResourceService;
-import com.stackroute.resource.service.ResourceServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -31,14 +28,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(MockitoExtension.class)
 class ResourceControllerTest {
-    private MockMvc mockMvc;
     @Mock
     ResourceService resourceService;
     @InjectMocks
     ResourceController resourceController;
-
+    private MockMvc mockMvc;
     private Resources resources;
     private List<Resources> resourcesList;
+
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @BeforeEach
     public void setUp() {
@@ -82,13 +86,5 @@ class ResourceControllerTest {
                 .andDo(MockMvcResultHandlers.print());
         verify(resourceService).getAllResources();
         verify(resourceService, times(1)).getAllResources();
-    }
-
-    public static String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 }

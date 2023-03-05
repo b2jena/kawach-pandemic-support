@@ -18,18 +18,18 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 @RestController
-@CrossOrigin(value="*")
+@CrossOrigin(value = "*")
 @RequestMapping("/api/v1/user/")
 public class UserController {
-    private DoctorService doctorService;
-    private VolunteerService volunteerService;
-    private RabbitMqSender rabbitMqSender;
     @Value("${data.controller.doctorTag}")
     public String doctorTag;
     @Value("${data.controller.volunteerTag}")
     public String volunteerTag;
     @Value("${data.controller.userGotSaved}")
     public String userGotSaved;
+    private DoctorService doctorService;
+    private VolunteerService volunteerService;
+    private RabbitMqSender rabbitMqSender;
 
 
     @Autowired

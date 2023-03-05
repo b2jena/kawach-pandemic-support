@@ -15,7 +15,7 @@ import java.util.UUID;
 @Document(collection = "beds")
 public class Beds {
     @Transient
-    public static final String SEQUENCE_NAME="sequence";
+    public static final String SEQUENCE_NAME = "sequence";
     @Id
     private UUID bedId;
     private String bedType;

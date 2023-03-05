@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.io.IOException;
 import java.net.URL;
 
@@ -17,8 +18,8 @@ import java.net.URL;
 @RequestMapping("api/v1/")
 @CrossOrigin(value = "*")
 public class InformationServiceController {
-    Logger logger = LoggerFactory.getLogger(InformationServiceController.class);
     private static String VIRUS_DATA_URL = "https://api.rootnet.in/covid19-in/stats/latest";
+    Logger logger = LoggerFactory.getLogger(InformationServiceController.class);
 
     @GetMapping("/information")
     public LocationStats[] getData() throws IOException {
@@ -32,7 +33,6 @@ public class InformationServiceController {
 
         return locationStats;
     }
-
 
 
 }

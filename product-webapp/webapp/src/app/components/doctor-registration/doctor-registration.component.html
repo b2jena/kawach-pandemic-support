@@ -1,86 +1,109 @@
-
-  <form [formGroup]="profileForm" class="form-container">
-    
-    
-    <mat-card style="width: 500px; text-align: center;">
-
-      <mat-card-title>Register As Doctor</mat-card-title><br>
-
-      <mat-card-content style="justify-content: center;">
-
-      
-        <mat-form-field appearance="outline" style="width: 300px;">
-          <mat-label>Email Id</mat-label>
-          <input matInput type="text" formControlName="emailId" placeholder="pat@example.com" required>
-          <mat-error *ngIf="profileForm.get('emailId')?.invalid && profileForm.get('emailId')?.touched">Invalid Email</mat-error>
-        </mat-form-field><br>
-  
-      
-        <mat-form-field appearance="outline" style="width: 300px;">
-          <mat-label>Full Name</mat-label>
-          <input matInput type="text"  formControlName="fullName" placeholder="Full Name" required>
-          <mat-error *ngIf="profileForm.get('fullName')?.invalid && profileForm.get('fullName')?.touched">Required field and should contain atleat 2 characters.</mat-error>
-        </mat-form-field><br>
-  
-      
-        <mat-form-field appearance="outline" style="width: 300px;">
-          <mat-label>Medical Registration Id</mat-label>
-          <input matInput type="text"  formControlName="medicalRegistrationId" placeholder="" required>
-          <mat-error *ngIf="profileForm.get('medicalRegistrationId')?.invalid && profileForm.get('medicalRegistrationId')?.touched">Required field and should have atleast 5 characters</mat-error>
-        </mat-form-field><br>
-
-        <mat-form-field appearance="outline" style="width: 70px;">
-          <mat-label></mat-label>
-          <mat-select formControlName="code" placeholder="+91">
-            <mat-option *ngFor="let code of code" [value]="code.value">
-              {{code.value}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-      
-        <mat-form-field appearance="outline" style="width: 230px;">
-          <mat-label>Phone Number</mat-label>
-          <input matInput type="number" formControlName="phoneNumber" required minlength="10" maxlength="10">
-          <mat-error *ngIf="profileForm.get('phoneNumber').errors?.pattern && profileForm.get('phoneNumber')?.touched">Please enter a valid phone number</mat-error>
-          <mat-error *ngIf="profileForm.get('phoneNumber').errors?.required && profileForm.get('phoneNumber')?.touched">Required Field</mat-error>
-        </mat-form-field><br>
+<form [formGroup]="profileForm" class="form-container">
 
 
-        <mat-form-field appearance="outline" style="width: 300px;">
-          <mat-label>Specialization</mat-label>
-          <mat-select formControlName="specialization" required>
-            <mat-option *ngFor="let spec of specialisation" [value]="spec.value">
-              {{spec.value}}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="profileForm.get('specialization')?.invalid && profileForm.get('specialization')?.touched">Required Field</mat-error>
-        </mat-form-field>
+  <mat-card style="width: 500px; text-align: center;">
 
-      
-        <mat-form-field appearance="outline" style="width: 300px;">
-          <mat-label>Password</mat-label>
-          <input matInput type="text"  formControlName="password" [type]="hide ? 'password' : 'text'" placeholder="password" required>
-          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          <mat-hint>Should contain 8 to 15 characters with atleast 1 lowercase, uppercase, number and special character</mat-hint>
-          <mat-error *ngIf="profileForm.get('password')?.invalid && profileForm.get('password')?.touched">Should contain 8 to 15 characters with atleast 1 lowercase, uppercase, number and special character</mat-error>
-        </mat-form-field><br>
-  
-      
+    <mat-card-title>Register As Doctor</mat-card-title>
+    <br>
+
+    <mat-card-content style="justify-content: center;">
+
+
+      <mat-form-field appearance="outline" style="width: 300px;">
+        <mat-label>Email Id</mat-label>
+        <input formControlName="emailId" matInput placeholder="pat@example.com" required type="text">
+        <mat-error *ngIf="profileForm.get('emailId')?.invalid && profileForm.get('emailId')?.touched">Invalid Email
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+
+      <mat-form-field appearance="outline" style="width: 300px;">
+        <mat-label>Full Name</mat-label>
+        <input formControlName="fullName" matInput placeholder="Full Name" required type="text">
+        <mat-error *ngIf="profileForm.get('fullName')?.invalid && profileForm.get('fullName')?.touched">Required field
+          and should contain atleat 2 characters.
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+
+      <mat-form-field appearance="outline" style="width: 300px;">
+        <mat-label>Medical Registration Id</mat-label>
+        <input formControlName="medicalRegistrationId" matInput placeholder="" required type="text">
+        <mat-error
+          *ngIf="profileForm.get('medicalRegistrationId')?.invalid && profileForm.get('medicalRegistrationId')?.touched">
+          Required field and should have atleast 5 characters
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field appearance="outline" style="width: 70px;">
+        <mat-label></mat-label>
+        <mat-select formControlName="code" placeholder="+91">
+          <mat-option *ngFor="let code of code" [value]="code.value">
+            {{code.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline" style="width: 230px;">
+        <mat-label>Phone Number</mat-label>
+        <input formControlName="phoneNumber" matInput maxlength="10" minlength="10" required type="number">
+        <mat-error *ngIf="profileForm.get('phoneNumber').errors?.pattern && profileForm.get('phoneNumber')?.touched">
+          Please enter a valid phone number
+        </mat-error>
+        <mat-error *ngIf="profileForm.get('phoneNumber').errors?.required && profileForm.get('phoneNumber')?.touched">
+          Required Field
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+
+      <mat-form-field appearance="outline" style="width: 300px;">
+        <mat-label>Specialization</mat-label>
+        <mat-select formControlName="specialization" required>
+          <mat-option *ngFor="let spec of specialisation" [value]="spec.value">
+            {{spec.value}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="profileForm.get('specialization')?.invalid && profileForm.get('specialization')?.touched">
+          Required Field
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline" style="width: 300px;">
+        <mat-label>Password</mat-label>
+        <input [type]="hide ? 'password' : 'text'" formControlName="password" matInput placeholder="password"
+               required type="text">
+        <mat-icon (click)="hide = !hide" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-hint>Should contain 8 to 15 characters with atleast 1 lowercase, uppercase, number and special character
+        </mat-hint>
+        <mat-error *ngIf="profileForm.get('password')?.invalid && profileForm.get('password')?.touched">Should contain 8
+          to 15 characters with atleast 1 lowercase, uppercase, number and special character
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+
       <div class="custom-file fileInputProfileWrap" style="margin-top:5%">
         <input
-          type="file"
-          accept="image/*"
           (change)="fileChangeEvent($event)"
+          accept="image/*"
           class="fileInputProfile"
           matTooltip="Choose a profile pic"
+          type="file"
         />
-      </div><br>
-  
-      <button mat-raised-button [disabled]="profileForm?.invalid" (click)="submitData()" color="primary">Register</button>
+      </div>
+      <br>
+
+      <button (click)="submitData()" [disabled]="profileForm?.invalid" color="primary" mat-raised-button>Register
+      </button>
     </mat-card-content>
 
   </mat-card>
-    
+
 </form>
-  
+

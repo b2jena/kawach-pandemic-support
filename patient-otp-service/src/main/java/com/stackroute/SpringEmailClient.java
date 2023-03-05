@@ -10,7 +10,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * Hello world!
- *
  */
 
 @EnableRabbit
@@ -21,6 +20,7 @@ public class SpringEmailClient {
         SpringApplication.run(SpringEmailClient.class, args);
         System.out.println("Client is running");
     }
+
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {

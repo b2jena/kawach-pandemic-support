@@ -26,8 +26,7 @@ class DoctorServiceTest {
     private Doctor user;
 
     @Test
-    public void givenUserToSaveInMongoDBShouldReturnSavedUser()
-    {
+    public void givenUserToSaveInMongoDBShouldReturnSavedUser() {
         Doctor user1 = new Doctor("godwinkhalko2@gmail.com", "Godwin Khalko", "Dermatologist");
         when(userRepository.save(any())).thenReturn(user);
         userService.saveDoctorMongoDB(user);
@@ -40,8 +39,8 @@ class DoctorServiceTest {
         when(userRepository.findAll()).thenReturn(userList);
         List<Doctor> userlist = userService.getAllDoctors();
         assertEquals(userlist, userlist);
-        verify(userRepository,times(1)).save(user);
-        verify(userRepository,times(1)).findAll();
+        verify(userRepository, times(1)).save(user);
+        verify(userRepository, times(1)).findAll();
     }
 
     @Test

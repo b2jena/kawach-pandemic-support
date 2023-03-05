@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(value="*")
+@CrossOrigin(value = "*")
 @RequestMapping("/api/v1/doctor/")
 public class DoctorController {
     private DoctorService doctorService;
@@ -23,18 +23,18 @@ public class DoctorController {
     }
 
     @GetMapping("doctor/{emailId}")
-    public void saveDoctorRedis(@PathVariable  String emailId) throws DoctorNotFoundException, DoctorAlreadyPresentException, DoctorNotFoundException, DoctorAlreadyPresentException {
+    public void saveDoctorRedis(@PathVariable String emailId) throws DoctorNotFoundException, DoctorAlreadyPresentException, DoctorNotFoundException, DoctorAlreadyPresentException {
         doctorService.saveDoctorRedis(emailId);
     }
 
     @PostMapping("doctorm")
-    public ResponseEntity<Doctor> saveDoctorMongoDB(@RequestBody  Doctor doctor) throws DoctorNotFoundException, DoctorAlreadyPresentException {
+    public ResponseEntity<Doctor> saveDoctorMongoDB(@RequestBody Doctor doctor) throws DoctorNotFoundException, DoctorAlreadyPresentException {
         Doctor doctor1 = doctorService.saveDoctorMongoDB(doctor);
         return new ResponseEntity<Doctor>(doctor1, HttpStatus.CREATED);
     }
 
     @GetMapping("doctorm/{emailId}")
-    public ResponseEntity<Doctor> getDoctorByEmailId(@PathVariable  String emailId) throws DoctorNotFoundException {
+    public ResponseEntity<Doctor> getDoctorByEmailId(@PathVariable String emailId) throws DoctorNotFoundException {
         Doctor doctor = doctorService.getDoctorByEmailId(emailId);
         return new ResponseEntity<Doctor>(doctor, HttpStatus.OK);
     }
@@ -43,6 +43,7 @@ public class DoctorController {
     public List<Doctor> getAllDoctors() {
         return doctorService.getAllDoctors();
     }
+
     @DeleteMapping("doctor/{emailId}")
     public String deleteDoctorRedis(@PathVariable String emailId) throws DoctorNotFoundException {
         doctorService.deleteDoctorRedis(emailId);
@@ -50,7 +51,7 @@ public class DoctorController {
     }
 
     @GetMapping("doctor")
-    public List<Doctor> getAllDoctorRedis(){
+    public List<Doctor> getAllDoctorRedis() {
         List<Doctor> list = doctorService.getAllDoctorRedis();
         return list;
     }

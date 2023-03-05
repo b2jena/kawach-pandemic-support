@@ -74,7 +74,7 @@ public class RabbitMQConfig {
         /**
          * Add code to create connection to rabbitMq broker
          */
-        CachingConnectionFactory cachingConnectionFactory= new CachingConnectionFactory(host);
+        CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory(host);
         cachingConnectionFactory.setUsername(username);
         cachingConnectionFactory.setPassword(password);
 

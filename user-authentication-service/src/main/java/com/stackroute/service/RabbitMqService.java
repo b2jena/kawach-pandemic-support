@@ -25,17 +25,16 @@ public class RabbitMqService implements RabbitListenerConfigurer {
     @RabbitListener(queues = "${spring.rabbitmq.queue}")
     public void recievedMessage(String userDetails) {
 
-        String[] parts=userDetails.split(", ");
-        if(parts[2].subSequence(1,parts[2].length()-1).equals("Doctor")){
-            user2=new User(parts[0],parts[1],Role.Doctor);
+        String[] parts = userDetails.split(", ");
+        if (parts[2].subSequence(1, parts[2].length() - 1).equals("Doctor")) {
+            user2 = new User(parts[0], parts[1], Role.Doctor);
+            userService.saveUser(user2);
+        } else if (parts[2].subSequence(1, parts[2].length() - 1).equals("Volunteer")) {
+            user2 = new User(parts[0], parts[1], Role.Volunteer);
             userService.saveUser(user2);
         }
-        else if(parts[2].subSequence(1,parts[2].length()-1).equals("Volunteer")){
-            user2=new User(parts[0],parts[1],Role.Volunteer);
-            userService.saveUser(user2);
-        }
-        logger.info("Recieved user details: " + parts[0] + ", "+parts[1] +", "
-        + parts[2].subSequence(1,parts[2].length()-1));
+        logger.info("Recieved user details: " + parts[0] + ", " + parts[1] + ", "
+                + parts[2].subSequence(1, parts[2].length() - 1));
 
     }
 

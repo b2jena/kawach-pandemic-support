@@ -31,4 +31,4 @@ services:
     network_mode: "host"
     restart: always
     ports:
-        - 6379:6379
+      - 6379:6379

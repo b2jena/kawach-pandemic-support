@@ -13,8 +13,8 @@ import java.time.format.DateTimeFormatter;
 @Data
 @Document(collection = "Message")
 public class MessageModel {
+    String formattedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
     private String senderName;
     private String reciverName;
     private String messageBody;
-    String formattedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
 }

@@ -28,13 +28,19 @@
     </div> -->
 
     <div fxLayout="row" fxLayoutAlign="space-around center">
-      <div fxLayout="column" fxLayoutAlign="space-around stretch" fxFlex="20">
-        <button mat-raised-button [ngClass]="{'nav-button-active':closeMed, 'nav-button-inactive':!closeMed}" (click)="medSos()">
-          Medicine SOS </button>
-        <button mat-raised-button [ngClass]="{'nav-button-active':closeEquip, 'nav-button-inactive':!closeEquip}" (click)="EquipSos()">
-          Equipment SOS </button>
-        <button mat-raised-button [ngClass]="{'nav-button-active':closeBed, 'nav-button-inactive':!closeBed}" (click)="bedSos()">
-          Beds SOS </button>
+      <div fxFlex="20" fxLayout="column" fxLayoutAlign="space-around stretch">
+        <button (click)="medSos()" [ngClass]="{'nav-button-active':closeMed, 'nav-button-inactive':!closeMed}"
+                mat-raised-button>
+          Medicine SOS
+        </button>
+        <button (click)="EquipSos()" [ngClass]="{'nav-button-active':closeEquip, 'nav-button-inactive':!closeEquip}"
+                mat-raised-button>
+          Equipment SOS
+        </button>
+        <button (click)="bedSos()" [ngClass]="{'nav-button-active':closeBed, 'nav-button-inactive':!closeBed}"
+                mat-raised-button>
+          Beds SOS
+        </button>
       </div>
       <div fxFlex="80">
         <app-close-sos-equipment *ngIf="closeEquip"></app-close-sos-equipment>
@@ -67,13 +73,21 @@
               </mat-sidenav-container>
             </div> -->
     <div fxLayout="row" fxLayoutAlign="space-around center">
-      <div fxLayout="column" fxLayoutAlign="space-around stretch" fxFlex="20">
-        <button mat-raised-button [ngClass]="{'nav-button-active':verifyMedicine, 'nav-button-inactive':!verifyMedicine}" (click)="verMed()">
-          Verify Medicine </button>
-        <button mat-raised-button [ngClass]="{'nav-button-active':verifyEquipment, 'nav-button-inactive':!verifyEquipment}" (click)="verEquip()">
-          Verify Equipment </button>
-        <button mat-raised-button [ngClass]="{'nav-button-active':verifyBed, 'nav-button-inactive':!verifyBed}" (click)="verBed()">
-          Verify Beds </button>
+      <div fxFlex="20" fxLayout="column" fxLayoutAlign="space-around stretch">
+        <button (click)="verMed()"
+                [ngClass]="{'nav-button-active':verifyMedicine, 'nav-button-inactive':!verifyMedicine}"
+                mat-raised-button>
+          Verify Medicine
+        </button>
+        <button (click)="verEquip()"
+                [ngClass]="{'nav-button-active':verifyEquipment, 'nav-button-inactive':!verifyEquipment}"
+                mat-raised-button>
+          Verify Equipment
+        </button>
+        <button (click)="verBed()" [ngClass]="{'nav-button-active':verifyBed, 'nav-button-inactive':!verifyBed}"
+                mat-raised-button>
+          Verify Beds
+        </button>
       </div>
       <div fxFlex="80">
         <app-verify-equipments *ngIf="verifyEquipment"></app-verify-equipments>
@@ -84,22 +98,28 @@
   </mat-tab>
 
   <mat-tab label="Add Resources">
-  <div fxLayout="row" fxLayoutAlign="space-around center">
-    <div fxLayout="column" fxLayoutAlign="space-around stretch" fxFlex="20">
-      <button mat-raised-button [ngClass]="{'nav-button-active':addMed, 'nav-button-inactive':!addMed}" (click)="addMedres()">
-        Add Medicine </button>
-      <button mat-raised-button [ngClass]="{'nav-button-active':addEquip, 'nav-button-inactive':!addEquip}" (click)="addEquipRes()">
-        Add Equipment </button>
-      <button mat-raised-button [ngClass]="{'nav-button-active':addBed, 'nav-button-inactive':!addBed}" (click)="addBedRes()">
-        Add Beds </button>
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+      <div fxFlex="20" fxLayout="column" fxLayoutAlign="space-around stretch">
+        <button (click)="addMedres()" [ngClass]="{'nav-button-active':addMed, 'nav-button-inactive':!addMed}"
+                mat-raised-button>
+          Add Medicine
+        </button>
+        <button (click)="addEquipRes()" [ngClass]="{'nav-button-active':addEquip, 'nav-button-inactive':!addEquip}"
+                mat-raised-button>
+          Add Equipment
+        </button>
+        <button (click)="addBedRes()" [ngClass]="{'nav-button-active':addBed, 'nav-button-inactive':!addBed}"
+                mat-raised-button>
+          Add Beds
+        </button>
+      </div>
+      <div fxFlex="80">
+        <app-add-equipment *ngIf="addEquip"></app-add-equipment>
+        <app-add-medicine *ngIf="addMed"></app-add-medicine>
+        <app-add-bed *ngIf="addBed"></app-add-bed>
+      </div>
     </div>
-    <div fxFlex="80">
-      <app-add-equipment *ngIf="addEquip"></app-add-equipment>
-      <app-add-medicine *ngIf="addMed"></app-add-medicine>
-      <app-add-bed *ngIf="addBed"></app-add-bed>
-    </div>
-  </div>
-</mat-tab>
+  </mat-tab>
 </mat-tab-group>
 
 

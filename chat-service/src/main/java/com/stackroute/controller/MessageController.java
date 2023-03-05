@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(value="*")
+@CrossOrigin(value = "*")
 @RequestMapping("api/v1/")
 public class MessageController {
 
@@ -36,7 +36,7 @@ public class MessageController {
 
     @DeleteMapping("chat-messages/{senderName}/{reciverName}")
     public ResponseEntity<String> deleteMessages(@PathVariable("senderName") String senderName,
-                                                             @PathVariable("reciverName") String reciverName) {
+                                                 @PathVariable("reciverName") String reciverName) {
         messageService.deleteAll(senderName);
         return new ResponseEntity<String>("Deleted chat", HttpStatus.OK);
     }

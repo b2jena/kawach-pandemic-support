@@ -1,32 +1,36 @@
 <div class="col-md-6">
-    <h2 class="text-center">Update Medicine</h2>
-    <form>
-      <div class="form-group">
-        <label for="medicineName">Medicine Name:</label>
-        <input type="name" [(ngModel)]="user.medicineName" placeholder="Name" name="medicineName" class="form-control" id="medicineName">
-      </div>
-    
-      <div class="form-group">
-        <label for="pharmacy">Pharmacy:</label>
-        <input [(ngModel)]="user.pharmacy" placeholder="Pharmacy" name="pharmacy" class="form-control" id="pharmacy">
-      </div>
-    
-      <div class="form-group">
-        <label for="id">City</label>
-        <input [(ngModel)]="user.city" placeholder="City Name" name="city" class="form-control" id="medicineid">
-      </div>
-      <div class="form-group">
-        <label for="name">Address:</label>
-        <input type="name" [(ngModel)]="user.address" placeholder="Address" name="address" class="form-control" id="address">
-      </div>
-      <div class="form-group">
-        <label for="name">Contact Person:</label>
-        <input type="name" [(ngModel)]="user.contactPerson" placeholder="Contact Person" name="contactPerson" class="form-control" id="contactPerson">
-      </div>
-      <div class="form-group">
-        <label for="name">Mobile Number:</label>
-        <input type="name" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
-      </div>
-      <button class="btn btn-success" (click)="updatemedicine()">Update</button>
-    </form>
+  <h2 class="text-center">Update Medicine</h2>
+  <form>
+    <div class="form-group">
+      <label for="medicineName">Medicine Name:</label>
+      <input [(ngModel)]="user.medicineName" class="form-control" id="medicineName" name="medicineName" placeholder="Name"
+             type="name">
     </div>
+
+    <div class="form-group">
+      <label for="pharmacy">Pharmacy:</label>
+      <input [(ngModel)]="user.pharmacy" class="form-control" id="pharmacy" name="pharmacy" placeholder="Pharmacy">
+    </div>
+
+    <div class="form-group">
+      <label for="id">City</label>
+      <input [(ngModel)]="user.city" class="form-control" id="medicineid" name="city" placeholder="City Name">
+    </div>
+    <div class="form-group">
+      <label for="name">Address:</label>
+      <input [(ngModel)]="user.address" class="form-control" id="address" name="address" placeholder="Address"
+             type="name">
+    </div>
+    <div class="form-group">
+      <label for="name">Contact Person:</label>
+      <input [(ngModel)]="user.contactPerson" class="form-control" id="contactPerson" name="contactPerson"
+             placeholder="Contact Person" type="name">
+    </div>
+    <div class="form-group">
+      <label for="name">Mobile Number:</label>
+      <input [(ngModel)]="user.mobileNumber" class="form-control" id="mobileNumber" name="mobileNumber"
+             placeholder="Mobile Number" type="name">
+    </div>
+    <button (click)="updatemedicine()" class="btn btn-success">Update</button>
+  </form>
+</div>

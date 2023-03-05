@@ -1,4 +1,5 @@
 package com.stackroute.resource.model;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,7 @@ import java.util.UUID;
 @Document(collection = "resources")
 public class Resources {
     @Transient
-    public static final String SEQUENCE_NAME="sequence";
+    public static final String SEQUENCE_NAME = "sequence";
     @Id
     private UUID id;
     private String medicineName;

@@ -8,7 +8,7 @@
     <video #received_video [autoplay]="true"></video>
   </mat-grid-tile>
 </mat-grid-list>
-<button mat-raised-button color="primary" (click)="startLocalVideo()" [disabled]="localVideoActive">Start Local</button>
-<button mat-raised-button color="primary" (click)="pauseLocalVideo()" [disabled]="!localVideoActive">Stop Local</button>
-<button mat-raised-button color="primary" (click)="call()" [disabled]="inCall || !localVideoActive">Call</button>
-<button mat-raised-button color="primary" (click)="hangUp()" [disabled]="!inCall">HangUp</button>
+<button (click)="startLocalVideo()" [disabled]="localVideoActive" color="primary" mat-raised-button>Start Local</button>
+<button (click)="pauseLocalVideo()" [disabled]="!localVideoActive" color="primary" mat-raised-button>Stop Local</button>
+<button (click)="call()" [disabled]="inCall || !localVideoActive" color="primary" mat-raised-button>Call</button>
+<button (click)="hangUp()" [disabled]="!inCall" color="primary" mat-raised-button>HangUp</button>

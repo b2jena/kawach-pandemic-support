@@ -1,9 +1,11 @@
 package com.stackroute.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="Patient")
+@Table(name = "Patient")
 public class Patient {
     @Id
 

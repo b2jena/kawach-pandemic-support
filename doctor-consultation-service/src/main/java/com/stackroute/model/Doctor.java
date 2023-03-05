@@ -15,11 +15,11 @@ import java.io.Serializable;
 @Setter
 @Document(collection = "doctors")
 public class Doctor implements Serializable {
+    private static final long serialVersionUID = 200856043767861933L;
     @Id
     private String emailId;
     private String fullName;
     private String specialization;
-    private static final long serialVersionUID = 200856043767861933L;
 
     public String getEmailId() {
         return emailId;

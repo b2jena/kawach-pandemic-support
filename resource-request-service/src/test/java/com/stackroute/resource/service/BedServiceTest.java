@@ -11,10 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -53,7 +50,7 @@ public class BedServiceTest {
     @Test
     public void givenBedToSaveThenShouldReturnSavedBed() throws NullValueException {
         when(bedRepository.save(any())).thenReturn(beds);
-        assertEquals(beds, bedService.saveBed(beds))  ;
+        assertEquals(beds, bedService.saveBed(beds));
         verify(bedRepository, times(1)).save(any());
     }
 

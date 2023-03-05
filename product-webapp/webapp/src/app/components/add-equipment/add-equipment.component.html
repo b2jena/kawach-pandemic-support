@@ -1,10 +1,10 @@
-<div style="margin-left: 2%; margin-right: 2%;" [formGroup]="equipForm">
+<div [formGroup]="equipForm" style="margin-left: 2%; margin-right: 2%;">
   <mat-card>
     <div fxLayout="row">
       <div fxFlex="50%">
         <mat-form-field appearance="outline" class="scheduler-field">
           <mat-label class="mat-caption">Equipment Name</mat-label>
-          <input matInput placeholder="Equipment Name" formControlName="equipmentName">
+          <input formControlName="equipmentName" matInput placeholder="Equipment Name">
           <mat-error>Should be filled and have atleast 2 character</mat-error>
         </mat-form-field>
       </div>
@@ -12,7 +12,7 @@
       <div fxFlex="50%">
         <mat-form-field appearance="outline" class="scheduler-field">
           <mat-label class="mat-caption">Hospital</mat-label>
-          <input matInput placeholder="Hospital" formControlName="hospital">
+          <input formControlName="hospital" matInput placeholder="Hospital">
           <mat-error>Should be filled</mat-error>
         </mat-form-field>
       </div>
@@ -22,7 +22,7 @@
       <div fxFlex="50%">
         <mat-form-field appearance="outline" class="scheduler-field">
           <mat-label class="mat-caption">City</mat-label>
-          <input matInput placeholder="City" formControlName="city">
+          <input formControlName="city" matInput placeholder="City">
           <mat-error>Should be filled</mat-error>
         </mat-form-field>
       </div>
@@ -30,7 +30,7 @@
       <div fxFlex="50%">
         <mat-form-field appearance="outline" class="scheduler-field">
           <mat-label class="mat-caption">Address</mat-label>
-          <input matInput placeholder="Address" formControlName="address">
+          <input formControlName="address" matInput placeholder="Address">
           <mat-error>Should be filled</mat-error>
         </mat-form-field>
       </div>
@@ -40,7 +40,7 @@
       <div fxFlex="50%">
         <mat-form-field appearance="outline" class="scheduler-field">
           <mat-label class="mat-caption">Contact Person</mat-label>
-          <input matInput placeholder="Contact Person" formControlName="contactPerson">
+          <input formControlName="contactPerson" matInput placeholder="Contact Person">
           <mat-error>Should be filled and have atleat 3 character</mat-error>
         </mat-form-field>
       </div>
@@ -48,15 +48,16 @@
       <div fxFlex="50%">
         <mat-form-field appearance="outline" class="scheduler-field">
           <mat-label class="mat-caption">Phone Number</mat-label>
-          <input matInput placeholder="Phone Number" formControlName="mobileNumber" maxlength="10">
+          <input formControlName="mobileNumber" matInput maxlength="10" placeholder="Phone Number">
           <mat-error>Should be filled and have exactly 10 numbers</mat-error>
         </mat-form-field>
       </div>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center" >
+    <div fxLayout="row" fxLayoutAlign="space-between center">
       <mat-checkbox (change)="check()">Confirmed and Verified</mat-checkbox>
-      <button mat-raised-button color="primary" [disabled]="!equipForm.valid" (click)="CreateEquipment()">Submit</button>
+      <button (click)="CreateEquipment()" [disabled]="!equipForm.valid" color="primary" mat-raised-button>Submit
+      </button>
     </div>
 
   </mat-card>

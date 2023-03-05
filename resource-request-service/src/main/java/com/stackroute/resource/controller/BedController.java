@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
-@CrossOrigin(value="*")
+@CrossOrigin(value = "*")
 @RequestMapping("api/v1/resource/")
 public class BedController {
     private BedService bedService;
@@ -26,27 +26,26 @@ public class BedController {
     }
 
     @PostMapping("bed/create/{addBy}")
-    public ResponseEntity<Beds> saveBed(@RequestBody Beds beds,@PathVariable ("addBy") String addBy) throws NullValueException {
+    public ResponseEntity<Beds> saveBed(@RequestBody Beds beds, @PathVariable("addBy") String addBy) throws NullValueException {
         Logger logger = Logger.getLogger(BedController.class.getName());
-        try{
+        try {
             rabbitMqSender.sendVolunteer(addBy, "Create_Bed_Resource");
             Beds savedBeds = bedService.saveBed(beds);
 
             return new ResponseEntity<>(savedBeds, HttpStatus.CREATED);
-        } catch (Exception e){
+        } catch (Exception e) {
             logger.info(e + " encountered");
             return new ResponseEntity<>(null, HttpStatus.CONFLICT);
         }
     }
 
     @GetMapping("bed/getAll")
-    public ResponseEntity<List<Beds>> getAllBeds(){
-        return new ResponseEntity<List<Beds>>((List<Beds>)bedService.getAllBeds(),HttpStatus.OK);
+    public ResponseEntity<List<Beds>> getAllBeds() {
+        return new ResponseEntity<List<Beds>>((List<Beds>) bedService.getAllBeds(), HttpStatus.OK);
     }
 
     @GetMapping("bed/getUnverified")
-    public ResponseEntity<Beds> getUnverifiedBed()
-    {
+    public ResponseEntity<Beds> getUnverifiedBed() {
         return new ResponseEntity<>(bedService.getUnverifiedBed(), HttpStatus.OK);
     }
 

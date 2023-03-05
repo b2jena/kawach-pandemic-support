@@ -1,22 +1,23 @@
 <div>
-    <mat-toolbar color="primary">
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleSidebar()">
-         <mat-icon>menu</mat-icon>
-       </button>
-       <span>Resources</span>
-       <span class="example-spacer"></span>
-     </mat-toolbar>
-<mat-sidenav-container>
-    <mat-sidenav style="width: 25%;" mode="side" [opened]="opened">
+  <mat-toolbar color="primary">
+    <button (click)="toggleSidebar()" aria-label="Example icon-button with menu icon" class="example-icon"
+            mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Resources</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav [opened]="opened" mode="side" style="width: 25%;">
 
       <mat-action-list>
-        <button mat-list-item routerLink="/war-room-add/one" (click)="toggleSidebar()"> Add Medicine </button>
-        <button mat-list-item routerLink="/war-room-add/two" (click)="toggleSidebar()"> Add Equipment </button>
-        <button mat-list-item (click)="toggleSidebar()"> Add Beds </button>
+        <button (click)="toggleSidebar()" mat-list-item routerLink="/war-room-add/one"> Add Medicine</button>
+        <button (click)="toggleSidebar()" mat-list-item routerLink="/war-room-add/two"> Add Equipment</button>
+        <button (click)="toggleSidebar()" mat-list-item> Add Beds</button>
       </mat-action-list>
     </mat-sidenav>
     <div mat-sidenav-content style="height: 90vh; margin-left: 35px; align-items: center;">
-        <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </div>
   </mat-sidenav-container>
 </div>

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(value="*")
+@CrossOrigin(value = "*")
 @RequestMapping("api/v1/resource/")
 public class ResourceController {
 
@@ -22,31 +22,29 @@ public class ResourceController {
     @Autowired
     public ResourceController(ResourceService resourceService, RabbitMqSender rabbitMqSender) {
         this.resourceService = resourceService;
-        this.rabbitMqSender=rabbitMqSender;
+        this.rabbitMqSender = rabbitMqSender;
     }
 
     @PostMapping("medicine/create/{addBy}")
-    public ResponseEntity<Resources> saveResource(@RequestBody Resources resources, @PathVariable ("addBy") String addBy) throws NullValueException {
+    public ResponseEntity<Resources> saveResource(@RequestBody Resources resources, @PathVariable("addBy") String addBy) throws NullValueException {
         rabbitMqSender.sendVolunteer(addBy, "Create_Medicine_Resource");
 
         Resources savedResources = resourceService.saveResource(resources);
-        return new ResponseEntity<>(savedResources,HttpStatus.CREATED);
+        return new ResponseEntity<>(savedResources, HttpStatus.CREATED);
     }
 
     @GetMapping("medicine/getAll")
-    public ResponseEntity<List<Resources>> getAllResources(){
-        return new ResponseEntity<List<Resources>>((List<Resources>)resourceService.getAllResources(),HttpStatus.OK);
+    public ResponseEntity<List<Resources>> getAllResources() {
+        return new ResponseEntity<List<Resources>>((List<Resources>) resourceService.getAllResources(), HttpStatus.OK);
     }
 
     @GetMapping("medicine/getUnverified")
-    public ResponseEntity<Resources> getUnverifiedBed()
-    {
+    public ResponseEntity<Resources> getUnverifiedBed() {
         return new ResponseEntity<>(resourceService.getUnverifiedResources(), HttpStatus.OK);
     }
 
     @PutMapping("medicine/update")
-    public void verifyMedicine(@RequestBody Resources med)
-    {
+    public void verifyMedicine(@RequestBody Resources med) {
         resourceService.UpdateMedicine(med.getId());
     }
 }

@@ -1,9 +1,9 @@
-<div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center" >
+<div fxLayout="row" fxLayoutAlign="space-between center" mat-dialog-title>
   <div>
     Search for the requirement in {{city}}
   </div>
   <div>
-    <button mat-icon-button color="accent" (click)="closeDialog()" matTooltip="Close modal">
+    <button (click)="closeDialog()" color="accent" mat-icon-button matTooltip="Close modal">
       <mat-icon>close</mat-icon>
     </button>
   </div>
@@ -14,28 +14,29 @@
     Requirements {{i+1}}= {{req.requirementName}}: {{req.requirementQuantity}}: {{req.unitOfMeasure}}
   </div>
 
-  <div fxLayout="row" fxLayoutAlign="space-around center" [formGroup]="searchForm">
+  <div [formGroup]="searchForm" fxLayout="row" fxLayoutAlign="space-around center">
     <div fxFlex="40%">
       <mat-form-field appearance="outline" class="scheduler-field">
         <mat-label class="mat-caption">Requirement*</mat-label>
-        <input matInput placeholder="Requirement" formControlName="requirement">
+        <input formControlName="requirement" matInput placeholder="Requirement">
         <mat-error>Should be filled</mat-error>
       </mat-form-field>
     </div>
     <div fxFlex="40%">
       <mat-form-field appearance="outline" class="scheduler-field">
         <mat-label class="mat-caption">City*</mat-label>
-        <input matInput placeholder="City" formControlName="city">
+        <input formControlName="city" matInput placeholder="City">
         <mat-error>Should be filled</mat-error>
       </mat-form-field>
     </div>
     <div fxFlex="10%">
       <div style="margin-bottom: 50%;">
-      <button mat-icon-button color="primary" [disabled]="!(searchForm.get('requirement').valid && searchForm.get('city').valid)" 
-      (click)="searchData()" matTooltip="Search requirement">
-        <mat-icon>search</mat-icon>
-      </button>
-    </div>
+        <button (click)="searchData()" [disabled]="!(searchForm.get('requirement').valid && searchForm.get('city').valid)"
+                color="primary"
+                mat-icon-button matTooltip="Search requirement">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
     </div>
   </div>
   <!-- <div fxLayoutAlign="center" class="scheduler-field">
@@ -44,7 +45,7 @@
       (click)="searchData()">Search</button>
   </div> -->
   <div *ngIf="showMessages" fxLayout="column" fxLayoutAlign="space-evenly stretch" style="margin:20px">
-    <div fxFlex="90%" *ngFor="let message of messageArray">
+    <div *ngFor="let message of messageArray" fxFlex="90%">
       <mat-card class="mat-elevation-z8">
         <div class="title">{{message}}</div>
       </mat-card>
@@ -52,17 +53,18 @@
   </div>
 </div>
 <div mat-dialog-action>
-  <div fxLayout="row" fxLayoutAlign="space-around center" [formGroup]="searchForm">
+  <div [formGroup]="searchForm" fxLayout="row" fxLayoutAlign="space-around center">
     <div fxFlex="90%">
       <mat-form-field appearance="outline" class="scheduler-field">
         <mat-label class="mat-caption">Message to be sent*</mat-label>
-        <textarea matInput placeholder="Write your message here for the patient" formControlName="comment"></textarea>
+        <textarea formControlName="comment" matInput placeholder="Write your message here for the patient"></textarea>
         <mat-error>Should be filled to close sos request</mat-error>
       </mat-form-field>
     </div>
   </div>
-  <div fxLayout="row" fxLayoutAlign="end" class="scheduler-field">
-    <button mat-raised-button color="primary" [disabled]="!searchForm.get('comment').valid" (click)="closeSOS()">Close
-      SOS</button>
+  <div class="scheduler-field" fxLayout="row" fxLayoutAlign="end">
+    <button (click)="closeSOS()" [disabled]="!searchForm.get('comment').valid" color="primary" mat-raised-button>Close
+      SOS
+    </button>
   </div>
 </div>

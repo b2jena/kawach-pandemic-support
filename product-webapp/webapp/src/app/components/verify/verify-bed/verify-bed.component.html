@@ -1,42 +1,44 @@
-<mat-card *ngIf = "bed">
-<div class="col-md-6 container center" >
+<mat-card *ngIf="bed">
+  <div class="col-md-6 container center">
     <table class="table center table-borderless">
-        <tbody>
-            <tr>
-                <th>Bed Type</th>
-                <td>{{bed.bedType}}</td>
-            </tr>
+      <tbody>
+      <tr>
+        <th>Bed Type</th>
+        <td>{{bed.bedType}}</td>
+      </tr>
 
-            <tr>
-                <th>City</th>
-                <td>{{bed.city}}</td>
-            </tr>
+      <tr>
+        <th>City</th>
+        <td>{{bed.city}}</td>
+      </tr>
 
-            <tr>
-                <th>Address</th>
-                <td>{{bed.address}}</td>
-            </tr>
+      <tr>
+        <th>Address</th>
+        <td>{{bed.address}}</td>
+      </tr>
 
-            <tr>
-                <th>Contact Person</th>
-                <td>{{bed.contactPerson}}</td>
-            </tr>
+      <tr>
+        <th>Contact Person</th>
+        <td>{{bed.contactPerson}}</td>
+      </tr>
 
-            <tr>
-                <th>Mobile Number</th>
-                <td>{{bed.mobileNumber}}</td>
-            </tr>
-            
-        </tbody>
+      <tr>
+        <th>Mobile Number</th>
+        <td>{{bed.mobileNumber}}</td>
+      </tr>
+
+      </tbody>
     </table>
     <p>**Resources are fetched randomly**</p>
-    <button class="btn btn-primary mr-4" (click)="putVerified()" matTooltip="Verify this resource">Verify this data</button>
-    <button class="btn btn-primary" (click)="passOn()" matTooltip="Fetch next unverified resource">Next resource</button>
-</div>
+    <button (click)="putVerified()" class="btn btn-primary mr-4" matTooltip="Verify this resource">Verify this data
+    </button>
+    <button (click)="passOn()" class="btn btn-primary" matTooltip="Fetch next unverified resource">Next resource
+    </button>
+  </div>
 </mat-card>
 
-<mat-card *ngIf = "!bed">
-    <div class="jumbotron" >
-        <h1 class="display-4">Nothing to verify as of now. Thank you for your selfless support</h1>
-    </div>
+<mat-card *ngIf="!bed">
+  <div class="jumbotron">
+    <h1 class="display-4">Nothing to verify as of now. Thank you for your selfless support</h1>
+  </div>
 </mat-card>

@@ -16,11 +16,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class ResourceServiceImpl implements ResourceService {
-    private ResourceRepository resourceRepository;
     SequenceGeneratorService sequenceGeneratorService;
-
     @Autowired
     MongoTemplate mongoTemplate;
+    private ResourceRepository resourceRepository;
 
     @Autowired
     public ResourceServiceImpl(ResourceRepository resourceRepository) {
@@ -52,7 +51,7 @@ public class ResourceServiceImpl implements ResourceService {
     @Override
     public List<Resources> getAllMedicine(String City, String requirement) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("city").regex(City, "i").and("medicineName").regex(requirement,"i"));
+        query.addCriteria(Criteria.where("city").regex(City, "i").and("medicineName").regex(requirement, "i"));
         List<Resources> request = mongoTemplate.find(query, Resources.class);
         return request;
     }
@@ -74,7 +73,7 @@ public class ResourceServiceImpl implements ResourceService {
         System.out.println("medId = " + medId);
         Query query = new Query(Criteria.where("id").is(medId));
         Update updateQuery = new Update();
-        updateQuery.set("verificationStatus",true);
-        mongoTemplate.upsert(query,updateQuery, Resources.class);
+        updateQuery.set("verificationStatus", true);
+        mongoTemplate.upsert(query, updateQuery, Resources.class);
     }
 }

@@ -8,13 +8,14 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.UUID;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Document(collection = "equipments")
 public class Equipments {
     @Transient
-    public static final String SEQUENCE_NAME="sequence";
+    public static final String SEQUENCE_NAME = "sequence";
     @Id
     private UUID equipmentId;
     private String equipmentName;

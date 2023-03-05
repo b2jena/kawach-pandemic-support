@@ -32,15 +32,22 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(MockitoExtension.class)
 class MessageControllerTest {
 
-    private MockMvc mockMvc;
     @Mock
     MessageServiceImpl messageService;
+    private MockMvc mockMvc;
     @InjectMocks
     private MessageController messageController;
 
     private MessageModel messageModel;
     private List<MessageModel> messageModelList;
 
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @BeforeEach
     public void setUp() {
@@ -62,10 +69,10 @@ class MessageControllerTest {
 
     @Test
     public void givenMessageModelToSaveThenShouldReturnSavedMessageModel() throws Exception {
-        when(messageService. saveMessage(any())).thenReturn(messageModel);
+        when(messageService.saveMessage(any())).thenReturn(messageModel);
         mockMvc.perform(post("/api/v1/chat-messages/Debjit/Bikash")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(messageModel)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(asJsonString(messageModel)))
                 .andExpect(status().isCreated())
                 .andDo(MockMvcResultHandlers.print());
         verify(messageService).saveMessage(any());
@@ -73,20 +80,10 @@ class MessageControllerTest {
 
     @Test
     public void givenMessageModelToFindAllMessageModelThenShouldReturnSavedMessageModelList() throws Exception {
-        List<MessageModel> messageModel =  messageService. getAllMessages("Debjit", "Bikash");
+        List<MessageModel> messageModel = messageService.getAllMessages("Debjit", "Bikash");
         mockMvc.perform(get("/api/v1/chat-messages/Debjit/Bikash"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print());
-    }
-
-
-
-    public static String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 
 }

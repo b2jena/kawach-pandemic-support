@@ -1,45 +1,45 @@
 <h2 style="padding-top: 40px;">Current Status in different Places</h2>
 
 <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="locationStat">
-        <ng-container matColumnDef="Location">
-            <th mat-header-cell *matHeaderCellDef>Location</th>
-            <td mat-cell *matCellDef="let locationStat"> {{locationStat.loc}} </td>
-        </ng-container>
+  <table [dataSource]="locationStat" mat-table>
+    <ng-container matColumnDef="Location">
+      <th *matHeaderCellDef mat-header-cell>Location</th>
+      <td *matCellDef="let locationStat" mat-cell> {{locationStat.loc}}</td>
+    </ng-container>
 
-        <ng-container matColumnDef="Confirmed Cases (Indian)">
-            <th mat-header-cell *matHeaderCellDef>Confirmed Cases (Indian)</th>
-            <td mat-cell *matCellDef="let locationStat"> {{locationStat.confirmedCasesIndian}} </td>
-        </ng-container>
-        
-
-        <ng-container matColumnDef="Confirmed Cases (Foreign)">
-            <th mat-header-cell *matHeaderCellDef>Confirmed Cases (Foreign)</th>
-            <td mat-cell *matCellDef="let locationStat"> {{locationStat.confirmedCasesForeign}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="Discharged">
-            <th mat-header-cell *matHeaderCellDef>Discharged</th>
-            <td mat-cell *matCellDef="let locationStat"> {{locationStat.discharged}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="Deaths">
-            <th mat-header-cell *matHeaderCellDef>Deaths</th>
-            <td mat-cell *matCellDef="let locationStat"> {{locationStat.deaths}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="Total Confirmed">
-            <th mat-header-cell *matHeaderCellDef>Total Confirmed</th>
-            <td mat-cell *matCellDef="let locationStat"> {{locationStat.totalConfirmed}} </td>
-        </ng-container>
+    <ng-container matColumnDef="Confirmed Cases (Indian)">
+      <th *matHeaderCellDef mat-header-cell>Confirmed Cases (Indian)</th>
+      <td *matCellDef="let locationStat" mat-cell> {{locationStat.confirmedCasesIndian}}</td>
+    </ng-container>
 
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    <ng-container matColumnDef="Confirmed Cases (Foreign)">
+      <th *matHeaderCellDef mat-header-cell>Confirmed Cases (Foreign)</th>
+      <td *matCellDef="let locationStat" mat-cell> {{locationStat.confirmedCasesForeign}}</td>
+    </ng-container>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                   showFirstLastButtons 
-                   aria-label="Select page of periodic elements">
-    </mat-paginator>
-</div> 
+    <ng-container matColumnDef="Discharged">
+      <th *matHeaderCellDef mat-header-cell>Discharged</th>
+      <td *matCellDef="let locationStat" mat-cell> {{locationStat.discharged}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Deaths">
+      <th *matHeaderCellDef mat-header-cell>Deaths</th>
+      <td *matCellDef="let locationStat" mat-cell> {{locationStat.deaths}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Total Confirmed">
+      <th *matHeaderCellDef mat-header-cell>Total Confirmed</th>
+      <td *matCellDef="let locationStat" mat-cell> {{locationStat.totalConfirmed}}</td>
+    </ng-container>
+
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 aria-label="Select page of periodic elements"
+                 showFirstLastButtons>
+  </mat-paginator>
+</div>

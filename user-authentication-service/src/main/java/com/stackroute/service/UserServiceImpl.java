@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 
-
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -26,7 +25,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User saveUser(User user){
+    public User saveUser(User user) {
 
         return userRepository.save(user);
     }

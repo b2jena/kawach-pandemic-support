@@ -29,9 +29,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(MockitoExtension.class)
 class MedicalSosRequestControllerTest {
-    private MockMvc mockMvc;
     @Mock
     MedicalSosRequestServiceImpl messageService;
+    private MockMvc mockMvc;
     @InjectMocks
     private MedicalSosRequestController messageController;
 
@@ -39,6 +39,13 @@ class MedicalSosRequestControllerTest {
     private Requirement requirment;
     private List<MedicalSosRequest> messageModelList;
 
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @BeforeEach
     public void setUp() {
@@ -72,21 +79,13 @@ class MedicalSosRequestControllerTest {
 
     @Test
     public void givenMessageModelToSaveThenShouldReturnSavedMessageModel() throws Exception {
-        when(messageService. saveSosRequest(any())).thenReturn(medicalSosRequest);
+        when(messageService.saveSosRequest(any())).thenReturn(medicalSosRequest);
         mockMvc.perform(post("/sos/createSos")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(medicalSosRequest)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(asJsonString(medicalSosRequest)))
                 .andExpect(status().isCreated())
                 .andDo(MockMvcResultHandlers.print());
         verify(messageService).saveSosRequest(any());
-    }
-
-    public static String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 
 

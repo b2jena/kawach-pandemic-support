@@ -1,15 +1,16 @@
 <mat-card>
-    <mat-card-header>
-        <img mat-card-avatar src="/assets/doctor.jpg"><p>Welcome DR.{{doctor.fullName | titlecase}}</p>
-    </mat-card-header>
+  <mat-card-header>
+    <img mat-card-avatar src="/assets/doctor.jpg">
+    <p>Welcome DR.{{doctor.fullName | titlecase}}</p>
+  </mat-card-header>
 
 </mat-card>
 
 <mat-tab-group color="primary">
-    <mat-tab label="Please use the button below to make yourself Online or Offline">
-        <app-timeslot></app-timeslot>
-        <button mat-button color="primary" (click)="DoctorOnline(email)">Make me online</button>
-        <button mat-button color="secondary" (click)="DoctorOffline(email)">Make me offline</button>
-        <app-doctor-message></app-doctor-message>
-    </mat-tab>
-  </mat-tab-group>
+  <mat-tab label="Please use the button below to make yourself Online or Offline">
+    <app-timeslot></app-timeslot>
+    <button (click)="DoctorOnline(email)" color="primary" mat-button>Make me online</button>
+    <button (click)="DoctorOffline(email)" color="secondary" mat-button>Make me offline</button>
+    <app-doctor-message></app-doctor-message>
+  </mat-tab>
+</mat-tab-group>

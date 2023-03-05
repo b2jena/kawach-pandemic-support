@@ -19,7 +19,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -40,8 +39,16 @@ class VolunteerRevertControllerTest {
     @InjectMocks
     private VolunteerRevertController volunteerRevertController;
 
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         volunteer = new Volunteer("abc@email.com", 700, "Level-2");
         volunteerIncoming = new VolunteerIncoming("xyz@gmail.com", "xyz_type");
         mockMvc = MockMvcBuilders.standaloneSetup(volunteerRevertController).build();
@@ -50,8 +57,8 @@ class VolunteerRevertControllerTest {
     @Test
     public void givenVolunteerToSaveShouldReturnMessage() throws Exception {
         mockMvc.perform(post("/api/v1/volunteer/revert")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(volunteerIncoming)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(asJsonString(volunteerIncoming)))
                 .andExpect(status().isCreated());
         verify(volunteerRevertService, times(1)).volunteerRevertUpdate(any());
     }
@@ -60,17 +67,10 @@ class VolunteerRevertControllerTest {
     public void givenGetAllVolunteersThenShouldReturnListOfAllVolunteers() throws Exception {
         when(volunteerRevertService.getAllVolunteers()).thenReturn(volunteerList);
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/volunteer/volunteers")
-                .contentType(MediaType.APPLICATION_JSON).content(asJsonString(volunteer)))
+                        .contentType(MediaType.APPLICATION_JSON).content(asJsonString(volunteer)))
                 .andDo(MockMvcResultHandlers.print());
         verify(volunteerRevertService).getAllVolunteers();
         verify(volunteerRevertService, times(1)).getAllVolunteers();
-    }
-    public static String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 
 

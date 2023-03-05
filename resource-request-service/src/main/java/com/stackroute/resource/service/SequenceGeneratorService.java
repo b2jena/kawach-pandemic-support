@@ -15,20 +15,22 @@ import java.util.Objects;
 public class SequenceGeneratorService {
 
     private MongoOperations mongoOperations;
+
     @Autowired
     public SequenceGeneratorService(MongoOperations mongoOperations) {
         this.mongoOperations = mongoOperations;
     }
-    public int getSequenceNumber(String sequenceName){
+
+    public int getSequenceNumber(String sequenceName) {
         //get seqNo
         Query query = new Query(Criteria.where("id").is(sequenceName));
         //update seqNo
-        Update update= new Update().inc("seq",1);
+        Update update = new Update().inc("seq", 1);
         //modify in document
         DBSequence counter = mongoOperations
-                .findAndModify(query,update, FindAndModifyOptions.options().returnNew(true).upsert(true),DBSequence.class);
+                .findAndModify(query, update, FindAndModifyOptions.options().returnNew(true).upsert(true), DBSequence.class);
 
-        return !Objects.isNull(counter)?counter.getSeq():1;
+        return !Objects.isNull(counter) ? counter.getSeq() : 1;
 
     }
 }

@@ -10,36 +10,31 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 @RestController
 @RequestMapping("/api/v1/")
-@CrossOrigin(value="*")
+@CrossOrigin(value = "*")
 public class UserController {
 
+    ResponseEntity<?> responseEntity;
     private UserService userService;
     private JWTTokenGenerator jwtTokenGenerator;
-    ResponseEntity<?> responseEntity;
+    @Value("${app.controller.exception.message1}")
+    private String message1;
+    @Value("${app.controller.exception.message2}")
+    private String message2;
+    @Value("${app.controller.exception.message3}")
+    private String message3;
 
     @Autowired
     public UserController(UserService userService, JWTTokenGenerator jwtTokenGenerator) {
         this.userService = userService;
         this.jwtTokenGenerator = jwtTokenGenerator;
     }
-
-    @Value("${app.controller.exception.message1}")
-    private String message1;
-
-    @Value("${app.controller.exception.message2}")
-    private String message2;
-
-    @Value("${app.controller.exception.message3}")
-    private String message3;
-
-
-
-
 
     @PostMapping("login/user")
     public ResponseEntity<?> loginUser(@RequestBody Map<String, String> json) {
@@ -54,14 +49,14 @@ public class UserController {
             if (!(userDetails.getPassword().equals(userDetails.getPassword()))) {
                 throw new UserNotFoundException(message3);
             }
-            List<String> response=new ArrayList<String>();
+            List<String> response = new ArrayList<String>();
             response.add("Success");
             response.add(jwtTokenGenerator.generateToken(userDetails));
             response.add(userDetails.getRole().toString());
             response.add(userDetails.getId().toString());
             responseEntity = new ResponseEntity<>(response, HttpStatus.OK);
         } catch (UserNotFoundException e) {
-            List<String> response=new ArrayList<String>();
+            List<String> response = new ArrayList<String>();
             response.add(e.getMessage());
             responseEntity = new ResponseEntity<>(response, HttpStatus.OK);
         }

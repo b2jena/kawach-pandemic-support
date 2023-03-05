@@ -1,28 +1,56 @@
 <div class="container">
-<mat-card><h2>List Beds... </h2></mat-card>
-<div class="col-md-6">
+  <mat-card><h2>List Beds... </h2></mat-card>
+  <div class="col-md-6">
     <table class="table table-striped">
-        <thead>
-            <tr>
-                <th><mat-card>Bed Type</mat-card></th>
-                <th><mat-card>City</mat-card></th>
-                <th><mat-card>Address</mat-card></th>
-                <th><mat-card>Contact Person</mat-card></th>
-                <th><mat-card>Mobile Number</mat-card></th>
-                <th><mat-card>Verification Status</mat-card></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let bed of beds">
-                <td><mat-card>{{bed.bedType}}</mat-card></td>
-                <td><mat-card>{{bed.city}}</mat-card></td>
-                <td><mat-card>{{bed.address}}</mat-card></td>
-                <td><mat-card>{{bed.contactPerson}}</mat-card></td>
-                <td><mat-card>{{bed.mobileNumber}}</mat-card></td>
-                <td><mat-card>{{bed.verificationStatus}}</mat-card></td>
-                <td><mat-card><button class="btn btn-danger" (click)="deleteBed(bed)">Delete Bed</button></mat-card></td>
-            </tr>
-        </tbody>
+      <thead>
+      <tr>
+        <th>
+          <mat-card>Bed Type</mat-card>
+        </th>
+        <th>
+          <mat-card>City</mat-card>
+        </th>
+        <th>
+          <mat-card>Address</mat-card>
+        </th>
+        <th>
+          <mat-card>Contact Person</mat-card>
+        </th>
+        <th>
+          <mat-card>Mobile Number</mat-card>
+        </th>
+        <th>
+          <mat-card>Verification Status</mat-card>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let bed of beds">
+        <td>
+          <mat-card>{{bed.bedType}}</mat-card>
+        </td>
+        <td>
+          <mat-card>{{bed.city}}</mat-card>
+        </td>
+        <td>
+          <mat-card>{{bed.address}}</mat-card>
+        </td>
+        <td>
+          <mat-card>{{bed.contactPerson}}</mat-card>
+        </td>
+        <td>
+          <mat-card>{{bed.mobileNumber}}</mat-card>
+        </td>
+        <td>
+          <mat-card>{{bed.verificationStatus}}</mat-card>
+        </td>
+        <td>
+          <mat-card>
+            <button (click)="deleteBed(bed)" class="btn btn-danger">Delete Bed</button>
+          </mat-card>
+        </td>
+      </tr>
+      </tbody>
     </table>
-</div>
+  </div>
 </div>

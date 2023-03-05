@@ -10,8 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
-@CrossOrigin(value="*")
+@CrossOrigin(value = "*")
 @RequestMapping("api/v1/resource/")
 public class EquipmentController {
     private EquipmentService equipmentService;
@@ -24,7 +25,7 @@ public class EquipmentController {
     }
 
     @PostMapping("equipment/create/{addBy}")
-    public ResponseEntity<Equipments> saveEquipment(@RequestBody Equipments equipments,@PathVariable ("addBy") String addBy) throws NullValueException {
+    public ResponseEntity<Equipments> saveEquipment(@RequestBody Equipments equipments, @PathVariable("addBy") String addBy) throws NullValueException {
         rabbitMqSender.sendVolunteer(addBy, "Create_Equipment_Resource");
 
         Equipments savedEquipments = equipmentService.saveEquipment(equipments);
@@ -32,19 +33,17 @@ public class EquipmentController {
     }
 
     @GetMapping("equipment/getAll")
-    public ResponseEntity<List<Equipments>> getAllEquipments(){
-        return new ResponseEntity<List<Equipments>>((List<Equipments>)equipmentService.getAllEquipments(),HttpStatus.OK);
+    public ResponseEntity<List<Equipments>> getAllEquipments() {
+        return new ResponseEntity<List<Equipments>>((List<Equipments>) equipmentService.getAllEquipments(), HttpStatus.OK);
     }
 
     @GetMapping("equipment/getUnverified")
-    public ResponseEntity<Equipments> getUnverifiedBed()
-    {
+    public ResponseEntity<Equipments> getUnverifiedBed() {
         return new ResponseEntity<>(equipmentService.getUnverifiedEquipments(), HttpStatus.OK);
     }
 
     @PutMapping("equipment/update")
-    public void VerifyEquipment(@RequestBody Equipments equipment)
-    {
+    public void VerifyEquipment(@RequestBody Equipments equipment) {
         equipmentService.UpdateEquipment(equipment.getEquipmentId());
     }
 }
