@@ -8,7 +8,7 @@ import { Message, MessageService } from 'src/app/services/message.service';
 })
 export class DoctorMessageComponent implements OnInit {
   message: string;
-  reciverName: string;
+  receiverName: string;
   messageArray: any = [];
   socket: any;
   user: Message = new Message('doctor', 'paitent', '');

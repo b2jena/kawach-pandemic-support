@@ -17,7 +17,7 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
-    @PostMapping("chat-messages/{senderName}/{reciverName}")
+    @PostMapping("chat-messages/{senderName}/{receiverName}")
     public ResponseEntity<MessageModel> messageModel(@RequestBody MessageModel messageModel) {
         try {
             MessageModel messageModels = messageService.saveMessage(messageModel);
@@ -27,16 +27,16 @@ public class MessageController {
         }
     }
 
-    @GetMapping("chat-messages/{senderName}/{reciverName}")
+    @GetMapping("chat-messages/{senderName}/{receiverName}")
     public ResponseEntity<List<MessageModel>> getMessages(@PathVariable("senderName") String senderName,
-                                                          @PathVariable("reciverName") String reciverName) {
+                                                          @PathVariable("receiverName") String receiverName) {
         return new ResponseEntity<List<MessageModel>>((List<MessageModel>) messageService.
-                getAllMessages(senderName, reciverName), HttpStatus.OK);
+                getAllMessages(senderName, receiverName), HttpStatus.OK);
     }
 
-    @DeleteMapping("chat-messages/{senderName}/{reciverName}")
+    @DeleteMapping("chat-messages/{senderName}/{receiverName}")
     public ResponseEntity<String> deleteMessages(@PathVariable("senderName") String senderName,
-                                                 @PathVariable("reciverName") String reciverName) {
+                                                 @PathVariable("receiverName") String receiverName) {
         messageService.deleteAll(senderName);
         return new ResponseEntity<String>("Deleted chat", HttpStatus.OK);
     }

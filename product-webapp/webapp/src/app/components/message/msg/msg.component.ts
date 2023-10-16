@@ -14,7 +14,7 @@ export class MsgComponent implements OnInit {
   ]);
 
   message: string;
-  reciverName: string;
+  receiverName: string;
   messageArray: any = [];
   socket: any;
   doctorEmail: String;

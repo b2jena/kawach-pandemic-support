@@ -12,15 +12,15 @@ export class MessageService {
   constructor(private http: HttpClient) { }
 
   SendMessage(message: Message): Observable<any>{
-    return this.http.post(`/api/v1/chat-messages/${message.senderName}/${message.reciverName}`, message);
+    return this.http.post(`/api/v1/chat-messages/${message.senderName}/${message.receiverName}`, message);
   }
 
   GetAllMessage(message: Message): Observable<any>{
-    return this.http.get(`/api/v1/chat-messages/${message.senderName}/${message.reciverName}`);
+    return this.http.get(`/api/v1/chat-messages/${message.senderName}/${message.receiverName}`);
   }
 
   deleteMessages(message: Message): Observable<any>{
-    return this.http.delete(`/api/v1/chat-messages/${message.senderName}/${message.reciverName}`);
+    return this.http.delete(`/api/v1/chat-messages/${message.senderName}/${message.receiverName}`);
   }
 }
 
@@ -28,13 +28,13 @@ export class MessageService {
 
 export class Message{
   public senderName: string;
-  public reciverName: string;
+  public receiverName: string;
   public messageBody: string;
 
 
-constructor(senderName: string, reciverName: string, messageBody: string){
+constructor(senderName: string, receiverName: string, messageBody: string){
   this.senderName = senderName;
-  this.reciverName = reciverName;
+  this.receiverName = receiverName;
   this.messageBody = messageBody;
 
   }

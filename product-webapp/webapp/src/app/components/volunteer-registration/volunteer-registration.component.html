@@ -48,7 +48,8 @@
 
       <mat-form-field appearance="outline" style="width: 300px;">
         <mat-label>Password</mat-label>
-        <input [(ngModel)]="user.password" [type]="hide ? 'password' : 'text'" formControlName="password" matInput placeholder="password"
+        <input [(ngModel)]="user.password" [type]="hide ? 'password' : 'text'" formControlName="password" matInput
+               placeholder="password"
                required>
         <mat-icon (click)="hide = !hide" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         <mat-hint>Should contain 8 to 15 characters with atleast 1 lowercase, uppercase, number and special character

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class RabbitMqService implements RabbitListenerConfigurer {
 
     private static final Logger logger = LoggerFactory.getLogger(RabbitMqService.class);
-    private DoctorService doctorService;
+    private final DoctorService doctorService;
     private Doctor doctor;
 
     @Autowired
@@ -22,7 +22,7 @@ public class RabbitMqService implements RabbitListenerConfigurer {
     }
 
     @RabbitListener(queues = "${spring.rabbitmq.queue}")
-    public void recievedMessage(String userDetails) {
+    public void receivedMessage(String userDetails) {
         String[] parts = userDetails.split(", ");
         doctor = new Doctor(parts[0], parts[1], parts[2]);
         doctorService.saveDoctorMongoDB(doctor);

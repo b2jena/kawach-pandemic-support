@@ -36,7 +36,8 @@
           <div class="col-md-6">
             <mat-form-field appearance="fill" class="example-full-width">
               <mat-label>Email Id<span style="color: red !important">*</span></mat-label>
-              <input [(ngModel)]="user.email" [formControl]="emailFormControl" matInput placeholder="Ex. pat@example.com"
+              <input [(ngModel)]="user.email" [formControl]="emailFormControl" matInput
+                     placeholder="Ex. pat@example.com"
                      type="email"/>
               <mat-error *ngIf="emailFormControl.errors?.pattern && !emailFormControl.hasError('required')">
                 Please enter a valid email address
@@ -181,7 +182,8 @@
         </div>
 
         <!-- <button mat-raised-button color="primary" [disabled]="loginForm.form.invalid" (click)="Create()" routerLink="/#/sos"> -->
-        <button (click)="Create()" [disabled]="patientForm.invalid" [disabled]="loginForm.invalid" class="btn btn-primary"
+        <button (click)="Create()" [disabled]="patientForm.invalid" [disabled]="loginForm.invalid"
+                class="btn btn-primary"
                 matTooltip="Submit your SOS request" routerLink="/#/sos" type="button">
           Submit
         </button>

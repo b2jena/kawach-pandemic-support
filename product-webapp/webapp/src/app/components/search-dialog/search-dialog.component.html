@@ -31,7 +31,8 @@
     </div>
     <div fxFlex="10%">
       <div style="margin-bottom: 50%;">
-        <button (click)="searchData()" [disabled]="!(searchForm.get('requirement').valid && searchForm.get('city').valid)"
+        <button (click)="searchData()"
+                [disabled]="!(searchForm.get('requirement').valid && searchForm.get('city').valid)"
                 color="primary"
                 mat-icon-button matTooltip="Search requirement">
           <mat-icon>search</mat-icon>

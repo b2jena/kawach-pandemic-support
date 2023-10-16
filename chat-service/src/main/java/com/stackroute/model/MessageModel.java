@@ -15,6 +15,6 @@ import java.time.format.DateTimeFormatter;
 public class MessageModel {
     String formattedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
     private String senderName;
-    private String reciverName;
+    private String receiverName;
     private String messageBody;
 }

@@ -19,13 +19,13 @@
         <div class="row">
           <div class="col-12">
             <div *ngFor="let message of messageArray" class="message-wrapper">
-              <div *ngIf="user.reciverName === message.senderName" class="left">
+              <div *ngIf="user.receiverName === message.senderName" class="left">
                 <div class="chat-bubble left slide-left">
                   <div class="message"> {{message.messageBody}}</div>
                 </div>
               </div>
 
-              <div *ngIf="user.reciverName !== message.senderName" class="right">
+              <div *ngIf="user.receiverName !== message.senderName" class="right">
                 <div class="chat-bubble right slide-right">
                   <div class="message"> {{message.messageBody}}</div>
                 </div>

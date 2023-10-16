@@ -7,7 +7,7 @@ import java.util.List;
 public interface MessageService {
     MessageModel saveMessage(MessageModel messageModel);
 
-    List<MessageModel> getAllMessages(String senderName, String reciverName);
+    List<MessageModel> getAllMessages(String senderName, String receiverName);
 
     void deleteAll(String senderName);
 }

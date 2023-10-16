@@ -51,7 +51,8 @@ class DoctorControllerTest {
 
     @Test
     public void givenUserToSaveShouldReturnSavedUser() throws Exception {
-        when(userService.saveDoctorMongoDB(any())).thenReturn(user);
+//        when(userService.saveDoctorMongoDB(any())).thenReturn(user);
+        doReturn(user).when(userService).saveDoctorMongoDB(any());
         mockMvc.perform(post("/api/v1/doctorm")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(asJsonString(user)))

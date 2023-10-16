@@ -45,7 +45,8 @@
 
                 <mat-form-field appearance="outline" style="width: 300px;">
                   <mat-label for="password"> Password:</mat-label>
-                  <input [(ngModel)]="userobj.password" [type]="hide ? 'password' : 'text'" formControlName="password" matInput
+                  <input [(ngModel)]="userobj.password" [type]="hide ? 'password' : 'text'" formControlName="password"
+                         matInput
                          required type="text">
                   <mat-icon (click)="hide = !hide" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                   <mat-error *ngIf="profileForm.get('password')?.invalid && profileForm.get('password')?.touched">
@@ -57,7 +58,8 @@
             <mat-card-actions>
               <div class="row" style="margin-top: 20px; text-align: center;">
                 <div class="col-md-offset-1">
-                  <button (click)=login() [disabled]="!profileForm.valid" class="btn btn-md btn-primary btn-style" color="primary"
+                  <button (click)=login() [disabled]="!profileForm.valid" class="btn btn-md btn-primary btn-style"
+                          color="primary"
                           mat-raised-button>Login
                   </button>
                 </div>

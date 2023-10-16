@@ -55,7 +55,7 @@ class MessageControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(messageController).build();
         messageModel = new MessageModel();
         messageModel.setSenderName("Debjit");
-        messageModel.setReciverName("Bikash");
+        messageModel.setReceiverName("Bikash");
         messageModel.setMessageBody("Good Morning India");
         messageModel.setFormattedDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")));
         messageModelList = new ArrayList<>();

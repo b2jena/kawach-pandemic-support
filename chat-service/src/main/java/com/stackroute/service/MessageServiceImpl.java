@@ -23,8 +23,8 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public List<MessageModel> getAllMessages(String senderName, String reciverName) {
-        return (List<MessageModel>) messageRepository.getAllMessages(senderName, reciverName);
+    public List<MessageModel> getAllMessages(String senderName, String receiverName) {
+        return (List<MessageModel>) messageRepository.getAllMessages(senderName, receiverName);
     }
 
     @Override

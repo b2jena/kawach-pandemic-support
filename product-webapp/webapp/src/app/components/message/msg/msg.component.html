@@ -1,5 +1,5 @@
 <div style="padding-left: 10px!important">
-  <button (click)="deleteMessage(user.reciverName, user.senderName)" class="btn btn-light" type="button">
+  <button (click)="deleteMessage(user.receiverName, user.senderName)" class="btn btn-light" type="button">
     <svg class="bi bi-x-lg" fill="currentColor" height="16" viewBox="0 0 16 16" width="16"
          xmlns="http://www.w3.org/2000/svg">
       <path
@@ -30,13 +30,13 @@
         <div class="row">
           <div class="col-12">
             <div *ngFor="let message of messageArray" class="message-wrapper">
-              <div *ngIf="user.reciverName === message.senderName" class="left">
+              <div *ngIf="user.receiverName === message.senderName" class="left">
                 <div class="chat-bubble left slide-left">
                   <div class="message"> {{message.messageBody}}</div>
                 </div>
               </div>
 
-              <div *ngIf="user.reciverName !== message.senderName" class="right">
+              <div *ngIf="user.receiverName !== message.senderName" class="right">
                 <div class="chat-bubble right slide-right">
                   <div class="message"> {{message.messageBody}}</div>
                 </div>
@@ -55,7 +55,8 @@
             <div class="inputRow">
               <form #chatForm="ngForm" (ngSubmit)="SendMessage()">
                 <div class="input-group mb-3">
-                  <input [(ngModel)]="user.messageBody" [formControl]="nameFormControl" class="form-control" name="message"
+                  <input [(ngModel)]="user.messageBody" [formControl]="nameFormControl" class="form-control"
+                         name="message"
                          required style="color: aliceblue in !important; max-height: 50px !important">
                   <div class="input-group-append">
                     <button [disabled]="chatForm.invalid" class="btn btn-outline-primary">Send</button>
