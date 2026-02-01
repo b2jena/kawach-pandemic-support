@@ -11,3 +11,20 @@ server:
 spring:
   application:
     name: "api-gateway"
+
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    gateway:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+

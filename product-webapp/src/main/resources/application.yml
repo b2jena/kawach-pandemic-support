@@ -12,3 +12,18 @@ spring:
   application:
     name: "product-webapp"
 
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+
