@@ -7,63 +7,54 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.TestPropertySource;
 
-/**
- * Comprehensive test suite for Config Server Application. Tests application context, server
- * startup, and configuration endpoints.
- */
+/** Integration tests for Config Server. Tests configuration retrieval and server functionality. */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource(
     properties = {
       "spring.cloud.config.server.git.uri=https://github.com/spring-cloud-samples/config-repo",
-      "spring.cloud.config.server.git.default-label=main"
+      "spring.cloud.config.server.git.default-label=main",
+      "spring.cloud.config.server.git.clone-on-start=false"
     })
-class ConfigServerApplicationTests {
+class ConfigServerIntegrationTest {
 
   @LocalServerPort private int port;
 
   @Autowired private TestRestTemplate restTemplate;
 
-  @Autowired private ApplicationContext applicationContext;
-
   @Test
-  void contextLoads() {
-    assertThat(applicationContext).isNotNull();
-  }
-
-  @Test
-  void configServerApplicationBeanExists() {
-    assertThat(applicationContext.getBean(ConfigServerApplication.class)).isNotNull();
-  }
-
-  @Test
-  void actuatorHealthEndpointIsAccessible() {
+  void actuatorHealthShowsUpStatus() {
     ResponseEntity<String> response =
         restTemplate.getForEntity("http://localhost:" + port + "/actuator/health", String.class);
+
+    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    assertThat(response.getBody()).contains("UP");
+  }
+
+  @Test
+  void actuatorMetricsEndpointIsAvailable() {
+    ResponseEntity<String> response =
+        restTemplate.getForEntity("http://localhost:" + port + "/actuator/metrics", String.class);
+
     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
   }
 
   @Test
-  void actuatorInfoEndpointIsAccessible() {
+  void actuatorInfoEndpointIsAvailable() {
     ResponseEntity<String> response =
         restTemplate.getForEntity("http://localhost:" + port + "/actuator/info", String.class);
+
     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
   }
 
   @Test
-  void mainMethodStartsApplication() {
-    // Test that main method can be invoked without exceptions
-    assertThat(ConfigServerApplication.class.getDeclaredMethods())
-        .anyMatch(method -> method.getName().equals("main"));
-  }
+  void actuatorEnvEndpointIsAvailable() {
+    ResponseEntity<String> response =
+        restTemplate.getForEntity("http://localhost:" + port + "/actuator/env", String.class);
 
-  @Test
-  void applicationContextContainsConfigServerBeans() {
-    String[] beanNames = applicationContext.getBeanDefinitionNames();
-    assertThat(beanNames).isNotEmpty();
+    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
   }
 }
